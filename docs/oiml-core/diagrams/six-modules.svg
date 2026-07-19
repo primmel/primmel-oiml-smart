@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 670" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="dep" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="cycle" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706"/>
+    </marker>
+    <marker id="cert" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9333ea"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The six metamodel modules — the dependency law</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Solid arrows read &#8220;depends on&#8221;. A depends on nothing; facts (D2) and judgments (D3) are firewalled.</text>
+
+  <!-- ================= MODULE A ================= -->
+  <rect x="60" y="90" width="220" height="120" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+  <rect x="60" y="90" width="220" height="30" rx="12" fill="#475569"/>
+  <text x="170" y="110" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">A &#183; measurement-vocabulary</text>
+  <g font-size="10.5" fill="#334155">
+    <text x="74" y="140">values, units, uncertainty,</text>
+    <text x="74" y="154">measurands, conditions,</text>
+    <text x="74" y="168">results, traceability chains</text>
+  </g>
+  <text x="74" y="196" font-size="10" font-weight="600" fill="#475569">depends on: nothing</text>
+
+  <!-- ================= MODULE B ================= -->
+  <rect x="60" y="300" width="220" height="130" rx="12" fill="#faf5ff" stroke="#9333ea" stroke-width="1.8"/>
+  <rect x="60" y="300" width="220" height="30" rx="12" fill="#9333ea"/>
+  <text x="170" y="320" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">B &#183; identity-provenance</text>
+  <g font-size="10.5" fill="#581c87">
+    <text x="74" y="350">manufacturer, software (D 31),</text>
+    <text x="74" y="364">marking, sealing, calibration,</text>
+    <text x="74" y="378">certificates</text>
+  </g>
+  <text x="74" y="406" font-size="10" font-weight="600" fill="#7e22ce">depends on: A + C (names subjects)</text>
+
+  <!-- ================= MODULE C ================= -->
+  <rect x="390" y="180" width="220" height="160" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <rect x="390" y="180" width="220" height="30" rx="12" fill="#4f46e5"/>
+  <text x="500" y="200" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">C &#183; instrument-description</text>
+  <g font-size="10.5" fill="#3730a3">
+    <text x="404" y="230">the subject chain:</text>
+    <text x="404" y="244" font-weight="600">Family &#8594; Group &#8594; Model &#8594; Sample</text>
+    <text x="404" y="262">classification, capabilities, behaviors,</text>
+    <text x="404" y="276">conditions, attributes, formulas,</text>
+    <text x="404" y="290">constraints</text>
+  </g>
+  <text x="404" y="318" font-size="10" font-weight="600" fill="#4338ca">depends on: A + B.Manufacturer only</text>
+
+  <!-- ================= MODULE D1 ================= -->
+  <rect x="670" y="80" width="200" height="100" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+  <rect x="670" y="80" width="200" height="30" rx="12" fill="#16a34a"/>
+  <text x="770" y="100" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">D1 &#183; conformity-specification</text>
+  <g font-size="10.5" fill="#14532d">
+    <text x="684" y="130">requirements + conformance tests;</text>
+    <text x="684" y="144">binds, never restates (INV-3)</text>
+  </g>
+  <text x="684" y="168" font-size="10" font-weight="600" fill="#15803d">depends on: A + C</text>
+
+  <!-- ================= MODULE D2 ================= -->
+  <rect x="670" y="240" width="200" height="100" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
+  <rect x="670" y="240" width="200" height="30" rx="12" fill="#d97706"/>
+  <text x="770" y="260" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">D2 &#183; test-execution</text>
+  <g font-size="10.5" fill="#78350f">
+    <text x="684" y="290">runs, evidence, test reports;</text>
+    <text x="684" y="304">facts only, no verdicts (INV-4)</text>
+  </g>
+  <text x="684" y="328" font-size="10" font-weight="600" fill="#b45309">depends on: D1 + C + A</text>
+
+  <!-- ================= MODULE D3 ================= -->
+  <rect x="670" y="400" width="200" height="100" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+  <rect x="670" y="400" width="200" height="30" rx="12" fill="#dc2626"/>
+  <text x="770" y="420" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">D3 &#183; evaluation</text>
+  <g font-size="10.5" fill="#7f1d1d">
+    <text x="684" y="450">verdicts, evaluations, decisions;</text>
+    <text x="684" y="464">re-runnable (INV-5)</text>
+  </g>
+  <text x="684" y="488" font-size="10" font-weight="600" fill="#b91c1c">depends on: D1 + D2 only</text>
+
+  <!-- ================= DEPENDENCY EDGES (slate) ================= -->
+  <g stroke="#475569" stroke-width="1.6" fill="none" marker-end="url(#dep)">
+    <!-- C -> A : typed values -->
+    <line x1="410" y1="180" x2="282" y2="152"/>
+    <!-- B -> A : values and chains -->
+    <line x1="170" y1="300" x2="170" y2="212"/>
+    <!-- B -> C : names Model / Sample -->
+    <line x1="280" y1="315" x2="388" y2="325"/>
+    <!-- D1 -> A : typed limits -->
+    <line x1="670" y1="105" x2="282" y2="105"/>
+    <!-- D1 -> C : binds paths -->
+    <line x1="670" y1="165" x2="612" y2="210"/>
+    <!-- D2 -> D1 : executes definitions -->
+    <line x1="770" y1="240" x2="770" y2="182"/>
+    <!-- D2 -> C : sample under test -->
+    <line x1="670" y1="290" x2="612" y2="290"/>
+    <!-- D2 -> A : results are QuantityValues (elbow via left margin) -->
+    <polyline points="670,330 640,330 640,465 40,465 40,150 60,150"/>
+    <!-- D3 -> D2 : consumes reports -->
+    <line x1="770" y1="400" x2="770" y2="342"/>
+    <!-- D3 -> D1 : re-reads definitions (right margin elbow) -->
+    <polyline points="870,450 888,450 888,120 872,120"/>
+  </g>
+
+  <!-- ================= SANCTIONED CYCLE (amber dashed) ================= -->
+  <line x1="390" y1="295" x2="282" y2="348" stroke="#d97706" stroke-width="1.6" stroke-dasharray="5 4" fill="none" marker-end="url(#cycle)"/>
+
+  <!-- ================= CERTIFICATE FLOW (violet dashed) ================= -->
+  <g stroke="#9333ea" stroke-width="1.6" stroke-dasharray="5 4" fill="none" marker-end="url(#cert)">
+    <!-- D3 issues -> B stores -->
+    <polyline points="720,500 720,555 25,555 25,360 58,360"/>
+    <!-- B stores -> C displays via Marking -->
+    <polyline points="280,395 420,395 420,342"/>
+  </g>
+
+  <!-- ================= EDGE LABELS ================= -->
+  <g font-size="9.5" fill="#475569">
+    <text x="330" y="142" text-anchor="middle">typed values</text>
+    <text x="185" y="258">values &amp; chains</text>
+    <text x="335" y="306" text-anchor="middle">names Model / Sample</text>
+    <text x="335" y="362" text-anchor="middle" fill="#b45309">manufacturer only</text>
+    <text x="475" y="98" text-anchor="middle">typed limits</text>
+    <text x="640" y="182" text-anchor="middle">binds paths (INV-3)</text>
+    <text x="762" y="215" text-anchor="end">executes definitions</text>
+    <text x="640" y="282" text-anchor="middle">Sample under test</text>
+    <text x="350" y="458" text-anchor="middle">results are QuantityValues</text>
+    <text x="762" y="375" text-anchor="end">consumes reports</text>
+    <text x="897" y="285" text-anchor="middle" transform="rotate(-90 897 285)">re-reads definitions (INV-5)</text>
+    <text x="370" y="548" text-anchor="middle" fill="#7e22ce" font-weight="600">issues</text>
+    <text x="350" y="388" text-anchor="middle" fill="#7e22ce" font-weight="600">displays via Marking</text>
+  </g>
+
+  <!-- ================= BOTTOM BAR ================= -->
+  <rect x="60" y="600" width="780" height="56" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="80" y="623" font-size="11.5" font-weight="600" fill="#0f172a">The dependency law: a module may reference only what its arrows reach. The C &#8596; B manufacturer edge is the only sanctioned cycle.</text>
+  <text x="80" y="641" font-size="11" fill="#475569">Certificates flow one way: D3 issues &#8594; B stores &#8594; C displays via Marking. D2 holds facts; D3 holds judgments; never the reverse.</text>
+</svg>

@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 770" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="dep" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Module A — the measurement vocabulary</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Every number in the system is expressed through these classes. INV-1: no bare numbers.</text>
+
+  <!-- ============ QuantityKind ============ -->
+  <rect x="60" y="90" width="240" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.4"/>
+  <text x="74" y="112" font-size="12.5" font-weight="700" fill="#0f172a">QuantityKind</text>
+  <g font-size="10" fill="#475569">
+    <text x="74" y="128">&#171;VIM 1.1&#187; a kind of quantity</text>
+    <text x="74" y="142">id : uri &#183; name : string</text>
+    <text x="74" y="156">dimensionVector  e.g. M&#183;L&#183;T&#8315;&#178;</text>
+    <text x="74" y="170">siCoherentUnit &#8594; Unit</text>
+  </g>
+
+  <!-- ============ Unit ============ -->
+  <rect x="60" y="240" width="240" height="120" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.4"/>
+  <text x="74" y="262" font-size="12.5" font-weight="700" fill="#0f172a">Unit</text>
+  <g font-size="10" fill="#475569">
+    <text x="74" y="278">id : uri &#183; symbol</text>
+    <text x="74" y="292">quantityKind &#8594; QuantityKind</text>
+    <text x="74" y="306">siBaseExpression  e.g. kg&#183;m&#183;s&#8315;&#178;</text>
+    <text x="74" y="320">conversionFactorToSI : decimal</text>
+    <text x="74" y="338" font-style="italic">closed register: kg, degC, v, counts, &#8230;</text>
+  </g>
+
+  <!-- ============ MeasurementUncertainty ============ -->
+  <rect x="620" y="90" width="240" height="120" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.4"/>
+  <text x="634" y="112" font-size="12.5" font-weight="700" fill="#0f172a">MeasurementUncertainty</text>
+  <g font-size="10" fill="#475569">
+    <text x="634" y="128">&#171;GUM&#187;  U = k&#183;u</text>
+    <text x="634" y="142">standardUncertainty  u</text>
+    <text x="634" y="156">expandedUncertainty  U  (required)</text>
+    <text x="634" y="170">coverageFactor  k &#8212; typically 2</text>
+    <text x="634" y="184">coverageProbability &#8212; typically 0.95</text>
+    <text x="634" y="198">unit &#8594; Unit  (required)</text>
+  </g>
+
+  <!-- ============ QuantityValue (the workhorse) ============ -->
+  <rect x="330" y="225" width="240" height="140" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="344" y="247" font-size="12.5" font-weight="700" fill="#3730a3">QuantityValue</text>
+  <g font-size="10" fill="#3730a3">
+    <text x="344" y="264">value : decimal | string</text>
+    <text x="344" y="278">unit &#8594; Unit  (absent only if</text>
+    <text x="344" y="290">dimensionless / string)</text>
+    <text x="344" y="304">quantityKind &#8594; QuantityKind</text>
+    <text x="344" y="318">uncertainty &#8594; MeasurementUncertainty</text>
+    <text x="344" y="332">tolerance : decimal</text>
+  </g>
+  <text x="344" y="354" font-size="10" font-weight="600" fill="#4f46e5">the workhorse &#8212; INV-1</text>
+
+  <!-- ============ Measurand ============ -->
+  <rect x="60" y="420" width="240" height="100" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.4"/>
+  <text x="74" y="442" font-size="12.5" font-weight="700" fill="#0f172a">Measurand</text>
+  <g font-size="10" fill="#475569">
+    <text x="74" y="458">&#171;VIM 2.3&#187; a QuantityKind in a context</text>
+    <text x="74" y="472">quantityKind &#8594; QuantityKind</text>
+    <text x="74" y="486">description : string</text>
+    <text x="74" y="500">influenceQuantities &#8594; [InfluenceQuantity]</text>
+  </g>
+
+  <!-- ============ InfluenceQuantity ============ -->
+  <rect x="60" y="560" width="240" height="110" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.4"/>
+  <text x="74" y="582" font-size="12.5" font-weight="700" fill="#0f172a">InfluenceQuantity</text>
+  <g font-size="10" fill="#475569">
+    <text x="74" y="598">&#171;VIM 2.52&#187;  id : uri</text>
+    <text x="74" y="612">quantityKind &#8594; QuantityKind</text>
+    <text x="74" y="630" fill="#92400e">roles: influence-factor &#8212; within rated</text>
+    <text x="74" y="643" fill="#92400e">&#8594; judged vs MPE</text>
+    <text x="128" y="657" fill="#92400e">disturbance &#8212; outside rated &#8594; fault limits</text>
+  </g>
+
+  <!-- ============ Conditions ============ -->
+  <rect x="620" y="280" width="240" height="120" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
+  <text x="634" y="302" font-size="12.5" font-weight="700" fill="#78350f">Conditions</text>
+  <g font-size="10" fill="#78350f">
+    <text x="634" y="318">id : uri</text>
+    <text x="634" y="332" font-weight="600">role : reference | rated | limiting | actual</text>
+    <text x="634" y="346">entries : [ { quantityKind, value,</text>
+    <text x="634" y="358">unit, tolerance? } ]</text>
+    <text x="634" y="376" font-style="italic">one structure &#8212; designed tiers (IS)</text>
+    <text x="634" y="389" font-style="italic">and actual run logs (HAS)</text>
+  </g>
+
+  <!-- ============ MeasurementResult ============ -->
+  <rect x="330" y="480" width="240" height="150" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.4"/>
+  <text x="344" y="502" font-size="12.5" font-weight="700" fill="#0f172a">MeasurementResult</text>
+  <g font-size="10" fill="#475569">
+    <text x="344" y="518">measuredValue &#8594; QuantityValue</text>
+    <text x="344" y="532">measurand &#8594; Measurand</text>
+    <text x="344" y="546">conditions &#8594; Conditions</text>
+    <text x="344" y="560">timestamp : datetime</text>
+    <text x="344" y="574">traceability &#8594; TraceabilityChain</text>
+    <text x="344" y="596" font-style="italic">the complete result &#8212; anything less</text>
+    <text x="344" y="609" font-style="italic">is a reading, not a measurement</text>
+  </g>
+
+  <!-- ============ TraceabilityChain ============ -->
+  <rect x="620" y="470" width="240" height="130" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.8"/>
+  <text x="634" y="492" font-size="12.5" font-weight="700" fill="#581c87">TraceabilityChain</text>
+  <g font-size="10" fill="#581c87">
+    <text x="634" y="508">&#171;VIM 2.41&#187; unbroken chain to the SI</text>
+    <text x="634" y="522">id : uri</text>
+    <text x="634" y="536">links : ordered &#8212;</text>
+    <text x="634" y="550">primary &#8594; reference &#8594; working &#8594; instrument</text>
+    <text x="634" y="564">each link : { standard, lab, certificate }</text>
+  </g>
+
+  <!-- ============ EDGES ============ -->
+  <g stroke="#475569" stroke-width="1.5" fill="none" marker-end="url(#dep)">
+    <!-- Unit -> QuantityKind -->
+    <line x1="180" y1="240" x2="180" y2="192"/>
+    <!-- QuantityValue -> Unit -->
+    <line x1="330" y1="270" x2="302" y2="270"/>
+    <!-- QuantityValue -> QuantityKind -->
+    <line x1="360" y1="225" x2="294" y2="192"/>
+    <!-- QuantityValue -> MeasurementUncertainty -->
+    <line x1="570" y1="245" x2="618" y2="182"/>
+    <!-- Measurand -> QuantityKind (left margin, channel x=40) -->
+    <polyline points="60,450 40,450 40,140 58,140"/>
+    <!-- Measurand -> InfluenceQuantity -->
+    <line x1="180" y1="520" x2="180" y2="558"/>
+    <!-- InfluenceQuantity -> QuantityKind (left margin, channel x=25) -->
+    <polyline points="60,615 25,615 25,120 58,120"/>
+    <!-- MeasurementResult -> QuantityValue -->
+    <line x1="450" y1="480" x2="450" y2="367"/>
+    <!-- MeasurementResult -> Measurand -->
+    <line x1="330" y1="510" x2="302" y2="472"/>
+    <!-- MeasurementResult -> Conditions -->
+    <line x1="570" y1="505" x2="618" y2="400"/>
+    <!-- MeasurementResult -> TraceabilityChain -->
+    <line x1="570" y1="560" x2="618" y2="560"/>
+  </g>
+
+  <!-- ============ EDGE LABELS ============ -->
+  <g font-size="9.5" fill="#475569">
+    <text x="195" y="218">of kind</text>
+    <text x="316" y="262" text-anchor="middle">unit</text>
+    <text x="332" y="200" text-anchor="middle">quantityKind</text>
+    <text x="566" y="208" text-anchor="end">uncertainty (GUM)</text>
+    <text x="34" y="300" text-anchor="middle" transform="rotate(-90 34 300)">quantityKind</text>
+    <text x="195" y="542">influenceQuantities</text>
+    <text x="19" y="330" text-anchor="middle" transform="rotate(-90 19 330)">quantityKind</text>
+    <text x="465" y="428">measuredValue</text>
+    <text x="316" y="462" text-anchor="middle">measurand</text>
+    <text x="600" y="445">conditions (role: actual)</text>
+    <text x="594" y="552" text-anchor="middle">traceability</text>
+  </g>
+
+  <!-- ============ BOTTOM BAR ============ -->
+  <rect x="60" y="700" width="780" height="56" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="80" y="723" font-size="11.5" font-weight="600" fill="#0f172a">QuantityValue is the workhorse (INV-1): parameters, stimuli, evidence, limits and verdict facts are all QuantityValues.</text>
+  <text x="80" y="741" font-size="11" fill="#475569">Kinds come from a closed registry, units from a register with SI conversion &#8212; comparisons are checked on kinds, never on unit strings.</text>
+</svg>

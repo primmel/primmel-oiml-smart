@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrv" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9333ea"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Provenance and document reconstruction</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Every model element traces to a fragment; the model re-emits the document, and the loop checks congruence.</text>
+
+  <!-- A: source document -->
+  <rect x="60" y="92" width="180" height="120" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+  <text x="150" y="118" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">Source document</text>
+  <text x="150" y="138" font-size="10.5" fill="#475569" text-anchor="middle">OIML R 60-1:2021 (&#9679;)</text>
+  <text x="150" y="156" font-size="10.5" fill="#475569" text-anchor="middle">metanorma collection</text>
+  <text x="150" y="172" font-size="10.5" fill="#475569" text-anchor="middle">sources/r060/ &#183; parts 1 2 3 a</text>
+  <text x="150" y="196" font-size="9.5" font-style="italic" fill="#64748b" text-anchor="middle">the authoritative text</text>
+
+  <!-- B: .prd fragments -->
+  <rect x="270" y="92" width="180" height="120" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+  <text x="360" y="118" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">Primmel Document (.prd)</text>
+  <text x="360" y="138" font-size="10.5" fill="#475569" text-anchor="middle">addressable fragments (&#9675; v3)</text>
+  <text x="360" y="156" font-size="10.5" fill="#475569" text-anchor="middle">clause-5.2/s1 &#183; clause-5.2/s2</text>
+  <text x="360" y="172" font-size="10.5" fill="#475569" text-anchor="middle">typed &#183; normativity-marked</text>
+  <text x="360" y="196" font-size="9.5" font-style="italic" fill="#64748b" text-anchor="middle">text-bearing &#8212; verbatim</text>
+
+  <!-- C: model elements -->
+  <rect x="480" y="92" width="180" height="120" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="570" y="118" font-size="13" font-weight="700" fill="#3730a3" text-anchor="middle">Model elements</text>
+  <text x="570" y="138" font-size="10.5" fill="#4f46e5" text-anchor="middle">/req/metrological/</text>
+  <text x="570" y="156" font-size="10.5" fill="#4f46e5" text-anchor="middle">measuring-range-max</text>
+  <text x="570" y="172" font-size="10.5" fill="#4f46e5" text-anchor="middle">statement &#183; binds_to &#183; limit</text>
+  <text x="570" y="196" font-size="9.5" font-style="italic" fill="#4f46e5" text-anchor="middle">provenance IS its pedigree</text>
+
+  <!-- D: reconstructed document -->
+  <rect x="690" y="92" width="180" height="120" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+  <text x="780" y="118" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">Reconstructed</text>
+  <text x="780" y="134" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">document</text>
+  <text x="780" y="156" font-size="10.5" fill="#475569" text-anchor="middle">ordered fragment stream</text>
+  <text x="780" y="172" font-size="10.5" fill="#475569" text-anchor="middle">emitted by the model</text>
+  <text x="780" y="196" font-size="9.5" font-style="italic" fill="#64748b" text-anchor="middle">a view, never the truth</text>
+
+  <!-- forward arrows -->
+  <g stroke="#94a3b8" stroke-width="1.6" fill="none">
+    <line x1="240" y1="152" x2="266" y2="152" marker-end="url(#arr)"/>
+    <line x1="450" y1="152" x2="476" y2="152" marker-end="url(#arr)"/>
+    <line x1="660" y1="152" x2="686" y2="152" marker-end="url(#arr)"/>
+  </g>
+  <g font-size="9.5" fill="#64748b" text-anchor="middle">
+    <text x="253" y="142">decompose</text>
+    <text x="463" y="142">realizes</text>
+    <text x="673" y="142">emit</text>
+  </g>
+
+  <!-- provenance (violet, dashed): model elements trace back to fragments -->
+  <path d="M 570 212 V 238 H 360 V 214" stroke="#9333ea" stroke-width="1.6" stroke-dasharray="5 4" fill="none" marker-end="url(#arrv)"/>
+  <text x="465" y="254" font-size="10" fill="#9333ea" text-anchor="middle">provenance &#8212; fragment addresses</text>
+  <text x="465" y="268" font-size="9" fill="#9333ea" text-anchor="middle">source R60-1#clause-5.2/s2 &#183; recorded in .prm maps</text>
+
+  <!-- congruence check -->
+  <rect x="270" y="300" width="360" height="116" rx="12" fill="#faf5ff" stroke="#9333ea" stroke-width="1.8"/>
+  <text x="450" y="328" font-size="13" font-weight="700" fill="#9333ea" text-anchor="middle">Congruence check</text>
+  <g font-size="11" fill="#6b21a8">
+    <text x="292" y="352">coverage &#8212; every normative fragment represented</text>
+    <text x="292" y="374">order &#8212; the source sequence is preserved</text>
+    <text x="292" y="396">text identity &#8212; verbatim up to normalization</text>
+  </g>
+
+  <!-- loop: reconstructed doc into check; check against source -->
+  <path d="M 780 212 V 355 H 634" stroke="#9333ea" stroke-width="1.8" fill="none" marker-end="url(#arrv)"/>
+  <path d="M 268 355 H 150 V 214" stroke="#9333ea" stroke-width="1.8" fill="none" marker-end="url(#arrv)"/>
+  <text x="209" y="372" font-size="9.5" fill="#9333ea" text-anchor="middle">compare vs the source</text>
+
+  <!-- bottom bar -->
+  <rect x="60" y="452" width="810" height="76" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="80" y="477" font-size="11.5" font-weight="600" fill="#0f172a">Two levels: clause URNs (&#9679; today) on every element; fragment addresses (&#9675; v3) bound from model elements via .prm maps.</text>
+  <text x="80" y="497" font-size="11" fill="#475569">Reconstruction plus congruence closes the loop: the document becomes a checked view of the model &#8212; coverage, order and text identity proved, not reviewed.</text>
+  <text x="80" y="515" font-size="10" fill="#64748b">A gap on any axis fails the build: a dropped clause, a reordered logic, or a paraphrase that drifted.</text>
+</svg>

@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="arrv" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#9333ea"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The four artifact kinds — .prl · .prd · .prm · .pws</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Who produces what, who reads what: the artifact contract between publisher, implementer, operator and auditor.</text>
+
+  <!-- Actor lanes -->
+  <rect x="60" y="110" width="150" height="52" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+  <text x="74" y="130" font-size="12.5" font-weight="700" fill="#0f172a">Publisher</text>
+  <text x="74" y="144" font-size="9.5" fill="#475569">the standards body —</text>
+  <text x="74" y="156" font-size="9.5" fill="#475569">speaks for the standard</text>
+
+  <rect x="60" y="210" width="150" height="52" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+  <text x="74" y="230" font-size="12.5" font-weight="700" fill="#0f172a">Implementer</text>
+  <text x="74" y="244" font-size="9.5" fill="#475569">an organization —</text>
+  <text x="74" y="256" font-size="9.5" fill="#475569">speaks for its operations</text>
+
+  <rect x="60" y="330" width="150" height="52" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+  <text x="74" y="350" font-size="12.5" font-weight="700" fill="#0f172a">Operator</text>
+  <text x="74" y="364" font-size="9.5" fill="#475569">the platform runtime —</text>
+  <text x="74" y="376" font-size="9.5" fill="#475569">speaks for the run</text>
+
+  <rect x="60" y="450" width="150" height="52" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.4"/>
+  <text x="74" y="470" font-size="12.5" font-weight="700" fill="#0f172a">Auditor</text>
+  <text x="74" y="484" font-size="9.5" fill="#475569">the assessor —</text>
+  <text x="74" y="496" font-size="9.5" fill="#475569">speaks for the claim</text>
+
+  <!-- Artifact cards -->
+  <rect x="250" y="180" width="140" height="110" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.8"/>
+  <rect x="250" y="180" width="140" height="26" rx="12" fill="#4f46e5"/>
+  <text x="320" y="197" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">.prl — model</text>
+  <g font-size="9.5" fill="#3730a3">
+    <text x="260" y="222">a model — the core</text>
+    <text x="260" y="234">artifact; plain text, UTF-8</text>
+    <text x="260" y="252">reference (the standard)</text>
+    <text x="260" y="264">or implementation (an</text>
+    <text x="260" y="276">organization's operations)</text>
+  </g>
+
+  <rect x="410" y="180" width="140" height="110" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+  <rect x="410" y="180" width="140" height="26" rx="12" fill="#475569"/>
+  <text x="480" y="197" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">.prd — extract</text>
+  <g font-size="9.5" fill="#334155">
+    <text x="420" y="222">clause-level extracts of</text>
+    <text x="420" y="234">the source standard —</text>
+    <text x="420" y="246">addressable fragments</text>
+    <text x="420" y="258">provisions trace to</text>
+  </g>
+
+  <rect x="570" y="180" width="140" height="110" rx="12" fill="#faf5ff" stroke="#9333ea" stroke-width="1.8"/>
+  <rect x="570" y="180" width="140" height="26" rx="12" fill="#9333ea"/>
+  <text x="640" y="197" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">.prm — map</text>
+  <g font-size="9.5" fill="#6b21a8">
+    <text x="580" y="222">JSON: mapSet per target</text>
+    <text x="580" y="234">model namespace; pairs</text>
+    <text x="580" y="246">from → to carrying</text>
+    <text x="580" y="258">description + justification</text>
+  </g>
+
+  <rect x="730" y="180" width="140" height="110" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
+  <rect x="730" y="180" width="140" height="26" rx="12" fill="#d97706"/>
+  <text x="800" y="197" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">.pws/ — workspace</text>
+  <g font-size="9.5" fill="#78350f">
+    <text x="740" y="222">directory: one YAML file</text>
+    <text x="740" y="234">per record, one subdir per</text>
+    <text x="740" y="246">registry, plus manifest.yaml</text>
+    <text x="740" y="264">records produced by</text>
+    <text x="740" y="276">running a model</text>
+  </g>
+
+  <!-- Producer arrows (slate) -->
+  <g stroke="#94a3b8" stroke-width="1.6" fill="none">
+    <line x1="210" y1="140" x2="278" y2="178" marker-end="url(#arr)"/>
+    <line x1="210" y1="152" x2="448" y2="178" marker-end="url(#arr)"/>
+    <line x1="210" y1="238" x2="248" y2="238" marker-end="url(#arr)"/>
+    <path d="M 180 262 L 180 320 L 640 320 L 640 292" marker-end="url(#arr)"/>
+    <path d="M 180 382 L 180 408 L 800 408 L 800 292" marker-end="url(#arr)"/>
+    <line x1="390" y1="222" x2="408" y2="222" marker-end="url(#arr)"/>
+  </g>
+  <g font-size="9.5" fill="#64748b">
+    <text x="216" y="132">produces</text>
+    <text x="296" y="146">extracts</text>
+    <text x="300" y="313">claims A ⇒ B against the reference model</text>
+    <text x="420" y="400">runs the implementation model — the run fills the workspace</text>
+  </g>
+
+  <!-- Auditor path (dashed violet): follow the .prm to the .pws -->
+  <g stroke="#9333ea" stroke-width="1.6" fill="none" stroke-dasharray="5 4">
+    <path d="M 210 476 L 660 476 L 660 292" marker-end="url(#arrv)"/>
+    <line x1="710" y1="240" x2="728" y2="240" marker-end="url(#arrv)"/>
+  </g>
+  <text x="360" y="492" font-size="9.5" fill="#9333ea">follows the map to the evidence (Namespace#ElementID)</text>
+
+  <!-- bottom bar -->
+  <rect x="60" y="524" width="780" height="56" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="80" y="547" font-size="11.5" font-weight="600" fill="#0f172a">Four artifact kinds, four hands: the publisher authors .prl + .prd, the implementer answers .prl + .prm,</text>
+  <text x="80" y="565" font-size="11" fill="#475569">the operator's run produces the .pws workspace, and the auditor walks the .prm to the .pws — claim to evidence.</text>
+</svg>

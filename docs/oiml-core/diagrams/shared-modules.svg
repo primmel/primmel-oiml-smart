@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 676" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="uses-arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9333ea"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="900" height="676" fill="#ffffff"/>
+
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Core · shared modules · Recommendation packages</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Seven parameterized families. Modules freeze skeletons; rec packages bind attribute ids, severities, acceptance expressions, clause URNs.</text>
+
+  <!-- layer captions -->
+  <g font-size="9.5" fill="#94a3b8" text-anchor="end">
+    <text x="888" y="80">layer 3 · rec packages</text>
+    <text x="888" y="290">layer 2b · shared modules</text>
+    <text x="888" y="532">layer 2 · core</text>
+  </g>
+
+  <!-- ============ rec packages (top) ============ -->
+  <g>
+    <rect x="60" y="84" width="210" height="64" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.8"/>
+    <text x="165" y="108" font-size="13" font-weight="700" fill="#3730a3" text-anchor="middle">oiml-r60 — R 60</text>
+    <text x="165" y="126" font-size="10" fill="#4f46e5" text-anchor="middle">load cells · rec overlay</text>
+    <text x="165" y="140" font-size="9" fill="#6d64c9" text-anchor="middle">consumes M1–M7</text>
+
+    <rect x="345" y="84" width="210" height="64" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.8"/>
+    <text x="450" y="108" font-size="13" font-weight="700" fill="#3730a3" text-anchor="middle">oiml-r91 — R 91</text>
+    <text x="450" y="126" font-size="10" fill="#4f46e5" text-anchor="middle">speed meters · rec overlay (partial)</text>
+    <text x="450" y="140" font-size="9" fill="#6d64c9" text-anchor="middle">consumes M1–M4, M7 · M5/M6 planned</text>
+
+    <rect x="630" y="84" width="210" height="64" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.8"/>
+    <text x="735" y="108" font-size="13" font-weight="700" fill="#3730a3" text-anchor="middle">oiml-r144 — R 144</text>
+    <text x="735" y="126" font-size="10" fill="#4f46e5" text-anchor="middle">gas analyzers · rec overlay</text>
+    <text x="735" y="140" font-size="9" fill="#6d64c9" text-anchor="middle">consumes M1–M7</text>
+  </g>
+
+  <!-- ============ uses arrows: rec -> modules (curved) ============ -->
+  <g stroke="#9333ea" stroke-width="1.1" opacity="0.4" fill="none">
+    <!-- R 60 → all seven -->
+    <path d="M 75,148  C 75,215 56,230 56,296"   marker-end="url(#uses-arr)"/>
+    <path d="M 105,148 C 105,215 182,230 182,296" marker-end="url(#uses-arr)"/>
+    <path d="M 135,148 C 135,215 308,230 308,296" marker-end="url(#uses-arr)"/>
+    <path d="M 165,148 C 165,215 434,230 434,296" marker-end="url(#uses-arr)"/>
+    <path d="M 195,148 C 195,215 568,230 568,296" marker-end="url(#uses-arr)"/>
+    <path d="M 225,148 C 225,215 694,230 694,296" marker-end="url(#uses-arr)"/>
+    <path d="M 255,148 C 255,215 812,230 812,296" marker-end="url(#uses-arr)"/>
+    <!-- R 91 → M1, M2, M3, M4, M7 (today) -->
+    <path d="M 360,148 C 360,215 72,230 72,296"   marker-end="url(#uses-arr)"/>
+    <path d="M 390,148 C 390,215 198,230 198,296" marker-end="url(#uses-arr)"/>
+    <path d="M 420,148 C 420,215 324,230 324,296" marker-end="url(#uses-arr)"/>
+    <path d="M 450,148 C 450,215 450,230 450,296" marker-end="url(#uses-arr)"/>
+    <path d="M 480,148 C 480,215 828,230 828,296" marker-end="url(#uses-arr)"/>
+    <!-- R 144 → all seven -->
+    <path d="M 645,148 C 645,215 88,230 88,296"   marker-end="url(#uses-arr)"/>
+    <path d="M 675,148 C 675,215 214,230 214,296" marker-end="url(#uses-arr)"/>
+    <path d="M 705,148 C 705,215 340,230 340,296" marker-end="url(#uses-arr)"/>
+    <path d="M 735,148 C 735,215 466,230 466,296" marker-end="url(#uses-arr)"/>
+    <path d="M 765,148 C 765,215 584,230 584,296" marker-end="url(#uses-arr)"/>
+    <path d="M 795,148 C 795,215 710,230 710,296" marker-end="url(#uses-arr)"/>
+    <path d="M 825,148 C 825,215 844,230 844,296" marker-end="url(#uses-arr)"/>
+  </g>
+  <g stroke="#9333ea" stroke-width="1.3" opacity="0.7" fill="none" stroke-dasharray="5 4">
+    <!-- R 91 → M5, M6 (planned, dashed) -->
+    <path d="M 510,148 C 510,215 576,230 576,296" marker-end="url(#uses-arr)"/>
+    <path d="M 540,148 C 540,215 702,230 702,296" marker-end="url(#uses-arr)"/>
+  </g>
+
+  <!-- ============ module band ============ -->
+  <!-- M1 emc-disturbances -->
+  <rect x="13" y="300" width="118" height="132" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.6"/>
+  <rect x="13" y="300" width="118" height="34" rx="10" fill="#9333ea"/>
+  <text x="72" y="314" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">M1</text>
+  <text x="72" y="327" font-size="9.5" font-weight="600" fill="#f3e8ff" text-anchor="middle">emc-disturbances</text>
+  <g font-size="9" fill="#6b21a8">
+    <text x="21" y="346">EMC immunity: ESD,</text>
+    <text x="21" y="357">bursts, surge, RF,</text>
+    <text x="21" y="368">power variants</text>
+    <text x="21" y="379">D 11 → IEC 61000-4-x</text>
+  </g>
+  <text x="21" y="394" font-size="8.5" fill="#7e22ce">provides: test+form skel.</text>
+  <text x="21" y="406" font-size="8.5" fill="#7e22ce">requires: core</text>
+  <text x="21" y="422" font-size="9" fill="#581c87">R 60 ●  R 91 ◐  R 144 ●</text>
+
+  <!-- M2 env-iec60068 -->
+  <rect x="139" y="300" width="118" height="132" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.6"/>
+  <rect x="139" y="300" width="118" height="34" rx="10" fill="#9333ea"/>
+  <text x="198" y="314" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">M2</text>
+  <text x="198" y="327" font-size="9.5" font-weight="600" fill="#f3e8ff" text-anchor="middle">env-iec60068</text>
+  <g font-size="9" fill="#6b21a8">
+    <text x="147" y="346">climatic &amp; mechanical:</text>
+    <text x="147" y="357">heat, cold, damp heat,</text>
+    <text x="147" y="368">vibration, shock,</text>
+    <text x="147" y="379">pressure · IEC 60068</text>
+  </g>
+  <text x="147" y="394" font-size="8.5" fill="#7e22ce">provides: methods + forms</text>
+  <text x="147" y="406" font-size="8.5" fill="#7e22ce">requires: core, M4</text>
+  <text x="147" y="422" font-size="9" fill="#581c87">R 60 ●  R 91 ◐  R 144 ●</text>
+
+  <!-- M3 software-d31 -->
+  <rect x="265" y="300" width="118" height="132" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.6"/>
+  <rect x="265" y="300" width="118" height="34" rx="10" fill="#9333ea"/>
+  <text x="324" y="314" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">M3</text>
+  <text x="324" y="327" font-size="9.5" font-weight="600" fill="#f3e8ff" text-anchor="middle">software-d31</text>
+  <g font-size="9" fill="#6b21a8">
+    <text x="273" y="346">OIML D 31 software</text>
+    <text x="273" y="357">examination checklist:</text>
+    <text x="273" y="368">identification, sealing,</text>
+    <text x="273" y="379">docs, maintenance</text>
+  </g>
+  <text x="273" y="394" font-size="8.5" fill="#7e22ce">provides: checklist+form</text>
+  <text x="273" y="406" font-size="8.5" fill="#7e22ce">requires: core</text>
+  <text x="273" y="422" font-size="9" fill="#581c87">R 60 ●  R 91 ◐  R 144 ◐</text>
+
+  <!-- M4 reference-materials -->
+  <rect x="391" y="300" width="118" height="132" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.6"/>
+  <rect x="391" y="300" width="118" height="34" rx="10" fill="#9333ea"/>
+  <text x="450" y="314" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">M4</text>
+  <text x="450" y="327" font-size="9" font-weight="600" fill="#f3e8ff" text-anchor="middle">reference-materials</text>
+  <g font-size="9" fill="#6b21a8">
+    <text x="399" y="346">certified value +</text>
+    <text x="399" y="357">uncertainty: CGM</text>
+    <text x="399" y="368">points, weights,</text>
+    <text x="399" y="379">reference speed</text>
+  </g>
+  <text x="399" y="394" font-size="8.5" fill="#7e22ce">provides: record+subform</text>
+  <text x="399" y="406" font-size="8.5" fill="#7e22ce">requires: core (D1 class)</text>
+  <text x="399" y="422" font-size="9" fill="#581c87">R 60 ●  R 91 ●  R 144 ●</text>
+
+  <!-- M5 specimen-governance -->
+  <rect x="517" y="300" width="118" height="132" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.6"/>
+  <rect x="517" y="300" width="118" height="34" rx="10" fill="#9333ea"/>
+  <text x="576" y="314" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">M5</text>
+  <text x="576" y="327" font-size="8.5" font-weight="600" fill="#f3e8ff" text-anchor="middle">specimen-governance</text>
+  <g font-size="9" fill="#6b21a8">
+    <text x="525" y="346">sample selection +</text>
+    <text x="525" y="357">EUT continuity</text>
+    <text x="525" y="368">(same-specimen rules</text>
+    <text x="525" y="379">between tests)</text>
+  </g>
+  <text x="525" y="394" font-size="8.5" fill="#7e22ce">provides: rules schema</text>
+  <text x="525" y="406" font-size="8.5" fill="#7e22ce">requires: core</text>
+  <text x="525" y="422" font-size="9" fill="#581c87">R 60 ●  R 144 ●  R 91 ○</text>
+
+  <!-- M6 report-headers -->
+  <rect x="643" y="300" width="118" height="132" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.6"/>
+  <rect x="643" y="300" width="118" height="34" rx="10" fill="#9333ea"/>
+  <text x="702" y="314" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">M6</text>
+  <text x="702" y="327" font-size="9.5" font-weight="600" fill="#f3e8ff" text-anchor="middle">report-headers</text>
+  <g font-size="9" fill="#6b21a8">
+    <text x="651" y="346">bind-driven TRF</text>
+    <text x="651" y="357">headers + the</text>
+    <text x="651" y="368">18-element checklist</text>
+    <text x="651" y="379">(PD-05 §4.4.3)</text>
+  </g>
+  <text x="651" y="394" font-size="8.5" fill="#7e22ce">provides: header skel.</text>
+  <text x="651" y="406" font-size="8.5" fill="#7e22ce">requires: core</text>
+  <text x="651" y="422" font-size="9" fill="#581c87">R 60 ●  R 144 ●  R 91 ○</text>
+
+  <!-- M7 examination-docs -->
+  <rect x="769" y="300" width="118" height="132" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.6"/>
+  <rect x="769" y="300" width="118" height="34" rx="10" fill="#9333ea"/>
+  <text x="828" y="314" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">M7</text>
+  <text x="828" y="327" font-size="9" font-weight="600" fill="#f3e8ff" text-anchor="middle">examination-docs</text>
+  <g font-size="9" fill="#6b21a8">
+    <text x="777" y="346">documentation /</text>
+    <text x="777" y="357">marking examination</text>
+    <text x="777" y="368">checklists; verdict =</text>
+    <text x="777" y="379">conjunction of items</text>
+  </g>
+  <text x="777" y="394" font-size="8.5" fill="#7e22ce">provides: checklist skel.</text>
+  <text x="777" y="406" font-size="8.5" fill="#7e22ce">requires: core</text>
+  <text x="777" y="422" font-size="9" fill="#581c87">R 60 ●  R 91 ◐  R 144 ●</text>
+
+  <!-- ============ uses arrows: modules -> core (curved) ============ -->
+  <g stroke="#9333ea" stroke-width="1.2" opacity="0.55" fill="none">
+    <path d="M 72,432  C 72,478 280,486 280,534" marker-end="url(#uses-arr)"/>
+    <path d="M 198,432 C 198,478 340,486 340,534" marker-end="url(#uses-arr)"/>
+    <path d="M 324,432 C 324,478 400,486 400,534" marker-end="url(#uses-arr)"/>
+    <path d="M 450,432 C 450,478 460,486 460,534" marker-end="url(#uses-arr)"/>
+    <path d="M 576,432 C 576,478 520,486 520,534" marker-end="url(#uses-arr)"/>
+    <path d="M 702,432 C 702,478 580,486 580,534" marker-end="url(#uses-arr)"/>
+    <path d="M 828,432 C 828,478 640,486 640,534" marker-end="url(#uses-arr)"/>
+  </g>
+
+  <!-- ============ core package ============ -->
+  <rect x="240" y="536" width="420" height="64" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+  <text x="450" y="560" font-size="13" font-weight="700" fill="#334155" text-anchor="middle">oiml-smart-core — the OIML core package</text>
+  <text x="450" y="578" font-size="10" fill="#475569" text-anchor="middle">subject chain · parties · workflow entities · evaluation skeletons · obligation · value types</text>
+  <text x="450" y="592" font-size="9" fill="#64748b" text-anchor="middle">(Volume II, chapters 1–8)</text>
+
+  <!-- ============ legend ============ -->
+  <g font-size="10" fill="#475569">
+    <line x1="60" y1="626" x2="90" y2="626" stroke="#9333ea" stroke-width="1.4"/>
+    <text x="96" y="630">uses (consumes today)</text>
+    <line x1="230" y1="626" x2="260" y2="626" stroke="#9333ea" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <text x="266" y="630">uses (planned)</text>
+    <text x="380" y="630">● pattern runs inline in the rec today · ◐ partial / stub · ○ planned</text>
+  </g>
+  <text x="60" y="652" font-size="10" fill="#64748b">Module packaging and `uses:` composition are ○ v3; the patterns live inline in the rec packages today. R 129 (legacy) is a future consumer of M1/M2.</text>
+</svg>

@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrv" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9333ea"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Interop projections &#8212; lossy but useful, never the kernel</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">A projection is generated and regenerated, never patched by hand and never re-imported. The kernel remains the source of truth.</text>
+  <text x="840" y="34" font-size="10" fill="#64748b" text-anchor="end">status: &#9675; projections &#183; &#9684; IRDI slot</text>
+
+  <!-- Primmel package (the kernel) -->
+  <rect x="60" y="180" width="260" height="220" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="190" y="210" font-size="15" font-weight="700" fill="#3730a3" text-anchor="middle">Primmel package</text>
+  <text x="190" y="228" font-size="10.5" fill="#4f46e5" text-anchor="middle">oiml-r60 &#183; the kernel</text>
+  <g font-size="10.5" fill="#3730a3">
+    <text x="80" y="258">subjects &#8212; IS/HAS/DOES anatomy</text>
+    <text x="80" y="278">requirements + bindings + limits</text>
+    <text x="80" y="298">processes &#8212; methods, gateways</text>
+    <text x="80" y="318">quantities, tables, verdicts</text>
+    <text x="80" y="338">mappings + coverage calculus</text>
+    <text x="80" y="358">provenance &#183; spelling codes</text>
+  </g>
+  <text x="80" y="384" font-size="9.5" font-style="italic" fill="#4f46e5">everything typed, bound, executable</text>
+
+  <!-- T1: ReqIF -->
+  <rect x="560" y="110" width="280" height="110" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+  <text x="700" y="136" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">ReqIF &#8212; DIN DKE SPEC 99200</text>
+  <text x="700" y="154" font-size="10" fill="#475569" text-anchor="middle">requirements-management tools (DOORS, Polarion)</text>
+  <text x="700" y="176" font-size="10" fill="#16a34a" text-anchor="middle">survives: provisions &#183; modality &#183; hierarchy</text>
+  <text x="700" y="194" font-size="10" fill="#dc2626" text-anchor="middle">loses: bindings &#183; processes &#183; quantities</text>
+  <text x="700" y="212" font-size="9" fill="#64748b" text-anchor="middle">spec-objects: document &#183; heading &#183; provision</text>
+
+  <!-- T2: RDF/OWL + SHACL -->
+  <rect x="560" y="260" width="280" height="110" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+  <text x="700" y="286" font-size="12.5" font-weight="700" fill="#0f172a" text-anchor="middle">RDF/OWL + SHACL &#8212; IEC-ISO Core Ontology</text>
+  <text x="700" y="304" font-size="10" fill="#475569" text-anchor="middle">SPARQL / linked-data consumers</text>
+  <text x="700" y="326" font-size="10" fill="#16a34a" text-anchor="middle">survives: Provision taxonomy &#183; clause tree &#183; editions</text>
+  <text x="700" y="344" font-size="10" fill="#dc2626" text-anchor="middle">loses: executables &#183; spelling codes &#8594; BCP 47 (declared)</text>
+  <text x="700" y="362" font-size="9" fill="#64748b" text-anchor="middle">SHACL shapes gate the output</text>
+
+  <!-- T3: OpenCDD (back-reference) -->
+  <rect x="560" y="410" width="280" height="110" rx="12" fill="#faf5ff" stroke="#9333ea" stroke-width="1.8"/>
+  <text x="700" y="436" font-size="12.5" font-weight="700" fill="#9333ea" text-anchor="middle">OpenCDD &#8212; IEC CDD register</text>
+  <text x="700" y="454" font-size="10" fill="#6b21a8" text-anchor="middle">international dictionary of property definitions</text>
+  <text x="700" y="476" font-size="10" fill="#6b21a8" text-anchor="middle">carried in: attribute definitions (INV-2)</text>
+  <text x="700" y="494" font-size="10" fill="#6b21a8" text-anchor="middle">checked: IRDI existence + quantity-kind/unit coherence</text>
+
+  <!-- projection arrows out (slate) -->
+  <line x1="320" y1="240" x2="554" y2="170" stroke="#94a3b8" stroke-width="1.6" fill="none" marker-end="url(#arr)"/>
+  <line x1="320" y1="300" x2="554" y2="312" stroke="#94a3b8" stroke-width="1.6" fill="none" marker-end="url(#arr)"/>
+  <g font-size="9.5" fill="#64748b" text-anchor="middle">
+    <text x="437" y="178">projection &#8212; generated,</text>
+    <text x="437" y="191">never authored</text>
+    <text x="437" y="296">projection</text>
+  </g>
+
+  <!-- IRDI back-reference (violet, into the kernel) -->
+  <line x1="560" y1="468" x2="326" y2="372" stroke="#9333ea" stroke-width="1.8" fill="none" marker-end="url(#arrv)"/>
+  <text x="440" y="432" font-size="9.5" fill="#9333ea" text-anchor="middle">IRDI back-reference (&#9684;)</text>
+  <text x="440" y="445" font-size="9" fill="#9333ea" text-anchor="middle">defined once, citable everywhere</text>
+
+  <!-- bottom bar -->
+  <rect x="60" y="545" width="780" height="40" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="80" y="569" font-size="11" font-weight="600" fill="#0f172a">What survives is declared per projection and mechanically checked; what is lost stays lost &#8212; nothing is ever re-imported into the kernel.</text>
+</svg>

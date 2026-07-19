@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The value layer — QuantityValue, variable sources, registries</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">INV-1: no bare numbers · every variable declares how its value is obtained · records live in registries, structures stay embedded.</text>
+
+  <!-- ═══ QuantityValue anatomy ═══ -->
+  <rect x="60" y="76" width="380" height="230" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.8"/>
+  <rect x="60" y="76" width="380" height="44" rx="12" fill="#4f46e5"/>
+  <text x="250" y="96" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">QuantityValue</text>
+  <text x="250" y="112" font-size="10" fill="#e0e7ff" text-anchor="middle">= value + unit  [ + uncertainty ]  [ + tolerance ]</text>
+
+  <rect x="80" y="136" width="170" height="46" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-width="1.4"/>
+  <text x="165" y="155" font-size="11.5" font-weight="700" fill="#3730a3" text-anchor="middle">value : real</text>
+  <text x="165" y="171" font-size="9.5" fill="#64748b" text-anchor="middle">the magnitude — never alone</text>
+
+  <rect x="262" y="136" width="170" height="46" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-width="1.4"/>
+  <text x="347" y="155" font-size="11.5" font-weight="700" fill="#3730a3" text-anchor="middle">unit : ref Unit</text>
+  <text x="347" y="171" font-size="9.5" fill="#64748b" text-anchor="middle">kg · degC · v · counts</text>
+
+  <rect x="80" y="194" width="170" height="46" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-width="1.2" stroke-dasharray="5 3"/>
+  <text x="165" y="213" font-size="11.5" font-weight="700" fill="#3730a3" text-anchor="middle">uncertainty?</text>
+  <text x="165" y="229" font-size="9.5" fill="#64748b" text-anchor="middle">GUM budget — measured side</text>
+
+  <rect x="262" y="194" width="170" height="46" rx="10" fill="#ffffff" stroke="#4f46e5" stroke-width="1.2" stroke-dasharray="5 3"/>
+  <text x="347" y="213" font-size="11.5" font-weight="700" fill="#3730a3" text-anchor="middle">tolerance?</text>
+  <text x="347" y="229" font-size="9.5" fill="#64748b" text-anchor="middle">symmetric band — designed side</text>
+
+  <text x="80" y="264" font-size="10" fill="#475569">e_max = { value: 500, unit: kg } · ref-cond: 20 °C ± 2</text>
+  <text x="80" y="288" font-size="10.5" font-style="italic" fill="#3730a3">INV-1: a bare number is a defect, not a shorthand.</text>
+
+  <!-- ═══ Variable sources flow ═══ -->
+  <text x="480" y="92" font-size="12" font-weight="700" fill="#0f172a">Variable sources — how every value is obtained</text>
+
+  <rect x="480" y="104" width="165" height="56" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+  <text x="562" y="124" font-size="11.5" font-weight="700" fill="#14532d" text-anchor="middle">declared</text>
+  <text x="562" y="140" font-size="9.5" fill="#4d7c0f" text-anchor="middle">stated by the manufacturer</text>
+  <text x="562" y="153" font-size="9" fill="#64748b" text-anchor="middle">e_max · n_lc · p_lc</text>
+
+  <rect x="675" y="104" width="165" height="56" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+  <text x="757" y="124" font-size="11.5" font-weight="700" fill="#78350f" text-anchor="middle">measured</text>
+  <text x="757" y="140" font-size="9.5" fill="#92600e" text-anchor="middle">observed during the run</text>
+  <text x="757" y="153" font-size="9" fill="#64748b" text-anchor="middle">t_1 · t_2 · creep t</text>
+
+  <g stroke="#94a3b8" stroke-width="1.6" fill="none">
+    <line x1="562" y1="160" x2="562" y2="190"/>
+    <line x1="712" y1="160" x2="620" y2="190"/>
+    <line x1="757" y1="272" x2="757" y2="264"/>
+  </g>
+  <polygon points="562,195 557,186 567,186" fill="#94a3b8"/>
+  <polygon points="617,196 612,186 623,186" fill="#94a3b8"/>
+  <polygon points="757,259 752,268 762,268" fill="#94a3b8"/>
+
+  <rect x="480" y="196" width="165" height="64" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+  <text x="562" y="216" font-size="11.5" font-weight="700" fill="#3730a3" text-anchor="middle">derived / computed</text>
+  <text x="562" y="232" font-size="9.5" fill="#4f46e5" text-anchor="middle">formula over inputs — the DAG</text>
+  <text x="562" y="247" font-size="9" fill="#64748b" text-anchor="middle">e_l · c_c · span_variation</text>
+
+  <rect x="675" y="196" width="165" height="64" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.6"/>
+  <text x="757" y="216" font-size="11.5" font-weight="700" fill="#6b21a8" text-anchor="middle">lookup</text>
+  <text x="757" y="232" font-size="9.5" fill="#9333ea" text-anchor="middle">profile by dimension key</text>
+  <text x="757" y="247" font-size="9" fill="#64748b" text-anchor="middle">mpe ← R 60-1 Table 4</text>
+
+  <rect x="675" y="272" width="165" height="44" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2"/>
+  <text x="757" y="290" font-size="10.5" font-weight="700" fill="#334155" text-anchor="middle">tables and profiles</text>
+  <text x="757" y="305" font-size="9" fill="#64748b" text-anchor="middle">mpe_tiers · test_runs</text>
+
+  <text x="480" y="280" font-size="10" fill="#475569">the declared source drives</text>
+  <text x="480" y="294" font-size="10" fill="#475569">evaluation order (the symbol DAG),</text>
+  <text x="480" y="308" font-size="10" fill="#475569">evidence needs, and re-execution</text>
+
+  <!-- ═══ Registry vs data class ═══ -->
+  <rect x="60" y="330" width="380" height="220" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+  <rect x="60" y="330" width="380" height="42" rx="12" fill="#475569"/>
+  <text x="250" y="350" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">Registry</text>
+  <text x="250" y="366" font-size="10" fill="#e2e8f0" text-anchor="middle">a place where records are kept</text>
+  <g font-size="11.5" fill="#1e293b">
+    <text x="80" y="398">declares store + indexes — compiles to a store</text>
+    <text x="80" y="420">records are addressable: identity, references</text>
+    <text x="80" y="442">reference(X) fields carry on_delete — the FK graph</text>
+    <text x="80" y="464">workspace .pws/ — one directory per registry,</text>
+    <text x="92" y="480">one YAML file per record, a manifest.yaml at root</text>
+    <text x="80" y="502">never a lookup table: normative data lives in tables</text>
+  </g>
+  <text x="80" y="528" font-size="10" fill="#64748b">Manufacturer → store: manufacturers · indexes: [company]</text>
+
+  <rect x="460" y="330" width="380" height="220" rx="12" fill="#ffffff" stroke="#94a3b8" stroke-width="1.6"/>
+  <rect x="460" y="330" width="380" height="42" rx="12" fill="#94a3b8"/>
+  <text x="650" y="350" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">Data class</text>
+  <text x="650" y="366" font-size="10" fill="#f1f5f9" text-anchor="middle">pure structure — embedded, no identity</text>
+  <g font-size="11.5" fill="#334155">
+    <text x="480" y="398">typed fields, nested value objects</text>
+    <text x="480" y="420">embedded where used — identified by its container</text>
+    <text x="480" y="442">two identical embeddings are two values, not one fact</text>
+    <text x="480" y="464">not referenceable, not persistent on its own</text>
+  </g>
+  <text x="480" y="490" font-size="10" fill="#64748b">Address · QuantityValue · ConditionsLogEntry</text>
+  <text x="480" y="528" font-size="10" fill="#64748b">● registries → stores · ○ .pws/ on-disk workspace serialization</text>
+
+  <!-- bottom bar -->
+  <rect x="60" y="570" width="780" height="52" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="80" y="592" font-size="11.5" font-weight="600" fill="#0f172a">Records have identity; values have shape.</text>
+  <text x="80" y="610" font-size="11" fill="#475569">A registry record persists and is referenced across the graph; a data-class value lives and dies inside its record.</text>
+</svg>

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The Subject anatomy — IS / HAS / DOES</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Every subject answers three questions. Each aspect belongs to exactly one answer.</text>
+
+  <!-- Subject node -->
+  <rect x="330" y="76" width="240" height="56" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="450" y="100" font-size="15" font-weight="700" fill="#3730a3" text-anchor="middle">Subject</text>
+  <text x="450" y="118" font-size="10.5" fill="#4f46e5" text-anchor="middle">e.g. a measuring instrument</text>
+
+  <!-- connectors -->
+  <g stroke="#94a3b8" stroke-width="1.6" fill="none">
+    <line x1="390" y1="132" x2="180" y2="168"/>
+    <line x1="450" y1="132" x2="450" y2="168"/>
+    <line x1="510" y1="132" x2="720" y2="168"/>
+  </g>
+
+  <!-- IS column -->
+  <rect x="60" y="168" width="240" height="316" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+  <rect x="60" y="168" width="240" height="44" rx="12" fill="#16a34a"/>
+  <text x="180" y="188" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">IS</text>
+  <text x="180" y="204" font-size="10" fill="#dcfce7" text-anchor="middle">what the subject is — identity/design</text>
+  <g font-size="11.5" fill="#14532d">
+    <text x="78" y="236">metadata</text>
+    <text x="78" y="258">provenance</text>
+    <text x="78" y="280">structure</text>
+    <text x="78" y="302">design parameters</text>
+    <text x="78" y="324">designed operating conditions</text>
+    <text x="78" y="346">promises</text>
+    <text x="78" y="368">artifact definitions</text>
+  </g>
+  <g font-size="10" fill="#4d7c0f">
+    <text x="78" y="248">designation, names, ids</text>
+    <text x="78" y="270">manufacturer, source clauses</text>
+    <text x="78" y="292">partOf / consists_of / connectsTo</text>
+    <text x="78" y="314">values fixed by design</text>
+    <text x="78" y="336">reference / rated / limiting tiers</text>
+    <text x="78" y="358">claims on characteristics &amp; behavior</text>
+    <text x="78" y="380">required outputs of the subject</text>
+  </g>
+  <text x="78" y="412" font-size="10.5" font-style="italic" fill="#166534">Test: change it and you have</text>
+  <text x="78" y="426" font-size="10.5" font-style="italic" fill="#166534">a different subject.</text>
+  <text x="78" y="458" font-size="10" fill="#64748b">Exists without any test being run.</text>
+
+  <!-- HAS column -->
+  <rect x="330" y="168" width="240" height="316" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
+  <rect x="330" y="168" width="240" height="44" rx="12" fill="#d97706"/>
+  <text x="450" y="188" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">HAS</text>
+  <text x="450" y="204" font-size="10" fill="#fef3c7" text-anchor="middle">what the subject exhibits — observation</text>
+  <g font-size="11.5" fill="#78350f">
+    <text x="348" y="236">attributes</text>
+    <text x="348" y="258">dimensions</text>
+    <text x="348" y="280">state</text>
+    <text x="348" y="302">characteristics</text>
+    <text x="348" y="324">environmental context</text>
+    <text x="348" y="346">artifact instances</text>
+  </g>
+  <g font-size="10" fill="#92600e">
+    <text x="348" y="248">exhibited named values</text>
+    <text x="348" y="270">exhibited classification membership</text>
+    <text x="348" y="292">current node of the operational machine</text>
+    <text x="348" y="314">quantities derived from behavior I/O</text>
+    <text x="348" y="336">actual conditions experienced</text>
+    <text x="348" y="358">produced outputs, as recorded</text>
+  </g>
+  <text x="348" y="412" font-size="10.5" font-style="italic" fill="#92400e">Test: varies across units and time</text>
+  <text x="348" y="426" font-size="10.5" font-style="italic" fill="#92400e">without changing identity.</text>
+  <text x="348" y="458" font-size="10" fill="#64748b">Measured, logged, or stated per instance.</text>
+
+  <!-- DOES column -->
+  <rect x="600" y="168" width="240" height="316" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+  <rect x="600" y="168" width="240" height="44" rx="12" fill="#dc2626"/>
+  <text x="720" y="188" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle">DOES</text>
+  <text x="720" y="204" font-size="10" fill="#fecaca" text-anchor="middle">what the subject does — processes</text>
+  <g font-size="11.5" fill="#7f1d1d">
+    <text x="618" y="236">behaviors → processes</text>
+  </g>
+  <g font-size="10" fill="#991b1b">
+    <text x="618" y="254">IN parameters → steps → OUT parameters;</text>
+    <text x="618" y="268">state may change.</text>
+    <text x="618" y="292">archetype: the measurement process</text>
+    <text x="618" y="306">(measurand → transduction → indication)</text>
+    <text x="618" y="330">response processes: creep, warm-up, drift</text>
+  </g>
+  <text x="618" y="380" font-size="10.5" font-style="italic" fill="#991b1b">Test: it has stimuli, steps and outputs —</text>
+  <text x="618" y="394" font-size="10.5" font-style="italic" fill="#991b1b">it can be executed or simulated.</text>
+  <text x="618" y="434" font-size="10" font-weight="600" fill="#b91c1c">A process is itself a subject:</text>
+  <text x="618" y="448" font-size="10" fill="#64748b">IS (signature, invariants, executor)</text>
+  <text x="618" y="462" font-size="10" fill="#64748b">HAS (state, registers, context)</text>
+  <text x="618" y="476" font-size="10" fill="#64748b">DOES (steps, sub-processes)</text>
+
+  <!-- bottom bar -->
+  <rect x="60" y="516" width="780" height="56" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="80" y="539" font-size="11.5" font-weight="600" fill="#0f172a">The three questions are the author’s mental model and the subject grammar:</text>
+  <text x="80" y="557" font-size="11" fill="#475569">declare what the subject IS (design/identity), what it HAS (exhibited aspects), what it DOES (processes) — in that order, and nothing else.</text>
+</svg>
