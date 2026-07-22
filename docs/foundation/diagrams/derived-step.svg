@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">STEP = ρ(t) + bound I/O + timestamp</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">A single firing of a transition. A composite: process-instance + inputs + outputs + time.</text>
+
+  <!-- Equation -->
+  <rect x="60" y="90" width="780" height="56" rx="10" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.6"/>
+  <text x="80" y="124" font-size="13" font-family="ui-monospace, Menlo, monospace" fill="#115e59">STEP  =  ρ(t) + bound-input + bound-output + timestamp</text>
+
+  <!-- A step is composite: 4 parts -->
+  <rect x="60" y="170" width="780" height="280" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <rect x="60" y="170" width="780" height="32" rx="10" fill="#475569"/>
+  <text x="450" y="191" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">A step is a tuple of four values — all existing sorts</text>
+
+  <!-- Part 1: ρ(t) -->
+  <rect x="100" y="230" width="160" height="120" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+  <text x="180" y="252" font-size="11.5" font-weight="700" fill="#3730a3" text-anchor="middle">ρ(t)</text>
+  <text x="180" y="274" font-size="9.5" fill="#4338ca" text-anchor="middle">process-instance</text>
+  <text x="180" y="288" font-size="9.5" fill="#4338ca" text-anchor="middle">(an object)</text>
+  <text x="180" y="318" font-size="9" font-style="italic" fill="#4f46e5" text-anchor="middle">individuates the run</text>
+  <text x="180" y="332" font-size="9" font-style="italic" fill="#4f46e5" text-anchor="middle">via IS</text>
+
+  <!-- Part 2: bound input -->
+  <rect x="280" y="230" width="160" height="120" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+  <text x="360" y="252" font-size="11.5" font-weight="700" fill="#78350f" text-anchor="middle">bound-input</text>
+  <text x="360" y="274" font-size="9.5" fill="#92600e" text-anchor="middle">I_i ∈ V_in</text>
+  <text x="360" y="288" font-size="9.5" fill="#92600e" text-anchor="middle">(a value)</text>
+  <text x="360" y="318" font-size="9" font-style="italic" fill="#92600e" text-anchor="middle">what the step</text>
+  <text x="360" y="332" font-size="9" font-style="italic" fill="#92600e" text-anchor="middle">consumed</text>
+
+  <!-- Part 3: bound output -->
+  <rect x="460" y="230" width="160" height="120" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+  <text x="540" y="252" font-size="11.5" font-weight="700" fill="#14532d" text-anchor="middle">bound-output</text>
+  <text x="540" y="274" font-size="9.5" fill="#166534" text-anchor="middle">O_i ∈ V_out</text>
+  <text x="540" y="288" font-size="9.5" fill="#166534" text-anchor="middle">(a value)</text>
+  <text x="540" y="318" font-size="9" font-style="italic" fill="#166534" text-anchor="middle">what the step</text>
+  <text x="540" y="332" font-size="9" font-style="italic" fill="#166534" text-anchor="middle">produced</text>
+
+  <!-- Part 4: timestamp -->
+  <rect x="640" y="230" width="160" height="120" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <text x="720" y="252" font-size="11.5" font-weight="700" fill="#0f172a" text-anchor="middle">timestamp</text>
+  <text x="720" y="274" font-size="9.5" fill="#475569" text-anchor="middle">t : Time</text>
+  <text x="720" y="288" font-size="9.5" fill="#475569" text-anchor="middle">(a value)</text>
+  <text x="720" y="318" font-size="9" font-style="italic" fill="#475569" text-anchor="middle">when the step</text>
+  <text x="720" y="332" font-size="9" font-style="italic" fill="#475569" text-anchor="middle">fired</text>
+
+  <!-- Why this matters -->
+  <text x="450" y="386" font-size="11" fill="#475569" text-anchor="middle">All four are existing sorts. STEP is sugar for "give me these four things in one word."</text>
+  <text x="450" y="406" font-size="11" font-style="italic" fill="#475569" text-anchor="middle">It is a materialized view, not a primitive.</text>
+
+  <!-- Why we keep it around -->
+  <rect x="60" y="470" width="780" height="110" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.4"/>
+  <text x="80" y="494" font-size="11.5" font-weight="700" fill="#7f1d1d">Why we keep the word "step" around</text>
+  <text x="80" y="516" font-size="10.5" fill="#991b1b">Steps inherit the IS dependency (you need individuation to say "retry step 3" coherently).</text>
+  <text x="80" y="534" font-size="10.5" fill="#991b1b">They are useful for sequencing, retry, logging, and provenance — but each is one of these tuples,</text>
+  <text x="80" y="552" font-size="10.5" fill="#991b1b">already expressible in the algebra.</text>
+  <text x="80" y="572" font-size="10" font-style="italic" fill="#dc2626">The word earns its keep in prose; the primitive does not earn its place in the algebra.</text>
+</svg>

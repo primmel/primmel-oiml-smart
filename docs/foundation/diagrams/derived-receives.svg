@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">RECEIVES = DOES with input-contains-self</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Passive voice of an identical event. "X pushes Y" and "Y receives a push from X" are the same fact.</text>
+
+  <!-- Equation -->
+  <rect x="60" y="90" width="780" height="56" rx="10" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.6"/>
+  <text x="80" y="124" font-size="13" font-family="ui-monospace, Menlo, monospace" fill="#115e59">RECEIVES(y, x, t)  ≡  DOES(x, t)  ∧  input(t) includes y</text>
+
+  <!-- Two grammatical voices, one event -->
+  <rect x="60" y="170" width="780" height="240" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <rect x="60" y="170" width="780" height="32" rx="10" fill="#475569"/>
+  <text x="450" y="191" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">One event, two descriptions</text>
+
+  <!-- Active voice -->
+  <rect x="100" y="220" width="320" height="160" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.6"/>
+  <text x="260" y="244" font-size="11.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">Active voice</text>
+  <text x="260" y="270" font-size="12" font-style="italic" fill="#991b1b" text-anchor="middle">"The wind pushes the door"</text>
+  <text x="260" y="298" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#7f1d1d" text-anchor="middle">DOES(wind, push)</text>
+  <text x="260" y="320" font-size="10" fill="#991b1b" text-anchor="middle">subject = wind</text>
+  <text x="260" y="334" font-size="10" fill="#991b1b" text-anchor="middle">object = door</text>
+  <text x="260" y="360" font-size="9" font-style="italic" fill="#dc2626" text-anchor="middle">a DOES-fact in wind's ledger</text>
+
+  <!-- Equals -->
+  <text x="450" y="304" font-size="24" font-weight="700" fill="#475569" text-anchor="middle">≡</text>
+  <text x="450" y="328" font-size="9" font-style="italic" fill="#475569" text-anchor="middle">same event</text>
+
+  <!-- Passive voice -->
+  <rect x="480" y="220" width="320" height="160" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+  <text x="640" y="244" font-size="11.5" font-weight="700" fill="#3730a3" text-anchor="middle">Passive voice</text>
+  <text x="640" y="270" font-size="12" font-style="italic" fill="#4338ca" text-anchor="middle">"The door is pushed by the wind"</text>
+  <text x="640" y="298" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#3730a3" text-anchor="middle">RECEIVES(door, wind, push)</text>
+  <text x="640" y="320" font-size="10" fill="#4338ca" text-anchor="middle">subject = door</text>
+  <text x="640" y="334" font-size="10" fill="#4338ca" text-anchor="middle">object = wind</text>
+  <text x="640" y="360" font-size="9" font-style="italic" fill="#4f46e5" text-anchor="middle">re-statement in door's ledger</text>
+
+  <!-- Double-counting argument -->
+  <rect x="60" y="430" width="780" height="150" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.4"/>
+  <text x="80" y="454" font-size="11.5" font-weight="700" fill="#7f1d1d">The double-counting argument</text>
+  <text x="80" y="478" font-size="10.5" fill="#991b1b">If we listed every DOES-fact across all entities, every RECEIVES-fact would already be there,</text>
+  <text x="80" y="492" font-size="10.5" fill="#991b1b">filed under a different entity's ledger. Listing both is double-counting, not exhaustiveness.</text>
+  <text x="80" y="516" font-size="10.5" font-weight="700" fill="#7f1d1d">Consequence:</text>
+  <text x="80" y="536" font-size="10.5" fill="#991b1b">A complete list of DOES-facts already contains every RECEIVES-fact. The grammar changes;</text>
+  <text x="80" y="550" font-size="10.5" fill="#991b1b">the underlying facts do not.</text>
+  <text x="80" y="572" font-size="10" font-style="italic" fill="#dc2626">RECEIVES is a mirror, not a sibling.</text>
+</svg>

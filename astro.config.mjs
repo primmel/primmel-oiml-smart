@@ -21,6 +21,9 @@ export default defineConfig({
             { label: '02 — Claims and Falsifiability', slug: 'foundation/02-claims-and-falsifiability' },
             { label: '03 — Eight Terms and Closure Rules', slug: 'foundation/03-eight-terms-and-closure-rules' },
             { label: '04 — Proofs', slug: 'foundation/04-proofs' },
+            { label: '05 — Kernel/Surface Architecture', slug: 'foundation/05-kernel-surface-architecture' },
+            { label: '06 — Algorithms', slug: 'foundation/06-algorithms' },
+            { label: '07 — Derived Vocabulary Proofs', slug: 'foundation/07-derived-vocabulary-proofs' },
           ],
         },
         {

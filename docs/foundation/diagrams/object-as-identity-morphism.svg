@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Object = identity morphism</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">An object is the fixed point of composition: t ∘ t = t, acting as a two-sided unit.</text>
+
+  <!-- The equation -->
+  <rect x="60" y="90" width="780" height="80" rx="10" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.6"/>
+  <text x="450" y="124" font-size="14" font-family="ui-monospace, Menlo, monospace" font-weight="700" fill="#115e59" text-anchor="middle">Object(x)  ⟹  id_x  :  x → x</text>
+  <text x="450" y="150" font-size="11" fill="#0d9488" text-anchor="middle">the unique transition that changes nothing and acts as the unit of composition</text>
+
+  <!-- The picture: t ∘ id = t -->
+  <rect x="60" y="200" width="780" height="220" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <rect x="60" y="200" width="780" height="32" rx="10" fill="#475569"/>
+  <text x="450" y="221" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">The unit laws — every object has an identity morphism</text>
+
+  <!-- x -->
+  <circle cx="140" cy="320" r="22" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+  <text x="140" y="325" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">x</text>
+  <text x="140" y="362" font-size="10" fill="#475569" text-anchor="middle">an entity</text>
+
+  <!-- id_x : x → x (self-loop) -->
+  <path d="M 124 308 C 100 280 100 250 140 250 C 180 250 180 280 156 308" stroke="#0d9488" stroke-width="2" fill="none" marker-end="url(#idloop)"/>
+  <text x="140" y="240" font-size="13" font-weight="700" fill="#0d9488" text-anchor="middle">id_x</text>
+
+  <!-- t : x → y -->
+  <line x1="165" y1="320" x2="370" y2="320" stroke="#dc2626" stroke-width="2" marker-end="url(#t-arr)"/>
+  <text x="265" y="306" font-size="13" font-weight="700" fill="#dc2626" text-anchor="middle">t</text>
+  <text x="265" y="340" font-size="9" font-style="italic" fill="#991b1b" text-anchor="middle">a non-identity transition</text>
+
+  <!-- y -->
+  <circle cx="395" cy="320" r="22" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+  <text x="395" y="325" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">y</text>
+  <text x="395" y="362" font-size="10" fill="#475569" text-anchor="middle">another entity</text>
+
+  <!-- Equals sign -->
+  <text x="460" y="328" font-size="20" font-weight="700" fill="#475569" text-anchor="middle">=</text>
+
+  <!-- t ∘ id_x : x → y (same as t) -->
+  <line x1="495" y1="320" x2="700" y2="320" stroke="#dc2626" stroke-width="2" marker-end="url(#t-arr)"/>
+  <text x="595" y="306" font-size="13" font-weight="700" fill="#dc2626" text-anchor="middle">t ∘ id_x</text>
+  <text x="595" y="340" font-size="9" font-style="italic" fill="#991b1b" text-anchor="middle">"t after id_x" is just t</text>
+
+  <!-- Second x on right -->
+  <circle cx="490" cy="320" r="22" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+  <text x="490" y="325" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">x</text>
+
+  <!-- Second y on right -->
+  <circle cx="725" cy="320" r="22" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+  <text x="725" y="325" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">y</text>
+
+  <text x="450" y="400" font-size="11" font-style="italic" fill="#475569" text-anchor="middle">Composition with the identity changes nothing. The identity morphism is the unit of the composition monoid.</text>
+
+  <!-- Why "no transition" is wrong -->
+  <rect x="60" y="440" width="780" height="140" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.4"/>
+  <text x="80" y="464" font-size="11.5" font-weight="700" fill="#7f1d1d">Why "no transition" is wrong</text>
+  <text x="80" y="486" font-size="10.5" fill="#991b1b">A passive object might sound like "an entity with no transition at all." But a category requires</text>
+  <text x="80" y="500" font-size="10.5" fill="#991b1b">every object to have an identity arrow — otherwise composition is undefined.</text>
+  <text x="80" y="524" font-size="10.5" fill="#991b1b">The correct reduction is not "no transition" but specifically "the identity transition" —</text>
+  <text x="80" y="538" font-size="10.5" fill="#991b1b">the unique transition that changes nothing and acts as the unit of composition.</text>
+  <text x="80" y="562" font-size="10.5" font-style="italic" fill="#dc2626">Consequence: objects are the units of the composition monoid, and every composition remains defined.</text>
+
+  <defs>
+    <marker id="idloop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0d9488"/>
+    </marker>
+    <marker id="t-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+</svg>
