@@ -35,6 +35,8 @@ export default defineConfig({
             { label: '09 — Categorical Foundations', slug: 'foundation/09-categorical-foundations' },
             { label: '10 — Executable Ground', slug: 'foundation/10-executable-ground' },
             { label: '11 — Open Questions', slug: 'foundation/11-open-questions' },
+            { label: 'FAQ', slug: 'foundation/faq' },
+            { label: 'Notation Reference', slug: 'foundation/notation' },
           ],
         },
         {

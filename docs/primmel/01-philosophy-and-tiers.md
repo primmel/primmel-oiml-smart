@@ -54,25 +54,60 @@ If a model cannot do all four, it is a document in a costume.
 Every construct in Primmel v3 answers to these principles. When two
 designs compete, the one that better satisfies this list wins.
 
+> **Formal grounding.** Each of these principles is grounded in —
+> and partially follows from — the IS–HAS–DOES modelling system
+> proven in [Volume 0](../foundation/README.md). Where a principle
+> is a direct consequence of one of Volume 0's theorems or closure
+> rules, the grounding is noted inline. Where the principle is a
+> pragmatic choice (not a theorem), it stands on its own.
+
 1. **The model is the source of truth.** Domain content lives in models;
    tooling is a pure engine. Adding a requirement, attribute, or form is
    a model edit, never a code edit.
+   *Grounded in [Volume 0 ch 10 §10.5](../foundation/10-executable-ground.md):
+   specification equals implementation.*
+
 2. **Executable semantics, or it isn't modelled.** Every construct has a
    defined meaning to a machine — a validation rule, an evaluation, a
    transition — not just a rendering.
+   *Grounded in [Volume 0 ch 10](../foundation/10-executable-ground.md):
+   the foundation has no escape hatch — behavior is inside the model
+   all the way down.*
+
 3. **MECE.** Every concept has exactly one canonical definition point.
    If two constructs overlap, one is deleted or one becomes a facet of
    the other.
+   *Grounded in [Volume 0 ch 4 §4.3 Theorem 2](../foundation/04-proofs.md):
+   completeness relative to the Claim-Form Axiom — every atomic claim
+   falls into exactly one of IS/HAS/DOES.*
+
 4. **OCP.** Layers and packages are open for extension, closed for
    modification: a new Recommendation, capability, or aspect kind is
    *added* without editing existing models.
+   *Grounded in [Volume 0 ch 4 §4.4 Theorem 3](../foundation/04-proofs.md):
+   extensibility — new content is absorbed without new primitives;
+   extension is monotone.*
+
 5. **Closed under reference.** Every identifier used anywhere resolves
    to a declared element. No dangling references, no undefined variables.
+   *Grounded in [Volume 0 ch 3 §3.8 Closure Rule 2](../foundation/03-eight-terms-and-closure-rules.md):
+   values hold references (ι : O ↪ V) — every relation is a
+   property-value pair whose value points at an object.*
+
 6. **Traceability.** Every element carries provenance to the source
    document; every judgment carries its evidence chain.
+   *Operational consequence of [Volume 0 ch 6 §6.4 Reification](../foundation/06-algorithms.md):
+   every process instance is an object ρ(t) ∈ O, individuated by IS
+   and queryable by HAS — the trace is the model at instance grain.*
+
 7. **One rule language.** All computable statements — constraints,
    derivations, guards, conditions — are OCL. No second expression
    dialect anywhere.
+   *Pragmatic choice (not a theorem): Primmel's surface picks OCL as
+   the canonical transition-decomposition language. The algebra
+   itself is neutral on which expression language fills the kernel's
+   atomic transitions; see [Volume 0 ch 5 §5.2](../foundation/05-kernel-surface-architecture.md).*
+
 
 ## 1.4 The tier system
 

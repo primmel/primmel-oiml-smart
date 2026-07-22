@@ -98,13 +98,13 @@ IS/HAS/DOES trichotomy used throughout Volumes I–III.*
 | 09 | `09-categorical-foundations.md` | Expert | arrows-only category; identity morphisms; Curry–Howard–Lambek; KerML as precedent |
 | 10 | `10-executable-ground.md` | Expert | no escape hatch; reification; scale invariance; model=program; adoption lesson |
 | 11 | `11-open-questions.md` | Expert | what is not proven; falsifiability; future work |
-| — | `faq.md` *(Phase 4)* | Annex | Q&A |
-| — | `notation.md` *(Phase 4)* | Annex | math notation reference |
+| — | `faq.md` | Annex | Q&A — anticipated objections, with links to chapters |
+| — | `notation.md` | Annex | math notation reference (Unicode → LaTeX equivalents) |
 
-Chapters marked *(Phase 4)* are planned but not yet written; the
-four-phase expansion plan is in `.claude/plans/read-this-poe-txt-greedy-walrus.md`.
-Phases 1–3 are shipped (all 11 numbered chapters); Phase 4 (FAQ +
-notation annexes) remains.
+The four-phase expansion plan is in
+`.claude/plans/read-this-poe-txt-greedy-walrus.md`. All four phases
+are shipped — Volume 0 is complete: 11 numbered chapters + 2
+annexes + 58 hand-authored SVGs.
 
 ---
 

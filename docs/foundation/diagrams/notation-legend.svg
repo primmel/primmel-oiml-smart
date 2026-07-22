@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Notation legend — symbols used in Volume 0</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">A quick visual reference. Full tables in this annex.</text>
+
+  <!-- Sorts -->
+  <rect x="60" y="100" width="240" height="180" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+  <rect x="60" y="100" width="240" height="32" rx="10" fill="#4f46e5"/>
+  <text x="180" y="121" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Sorts (the things)</text>
+  <g font-family="ui-monospace, Menlo, monospace" font-size="12">
+    <text x="80" y="156" fill="#3730a3">U</text>
+    <text x="120" y="156" font-family="ui-sans-serif" font-size="10" fill="#4338ca">universe of entities</text>
+    <text x="80" y="178" fill="#3730a3">O, P, V, T</text>
+    <text x="190" y="178" font-family="ui-sans-serif" font-size="10" fill="#4338ca">objects, properties,</text>
+    <text x="190" y="192" font-family="ui-sans-serif" font-size="10" fill="#4338ca">values, transitions</text>
+    <text x="80" y="216" fill="#3730a3">PROCESS</text>
+    <text x="190" y="216" font-family="ui-sans-serif" font-size="10" fill="#4338ca">ρ(T) ⊆ O</text>
+    <text x="80" y="250" font-family="ui-sans-serif" font-size="10" font-style="italic" fill="#4f46e5">Chapter 3 §3.1</text>
+  </g>
+
+  <!-- Relations -->
+  <rect x="320" y="100" width="240" height="180" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+  <rect x="320" y="100" width="240" height="32" rx="10" fill="#16a34a"/>
+  <text x="440" y="121" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Relations</text>
+  <g font-family="ui-monospace, Menlo, monospace" font-size="12">
+    <text x="340" y="156" fill="#14532d">IS ⊆ O × O</text>
+    <text x="340" y="178" fill="#14532d">HAS : O → (P ⇀ V)</text>
+    <text x="340" y="200" fill="#14532d">DOES ⊆ O × T</text>
+    <text x="340" y="240" font-family="ui-sans-serif" font-size="10" font-style="italic" fill="#166534">Chapter 3 §§3.2-3.6</text>
+  </g>
+
+  <!-- Operations -->
+  <rect x="580" y="100" width="240" height="180" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.6"/>
+  <rect x="580" y="100" width="240" height="32" rx="10" fill="#dc2626"/>
+  <text x="700" y="121" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Operations</text>
+  <g font-family="ui-monospace, Menlo, monospace" font-size="12">
+    <text x="600" y="156" fill="#7f1d1d">∘ : T × T ⇀ T</text>
+    <text x="780" y="156" font-family="ui-sans-serif" font-size="10" fill="#991b1b">composition</text>
+    <text x="600" y="178" fill="#7f1d1d">ρ : T → O</text>
+    <text x="780" y="178" font-family="ui-sans-serif" font-size="10" fill="#991b1b">reification</text>
+    <text x="600" y="200" fill="#7f1d1d">ι : O ↪ V</text>
+    <text x="780" y="200" font-family="ui-sans-serif" font-size="10" fill="#991b1b">embedding</text>
+    <text x="600" y="240" font-family="ui-sans-serif" font-size="10" font-style="italic" fill="#dc2626">Chapter 3 §§3.5-3.9</text>
+  </g>
+
+  <!-- Categorical -->
+  <rect x="60" y="300" width="380" height="180" rx="10" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.6"/>
+  <rect x="60" y="300" width="380" height="32" rx="10" fill="#0d9488"/>
+  <text x="250" y="321" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Categorical (Chapter 9)</text>
+  <g font-family="ui-monospace, Menlo, monospace" font-size="11">
+    <text x="80" y="356" fill="#115e59">id_A</text>
+    <text x="160" y="356" font-family="ui-sans-serif" font-size="10" fill="#0d9488">identity morphism</text>
+    <text x="80" y="378" fill="#115e59">f : A → B</text>
+    <text x="160" y="378" font-family="ui-sans-serif" font-size="10" fill="#0d9488">morphism</text>
+    <text x="80" y="400" fill="#115e59">g ∘ f</text>
+    <text x="160" y="400" font-family="ui-sans-serif" font-size="10" fill="#0d9488">composite</text>
+    <text x="80" y="422" fill="#115e59">𝓜, 𝓚</text>
+    <text x="160" y="422" font-family="ui-sans-serif" font-size="10" fill="#0d9488">algebra, kernel</text>
+    <text x="80" y="444" fill="#115e59">⊣</text>
+    <text x="160" y="444" font-family="ui-sans-serif" font-size="10" fill="#0d9488">adjunction</text>
+    <text x="80" y="466" fill="#115e59">≅</text>
+    <text x="160" y="466" font-family="ui-sans-serif" font-size="10" fill="#0d9488">natural isomorphism</text>
+  </g>
+
+  <!-- Logical -->
+  <rect x="460" y="300" width="380" height="180" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+  <rect x="460" y="300" width="380" height="32" rx="10" fill="#d97706"/>
+  <text x="650" y="321" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Logical</text>
+  <g font-family="ui-monospace, Menlo, monospace" font-size="11">
+    <text x="480" y="356" fill="#78350f">⊆ ⊂</text>
+    <text x="540" y="356" font-family="ui-sans-serif" font-size="10" fill="#92600e">subset</text>
+    <text x="480" y="378" fill="#78350f">→ ↪ ⇀</text>
+    <text x="540" y="378" font-family="ui-sans-serif" font-size="10" fill="#92600e">total, embedding, partial</text>
+    <text x="480" y="400" fill="#78350f">∈ ×</text>
+    <text x="540" y="400" font-family="ui-sans-serif" font-size="10" fill="#92600e">element of, product</text>
+    <text x="480" y="422" fill="#78350f">∧ ¬</text>
+    <text x="540" y="422" font-family="ui-sans-serif" font-size="10" fill="#92600e">and, not</text>
+    <text x="480" y="444" fill="#78350f">∀ ∃ ∃!</text>
+    <text x="540" y="444" font-family="ui-sans-serif" font-size="10" fill="#92600e">for all, exists, unique</text>
+    <text x="480" y="466" fill="#78350f">≡ ⊧ ■</text>
+    <text x="540" y="466" font-family="ui-sans-serif" font-size="10" fill="#92600e">defined-as, entails, Q.E.D.</text>
+  </g>
+
+  <!-- State and algorithms -->
+  <rect x="60" y="500" width="780" height="80" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="1.4"/>
+  <text x="80" y="522" font-size="11" font-weight="700" fill="#0f172a">State and algorithms (Chapter 6)</text>
+  <g font-family="ui-monospace, Menlo, monospace" font-size="11">
+    <text x="80" y="546" fill="#0f172a">σ(e) = (p, t_i, I_i, O_i)</text>
+    <text x="320" y="546" font-family="ui-sans-serif" font-size="10" fill="#475569">state-location</text>
+    <text x="80" y="568" fill="#0f172a">κ</text>
+    <text x="320" y="568" font-family="ui-sans-serif" font-size="10" fill="#475569">the reserved "kind" property</text>
+  </g>
+</svg>
