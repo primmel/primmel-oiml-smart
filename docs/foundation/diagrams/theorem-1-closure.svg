@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Theorem 1 — Closure</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Every operation of 𝓜 applied to elements of 𝓜 yields an element of 𝓜. No operation escapes the four sorts.</text>
+
+  <!-- The box {O, P, V, T} -->
+  <rect x="180" y="120" width="540" height="320" rx="16" fill="#f8fafc" stroke="#0f172a" stroke-width="2.4"/>
+  <text x="450" y="146" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">𝓜 — the algebra's sorts {O, P, V, T}</text>
+
+  <!-- The four sorts inside -->
+  <g>
+    <circle cx="280" cy="220" r="50" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.8"/>
+    <text x="280" y="216" font-size="13" font-weight="700" fill="#3730a3" text-anchor="middle">O</text>
+    <text x="280" y="232" font-size="9" fill="#4338ca" text-anchor="middle">objects</text>
+
+    <circle cx="450" cy="220" r="50" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+    <text x="450" y="216" font-size="13" font-weight="700" fill="#14532d" text-anchor="middle">P</text>
+    <text x="450" y="232" font-size="9" fill="#166534" text-anchor="middle">properties</text>
+
+    <circle cx="620" cy="220" r="50" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
+    <text x="620" y="216" font-size="13" font-weight="700" fill="#78350f" text-anchor="middle">V</text>
+    <text x="620" y="232" font-size="9" fill="#92600e" text-anchor="middle">values</text>
+
+    <circle cx="450" cy="360" r="50" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+    <text x="450" y="356" font-size="13" font-weight="700" fill="#7f1d1d" text-anchor="middle">T</text>
+    <text x="450" y="372" font-size="9" fill="#991b1b" text-anchor="middle">transitions</text>
+  </g>
+
+  <!-- The three operations as labeled arrows that stay inside -->
+  <!-- ∘ : T × T → T (stays in T) -->
+  <path d="M 470 360 Q 530 320 470 360" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#op)"/>
+  <text x="540" y="332" font-size="11" font-weight="700" fill="#dc2626">∘ : T × T → T</text>
+  <text x="540" y="348" font-size="9" fill="#991b1b">composition stays in T</text>
+
+  <!-- ρ : T → O (goes from T to O) -->
+  <line x1="410" y1="340" x2="320" y2="252" stroke="#16a34a" stroke-width="2" marker-end="url(#op-green)"/>
+  <text x="330" y="290" font-size="11" font-weight="700" fill="#16a34a">ρ : T → O</text>
+  <text x="330" y="306" font-size="9" fill="#166534">reify</text>
+
+  <!-- ι : O → V (goes from O to V) -->
+  <line x1="320" y1="220" x2="580" y2="220" stroke="#d97706" stroke-width="2" marker-end="url(#op-amber)"/>
+  <text x="450" y="200" font-size="11" font-weight="700" fill="#d97706" text-anchor="middle">ι : O ↪ V</text>
+  <text x="450" y="186" font-size="9" fill="#92600e" text-anchor="middle">embed</text>
+
+  <!-- "No escape" annotations on the boundary -->
+  <text x="450" y="470" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">No operation produces a ninth sort.</text>
+  <text x="450" y="486" font-size="10" fill="#475569" text-anchor="middle">Closure is by construction: each operation's signature has a codomain in {O, P, V, T}.</text>
+
+  <!-- The three cases (proof outline) -->
+  <rect x="60" y="500" width="260" height="80" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.4"/>
+  <text x="80" y="520" font-size="10.5" font-weight="700" fill="#7f1d1d">(i) composition</text>
+  <text x="80" y="538" font-size="9.5" fill="#991b1b">∘ : T × T ⇀ T by signature.</text>
+  <text x="80" y="552" font-size="9.5" fill="#991b1b">Composite is a transition.</text>
+  <text x="80" y="568" font-size="9.5" font-style="italic" fill="#dc2626">T closed under ∘.</text>
+
+  <rect x="330" y="500" width="260" height="80" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+  <text x="350" y="520" font-size="10.5" font-weight="700" fill="#14532d">(ii) reification</text>
+  <text x="350" y="538" font-size="9.5" fill="#166534">ρ : T → O by signature.</text>
+  <text x="350" y="552" font-size="9.5" fill="#166534">Output is an object.</text>
+  <text x="350" y="568" font-size="9.5" font-style="italic" fill="#16a34a">Codomain is O.</text>
+
+  <rect x="600" y="500" width="240" height="80" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.4"/>
+  <text x="620" y="520" font-size="10.5" font-weight="700" fill="#78350f">(iii) embedding</text>
+  <text x="620" y="538" font-size="9.5" fill="#92600e">ι : O ↪ V by signature.</text>
+  <text x="620" y="552" font-size="9.5" fill="#92600e">Output is a value.</text>
+  <text x="620" y="568" font-size="9.5" font-style="italic" fill="#d97706">Codomain is V.</text>
+
+  <defs>
+    <marker id="op" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/>
+    </marker>
+    <marker id="op-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/>
+    </marker>
+    <marker id="op-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706"/>
+    </marker>
+  </defs>
+</svg>

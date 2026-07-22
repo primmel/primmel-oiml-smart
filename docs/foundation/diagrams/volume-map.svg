@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Volume 0 — chapter map</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Three concentric tracks. Read what you need; stop when you've had enough.</text>
+
+  <!-- Expert ring (outer) -->
+  <circle cx="450" cy="320" r="240" fill="#fef2f2" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,3"/>
+  <!-- Professional ring (middle) -->
+  <circle cx="450" cy="320" r="160" fill="#fffbeb" stroke="#d97706" stroke-width="2" stroke-dasharray="4,3"/>
+  <!-- Novice ring (inner) -->
+  <circle cx="450" cy="320" r="80" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" stroke-dasharray="4,3"/>
+
+  <!-- Novice chapters -->
+  <text x="450" y="282" font-size="11" font-weight="700" fill="#14532d" text-anchor="middle">NOVICE</text>
+  <text x="450" y="306" font-size="10.5" fill="#166534" text-anchor="middle">01 Intuition</text>
+  <text x="450" y="322" font-size="10.5" fill="#166534" text-anchor="middle">02 Claims</text>
+  <text x="450" y="338" font-size="10.5" fill="#166534" text-anchor="middle">&amp; Falsifiability</text>
+  <text x="450" y="362" font-size="9.5" font-style="italic" fill="#4d7c0f" text-anchor="middle">~30 min</text>
+
+  <!-- Professional chapters (positioned around the middle ring) -->
+  <text x="450" y="178" font-size="11" font-weight="700" fill="#78350f" text-anchor="middle">PROFESSIONAL</text>
+  <g font-size="10.5" fill="#92600e">
+    <text x="312" y="218" text-anchor="middle">03 Eight Terms</text>
+    <text x="312" y="232" text-anchor="middle">&amp; Closure Rules</text>
+    <text x="588" y="218" text-anchor="middle">04 Proofs</text>
+    <text x="312" y="412" text-anchor="middle">05 Kernel/Surface</text>
+    <text x="312" y="426" text-anchor="middle">Architecture</text>
+    <text x="588" y="412" text-anchor="middle">06 Algorithms</text>
+    <text x="450" y="452" text-anchor="middle">07 Derived Vocabulary</text>
+  </g>
+  <text x="450" y="478" font-size="9.5" font-style="italic" fill="#92600e" text-anchor="middle">+90 min</text>
+
+  <!-- Expert chapters (positioned around the outer ring) -->
+  <text x="450" y="100" font-size="11" font-weight="700" fill="#7f1d1d" text-anchor="middle">EXPERT</text>
+  <g font-size="10.5" fill="#991b1b">
+    <text x="180" y="200" text-anchor="middle">08 Comparative</text>
+    <text x="180" y="214" text-anchor="middle">Analysis</text>
+    <text x="720" y="200" text-anchor="middle">09 Categorical</text>
+    <text x="720" y="214" text-anchor="middle">Foundations</text>
+    <text x="180" y="440" text-anchor="middle">10 Executable</text>
+    <text x="180" y="454" text-anchor="middle">Ground</text>
+    <text x="720" y="440" text-anchor="middle">11 Open</text>
+    <text x="720" y="454" text-anchor="middle">Questions</text>
+  </g>
+  <text x="450" y="540" font-size="9.5" font-style="italic" fill="#991b1b" text-anchor="middle">+90 min</text>
+
+  <!-- Annex labels (outside the rings) -->
+  <text x="450" y="568" font-size="10" fill="#475569" text-anchor="middle">Annexes: FAQ · Notation Reference</text>
+
+  <defs/>
+</svg>

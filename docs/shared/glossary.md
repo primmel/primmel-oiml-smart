@@ -129,8 +129,10 @@ that drives *applicability*. R 60 declares four: `accuracy_class`,
 
 **DOES** — the process question of the *subject* anatomy: what the
 subject does — *behaviors* as processes with inputs, steps, outputs.
-Formally: the `DOES ⊆ O × T` relation of the modelling system, with
-each *behavior* a reified transition `ρ(t) ∈ O` (Volume 0 §§6–7). ●
+Formally: the `DOES ⊆ O × T` relation; each *behavior* is a reified
+transition `ρ(t) ∈ O`.
+Canonical definition:
+[Volume 0 ch 3 §§3.5–3.6](../foundation/03-eight-terms-and-closure-rules.md). ●
 
 **endpoint** — the IS-level declaration of a subject's API surface:
 operations (kinds `query` / `subscribe` / `invoke`, payloads
@@ -173,8 +175,8 @@ stale ⇒ indeterminate, never a silent pass. ○
 
 **HAS** — the exhibition question of the *subject* anatomy: what the
 subject exhibits — observable, varies without identity change.
-Formally: the `HAS : O → (P ⇀ V)` attribution relation of the modelling
-system (Volume 0 §5). ●
+Formally: the `HAS : O → (P ⇀ V)` attribution relation.
+Canonical definition: [Volume 0 ch 3 §3.4](../foundation/03-eight-terms-and-closure-rules.md). ●
 
 **implementation model** — a model of an organization's actual
 operations, a digital twin of reality; speaks for the organization;
@@ -215,14 +217,17 @@ shared mapped components. ○
 model in this tree: eight terms (`is`, `has`, `does`, `value`,
 `property`, `object`, `process`, `transition`), five layered sorts,
 three closure rules, and three theorems (closure, completeness,
-extensibility). Proven in [Volume 0 — Foundation](../foundation/README.md);
-operationalized as the *subject anatomy* in
+extensibility). Canonical definition:
+[Volume 0 chapter 3](../foundation/03-eight-terms-and-closure-rules.md);
+proofs in
+[Volume 0 chapter 4](../foundation/04-proofs.md); operationalized as
+the *subject anatomy* in
 [Volume I chapter 2](../primmel/02-subjects.md). ●
 
 **IS** — the identity/design question of the *subject* anatomy: what the
 subject is — intrinsic; change it and you have a different subject.
-Formally: the `IS ⊆ O × O` relation of the modelling system (Volume 0
-§3). ●
+Formally: the `IS ⊆ O × O` relation.
+Canonical definition: [Volume 0 ch 3 §3.2](../foundation/03-eight-terms-and-closure-rules.md). ●
 
 **live integration** — a consumption mode of a *product reference
 model*: the deployed instance serves a *live twin* integrated directly
@@ -287,7 +292,8 @@ rather than asserted. ● (serialization) / ○ (calculus)
 
 **object** — the bearer of claims in the foundational algebra: anything
 IS can individuate — physical or abstract. Kinds are objects (Closure
-Rule 1): *LoadCell*, a requirement, a package, a certificate. ●
+Rule 1): *LoadCell*, a requirement, a package, a certificate.
+Canonical definition: [Volume 0 ch 3 §3.3](../foundation/03-eight-terms-and-closure-rules.md). ●
 
 **operational state** — the subject's own state machine (HAS): off →
 warming → ready → measuring → fault; transitions fired by DOES
@@ -308,7 +314,9 @@ subject IS / HAS / DOES); everything on the secondary tier anchors to it. ●
 **process** — the recursive model kind: a process IS signature +
 invariants + executor, HAS state + registers + context, DOES steps and
 sub-processes — bottoming out in atomic steps (a register write, a
-stimulus application, a wait). ●
+stimulus application, a wait). Formally: a reified transition
+`ρ(t) ∈ O` (Closure Rule 3).
+Canonical definition: [Volume 0 ch 3 §3.6](../foundation/03-eight-terms-and-closure-rules.md). ●
 
 **product reference model** — the manufacturer's model of their product
 (the full IS / HAS / DOES anatomy), every aspect *mapped* to the
@@ -318,7 +326,8 @@ carries its *promises*-as-verified; consumed by *abstract import* or
 
 **property** — the slot in the *HAS* relation: the dimension along
 which an object can vary. Defined once (an *AttributeDefinition* —
-symbol, clause, kind) and valued per subject level. ●
+symbol, clause, kind) and valued per subject level.
+Canonical definition: [Volume 0 ch 3 §3.4](../foundation/03-eight-terms-and-closure-rules.md). ●
 
 **promise** — a manufacturer *claim on a characteristic or behavior*
 (IS): possibly envelope-shaped or conditional; cites no regulator — the
@@ -341,7 +350,8 @@ tolerance] }`: no bare numbers anywhere (INV-1). ●
 **transition** — the unit of *DOES*: a rule `t: V_in → V_out`
 (input, transform, output). Transitions compose and the composite is a
 transition. Every OCL statement in the system is one (INV-9's
-"[bound inputs ⇒ OCL ⇒ typed output]"). ●
+"[bound inputs ⇒ OCL ⇒ typed output]").
+Canonical definition: [Volume 0 ch 3 §3.5](../foundation/03-eight-terms-and-closure-rules.md). ●
 
 **kind-membership** — the *IS* relation at type grain: "x is a K", where
 K is an object (Closure Rule 1). Declared classification membership is
@@ -432,7 +442,8 @@ extend. ○ (v2 uses `extends`)
 **value** — the content filling a *property* slot: a
 *QuantityValue*, a string, a condition entry, a verdict outcome — or a
 reference to an object (Closure Rule 2), which is how all relational
-vocabulary derives. ●
+vocabulary derives.
+Canonical definition: [Volume 0 ch 3 §3.4](../foundation/03-eight-terms-and-closure-rules.md). ●
 
 **verdict** — a per-*requirement* judgment for one *sample*: pass /
 fail / indeterminate / invalid, with fact-under-judgment, limit

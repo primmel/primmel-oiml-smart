@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The Claim-Form Trichotomy</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Every atomic descriptive claim about an entity is exactly one of three forms.</text>
+
+  <!-- Root: every claim -->
+  <rect x="350" y="100" width="200" height="56" rx="10" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+  <text x="450" y="124" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">Every atomic claim</text>
+  <text x="450" y="142" font-size="10" fill="#475569" text-anchor="middle">about an entity</text>
+
+  <!-- Branches -->
+  <g stroke="#94a3b8" stroke-width="1.6" fill="none">
+    <line x1="380" y1="156" x2="180" y2="220"/>
+    <line x1="450" y1="156" x2="450" y2="220"/>
+    <line x1="520" y1="156" x2="720" y2="220"/>
+  </g>
+
+  <!-- Branch 1: identity -->
+  <rect x="60" y="220" width="240" height="170" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+  <rect x="60" y="220" width="240" height="32" rx="12" fill="#16a34a"/>
+  <text x="180" y="241" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Identity claim</text>
+  <text x="180" y="276" font-size="11.5" fill="#14532d" text-anchor="middle">"what it is"</text>
+  <text x="180" y="304" font-size="10.5" fill="#166534" text-anchor="middle">Rex is a mammal.</text>
+  <text x="180" y="322" font-size="10.5" fill="#166534" text-anchor="middle">This is the same door</text>
+  <text x="180" y="336" font-size="10.5" fill="#166534" text-anchor="middle">as the one we saw yesterday.</text>
+  <line x1="80" y1="352" x2="280" y2="352" stroke="#16a34a" stroke-width="1"/>
+  <text x="180" y="372" font-size="11" font-weight="700" fill="#14532d" text-anchor="middle">→ caught by IS</text>
+
+  <!-- Branch 2: attribution -->
+  <rect x="330" y="220" width="240" height="170" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
+  <rect x="330" y="220" width="240" height="32" rx="12" fill="#d97706"/>
+  <text x="450" y="241" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Attribution claim</text>
+  <text x="450" y="276" font-size="11.5" fill="#78350f" text-anchor="middle">"what it has"</text>
+  <text x="450" y="304" font-size="10.5" fill="#92600e" text-anchor="middle">The kettle has temperature</text>
+  <text x="450" y="318" font-size="10.5" fill="#92600e" text-anchor="middle">100 °C.</text>
+  <text x="450" y="336" font-size="10.5" fill="#92600e" text-anchor="middle">Alice has team-membership.</text>
+  <line x1="350" y1="352" x2="550" y2="352" stroke="#d97706" stroke-width="1"/>
+  <text x="450" y="372" font-size="11" font-weight="700" fill="#78350f" text-anchor="middle">→ caught by HAS</text>
+
+  <!-- Branch 3: transformation -->
+  <rect x="600" y="220" width="240" height="170" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+  <rect x="600" y="220" width="240" height="32" rx="12" fill="#dc2626"/>
+  <text x="720" y="241" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Transformation claim</text>
+  <text x="720" y="276" font-size="11.5" fill="#7f1d1d" text-anchor="middle">"what it does"</text>
+  <text x="720" y="304" font-size="10.5" fill="#991b1b" text-anchor="middle">The door swings open.</text>
+  <text x="720" y="322" font-size="10.5" fill="#991b1b" text-anchor="middle">The classifier runs on</text>
+  <text x="720" y="336" font-size="10.5" fill="#991b1b" text-anchor="middle">the input and emits a label.</text>
+  <line x1="620" y1="352" x2="820" y2="352" stroke="#dc2626" stroke-width="1"/>
+  <text x="720" y="372" font-size="11" font-weight="700" fill="#7f1d1d" text-anchor="middle">→ caught by DOES</text>
+
+  <!-- Bottom: what's needed for completeness -->
+  <rect x="60" y="430" width="780" height="140" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+  <text x="80" y="456" font-size="12" font-weight="700" fill="#3730a3">The Claim-Form Axiom (Volume 0 §2.2)</text>
+  <text x="80" y="478" font-size="10.5" fill="#4338ca">The completeness theorem (Chapter 4 §4.3) is relative to this axiom.</text>
+  <text x="80" y="494" font-size="10.5" fill="#4338ca">If you accept the trichotomy, the system catches every atomic claim — provably.</text>
+  <text x="80" y="510" font-size="10.5" fill="#4338ca">If you reject it, you need to exhibit a fourth form: an atomic claim that is</text>
+  <text x="80" y="524" font-size="10.5" fill="#4338ca">neither identity, nor attribution, nor transformation, and cannot be reduced</text>
+  <text x="80" y="538" font-size="10.5" fill="#4338ca">to any of them without information loss.</text>
+  <text x="80" y="558" font-size="10.5" font-style="italic" fill="#4f46e5">So far: no fourth form has been found. (See Chapter 7 for the candidates that were tried.)</text>
+</svg>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Closure Rule 1 — kinds are objects</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">IS ⊆ O × O has codomain O. The kind "mammal" is itself an object that bears properties.</text>
+
+  <!-- The choice -->
+  <rect x="60" y="90" width="780" height="100" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <text x="80" y="116" font-size="12" font-weight="700" fill="#0f172a">The choice IS's codomain forced</text>
+  <text x="80" y="138" font-size="10.5" fill="#334155">"Rex is a mammal" must point at something — a kind — and "kind" appears nowhere in the eight terms.</text>
+  <text x="80" y="156" font-size="10.5" fill="#334155">Two options:</text>
+  <text x="100" y="174" font-size="10.5" fill="#dc2626">✗ add TYPE as a ninth primitive (rejected — bloats the system)</text>
+  <text x="100" y="186" font-size="10.5" fill="#16a34a">✓ declare kinds are objects (Rule 1 — adopted)</text>
+
+  <!-- Mammal as an object -->
+  <rect x="60" y="220" width="780" height="280" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+  <rect x="60" y="220" width="780" height="32" rx="10" fill="#4f46e5"/>
+  <text x="450" y="241" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">"mammal" — an abstract object that itself holds properties</text>
+
+  <!-- The mammal object -->
+  <rect x="280" y="280" width="340" height="200" rx="12" fill="#f8fafc" stroke="#0f172a" stroke-width="2"/>
+  <rect x="280" y="280" width="340" height="32" rx="12" fill="#0f172a"/>
+  <text x="450" y="301" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">mammal (kind-object ∈ O)</text>
+
+  <!-- Its HAS-properties -->
+  <text x="300" y="338" font-size="10.5" font-weight="700" fill="#78350f">HAS:</text>
+  <g font-size="10" fill="#92600e">
+    <text x="320" y="358">warm_blood  = true</text>
+    <text x="320" y="374">hair         = present</text>
+    <text x="320" y="390">mammary_glands = present</text>
+    <text x="320" y="406">three_middle_ear_bones = present</text>
+  </g>
+
+  <text x="300" y="438" font-size="10.5" font-weight="700" fill="#14532d">IS:</text>
+  <text x="320" y="458" font-size="10" fill="#166534">kind mammal — also an IS-fact (kinds classify themselves)</text>
+
+  <!-- Many instances point at mammal -->
+  <g font-size="9.5" fill="#166534">
+    <circle cx="100" cy="320" r="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+    <text x="100" y="324" font-size="9" font-weight="700" fill="#14532d" text-anchor="middle">Rex</text>
+
+    <circle cx="100" cy="380" r="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+    <text x="100" y="384" font-size="9" font-weight="700" fill="#14532d" text-anchor="middle">Whiskers</text>
+
+    <circle cx="100" cy="440" r="18" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+    <text x="100" y="444" font-size="9" font-weight="700" fill="#14532d" text-anchor="middle">Alice</text>
+  </g>
+
+  <g stroke="#16a34a" stroke-width="1.4" fill="none" stroke-dasharray="3,2">
+    <line x1="120" y1="320" x2="278" y2="380"/>
+    <line x1="120" y1="380" x2="278" y2="380"/>
+    <line x1="120" y1="440" x2="278" y2="380"/>
+  </g>
+  <text x="100" y="478" font-size="9" font-style="italic" fill="#166534" text-anchor="middle">many instances,</text>
+  <text x="100" y="490" font-size="9" font-style="italic" fill="#166534" text-anchor="middle">one kind</text>
+
+  <!-- Subkinds -->
+  <g font-size="9.5" fill="#92600e">
+    <rect x="700" y="320" width="100" height="40" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.4"/>
+    <text x="750" y="338" font-size="9" font-weight="700" fill="#78350f" text-anchor="middle">dog</text>
+    <text x="750" y="352" font-size="8" fill="#92600e" text-anchor="middle">subkind of mammal</text>
+
+    <rect x="700" y="380" width="100" height="40" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.4"/>
+    <text x="750" y="398" font-size="9" font-weight="700" fill="#78350f" text-anchor="middle">cat</text>
+    <text x="750" y="412" font-size="8" fill="#92600e" text-anchor="middle">subkind of mammal</text>
+
+    <rect x="700" y="440" width="100" height="40" rx="6" fill="#fffbeb" stroke="#d97706" stroke-width="1.4"/>
+    <text x="750" y="458" font-size="9" font-weight="700" fill="#78350f" text-anchor="middle">human</text>
+    <text x="750" y="472" font-size="8" fill="#92600e" text-anchor="middle">subkind of mammal</text>
+  </g>
+
+  <g stroke="#d97706" stroke-width="1.4" fill="none" stroke-dasharray="3,2">
+    <line x1="622" y1="380" x2="700" y2="340"/>
+    <line x1="622" y1="380" x2="700" y2="400"/>
+    <line x1="622" y1="380" x2="700" y2="460"/>
+  </g>
+
+  <!-- Bottom -->
+  <rect x="60" y="520" width="780" height="60" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+  <text x="80" y="542" font-size="11" font-weight="700" fill="#14532d">Precedent</text>
+  <text x="80" y="560" font-size="10.5" fill="#166534">RDF made the same move: <tspan font-family="ui-monospace, Menlo, monospace">rdf:type rdfs:Class</tspan> — a class is itself a resource. Rule 1 admits what serious knowledge representations already do.</text>
+</svg>

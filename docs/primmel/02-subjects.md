@@ -24,12 +24,15 @@ which is exactly how untyped requirement databases rot.
 ## 2.2 The three questions
 
 > **Formal grounding.** The IS / HAS / DOES trichotomy is not a
-> convenience — it is provably exhaustive. See [Volume 0 — The IS–HAS–DOES
-> Modelling System](../foundation/README.md), Theorems 1–3: every
-> descriptive claim about an entity factors through one of these three
-> relations, and the system is closed under its three operations
-> (composition, reification, embedding). What follows is the *applied*
-> form: how the three relations turn into a usable subject anatomy.
+> convenience — it is provably exhaustive. See
+> [Volume 0 ch 2 §2.2 — the Claim-Form Axiom](../foundation/02-claims-and-falsifiability.md)
+> for the philosophical commitment, and
+> [Volume 0 ch 4 — Proofs](../foundation/04-proofs.md) for the
+> closure, completeness, and extensibility theorems. The eight terms
+> and three closure rules of the underlying algebra are defined in
+> [Volume 0 ch 3](../foundation/03-eight-terms-and-closure-rules.md).
+> What follows is the *applied* form: how the three relations turn
+> into a usable subject anatomy.
 
 ![The subject anatomy](diagrams/subject-anatomy.svg)
 

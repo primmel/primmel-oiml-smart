@@ -56,7 +56,12 @@ readable out of order.
 - **Diagrams** are hand-authored SVG in each volume's `diagrams/`
   directory, referenced relatively. Palette: slate structure, brand
   (indigo) subjects, green IS aspects, amber HAS aspects, red DOES
-  aspects, violet relations.
+  aspects, violet relations. Volume 0 (foundation) extends this
+  palette with a "formal/math" set — teal (`#0d9488`) for kernel/
+  Tier-0 constructs, gray (`#475569`) for surface/Tier-1 constructs,
+  dashed lines for elaboration/desugaring arrows, double-stroke for
+  reification — see [`foundation/README.md`](foundation/README.md)
+  §Conventions for details.
 - **References** to the running system use repo paths
   (`data/r60/…`, `ontology-remix/…`, `browser/…`) relative to the
   `oimlsmart/smart` repository.
@@ -75,12 +80,29 @@ developed form; the concepts document is the negotiation record.
 *The IS–HAS–DOES modelling system: eight terms (`is`, `has`, `does`,
 `value`, `property`, `object`, `process`, `transition`), five layered
 sorts, three closure rules, and three theorems (closure, completeness,
-extensibility). Everything in Volumes I–III is an enrichment of these
-sorts.*
+extensibility). Volume 0 is the academic foundation — novice,
+professional, and expert reading tracks — that grounds the
+IS/HAS/DOES trichotomy used throughout Volumes I–III.*
 
-| # | Document | Contents |
-|---|---|---|
-| 00 | `README.md` | the layered onion; the three closure rules; Theorems 1–3; the derived vocabulary; pointers into Volumes I–III |
+| # | Chapter | Track | Contents |
+|---|---|---|---|
+| 00 | `README.md` | — | volume overview; reading tracks; conventions (math notation, diagram palette) |
+| 01 | `01-intuition.md` | Novice | the three natural questions; the onion at a glance; the 7→3→4→8 dialectic in plain prose |
+| 02 | `02-claims-and-falsifiability.md` | Novice | the Claim-Form Axiom; what we claim; what would refute us |
+| 03 | `03-eight-terms-and-closure-rules.md` | Professional | the formal algebra 𝓜; the eight terms; the three closure rules |
+| 04 | `04-proofs.md` | Professional | closure, completeness, extensibility — full proofs |
+| 05 | `05-kernel-surface-architecture.md` *(Phase 2)* | Professional | Tier 0 (entities + transitions + composition) and Tier 1 (the eight primitives) with the desugaring map |
+| 06 | `06-algorithms.md` *(Phase 2)* | Professional | elaboration, resugaring, reification (ρ), evaluation, state-location (σ) |
+| 07 | `07-derived-vocabulary-proofs.md` *(Phase 2)* | Professional | six retired terms (STATE, CAN, RECEIVES, RELATES-TO, BECOMES, STEP), full derivations |
+| 08 | `08-comparative-analysis.md` *(Phase 3)* | Expert | vs OPM, OOP, UML/fUML, SysML v2/KerML, BPMN, EXPRESS, RDF/OWL, Petri nets; positioning matrix |
+| 09 | `09-categorical-foundations.md` *(Phase 3)* | Expert | arrows-only category; identity morphisms; Curry–Howard–Lambek; KerML as precedent |
+| 10 | `10-executable-ground.md` *(Phase 3)* | Expert | no escape hatch; reification; scale invariance; model=program; adoption lesson |
+| 11 | `11-open-questions.md` *(Phase 3)* | Expert | what is not proven; falsifiability; future work |
+| — | `faq.md` *(Phase 4)* | Annex | Q&A |
+| — | `notation.md` *(Phase 4)* | Annex | math notation reference |
+
+Chapters marked *(Phase N)* are planned but not yet written; the
+four-phase expansion plan is in `.claude/plans/read-this-poe-txt-greedy-walrus.md`.
 
 ---
 

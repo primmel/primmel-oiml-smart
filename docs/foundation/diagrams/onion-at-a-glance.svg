@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The onion at a glance</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Five concentric layers. Each depends only on the layers inside it.</text>
+
+  <!-- Layer 4 (outermost): PROCESS -->
+  <circle cx="450" cy="320" r="240" fill="#fef2f2" stroke="#dc2626" stroke-width="2.2"/>
+  <!-- Layer 3: DOES, TRANSITION -->
+  <circle cx="450" cy="320" r="190" fill="#fffbeb" stroke="#d97706" stroke-width="2.2"/>
+  <!-- Layer 2: HAS, PROPERTY, VALUE -->
+  <circle cx="450" cy="320" r="140" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.2"/>
+  <!-- Layer 1: OBJECT -->
+  <circle cx="450" cy="320" r="92" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.2"/>
+  <!-- Layer 0 (innermost): IS -->
+  <circle cx="450" cy="320" r="50" fill="#f8fafc" stroke="#0f172a" stroke-width="2.6"/>
+
+  <!-- Layer 0 label -->
+  <text x="450" y="316" font-size="13" font-weight="700" fill="#0f172a" text-anchor="middle">IS</text>
+  <text x="450" y="332" font-size="9" fill="#475569" text-anchor="middle">individuation</text>
+
+  <!-- Layer 1 label (right side, outside the layer-0 circle) -->
+  <text x="450" y="248" font-size="11.5" font-weight="700" fill="#3730a3" text-anchor="middle">OBJECT</text>
+
+  <!-- Layer 2 label -->
+  <text x="450" y="200" font-size="11.5" font-weight="700" fill="#14532d" text-anchor="middle">HAS, PROPERTY, VALUE</text>
+
+  <!-- Layer 3 label -->
+  <text x="450" y="152" font-size="11.5" font-weight="700" fill="#78350f" text-anchor="middle">DOES, TRANSITION</text>
+
+  <!-- Layer 4 label -->
+  <text x="450" y="104" font-size="11.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">PROCESS</text>
+
+  <!-- Side annotations -->
+  <g font-size="10.5" fill="#475569">
+    <text x="710" y="170">Layer 4 — a transition</text>
+    <text x="710" y="184">reified as an object</text>
+    <text x="710" y="206" font-style="italic" fill="#166534">closes the onion</text>
+
+    <text x="710" y="250">Layer 3 — dynamic axis</text>
+    <text x="710" y="264">input → transform → output</text>
+
+    <text x="710" y="330">Layer 2 — static axis</text>
+    <text x="710" y="344">property = slot, value = content</text>
+
+    <text x="710" y="410">Layer 1 — the bearers</text>
+    <text x="710" y="424">of all claims</text>
+
+    <text x="710" y="490">Layer 0 — the ground</text>
+    <text x="710" y="504">logically prior to all</text>
+  </g>
+
+  <!-- Bottom caption -->
+  <rect x="60" y="554" width="780" height="32" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="450" y="574" font-size="11" fill="#0f172a" text-anchor="middle" font-style="italic">
+    IS  ⊂  OBJECT  ⊂  {HAS, PROPERTY, VALUE}  ⊂  {DOES, TRANSITION}  ⊂  PROCESS
+  </text>
+</svg>
