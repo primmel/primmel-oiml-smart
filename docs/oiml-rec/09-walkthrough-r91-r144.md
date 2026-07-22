@@ -130,6 +130,16 @@ as **artifact instances** (HAS — the produced file as evidence).
 concept was promoted into the v3 subject anatomy on the strength of
 this demand.
 
+**The twin angle (○).** An artifact *definition* also tells a live twin
+what to publish. On a served speed meter (Volume I, chapter 14) the
+evidence file is not seized on inspection day — it is *served*:
+produced per enforcement measurement, announced on the endpoint by
+subscription, fetched with timestamps. The monitor's signal trigger
+("an artifact arrived", §14.5) then evaluates the content contract on
+arrival, and a missing or stale file is `indeterminate`, never a silent
+pass. The G2 contract authored once is both the lab's checklist and the
+twin's publication schedule.
+
 ### 9.2.5 Test kinds: field, simulation, software
 
 **Demand.** R 91-2's central experiment is not a chamber test: the
@@ -313,7 +323,7 @@ Each stress case left a primitive behind. The complete ledger:
 | Required instrument outputs (R 91 evidence file) | IS contract + HAS instance | `artifact_definition` / `artifact_instance` | ○ G2 |
 | Composite/distributed subjects (ego meter, detection fields) | structure aspect realized | `relationship` block, partOf propagation | ○ G3 (◐ test_subject) |
 | Field/simulation/software tests (R 91-2) | kind enum + per-kind metadata | test kinds + obligation | ◐ G4, ○ G5 |
-| Statistical test design (R 91-2 4.4/4.7) | counts table + statistics item | `statistics` block | ◐ G6 |
+| Statistical test design (R 91-2 4.4/4.7) | counts + statistics blocks | `design.counts` + `acceptance.statistics` | ● G6 |
 | Set-valued membership (R 144 sets, R 91 dual-mode) | cardinality: set + collection ops | set-dimension package | ◐ G9 |
 | Structured interferents (R 144 4.5.2) | (component, limit) pairs | pair-list value type | ○ G10 |
 | Behavior-gating requirements (R 91 qualitative mandates) | bind to a behavior id | `verification: behavior-check` | ○ G11 |
@@ -359,7 +369,7 @@ subject SpeedMeter {
 conformance /conf/field/stationary-field-test {
   kind          field                                                  # G4 ●
   preconditions { reference_uncertainty_4_5, count_4_4 }               # invalid, not fail
-  statistics    optional { bins, mean m, σ, z 5 }                      # 4.7 ◐
+  statistics    optional { bins, mean m, σ, z 5 }                      # 4.7 ●
   acceptance    per_measurement ocl{ abs(speed_error)
                   <= lookupMPE(reference_speed, 'stationary', 1.0) }
 }

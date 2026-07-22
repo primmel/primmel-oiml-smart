@@ -34,9 +34,16 @@ speaking about different things:
 Neither content kind owns the other. R 60 never says how an application
 is reviewed; PD-05 never says what a load cell's MPE is. The scheme is
 instrument-agnostic by design — PD-05's clauses apply identically to
-every instrument category the OIML-CS covers, which is exactly why the
-running system's workflow data (`data/r60/evaluation/`) is byte-identical
-across Recommendations.
+every instrument category the OIML-CS covers, which is why the running
+system carries the same workflow model in every Recommendation tree.
+All three `evaluation/` directories (`data/r60/`, `data/r91/`,
+`data/r144/`) hold the same seven files under the same names:
+`approvals.yaml`, `state-machines.yaml` and `roles.yaml` are identical
+but for header comments and YAML quoting style; the other four
+(`workflow`, `gateways`, `processes`, `certificate-template`) differ
+only in Recommendation-specific clause references and content; R 60 and
+R 144 add five rec-specific files. Nothing is byte-identical across
+trees — the identity is structural, which is the point.
 
 The v2 layout ignores this boundary: the R 60 package mixes a reference
 model of the Recommendation with an implementation model of the OIML-CS
@@ -109,6 +116,22 @@ The lifecycle state machines that drive every transition live in
 test report, evaluation report, certificate) with declarative cascades;
 the machines are scheme content, not application code.
 
+### A.3.1 A fifth role: the engine operator (○)
+
+The four consoles above run the type-approval workflow, and that
+workflow stays the legal baseline — nothing here amends PD-05. The twin
+direction adds one actor the scheme has not yet named: the **engine
+operator** (Volume I, chapter 14, §14.8) — the issuing authority,
+regulator or market-surveillance body running the Compliance Engine
+against the certified promises *after* issuance. Continuous
+surveillance is the scheme's future face: the certificate of §A.4 stops
+being a photograph of one Tuesday in the lab and becomes the head of an
+evidence stream — monitors re-evaluating the same requirement OCL
+against served values, failures escalating back into the scheme's own
+machinery (flag the certificate, open a case). All of it is ○; the
+7-step workflow of §A.2 issues the certificate either way — the engine
+then watches what the certificate promised.
+
 ## A.4 Determinations, evaluation reports, certificates
 
 The tertiary-tier judgment chain (facts permanent, judgments
@@ -158,11 +181,11 @@ completeness is *validated at compilation time*, not reviewed by eye:
 
 | El. | Content | Bound to |
 |---|---|---|
-| a–c | title "OIML test report"; TL name/address + test location; unique report id on each page + end marker | `test_report.title`, `…laboratoryId → organization`, `…report_number` |
-| d–g | applicant identity; Recommendation reference (number + year); category; type/family designation | `application.applicant`, `standard.identifier + year`, `standard.docnumber`, `instrument.model + application.type_designation` |
-| h–k | samples tested; per-test dates; per-test place; per-test conductor | sample-selection form, `form_instance.created`, `test_report.test_location`, `form_instance.evaluator` |
-| l–o | environmental conditions; facility and equipment; instrument/simulation setup; authorized adjustments | environmental data, equipment-info form, load-cell-info form, adjustments-info form |
-| p–r | results with uncertainty and traceability (**may** — only if the Recommendation specifies); per-test pass/fail conclusion; name/function/signature of the authorizing person | `form_instance.result`, `test_report.evaluator + signature_date` |
+| a–c | title "OIML test report"; TL name/address + test location; unique report id on each page + end marker | `test_report.title`, `test_report.laboratoryId → organization.name, organization.address`, `test_report.reportNumber` |
+| d–g | applicant identity; Recommendation reference (number + year); category; type/family designation | `application.applicant.company, application.applicant.address`, `standard.identifier + standard.year`, `standard.docnumber`, `instrument.model + application.typeDesignation` |
+| h–k | samples tested; per-test dates; per-test place; per-test conductor | 04-07-sample-selection form, `form_instance.created`, `test_report.testLocation`, `form_instance.evaluator` |
+| l–o | environmental conditions; facility and equipment; instrument/simulation setup; authorized adjustments | environmental data, `04-10 test-equipment forms`, 04-05-load-cell-type-info form, `04-07-sample-selection form (§4.8)` |
+| p–r | results with uncertainty and traceability (**may** — only if the Recommendation specifies); per-test pass/fail conclusion; name/function/signature of the authorizing person | `form_instance.result`, `test_report.evaluator + test_report.signatureDate` |
 
 Element (p) is the single `may` in the list; the rest are `shall`. The
 checklist's own coverage is enforced in the evaluation process model
@@ -243,7 +266,7 @@ And an implementation package maps to it (standalone `.prm` form):
         } },
         "platform.workflow.report_compile": { "oiml-cs#type_evaluation.test_report": {
           "description": "Report composer with the 18-element checklist gate.",
-          "justification": "Checklist coverage >= 1.0 is a process precondition of submission."
+          "justification": "Report compilation validates the /req/cs/test-report-18-elements provision; checklist coverage >= 1.0 gates evaluation-report compilation (PD-05 §4.5)."
         } }
       }
     }
@@ -260,8 +283,11 @@ And an implementation package maps to it (standalone `.prm` form):
 - mappings are directional: implementation → reference only; both ends
   resolve (`Namespace#ElementID`); coverage claims are computed by the
   calculus, never authored (Chapter 5, Volume I);
-- a TestReport may not transition to submitted while its 18-element
-  checklist coverage is below 1.0 (the §4.4.3 gate);
+- the 18-element checklist is enforced in the process model
+  (`evaluation/processes.yaml`), not at TestReport submission:
+  `compile_test_report` validates the `/req/cs/test-report-18-elements`
+  provision (PD-05 §4.4), and `compile_evaluation_report` refuses
+  synthesis while `[test_report_checklist_coverage] < 1.0` (PD-05 §4.5);
 - a Certificate issues only from a finalized EvaluationReport
   (`overall_decision ≠ PENDING`), and its scope equals the application's
   scope as amended by the decision — never wider;
@@ -285,6 +311,10 @@ And an implementation package maps to it (standalone `.prm` form):
 - PD-05 §4.4.3's 18 elements are data, validated at report compilation.
 - "Does this platform / CB / lab fulfil the scheme?" is a coverage
   question, answered by the mapping calculus — not by document review.
+- The scheme's future face is continuous surveillance (○): a fifth
+  role, the engine operator, runs the Compliance Engine against the
+  certified promises after issuance — while the 7-step workflow remains
+  the legal baseline (§A.3.1).
 
 *Next: [Annex B — The SMART Platform Runtime](../platform/README.md):
 the engine that executes these models.*

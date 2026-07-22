@@ -101,7 +101,10 @@ The clause URN remains as the coarse, human-legible citation; the
 fragment address is the machine-checkable one. A requirement's
 provenance answers "R 60-1, 5.2, second sentence" — and a reviewer no
 longer has to guess which of the clause's five sentences the `limit`
-expression interprets.
+expression interprets. The twin direction reuses the machinery one
+level over: the passport's **unique identifier** is the same kind of
+address — the public, fragment-level identity of the *product*, the one
+a buyer or a DPP registry resolves (○ — chapter 14, §14.6).
 
 ## 9.4 Model↔document maps
 
@@ -162,10 +165,11 @@ Four document-machinery constructs round out the picture:
   is the enforcement. A link that resolves to nothing is a build error,
   not a dead hyperlink.
 - **Notes and examples** (●) — typed supplements, declared in
-  `data/r60/notes.yaml` with `type: NOTE | EXAMPLE` and linker-checked
-  attachment points (`note_runs_ab_vs_cd`: "Classes A and B require 5
-  identical load applications per test point…"). This is the running
-  form of the IEC-ISO `ProvisionSupplement` taxonomy.
+  `data/r60/notes.yaml` with `type: NOTE | EXAMPLE | WARNING | INFO`
+  (R 60 uses only `NOTE`) and linker-checked attachment points
+  (`note_runs_ab_vs_cd`: "Classes A and B require 5 identical load
+  applications per test point…"). This is the running form of the
+  IEC-ISO `ProvisionSupplement` taxonomy.
 - **Figures** (◐/○) — figures live with the source parts today
   (`sources/r060/1/images/`) and ride along in the compiled
   presentation; v3 makes them typed fragments so a figure, like a table,

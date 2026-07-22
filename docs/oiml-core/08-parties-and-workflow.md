@@ -34,8 +34,9 @@ state (`off → warming → … → fault`), a HAS aspect of the instrument.
 ## 8.2 Workflow IS: the party model
 
 Parties are Foundations-tier content — referenced by everything, anchored
-to nothing in the subject. Five party classes cover the certification
-world (`data/r60/entities/parties.yaml`) ●:
+to nothing in the subject. Four party classes cover the certification
+world (`data/r60/entities/parties.yaml`) ●; the BIML in the table is a
+role (`data/r60/evaluation/roles.yaml`), not a party class:
 
 | Party | What it is | Key fields |
 |---|---|---|
@@ -50,7 +51,8 @@ Two modelling decisions deserve note:
 - **IA and TL share one store.** Both extend a common `Organization` base
   (identity, address, OIML scope, accreditation), discriminated by `kind:
   issuing-authority | test-laboratory` — one `organizations` store, two
-  concrete parties; an organization can be both.
+  concrete parties; `kind` is single-valued, so the same legal entity may
+  register once per kind.
 - **Labs declare capabilities, not equipment.** A TestLaboratory carries an
   abstract capability list (`humidity-testing`, `emax-up-to-50000kg`, …)
   that dispatch matching consumes (`evaluation/lab-selection-criteria.yaml`
@@ -79,6 +81,17 @@ organization. The platform's access layer resolves the same model: role
 homes and section rules in `browser/src/auth/roles.ts`, consoles per role
 — the applicant portal, the IA console (review → dispatch → evaluate →
 issue), the TL workbench — all reading the one role declaration.
+
+**Two roles wait in the twin direction** (Volume I, Chapter 14 §14.8 ○),
+and they are deliberately not among the eleven. The **twin provider** —
+the manufacturer, or the owner-operator of a deployed unit — serves the
+live instance and speaks for the product. The **engine operator** — an
+IA, regulator or market-surveillance body running continuous evaluation —
+runs the monitors and speaks for the standard. They belong to the
+continuous-compliance loop that runs *after* issuance, not to the
+certification loop this chapter models; when v3 admits them, they enter
+the role declaration the same way the eleven did — resolved per
+transition, per console.
 
 ## 8.4 Workflow IS: the phase model and entity chain
 
@@ -163,6 +176,9 @@ Three mechanics make the machines executable rather than decorative:
       - entity: test_report
         where: 'test_request_id = ${this.id}'
         set: { status: 'SUBMITTED', submitted_date: 'now' }
+      - entity: test_assignment
+        where: 'test_request_id = ${this.id} AND status != OMITTED'
+        set: { status: 'COMPLETED', completed_date: 'now' }
       - entity: form_instance
         where: 'test_report_id = ${testReport.id} AND status != LOCKED'
         set: { status: 'LOCKED', locked_at: 'now' }
@@ -281,10 +297,10 @@ workflow oiml_type_evaluation {           # implementation model of OIML-CS PD-0
 - The certification workflow is an **implementation model** of the OIML-CS
   reference scheme; today's PD-05 clause refs are embryonic mappings,
   v3's `.prm` files make them a coverage-checked calculus.
-- Parties (manufacturer, IA, TL, expert, BIML) are Foundations-tier
-  organizations; the eleven roles are process functions resolved per
-  transition, approval, and console. Labs declare capabilities, not
-  equipment.
+- Parties (manufacturer, IA, TL, expert — plus the BIML as a role, not a
+  party class) are Foundations-tier organizations; the eleven roles are
+  process functions resolved per transition, approval, and console. Labs
+  declare capabilities, not equipment.
 - The entity chain — Application → TestRequest (one per lab) →
   TestAssignment (form × sample × lab) → TestReport → FormInstance/TestRun
   → EvaluationReport → determinations → model evaluations → decision →

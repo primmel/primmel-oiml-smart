@@ -71,10 +71,14 @@ class per directive verb-force: `Requirement`, `Recommendation`,
 `ProvisionSupplement`s (notes, examples), `Clause` with
 `hasSectionNumber`, and `PublicationDocument` carrying
 `dcterms:hasVersion` / `dcterms:replaces` / `dcterms:issued`. SHACL
-node shapes (a `ProvisionShape` constraining `isPartOf`,
-`hasBindingnessType`, `hasStatement`, `hasSupplement`) validate
-instances, and the consumption pattern is SPARQL: competency questions
-like "list every Requirement of this document with its bindingness and
+node shapes validate instances: `ProvisionShape` constrains
+`dcterms:isPartOf` to exactly one parent — a `Clause` or the
+`PublicationDocument`, each checked against its own shape — and allows
+a `dcat:distribution`; `ClauseShape` applies the same single-parent
+rule and types `hasSectionNumber` and `dcterms:title`;
+`PublicationDocumentShape` constrains the three `dcterms` properties
+above. The consumption pattern is SPARQL: competency questions like
+"list every Requirement of this document with its bindingness and
 supplements".
 
 The Primmel→RDF projection maps the package onto that vocabulary:
@@ -121,7 +125,22 @@ checked IRDI is citable in an international dictionary rather than
 invented per package — the same "defined once, referenced everywhere"
 discipline the kernel applies internally, extended across organizations.
 
-## 12.5 Grammar sketch *(illustrative v3 syntax)*
+## 12.5 The passport projection — endpoint and DPP-registry feed (○)
+
+The twin direction's outward faces belong to this family. The **passport
+endpoint** serves the product's model-native passport (chapter 14,
+§14.6) — identity, composition, as-certified claims, and live compliance
+status under authority scopes — and the **DPP-registry feed** emits the
+same projection to the EU registry, addressed by unique identifier. Both
+are projections in this chapter's exact sense: generated from the
+product model, regenerated on every build, never authored, never
+re-imported. And both are honestly lossy: the registry receives the
+public fragment, while the executable product model and its evidence
+stay behind in the kernel. What ReqIF is to the RM-tool ecosystem, the
+passport feed is to the DPP ecosystem — the lossy-but-useful face the
+outside world actually consumes.
+
+## 12.6 Grammar sketch *(illustrative v3 syntax)*
 
 ```prl
 projection reqif-din-99200 of oiml-r60 {
@@ -148,7 +167,7 @@ attribute e_max {
 }
 ```
 
-## 12.6 Validation rules
+## 12.7 Validation rules
 
 - a projection declares its `carry` and `drop` lists; everything in
   `carry` is mechanically verified present and faithful in the output
@@ -167,7 +186,7 @@ attribute e_max {
   projection's `languages` clause — an undeclared silent mapping is an
   error.
 
-## 12.7 Summary
+## 12.8 Summary
 
 - Exports are lossy-but-useful projections: generated, regenerated,
   never authored, never re-imported — the kernel stays the source of

@@ -16,6 +16,11 @@ Recommendation instantiates it through a **domain profile** that is data,
 not schema: "A new Recommendation = a new profile file; zero schema
 changes" (`oiml-r60-loadcell-profile.yaml` — profile note).
 
+The runtime endgame is the served instance: the instrument as a **live
+twin**, its model and state queryable over a declared endpoint and judged
+continuously by the same OCL (Volume I, [Chapter
+14](../primmel/14-live-twins.md) ○).
+
 ## The 4-layer architecture
 
 OIML Core sits at layer 1 of a four-layer stack. Each layer depends only

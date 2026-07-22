@@ -148,7 +148,7 @@ certification authority, certificate id, expiry, traceability) and constraints
 issuing-authority 1:2 override, R 144-1 §7.2.2.2), evaluated against run
 evidence *before* the verdict; `execution/subforms/cgm-point.yaml` — one row
 per CGM point: certified value, indications, mean, error, MPE-at-point —
-consumed by eight forms. R 60 ● (weights / the force-generating system;
+consumed by fourteen forms. R 60 ● (weights / the force-generating system;
 test-equipment declarations with calibration references). R 91 ●
 (reference-speed variables). **deltas:** the material kind, identity fields,
 the constraint set, the evidence binding.

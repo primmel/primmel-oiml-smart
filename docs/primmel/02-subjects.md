@@ -23,6 +23,14 @@ which is exactly how untyped requirement databases rot.
 
 ## 2.2 The three questions
 
+> **Formal grounding.** The IS / HAS / DOES trichotomy is not a
+> convenience — it is provably exhaustive. See [Volume 0 — The IS–HAS–DOES
+> Modelling System](../foundation/README.md), Theorems 1–3: every
+> descriptive claim about an entity factors through one of these three
+> relations, and the system is closed under its three operations
+> (composition, reification, embedding). What follows is the *applied*
+> form: how the three relations turn into a usable subject anatomy.
+
 ![The subject anatomy](diagrams/subject-anatomy.svg)
 
 Every aspect of a subject answers exactly one of three questions:
@@ -42,8 +50,8 @@ say "hold the environmental context (HAS) within the designed envelope
 
 ## 2.3 The IS catalog — what the subject is
 
-Seven aspect kinds. Each is intrinsic: modify it and you are describing a
-different subject.
+Seven aspect kinds, plus one twin-era addition (○, chapter 14). Each is
+intrinsic: modify it and you are describing a different subject.
 
 | Aspect | Definition | Example (OIML R 60) |
 |---|---|---|
@@ -51,9 +59,11 @@ different subject.
 | **provenance** | pedigree: manufacturer, source clauses, supersedes, legally-relevant software | manufacturer record; `source: r:60-1:2021 §3.1.3` |
 | **structure** | designed composition: partOf / consists_of / connectsTo | a moving speed meter consists of a target meter + an ego meter |
 | **design parameters** | values fixed by design that define the type | `E_max = 500 kg`, `p_LC`, transducer material |
+| **declared classification** | kind-membership: the declared dimension values — identity-defining (the exhibited reading is HAS, below) | the group presents as accuracy class `C`, the family as humidity class `CH` |
 | **designed operating conditions** | the designed envelopes: reference / rated / limiting tiers | rated −10…+40 °C; reference 20 °C ± 2 |
 | **promises** | manufacturer **claims on characteristics and behavior** | "holds class C6 over the rated range"; a durability claim |
 | **artifact definitions** | outputs the subject must produce, with content contract + produced-when | the R 91 evidence file per enforcement measurement |
+| **endpoint** ○ | the declared API surface: operations the subject serves (query / subscribe / invoke) with access scopes — part of the type definition, like a marking | `lc500_api` serving `get_indication`, `watch_state`, `run_self_test` |
 
 Two of these are commonly confused away and must stay distinct:
 
@@ -77,7 +87,7 @@ without them becoming different models.
 | Aspect | Definition | Example (OIML R 60) |
 |---|---|---|
 | **attributes** | exhibited named property values | test-context values `d_min`, `d_max`; as-found readings |
-| **dimensions** | exhibited classification membership | this unit presents as class `C6`, humidity class `CH` |
+| **dimensions** | exhibited classification *readings* (declared membership is IS) | this unit presents as class `C6`, humidity class `CH` |
 | **state** | current node of the operational state machine | `off → warming → ready → measuring → fault` |
 | **characteristics** | quantities **derived from behavior I/O** | error `e_l`, repeatability `e_r`, creep `c_c` |
 | **environmental context** | actual conditions experienced | logged 23.4 °C during run 7; installation site |
@@ -89,6 +99,12 @@ And the third classic confusion:
   designed tiers (IS) say where the instrument is *meant* to perform; the
   environmental context (HAS) is what it *actually experienced*. A test
   constrains the latter to lie within the former and records both.
+
+In the twin direction (○, chapter 14) this catalog doubles as the
+serving catalog: a live instance exposes its HAS aspects through `serve`
+bindings, each bound to an endpoint operation with a freshness window —
+a stale value degrading the verdict to `indeterminate`, never a silent
+pass.
 
 ## 2.5 The DOES catalog — what the subject does
 
@@ -111,7 +127,10 @@ Because a process is itself a subject, the anatomy recurs:
 
 Chapter 4 develops the process model in full. What matters here: DOES is
 *processes*, not narrative — a behavior you cannot in principle execute
-or simulate is a characteristic wearing a costume.
+or simulate is a characteristic wearing a costume. And a process may
+itself be reachable: in the twin direction (○, chapter 14) the subject's
+endpoint can declare an `invoke` operation over a behavior, making it
+remotely invocable — "run your self-test" from across the wire.
 
 ## 2.6 The IS/HAS duality
 
@@ -168,6 +187,12 @@ three questions per model, and the linter asks the same three questions
 back (did you declare its IS? its HAS? its DOES?).
 
 ## 2.9 Grammar sketch *(illustrative v3 syntax)*
+
+*Status ◐: the `subject` construct is implemented in the language
+toolchain (primmel-ts: `is:`/`has:`/`does:` blocks, `extends` merge
+rules, anatomy checks C6–C9 — `TODO.roadmap/01`). The sketch below is
+normative for the concepts; small surface details (e.g. `extends` sits
+inside the block) follow the implementation.*
 
 ```prl
 subject LoadCell {

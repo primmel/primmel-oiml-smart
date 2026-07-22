@@ -151,10 +151,10 @@ package oiml-r60 {
 
 ## 10.7 Validation rules
 
-- every spelling code parses: ISO 639 3-letter language code
-  (optional, terminological form preferred) + ISO 15924 script
-  (**mandatory**) + optional ISO 3166-1 country + optional
-  extension — a bare language code is an error;
+- every spelling code parses: ISO 639-3 alpha-3 (terminological)
+  language code + ISO 15924 script (**mandatory**) + optional
+  ISO 3166-1 country + optional extension — a bare language code is an
+  error;
 - every `via` system code resolves to a register entry (or is `zz-`
   user-assigned, which validates with a warning — user-assigned codes
   are not portable);

@@ -122,7 +122,7 @@ inputs to sibling fields:
       calculation_bindings:
         avgIndicationAt75pct: reference_indication_75pct
         indicationAtDmin: indication_at_dmin
-        "n": "y"
+        "n": n_test_intervals
 ```
 
 **The keys of `calculation_bindings` are the calculation's declared
@@ -130,8 +130,11 @@ input names — not field names, not attribute ids, not renamed
 conveniences.** `conversionFactor` declares inputs
 `avgIndicationAt75pct`, `indicationAtDmin`, `n` (●
 `data/r60/specification/calculations.yaml`), so those exact strings are
-the keys; the *values* are this form's field names (`"n": "y"` maps the
-calc's input `n` to the form's field `y`). The R 60 build's
+the keys; the *values* are this form's field names (`"n":
+n_test_intervals` maps the calc's input `n` to a dedicated derived
+field — `ocl{(emax - emin) / vmin}`, the intervals of the tested range
+per R 60-3 §2.1.2.4 — not to the sibling `y` field it coincides with
+when the test spans the classified range). The R 60 build's
 **binding-key drift** pitfall was exactly this: a form binding `n_lc`
 where the calc declared `n` — the engine silently gets an unbound input.
 The linker now checks every binding key against the calc's declared
@@ -291,7 +294,7 @@ form r60-3/table-6.8 {
       conversion_factor_f : number[counts/v]          method computed
         calc conversionFactor { avgIndicationAt75pct: reference_indication_75pct
                                 indicationAtDmin: indication_at_dmin
-                                n: y }            # keys = calc's inputs
+                                n: n_test_intervals }  # keys = calc's inputs
       creep_readings : array  series { axis elapsed_min[min]  cell change_v[v] }
       max_creep_change_v : number[v]                method derived
         derive ocl{ creep_readings->collect(r | r.change_v)->max() }

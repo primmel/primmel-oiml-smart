@@ -3,8 +3,9 @@
 > *In this chapter:* how to declare the primary tier of a Recommendation
 > package — the subject type and its variants, classification dimensions,
 > family criteria, model groups, the attribute definition discipline,
-> capabilities, behaviors, and operating conditions. Everything else in the
-> package anchors to what you declare here.
+> capabilities, behaviors, operating conditions, and the endpoint and
+> serve declarations that make a subject twin-ready (○). Everything else
+> in the package anchors to what you declare here.
 
 ---
 
@@ -119,7 +120,7 @@ Recommendation's own rule for that sameness, and the discipline is:
     - "same material or combination of materials (e.g. mild steel, …)"
     - "same design of the measurement technique (e.g. strain gauges bonded to metal)"
     - "same principle used to attach the strain gauge to the load cell"
-    - "same method of construction (shape, sealing, mounting, manufacturing)"
+    - "same method of construction (shape, sealing of strain gauges, mounting method, manufacturing method)"
     - "same set of specifications (output rating, input impedance, supply voltage, …)"
     - "one or more load cell groups, all cells in a group having identical
        metrological characteristics (class, n_LC, temperature rating, etc.)"
@@ -299,7 +300,60 @@ shared by all performance tests (calibrated, traceable equipment; axial
 loading without shock; stabilisation periods; ISO 8601 timestamps),
 referenced by tests rather than restated per test.
 
-## 2.11 Grammar sketch *(illustrative v3 syntax)*
+## 2.11 Declaring the subject twin-ready (○)
+
+Sections 2.2–2.10 declare the subject for the laboratory. One further
+question belongs at authoring time: *could this subject be switched
+on?* The twin direction (Volume I, [chapter
+14](../primmel/14-live-twins.md)) needs two more declarations — both
+additive, both ○ in v3, and both anchored to the aspects already
+modelled:
+
+- **The endpoint (IS-level).** The subject's declared API surface —
+  "this product offers this interface" is part of the type definition,
+  like a marking or a software identification. Each operation has a
+  **kind** (`query` pulls a current value, `subscribe` pushes on
+  change, `invoke` triggers a process) and an **access scope**
+  (`public` / `registered` / `authority` — who may call it), and the
+  endpoint carries a **connector profile** (`rest_json`, `mqtt`,
+  `opc_ua`, `file_drop`) binding protocol to model.
+- **The serve bindings (HAS-level).** Which declared aspects the
+  endpoint serves, via which operation — attributes, dimensions, state,
+  characteristics, environmental context — each with a **freshness
+  window** (`fresh_within 5s`): how old a value may be before it stops
+  meaning anything. Freshness is part of the binding, not an
+  operational detail: a monitor reading a stale value degrades its
+  verdict to `indeterminate`, never a silent pass.
+
+Nothing else in this chapter changes. The served aspects are the ones
+of §2.3–§2.10, and the OCL a monitor evaluates is the requirement's own
+limit (INV-9) — the laboratory and the twin are judged by the same
+statements. Sketched on the running example:
+
+```prl
+subject LoadCell extends MeasuringInstrumentModel {
+  is {
+    endpoint lc500_api {                                  # ○
+      operation get_indication { kind query     serves indication }
+      operation watch_state    { kind subscribe serves state, environmental_context }
+      operation run_self_test  { kind invoke    does self_test }
+      access  { public: [get_indication]  registered: [watch_state]
+                authority: [run_self_test] }
+      profile rest_json
+    }
+  }
+  has {
+    serve sample.test_context.d_min via get_indication { fresh_within 5s }   # ○
+  }
+}
+```
+
+Authoring guidance in one line: declare the endpoint when the
+instrument is expected to be queryable in service; declare a serve
+binding for every aspect a requirement will want *live* — and give each
+its freshness window, because a live binding without one is an error.
+
+## 2.12 Grammar sketch *(illustrative v3 syntax)*
 
 ```prl
 subject LoadCell extends MeasuringInstrumentModel {
@@ -342,7 +396,7 @@ subject LoadCell extends MeasuringInstrumentModel {
 }
 ```
 
-## 2.12 Validation rules
+## 2.13 Validation rules
 
 The schema, linker, and coverage audit enforce:
 
@@ -362,9 +416,12 @@ The schema, linker, and coverage audit enforce:
   `abstract` capabilities are never declared directly;
 - every behavior's `verified_by` resolves, or the behavior is reported as
   unverified coverage — a finding, not an error;
-- every `quantity_kind` and `unit` resolves against `value-types.yaml`.
+- every `quantity_kind` and `unit` resolves against `value-types.yaml`;
+- every `serve` binding (○) names a declared aspect and a declared
+  endpoint operation, and carries its freshness window — a live binding
+  without `fresh_within` is an error.
 
-## 2.13 Summary
+## 2.14 Summary
 
 - The subject is declared once, in `model/`, before anything secondary;
   every later element anchors to it.
@@ -383,6 +440,10 @@ The schema, linker, and coverage audit enforce:
   making a new variant an additive edit. Behaviors are declared with
   `verified_by` links, or deliberately without. Conditions come in the
   three designed tiers plus shared test conditions.
+- Twin readiness is two additive declarations (○): the endpoint (IS —
+  operations with kinds and access scopes, one connector profile) and
+  the serve bindings (HAS — aspect via operation, each with a freshness
+  window; stale ⇒ `indeterminate`).
 
 *Next: [Chapter 3 — Requirements](03-requirements.md): constraints bound
 to the subject you just modelled — statement, binding, OCL limits, and

@@ -57,7 +57,7 @@
     <text x="292" y="234" font-weight="700" fill="#334155">group scope</text>
     <text x="292" y="252" fill="#475569">identical metrological</text>
     <text x="292" y="266" fill="#475569">characteristics: class,</text>
-    <text x="292" y="280" fill="#475569">n_lc, y, z, t range</text>
+    <text x="292" y="280" fill="#475569">n_lc, y, z, v_min, dr</text>
     <text x="292" y="308" fill="#64748b">unit of sample selection</text>
 
     <rect x="500" y="214" width="160" height="118" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>

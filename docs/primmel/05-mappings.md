@@ -22,6 +22,12 @@ It is not a "special case" of the reference model. It is a different
 model, of a different thing (the organization, not the standard),
 authored by different people, evolving on a different clock.
 
+The twin direction adds a third speaker ○: the **product reference
+model** — a manufacturer's model of their own product, a reference model
+in kind but speaking for *the product*, not the standard. It stands to
+the standards-reference model in exactly this chapter's relation: mapped
+aspect by aspect, with description and justification (chapter 15).
+
 Because the two models are different things, their relation cannot be
 inheritance or refinement. It is **mapping**.
 
@@ -79,6 +85,14 @@ A fourth rule, **closure** — all children mapped ⇒ parent covered
 *without* a direct mapping — is the standard discovery heuristic and is
 computed by tooling, flagged for confirmation rather than asserted.
 
+Transitivity at process level is also what lets the calculus *chain*:
+user ⇒ product ⇒ standard. An instrument user's implementation model
+maps to a manufacturer's product reference model; that model maps to the
+Recommendation; together they carry user ⇒ standard *through the mapped
+aspects* — while model-level non-transitivity stands guard, so
+compliance flows only through shared components, and the coverage report
+says where it doesn't. Chapter 15 develops this supply chain in full.
+
 ## 5.4 Discovery
 
 Given existing mappings, the engine proposes new ones by transitivity
@@ -95,11 +109,16 @@ Two equivalent forms; pick per maintenance style:
 **In-model** (`map_profile` in the `.prl` file):
 
 ```prl
-map_profile ToStandardS {
-  mapping { from OpA to StdS#Process5 }
-  mapping { from OpB to StdS#Process3 }
+map_profile StdS {
+  mapping {
+    OpA -> StdS#Process5
+    OpB -> StdS#Process3
+  }
 }
 ```
+
+Per-pair metadata blocks (`description` / `justification` / `coverage`)
+extend any pair in v3: `OpA -> StdS#Process5 { description "…" coverage full }`.
 
 **Standalone** `.prm` file (JSON) — richer per-pair metadata, versioned
 independently of the models:
@@ -127,7 +146,47 @@ pattern: the implementation model declares local copies of the reference
 elements it maps to (e.g. `StdS#Process5`), and provisions/references
 resolve to the same clause in the source `.prd` extract.
 
-## 5.6 Why the OIML-CS case matters
+## 5.6 The mapping space: layers, imports, multi-targets, views
+
+Four properties finish the theory. Each is simple; together they make
+the ecosystem legible.
+
+![The mapping space](diagrams/mapping-space.svg)
+
+**a · Any number of layers.** Reference and implementation are roles at
+the *ends* of a chain, not a binary. An intermediate model — a sector
+scheme, a corporate policy manual, a manufacturer's product model — is
+a fulfiller toward the layers above and a reference for the layers
+below. Compliance flows hop by hop; the model-level non-transitivity of
+§5.3 is the guardrail: nothing flows except through shared mapped
+components. (Chapter 15's supply chain is this property's home turf.)
+
+**b · Import ≠ mapping.** Implementation models may *import* each other
+(`uses` composition): an integrated management system includes its QMS
+operations and its ISMS operations as components. Import is structural
+inclusion — "my model contains yours". Mapping is a fulfilment claim —
+"my process fulfils your requirement". An integrated system does both:
+it imports its components *and* maps to its standards. Confusing the
+two is how compliance gets double-counted.
+
+**c · One implementation, many reference models.** `mapSet` is per
+target namespace for a reason: the same operations model maps to ISO
+9001, to ISO 27001, to a customer scheme — with coverage computed per
+target. And a single process may fulfil provisions in several standards
+at once: that is the entire economic argument for integrated systems
+("write once, comply twice"), and the mapping set is what *proves* it
+instead of asserting it.
+
+**d · Views of different depths.** A complex model can be read *through*
+a shallower one. Viewing the integrated system through the QMS lens
+shows only the QMS-relevant processes and their coverage against ISO
+9001 — the organization sees one standard at a time while the model
+stays whole. A view is either a filtered rendering (a view profile,
+carrying no provisions of its own) or a deliberate lens model placed in
+the chain. Views never mutate the underlying model or its mappings.
+(The 2021 view profiles, generalized.)
+
+## 5.7 Why the OIML-CS case matters
 
 The running OIML SMART system already contains the pattern, unnamed:
 the platform's certification workflow (`evaluation/`) is an
@@ -146,17 +205,21 @@ gives the ecosystem a plan:
 
 — all in one relation, one calculus, one audit view.
 
-## 5.7 Validation rules
+## 5.8 Validation rules
 
 - both ends of a mapping resolve (implementation component and
   `Namespace#ElementID` reference element);
 - no mapping from a reference component to an implementation component
   (direction is fixed);
+- an import (`uses`) may not be expressed as a mapping, nor a mapping
+  as an import — inclusion and fulfilment are different claims (§5.6 b);
+- a view never adds, removes, or edits mappings of the model it reads
+  (§5.6 d);
 - coverage claims are computed, not authored — an authored coverage
   assertion that disagrees with the calculus is an error;
 - a mapping without description is a warning at audit strictness.
 
-## 5.8 Summary
+## 5.9 Summary
 
 - Reference speaks for the standard; implementation speaks for the
   organization; workspace speaks for the evidence.
@@ -164,6 +227,11 @@ gives the ecosystem a plan:
   never equivalence, never refinement.
 - Coverage is a calculus: inherit down, aggregate up, transitive at
   process level, closure by discovery.
+- The mapping space: chains of any depth (compliance flows hop by hop
+  through shared components); import ≠ mapping (inclusion ≠
+  fulfilment); one implementation may map to many references (coverage
+  per target); views read complex models through shallower lenses
+  without touching them.
 - One relation serves publishers, implementers, operators and auditors
   alike.
 

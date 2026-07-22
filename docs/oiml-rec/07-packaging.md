@@ -118,7 +118,7 @@ silent hole in validation". The gates (`npm run validate`) run schema
 validation before semantic validation; a file with no schema fails
 loudly, never passes vacuously.
 
-## 7.5 `uses` composition: core + modules + overlay ○
+## 7.5 `uses` composition: core + modules + overlay ◐
 
 One directory per Recommendation works — until the second and third
 Recommendations exist and the census can measure what they share. The
@@ -133,28 +133,39 @@ bug mechanism are the same mechanism. Composition replaces both.
 
 ![Package composition](diagrams/package-composition.svg)
 
-The design (layering census §5, ○ — planned for v3):
+The design (layering census §5, ◐ — scaffolding landed, wiring planned
+for v3):
 
-- **Core** (`data/core/`, `id: oiml-core`, `kind: core`) — the Tier-1
+- **Core** (`data/core/`, `id: core`, `kind: core`) — the Tier-1
   verbatim content: subject-chain and workflow entities, parties,
   evaluation skeletons (state machines, approvals, roles, workflow,
   processes), the OIML-CS 18-element report checklist, obligation
   catalog, value-type base. Never a publishable rec; the registry
   excludes `kind: core` from rec listings.
-- **Modules** (`data/modules/<name>/`, `kind: module`) — seven
-  parameterized test/form families measured out of the census:
-  `emc-disturbances`, `env-iec60068`, `software-d31`,
-  `reference-materials`, `specimen-governance`, `report-headers`,
-  `examination-docs`. Each carries a `module.yaml` manifest
-  (`provides:` test patterns + form skeletons; `requires:` what the
-  consumer must supply). The module freezes the *skeleton*; the rec
-  binds its own attribute ids, severities, acceptance expressions and
-  clause URNs. Parameterization is not new machinery: conformance-test
-  `variables` and form `bind:` paths already do it — the module makes
-  it a package boundary.
+- **Modules** (`data/modules/<name>/`, `id: module-<name>`,
+  `kind: module`) — seven parameterized test/form families measured out
+  of the census: `module-emc-disturbances`, `module-env-iec60068`,
+  `module-software-d31`, `module-reference-materials`,
+  `module-specimen-governance`, `module-report-headers`,
+  `module-examination-docs`. Each carries a manifest (`provides:` test
+  patterns + form skeletons; `requires:` what the consumer must
+  supply). The module freezes the *skeleton*; the rec binds its own
+  attribute ids, severities, acceptance expressions and clause URNs.
+  Parameterization is not new machinery: conformance-test `variables`
+  and form `bind:` paths already do it — the module makes it a package
+  boundary.
 - **Rec overlay** (`data/<rec>/`) — normative content only: subject,
   dimensions, attributes, requirements, tests, forms, tables,
   terminology, plus the rec overlay of evaluation config.
+
+The scaffolding already exists (●): `data/core/layer.yaml` declares
+`id: core` with the OIML-CS process requirements as its first content,
+and each of the seven modules declares its `layer.yaml` stub (`id`,
+`kind`, `provides`, `requires`, empty `structure`). All eight are
+deliberately inert — the registry discovers standards by
+`standard.yaml`, which these directories intentionally lack — until the
+composition wiring (`uses:` consumption, the virtual effective tree)
+lands.
 
 The consumption declaration lives on the rec's manifest:
 
@@ -163,12 +174,12 @@ The consumption declaration lives on the rec's manifest:
 id: oiml-r144
 uses:
   - core
-  - module: emc-disturbances
-  - module: env-iec60068
-  - module: reference-materials
-    with: { subform: cgm-point }        # the rec binds its own subform id
-  - module: report-headers
-  - module: examination-docs
+  - module-emc-disturbances
+  - module-env-iec60068
+  - { id: module-reference-materials,
+      with: { subform: cgm-point } }   # the rec binds its own subform id
+  - module-report-headers
+  - module-examination-docs
 ```
 
 The composition law is the one rule that makes this safe:
@@ -188,6 +199,26 @@ rec is core + N modules — the primmel-side `extends oiml-core` that
 every package declares today already dangles (no `oiml-core` package
 exists in `primmel-packages/`; layering census §5.2). Multi-package
 `uses` is the v3 answer.
+
+### 7.5.1 A fourth package kind: `product_reference` (○)
+
+`core`, `module`, `rec` — the three kinds above are all published from
+the standards side. The model supply chain (Volume I, [chapter
+15](../primmel/15-model-supply-chain.md)) adds a fourth, published by
+the **manufacturer**: a `product_reference` package holding the product
+model — the instrument's own IS/HAS/DOES anatomy, authored by exactly
+this volume's method — with every aspect *mapped* to the
+Recommendation's: `uses: [oiml-r60]` plus a `map_profile` whose targets
+are the rec's attribute, requirement and characteristic ids. Which is
+one more reason the id discipline of chapters 2–4 matters: the
+manufacturer's conformance claim resolves into *your* anchors.
+
+Two consumption modes follow for the instrument user (chapter 15,
+§15.3): **abstract import** — static, version-pinned, design-time — and
+**live integration** — the deployed unit serves a live twin inside the
+user's own model. Both are ○ for v3. The rec author's part is only to
+know the package they ship is the mapping target; the certificate it
+issues is what the product model cites as promises-as-verified.
 
 ## 7.6 Seed one full flow: `sample-data.yaml` ●
 
@@ -218,7 +249,8 @@ that breaks the seed breaks the build, not the demo.
 ## 7.7 `primmel-packages/` and the `.prl` round-trip ●◐
 
 Every rec package has a native-language twin under `primmel-packages/`
-(`primmel-packages/oiml-r60/`, 92 `.prl` files), mirroring the YAML
+(`primmel-packages/oiml-r60/`, 86 `.prl` files plus the
+`package.primmel` manifest), mirroring the YAML
 layout by convention (`docs/primmel-v2-plan.md` §3):
 
 ```
@@ -295,17 +327,17 @@ package oiml-r144 {
   kind     rec
   baseUrn  "urn:oiml:pub:r:144:2013"
   editions { 2013 }
-  uses     [ oiml-smart-core,
-             module emc-disturbances,
-             module env-iec60068,
-             module reference-materials with { subform cgm-point },
-             module report-headers,
-             module examination-docs ]
+  uses     [ core,
+             module-emc-disturbances,
+             module-env-iec60068,
+             module-reference-materials with { subform cgm-point },
+             module-report-headers,
+             module-examination-docs ]
   source   { collection "sources/r144/collection.yml" parts { 1 2 3 } }
   structure { model/, entities/, specification/, execution/, evaluation/, root }
 }
 
-package oiml-smart-module-emc-disturbances {
+package module-emc-disturbances {
   kind     module
   provides { test_patterns  [esd, bursts, surge, rf-emf, conducted-rf,
                              power-voltage-variation, short-time-power-reduction,
@@ -348,12 +380,18 @@ Package-level checks the linker and gates enforce:
   unregistered and the unvalidated.
 - Composition is `uses: [core, modules…]` with one law — reference,
   never redefine — producing a virtual effective tree the existing
-  generators consume unchanged (○ v3; the census measured why).
+  generators consume unchanged (◐ — the `layer.yaml` scaffolding for
+  core + seven modules exists, inert; the wiring is v3; the census
+  measured why).
 - `sample-data.yaml` seeds one full flow family → … → certificate; the
   `.prl` twin under `primmel-packages/` is round-tripped and
   runtime-pluggable today (◐ for non-R-60-shaped content).
 - Registration is discovery by manifest id plus the three gates:
   validate, build, vitest.
+- A fourth package kind, `product_reference` (○), lets a manufacturer
+  ship the product model mapped to the rec — the package you author is
+  the mapping target, consumed by abstract import or live integration
+  (Volume I, chapter 15; §7.5.1).
 
 *Next: [Chapter 8 — Walkthrough: OIML R 60](08-walkthrough-r60.md):
 the worked example, end to end — from three source documents to a

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arrS" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9333ea"/>
+    </marker>
+    <marker id="arrG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <text x="50" y="34" font-size="18" font-weight="700" fill="#0f172a">The model supply chain — standard → product → operations</text>
+  <text x="50" y="54" font-size="12.5" fill="#475569">Three publishers, three speakers, one mapping chain. The user consumes the product model in one of two modes.</text>
+
+  <!-- standards body -->
+  <rect x="50" y="100" width="240" height="180" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="1.8"/>
+  <text x="170" y="126" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">STANDARDS BODY</text>
+  <text x="170" y="146" font-size="10.5" fill="#475569" text-anchor="middle">publishes the</text>
+  <text x="170" y="162" font-size="11.5" font-weight="700" fill="#334155" text-anchor="middle">standards-reference model</text>
+  <text x="170" y="186" font-size="10" fill="#475569" text-anchor="middle">the Recommendation (R 60),</text>
+  <text x="170" y="201" font-size="10" fill="#475569" text-anchor="middle">OIML-CS (PD-05)</text>
+  <text x="170" y="228" font-size="10" font-style="italic" fill="#64748b" text-anchor="middle">speaks for the standard</text>
+
+  <!-- manufacturer -->
+  <rect x="370" y="80" width="260" height="220" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="500" y="106" font-size="12.5" font-weight="700" fill="#3730a3" text-anchor="middle">MANUFACTURER</text>
+  <text x="500" y="126" font-size="10.5" fill="#4f46e5" text-anchor="middle">publishes the</text>
+  <text x="500" y="142" font-size="11.5" font-weight="700" fill="#3730a3" text-anchor="middle">product reference model</text>
+  <text x="500" y="166" font-size="10" fill="#475569" text-anchor="middle">the instrument model's IS/HAS/DOES —</text>
+  <text x="500" y="181" font-size="10" fill="#475569" text-anchor="middle">mapped aspect-by-aspect to the standard</text>
+  <rect x="390" y="196" width="220" height="34" rx="7" fill="#ffffff" stroke="#4f46e5" stroke-width="1.2"/>
+  <text x="500" y="211" font-size="9.5" fill="#3730a3" text-anchor="middle">type evaluation → certificate:</text>
+  <text x="500" y="224" font-size="9.5" fill="#3730a3" text-anchor="middle">promises-as-verified</text>
+  <rect x="390" y="238" width="220" height="34" rx="7" fill="#ffffff" stroke="#4f46e5" stroke-width="1.2"/>
+  <text x="500" y="253" font-size="9.5" fill="#3730a3" text-anchor="middle">passport projection (both modes):</text>
+  <text x="500" y="266" font-size="9.5" fill="#3730a3" text-anchor="middle">abstract + live</text>
+
+  <!-- user -->
+  <rect x="710" y="100" width="220" height="180" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
+  <text x="820" y="126" font-size="12.5" font-weight="700" fill="#92400e" text-anchor="middle">INSTRUMENT USER</text>
+  <text x="820" y="146" font-size="10.5" fill="#92600e" text-anchor="middle">owns the</text>
+  <text x="820" y="162" font-size="11.5" font-weight="700" fill="#92400e" text-anchor="middle">implementation model</text>
+  <text x="820" y="186" font-size="10" fill="#92600e" text-anchor="middle">the digital twin of the</text>
+  <text x="820" y="201" font-size="10" fill="#92600e" text-anchor="middle">organization's operations</text>
+  <text x="820" y="228" font-size="10" font-style="italic" fill="#b45309" text-anchor="middle">speaks for the operations</text>
+
+  <!-- mapping standard<-product -->
+  <line x1="370" y1="170" x2="294" y2="170" stroke="#9333ea" stroke-width="2" marker-end="url(#arrS)"/>
+  <text x="332" y="160" font-size="10" font-weight="700" fill="#9333ea" text-anchor="middle">mapping</text>
+  <text x="332" y="186" font-size="8.5" fill="#9333ea" text-anchor="middle">conformance</text>
+
+  <!-- two consumption modes -->
+  <path d="M 630 150 C 680 130, 680 120, 706 130" stroke="#16a34a" stroke-width="2.2" fill="none" marker-end="url(#arrG)"/>
+  <text x="672" y="118" font-size="10" font-weight="700" fill="#166534" text-anchor="middle">mode 1 · abstract import</text>
+  <text x="672" y="132" font-size="8.5" fill="#166534" text-anchor="middle">static reference, point-in-time promises</text>
+
+  <path d="M 630 230 C 680 250, 680 258, 706 248" stroke="#dc2626" stroke-width="2.2" fill="none" marker-end="url(#arrG)"/>
+  <text x="672" y="262" font-size="10" font-weight="700" fill="#991b1b" text-anchor="middle">mode 2 · live integration</text>
+  <text x="672" y="276" font-size="8.5" fill="#991b1b" text-anchor="middle">live twin inside the operational twin</text>
+
+  <!-- chain rule -->
+  <rect x="240" y="330" width="480" height="60" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.6"/>
+  <text x="480" y="353" font-size="11.5" font-weight="700" fill="#6b21a8" text-anchor="middle">the chain rule: user ⇒ product ⇒ standard</text>
+  <text x="480" y="373" font-size="10" fill="#7e22ce" text-anchor="middle">transitive at process level — conformance composes through the product's mapped aspects</text>
+
+  <!-- engine band -->
+  <rect x="50" y="430" width="880" height="100" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+  <text x="490" y="456" font-size="12.5" font-weight="700" fill="#991b1b" text-anchor="middle">COMPLIANCE ENGINE — monitors across the whole chain</text>
+  <text x="490" y="478" font-size="10.5" fill="#7f1d1d" text-anchor="middle">verifies the manufacturer's promises against the standard (type evaluation, surveillance)</text>
+  <text x="490" y="494" font-size="10.5" fill="#7f1d1d" text-anchor="middle">verifies the user's operations against the product's promises and the standard's requirements (continuous)</text>
+  <text x="490" y="516" font-size="10" fill="#991b1b" text-anchor="middle">evidence streams from every link land in workspaces — the auditor reads one chain, not three folders</text>
+
+  <!-- bottom note -->
+  <rect x="50" y="556" width="880" height="56" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="70" y="579" font-size="11.5" font-weight="600" fill="#0f172a">Why it composes: every link is a typed mapping with a coverage calculus —</text>
+  <text x="70" y="597" font-size="11.5" fill="#475569">the standard never sees the user, the user never re-models the product, and conformance is computed at every hop.</text>
+</svg>

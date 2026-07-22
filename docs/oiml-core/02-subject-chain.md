@@ -135,6 +135,15 @@ Tests run on Samples (D2), verdicts judge Samples, and type conformity is
 established *across* Samples (INV-6: one Sample = one TestReport = one
 SampleEvaluation; only TypeEvaluation synthesizes across them).
 
+One extension belongs to the twin direction (Volume I, Chapters 14–15 ○):
+a Sample may be a **live twin** — a *served* instance, declaring an
+endpoint and answering queries with its exhibited values, timestamps
+attached. Instantiation extends from record to service, and what the
+endpoint serves is exactly this section's content: the sample-scope
+values of `test_context`, the exhibited classification, the operational
+state — with everything else still resolved through the Model by
+delegation (INV-10). The twin changes who answers, not what is true.
+
 ## 2.7 Classification and dimensions
 
 Every subject carries one **Classification** record — its position in
@@ -153,13 +162,16 @@ The `dimensions` map is where applicability comes from. R 60's axes
 plus `construction`. Each axis declares its enum values and a **scope** —
 the chain level at which it is set — and per-value payload hangs off the
 enum entries (`n_lc_limits: { lower: 500, upper: 10000 }` on class C,
-from R 60-1, Table 1). Every axis is mirrored as an attribute with
-`is_dimension: true` + `enum: <axis id>` so that requirement
+from R 60-1, Table 1). All but one axis are mirrored as an attribute
+with `is_dimension: true` + `enum: <axis id>` so that requirement
 `applicability` blocks and form `bind:` paths (`group.classification.
-accuracy_class`) reference one uniform namespace. Note the division of
-labour: dimension *values* come from the domain profile; the
-family/group/model hierarchy itself is expressed by real references on
-the chain, **not** inside Classification.
+accuracy_class`) reference one uniform namespace. The exception is
+deliberate: `construction` keeps no mirror — the mechanical-construction
+attribute was renamed to `construction_type` to keep its id off the
+axis (`data/r60/model/attributes.yaml` — construction_type, note). Note
+the division of labour: dimension *values* come from the domain profile;
+the family/group/model hierarchy itself is expressed by real references
+on the chain, **not** inside Classification.
 
 ## 2.8 Attribute scope — the decision table
 
