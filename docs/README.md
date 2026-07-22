@@ -91,9 +91,9 @@ IS/HAS/DOES trichotomy used throughout Volumes I–III.*
 | 02 | `02-claims-and-falsifiability.md` | Novice | the Claim-Form Axiom; what we claim; what would refute us |
 | 03 | `03-eight-terms-and-closure-rules.md` | Professional | the formal algebra 𝓜; the eight terms; the three closure rules |
 | 04 | `04-proofs.md` | Professional | closure, completeness, extensibility — full proofs |
-| 05 | `05-kernel-surface-architecture.md` *(Phase 2)* | Professional | Tier 0 (entities + transitions + composition) and Tier 1 (the eight primitives) with the desugaring map |
-| 06 | `06-algorithms.md` *(Phase 2)* | Professional | elaboration, resugaring, reification (ρ), evaluation, state-location (σ) |
-| 07 | `07-derived-vocabulary-proofs.md` *(Phase 2)* | Professional | six retired terms (STATE, CAN, RECEIVES, RELATES-TO, BECOMES, STEP), full derivations |
+| 05 | `05-kernel-surface-architecture.md` | Professional | Tier 0 (entities + transitions + composition) and Tier 1 (the eight primitives) with the desugaring map |
+| 06 | `06-algorithms.md` | Professional | elaboration, resugaring, reification (ρ), evaluation, state-location (σ) |
+| 07 | `07-derived-vocabulary-proofs.md` | Professional | six retired terms (STATE, STEP, CAN, RECEIVES, RELATES-TO, BECOMES), full derivations |
 | 08 | `08-comparative-analysis.md` *(Phase 3)* | Expert | vs OPM, OOP, UML/fUML, SysML v2/KerML, BPMN, EXPRESS, RDF/OWL, Petri nets; positioning matrix |
 | 09 | `09-categorical-foundations.md` *(Phase 3)* | Expert | arrows-only category; identity morphisms; Curry–Howard–Lambek; KerML as precedent |
 | 10 | `10-executable-ground.md` *(Phase 3)* | Expert | no escape hatch; reification; scale invariance; model=program; adoption lesson |
@@ -103,6 +103,7 @@ IS/HAS/DOES trichotomy used throughout Volumes I–III.*
 
 Chapters marked *(Phase N)* are planned but not yet written; the
 four-phase expansion plan is in `.claude/plans/read-this-poe-txt-greedy-walrus.md`.
+Phases 1–2 are shipped; Phases 3–4 remain.
 
 ---
 

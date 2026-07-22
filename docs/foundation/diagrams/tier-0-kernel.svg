@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Tier 0 — the kernel</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">One sort (entities), one operation (composition). The kernel is a category.</text>
+
+  <!-- Formal signature -->
+  <rect x="60" y="90" width="320" height="100" rx="10" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <text x="80" y="116" font-size="12" font-weight="700" fill="#115e59">Formal signature</text>
+  <text x="80" y="142" font-size="13" font-family="ui-monospace, Menlo, monospace" fill="#115e59">U              — universe of entities</text>
+  <text x="80" y="160" font-size="13" font-family="ui-monospace, Menlo, monospace" fill="#115e59">τ : U ⇀ U      — transition relation</text>
+  <text x="80" y="178" font-size="13" font-family="ui-monospace, Menlo, monospace" fill="#115e59">∘ : τ × τ ⇀ τ  — composition</text>
+
+  <!-- The category picture -->
+  <rect x="420" y="90" width="420" height="240" rx="12" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.6"/>
+  <rect x="420" y="90" width="420" height="32" rx="12" fill="#0d9488"/>
+  <text x="630" y="111" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">A category — entities and morphisms</text>
+
+  <!-- Entity x -->
+  <circle cx="500" cy="220" r="22" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+  <text x="500" y="225" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">x</text>
+
+  <!-- Entity y -->
+  <circle cx="760" cy="220" r="22" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+  <text x="760" y="225" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">y</text>
+
+  <!-- Transition t : x → y -->
+  <line x1="525" y1="215" x2="735" y2="215" stroke="#0d9488" stroke-width="2.4" marker-end="url(#cat-arr)"/>
+  <text x="630" y="200" font-size="13" font-weight="700" fill="#0d9488" text-anchor="middle">t</text>
+  <text x="630" y="240" font-size="10" font-style="italic" fill="#475569" text-anchor="middle">a transition (morphism)</text>
+
+  <!-- Identity morphisms -->
+  <path d="M 488 200 Q 480 184 496 178 Q 512 184 504 200" stroke="#94a3b8" stroke-width="1.4" fill="none" marker-end="url(#id-arr)"/>
+  <text x="475" y="170" font-size="9" fill="#475569" text-anchor="middle">id_x</text>
+
+  <path d="M 748 200 Q 740 184 756 178 Q 772 184 764 200" stroke="#94a3b8" stroke-width="1.4" fill="none" marker-end="url(#id-arr)"/>
+  <text x="735" y="170" font-size="9" fill="#475569" text-anchor="middle">id_y</text>
+
+  <text x="630" y="290" font-size="10" fill="#475569" text-anchor="middle">Every entity has an identity morphism (the unit of composition).</text>
+  <text x="630" y="306" font-size="10" fill="#475569" text-anchor="middle">t ∘ id_x = t  and  id_y ∘ t = t.</text>
+
+  <!-- The three things to note -->
+  <rect x="60" y="220" width="320" height="240" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.4"/>
+  <text x="80" y="246" font-size="12" font-weight="700" fill="#0f172a">Three things to note</text>
+
+  <text x="80" y="276" font-size="10.5" font-weight="700" fill="#115e59">1. No separate "object" sort</text>
+  <text x="80" y="292" font-size="10" fill="#475569">O = subset of U whose transition is identity</text>
+
+  <text x="80" y="322" font-size="10.5" font-weight="700" fill="#115e59">2. No separate "value" sort</text>
+  <text x="80" y="338" font-size="10" fill="#475569">V = entities under value semantics</text>
+  <text x="80" y="352" font-size="10" fill="#475569">(leaves in the composition graph)</text>
+
+  <text x="80" y="382" font-size="10.5" font-weight="700" fill="#115e59">3. No separate "process" sort</text>
+  <text x="80" y="398" font-size="10" fill="#475569">"object" and "process" are roles</text>
+  <text x="80" y="412" font-size="10" fill="#475569">(predicates over entities), not sorts</text>
+
+  <text x="80" y="440" font-size="10" font-style="italic" fill="#0d9488">The kernel is what you implement.</text>
+  <text x="80" y="454" font-size="10" font-style="italic" fill="#0d9488">Everything else is definition.</text>
+
+  <!-- Bottom -->
+  <rect x="60" y="480" width="780" height="100" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.4"/>
+  <text x="80" y="504" font-size="11.5" font-weight="700" fill="#7f1d1d">The trusted base</text>
+  <text x="80" y="524" font-size="10.5" fill="#991b1b">A conforming runtime needs to implement composition and application correctly —</text>
+  <text x="80" y="538" font-size="10.5" fill="#991b1b">a trusted base small enough that independent implementations are a weekend project,</text>
+  <text x="80" y="552" font-size="10.5" fill="#991b1b">and small enough that a conformance test suite can be genuinely exhaustive.</text>
+  <text x="80" y="572" font-size="10" font-style="italic" fill="#dc2626">This is the kernel's adoption advantage — see Chapter 10.</text>
+
+  <defs>
+    <marker id="cat-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0d9488"/>
+    </marker>
+    <marker id="id-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">IS = classification property</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">IS(x, k) ≡ HAS(x, κ, k) — the rdf:type move. Classification becomes data.</text>
+
+  <!-- Equation -->
+  <rect x="60" y="90" width="780" height="80" rx="10" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.6"/>
+  <text x="450" y="124" font-size="14" font-family="ui-monospace, Menlo, monospace" font-weight="700" fill="#115e59" text-anchor="middle">IS(x, k)  ⟹  HAS(x, κ, k)</text>
+  <text x="450" y="150" font-size="11" fill="#0d9488" text-anchor="middle">κ is a reserved property whose value happens to be a kind-object.</text>
+
+  <!-- Example: Rex IS Mammal -->
+  <rect x="60" y="200" width="780" height="200" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <rect x="60" y="200" width="780" height="32" rx="10" fill="#475569"/>
+  <text x="450" y="221" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Example — "Rex IS Mammal" desugars to "Rex HAS kind = Mammal"</text>
+
+  <!-- Rex -->
+  <circle cx="160" cy="310" r="40" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="160" y="310" font-size="12" font-weight="700" fill="#3730a3" text-anchor="middle">Rex</text>
+  <text x="160" y="326" font-size="9" fill="#4338ca" text-anchor="middle">object</text>
+
+  <!-- Arrow HAS -->
+  <line x1="200" y1="310" x2="370" y2="310" stroke="#d97706" stroke-width="2" marker-end="url(#has-arr)"/>
+  <text x="285" y="298" font-size="11" font-weight="700" fill="#d97706" text-anchor="middle">HAS</text>
+  <text x="285" y="328" font-size="9" font-style="italic" fill="#92600e" text-anchor="middle">property κ = "kind"</text>
+
+  <!-- Mammal value -->
+  <rect x="380" y="290" width="100" height="40" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+  <text x="430" y="308" font-size="10" font-weight="700" fill="#14532d" text-anchor="middle">Mammal</text>
+  <text x="430" y="322" font-size="8" fill="#166534" text-anchor="middle">(a kind-object)</text>
+
+  <!-- Reference arrow to actual Mammal object -->
+  <line x1="480" y1="310" x2="560" y2="310" stroke="#16a34a" stroke-width="1.4" stroke-dasharray="3,2" marker-end="url(#ref2)"/>
+
+  <!-- Mammal as kind-object -->
+  <rect x="570" y="270" width="200" height="80" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="670" y="294" font-size="12" font-weight="700" fill="#3730a3" text-anchor="middle">Mammal</text>
+  <text x="670" y="310" font-size="9" fill="#4338ca" text-anchor="middle">an abstract object</text>
+  <text x="670" y="324" font-size="9" fill="#4338ca" text-anchor="middle">that itself has properties</text>
+  <text x="670" y="340" font-size="9" font-style="italic" fill="#4338ca" text-anchor="middle">(warm_blood, hair, …)</text>
+
+  <text x="450" y="380" font-size="11" font-style="italic" fill="#475569" text-anchor="middle">One fact, not two. The "IS" relation is just a distinguished property.</text>
+
+  <!-- Two meanings -->
+  <rect x="60" y="420" width="380" height="160" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+  <text x="80" y="444" font-size="11.5" font-weight="700" fill="#78350f">Two meanings of IS — only one survives</text>
+  <text x="80" y="466" font-size="10.5" fill="#92600e">Chapter 3's IS did two jobs:</text>
+  <text x="100" y="486" font-size="10" fill="#92600e">1. <tspan font-weight="700">kind-membership</tspan> — "x is a K"</text>
+  <text x="100" y="506" font-size="10" fill="#92600e">2. <tspan font-weight="700">instance-identity</tspan> — "x is the same entity as y"</text>
+  <text x="80" y="530" font-size="10" fill="#92600e">Only (1) proxies through a property.</text>
+  <text x="80" y="548" font-size="10" fill="#92600e">(2) must stay in the kernel as entity-</text>
+  <text x="80" y="562" font-size="10" fill="#92600e">reference — you cannot derive identity</text>
+  <text x="80" y="574" font-size="10" fill="#92600e">from a property value.</text>
+
+  <!-- Rigidity axiom -->
+  <rect x="460" y="420" width="380" height="160" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.6"/>
+  <text x="480" y="444" font-size="11.5" font-weight="700" fill="#7f1d1d">The rigidity axiom — must be declared</text>
+  <text x="480" y="466" font-size="10.5" fill="#991b1b">As a property, κ is data — reassignable</text>
+  <text x="480" y="480" font-size="10.5" fill="#991b1b">by the same machinery that updates any</text>
+  <text x="480" y="494" font-size="10.5" fill="#991b1b">HAS-fact. Is that:</text>
+  <text x="500" y="514" font-size="10" fill="#991b1b">• <tspan font-weight="700">rigid</tspan> — immutable per entity (sound)</text>
+  <text x="500" y="534" font-size="10" fill="#991b1b">• <tspan font-weight="700">mutable</tspan> — reassignable (soundness hole?)</text>
+  <text x="480" y="558" font-size="10" font-style="italic" fill="#dc2626">Decide it in the axioms,</text>
+  <text x="480" y="572" font-size="10" font-style="italic" fill="#dc2626">not in the runtime.</text>
+
+  <defs>
+    <marker id="has-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706"/>
+    </marker>
+    <marker id="ref2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+</svg>
