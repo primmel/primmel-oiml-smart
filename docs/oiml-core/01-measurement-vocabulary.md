@@ -9,6 +9,8 @@
 
 ## 1.1 The shared value layer
 
+![Module A — the measurement vocabulary: the nine classes every number is expressed through](diagrams/quantity-model.svg)
+
 Every module of the metamodel deals in numbers: design parameters, test
 stimuli, evidence values, limits, verdict facts. Module A exists so that
 **every number anywhere in the system is expressed through the same nine
@@ -29,7 +31,7 @@ metrology-specific model invented none of them; it typed them.
 | QuantityValue | — | ● |
 | Measurand, InfluenceQuantity | VIM 2.3, 2.52 | ● |
 | Conditions (ConditionRole) | VIM reference/rated/limiting + `actual` | ● |
-| MeasurementResult, TraceabilityChain | VIM 2.9, 2.41 | ● schema · ◐ runtime (per-equipment certificates) |
+| MeasurementResult, TraceabilityChain | VIM 2.9, 2.42 | ● schema · ◐ runtime (per-equipment certificates) |
 
 ## 1.2 QuantityKind and Unit
 
@@ -180,9 +182,11 @@ roles is the metamodel's concrete encoding of the kernel's **IS/HAS
 duality**: designed vs exhibited, same value shape, never the same slot.
 A test then says the one sentence verification needs: *hold the actual
 conditions (HAS) within the designed envelope (IS)* — R 60's reference
-conditions, for instance, pin temperature at `20 °C ± 2` with ±0.5 °C
-stability during a test (`data/r60/model/conditions.yaml` —
-load-cell-reference-conditions, per R 60-2, 2.10.1).
+conditions, for instance, pin temperature at `20 °C ± 2`, with stability
+during the test defined as extreme temperatures differing by at most one
+fifth of the cell's temperature range, and never more than 2 °C
+(`data/r60/model/conditions.yaml` — load-cell-reference-conditions, per
+R 60-2, 2.10.1 + 2.7.3.1).
 
 ## 1.7 MeasurementResult and TraceabilityChain
 
@@ -196,7 +200,7 @@ measured `dr` of R 60 is annotated as "a D2 MeasurementResult"
 (`data/r60/model/attributes.yaml` — dr, note).
 
 A **TraceabilityChain** is the "unbroken chain of comparisons to SI"
-(VIM 2.41): an ordered list of links — primary standard → reference →
+(VIM 2.42): an ordered list of links — primary standard → reference →
 working standard → instrument — where each link carries `{ standard,
 lab, certificate }`. The chain is only as strong as its weakest link, so
 the model makes the links explicit and ordered rather than implied. In
@@ -204,6 +208,15 @@ the running system, per-run equipment carries calibration-certificate
 references (`data/r60/entities/test-execution.yaml` — TestRunEquipment);
 the fully composed chain object per result is the ◐ part of §1.1's
 table.
+
+A note from the twin direction (Volume I, Chapter 14 ○): when values are
+*served* live rather than recorded at the bench, `timestamp` becomes
+semantics — every served value carries a declared freshness window, and
+staleness degrades judgments to `indeterminate` rather than passing or
+failing silently. The window lives on the `serve` binding, not on the
+QuantityValue; the nine classes above are unchanged. Served `actual`
+conditions (§1.6) are the same story: a streamed conditions log is still
+a `Conditions` instance — fresher provenance, same class.
 
 ## 1.8 Grammar sketch *(illustrative v3 syntax)*
 

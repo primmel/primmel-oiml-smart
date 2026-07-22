@@ -2,10 +2,12 @@
 
 This tree is the definitive documentation of **Primmel v3**, the executable
 modelling language for SMART standards, and of the **OIML SMART system**
-built on it. It is written as three courses — each volume is designed to
+built on it. It is written as four courses — each volume is designed to
 carry a semester's worth of teaching, in dependency order:
 
 ```
+Volume 0    foundation/   the formal ground — the IS–HAS–DOES modelling
+                            system (eight terms, three closure theorems)
 Volume I    primmel/      the language kernel — concepts, anatomy, grammar
 Volume II   oiml-core/    the OIML metamodel — measuring-instrument modelling
 Volume III  oiml-rec/     authoring OIML Recommendations — the methodology
@@ -14,9 +16,11 @@ Annexes     oiml-cs/      the OIML-CS certification-scheme reference package
             shared/       glossary, alternatives audit, roadmap
 ```
 
-**Prerequisites chain:** Volume I assumes nothing but literacy about
-standards. Volume II assumes Volume I. Volume III assumes Volumes I–II.
-The Annexes are reference material, readable out of order.
+**Prerequisites chain:** Volume 0 assumes nothing but literacy about
+formal systems. Volume I assumes Volume 0 (chapter 2 of Volume I
+operationalizes the formal system). Volume II assumes Volumes 0–I.
+Volume III assumes Volumes 0–II. The Annexes are reference material,
+readable out of order.
 
 ---
 
@@ -24,16 +28,22 @@ The Annexes are reference material, readable out of order.
 
 ### Reading tracks
 
-- **Track A — language designer / tool implementer.** Read `primmel/` cover
-  to cover, then `platform/`. You will learn every kernel concept, the
-  grammar, the validation rules, and how the engines evaluate models.
-- **Track B — metamodel maintainer (OIML core).** Read `primmel/`
-  chapters 1–7, then `oiml-core/` cover to cover. You will learn how the
-  subject chain, the measurement vocabulary, and the six metamodel modules
-  are built from kernel primitives.
-- **Track C — Recommendation author.** Read `primmel/` chapters 1–5,
-  `oiml-core/` chapters 1–5, then `oiml-rec/` cover to cover. You will
-  learn to author a complete, validated Recommendation package.
+- **Track 0 — formal foundations.** Read `foundation/` first. It is
+  short (~250 lines) and proves that the IS/HAS/DOES trichotomy used
+  everywhere else in the tree is exhaustive rather than heuristic. Skip
+  it only if you already accept the trichotomy on faith.
+- **Track A — language designer / tool implementer.** Read `foundation/`,
+  then `primmel/` cover to cover, then `platform/`. You will learn every
+  kernel concept, the grammar, the validation rules, and how the engines
+  evaluate models.
+- **Track B — metamodel maintainer (OIML core).** Read `foundation/`,
+  then `primmel/` chapters 1–7, then `oiml-core/` cover to cover. You
+  will learn how the subject chain, the measurement vocabulary, and the
+  six metamodel modules are built from kernel primitives.
+- **Track C — Recommendation author.** Read `foundation/` (skim §10–12),
+  then `primmel/` chapters 1–5, `oiml-core/` chapters 1–5, then
+  `oiml-rec/` cover to cover. You will learn to author a complete,
+  validated Recommendation package.
 
 ### Conventions
 
@@ -60,6 +70,20 @@ developed form; the concepts document is the negotiation record.
 
 ---
 
+## Volume 0 — `foundation/` — the formal ground
+
+*The IS–HAS–DOES modelling system: eight terms (`is`, `has`, `does`,
+`value`, `property`, `object`, `process`, `transition`), five layered
+sorts, three closure rules, and three theorems (closure, completeness,
+extensibility). Everything in Volumes I–III is an enrichment of these
+sorts.*
+
+| # | Document | Contents |
+|---|---|---|
+| 00 | `README.md` | the layered onion; the three closure rules; Theorems 1–3; the derived vocabulary; pointers into Volumes I–III |
+
+---
+
 ## Volume I — `primmel/` — the language kernel
 
 *What Primmel v3 is: the tier system, the subject anatomy, processes,
@@ -81,6 +105,8 @@ mappings, data and values, packages, and the cross-cutting machinery.*
 | 11 | `11-validation.md` | schemas, the linker, `primmel check`; coverage audits; text coverage |
 | 12 | `12-interop.md` | ReqIF projection; RDF/OWL projection; OpenCDD integration |
 | 13 | `13-diff-and-lifecycle.md` | model diff; editions as lifecycle packaging; change audit |
+| 14 | `14-live-twins.md` | live twins (served instances); endpoints/serve/connectors; the monitor loop; the model-native passport; the API gateway |
+| 15 | `15-model-supply-chain.md` | the manufacturer's product reference model; mapping to the Recommendation; abstract import vs live integration; conformance composition |
 
 ## Volume II — `oiml-core/` — the OIML metamodel
 
@@ -128,6 +154,14 @@ vocabulary, the subject chain, the six modules, the shared modules.*
 
 ---
 
-*Documentation status: scaffold + Volume I exemplar chapters. Remaining
-chapters are being written in dependency order; unwritten entries in the
-tables above are planned, not stubs.*
+*Documentation status: **complete tree, review-passed.** All volumes and
+annexes are written (34 chapters + 4 annex documents + 21 SVG diagrams,
+~14,200 lines) — including the twin direction: chapters 14–15 of Volume I
+(live twins and continuous compliance; the model supply chain) and the
+mapping-space theory (chapter 5 §5.6: layers, imports, multi-targets,
+views). The tree went through a full review cycle: per-volume
+review, fix wave, and a final whole-tree review with a SHIP verdict.
+House-length note: `oiml-rec/` chapters are deliberately long-form
+(methodology and walkthroughs, 330–430 lines); all other chapters stay
+within 120–320 lines. `primmel/01` carries no grammar sketch by design —
+it is the philosophy chapter; syntax starts in chapter 2.*

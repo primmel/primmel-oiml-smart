@@ -75,13 +75,13 @@ its **source**. The taxonomy is closed; five values cover every case:
 | `declared` | a statement by the manufacturer or applicant — a rating, not an observation | `e_max`, `n_lc`, `p_lc` |
 | `measured` | direct observation by the test operator during a run | `t_1`, `t_2` (test temperatures), creep-test `t` |
 | `derived` | a formula over other variables, evaluated bottom-up | `e_l` = (avg indication − reference) / `conversion_factor_f` |
-| `computed` | evaluated by the engine in the run's calculation context | `mpc_mdlo` = `p_lc` × `v_min`; MPE at the test load |
+| `computed` | evaluated by the engine in the run's calculation context | `v_min` = (`e_max` − `e_min`) / (`n_lc` × `f`); `mpc` = `lookupMPE(d_max, accuracy_class, p_lc)` |
 | `lookup` | a table or profile keyed by classification dimensions | `mpe` from the R 60-1 Table 4 tiers |
 
 ● The source taxonomy is live in both places variables are declared:
 the symbol registry (`data/r60/specification/symbols.yaml` — four of
 the five) and conformance-test variables (`data/schemas/cc.yaml` — all
-five, with `derivation:` required for `derived`/`computed`).
+five, with `derivation:` declared for `derived`/`computed`).
 
 Source typing is not documentation; it drives the machinery:
 
@@ -216,6 +216,13 @@ structures built on them:
   version-pinned in the test report (● INV-8), so a later edition
   re-judges history explicitly instead of silently. Chapter 8 treats
   editions as lifecycle; chapter 13 the diff machinery.
+- **Served values and freshness windows** — a live twin serves its HAS
+  values *with timestamps*: a value without a time is not evidence, and
+  every `serve` binding declares its `fresh_within` window — how old a
+  value may be before it stops meaning anything. Past the window the
+  value is stale, and stale degrades the verdict to `indeterminate`,
+  never a silent pass (○ — the monitor's freshness step, chapter 14,
+  §14.5).
 
 ![The value layer](diagrams/data-and-values.svg)
 
@@ -275,7 +282,7 @@ profile mpe_tiers {
   kind-coherent (`quantity-coherence` — ●); unmapped units are
   warnings; extending the kind registry is a metamodel decision;
 - a `derived`/`computed` variable declares its derivation; a `lookup`
-  variable declares its table and key dimensions (● schema + linker);
+  variable declares its table and key dimensions (◐ — links resolved);
 - profile bindings key only on declared dimension values; a binding
   key outside its `dimension`'s values is an error (●);
 - time values match their ISO 8601 patterns; a validity window's end

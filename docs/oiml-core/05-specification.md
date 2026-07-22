@@ -107,6 +107,15 @@ ocl{p_lc} }`. The registry entry carries the single canonical derivation
 §2.1.4); requirements, tests and form fields all reference it, none
 restate it. (Chapter 7 returns to how evaluation consumes this.)
 
+One pointer from the twin direction (Volume I, Chapter 14 ○): a limit is
+also what a **monitor** evaluates — continuously, against served live
+values, outside any laboratory. Nothing in this chapter changes to admit
+it: the `limit.expression` is the same OCL statement (INV-9), the
+`binds_to` paths resolve the same way against a served instance, and the
+verdict vocabulary is the same four outcomes. The lab evaluates the
+requirement once over recorded evidence; the engine evaluates it forever
+over fresh evidence — one definition, two evaluation rhythms.
+
 ## 5.4 Acceptance decision rules
 
 A limit as written is not yet a decision. The optional `acceptance:` block

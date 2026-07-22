@@ -1,5 +1,12 @@
 # Volume I — The Primmel Kernel
 
+> **Foundation.** This volume operationalizes the IS–HAS–DOES modelling
+> system proven in [Volume 0 (Foundation)](../foundation/README.md).
+> Where Volume 0 proves the trichotomy is exhaustive, Volume I shows how
+> Primmel turns it into a usable language. If a chapter here ever seems
+> to introduce a ninth modelling term, it is a *materialized view*
+> (Volume 0 §13), not a new primitive.
+
 Primmel is a domain-specific language for representing SMART standards in
 an **executable** form. A Primmel-modelled standard is a structured
 artifact whose subjects, requirements, processes, data requirements and
@@ -48,6 +55,12 @@ layer the compliance use-case always needed: **the subject**.
 11. [Validation](11-validation.md) — schemas, the linker, `primmel check`.
 12. [Interop](12-interop.md) — ReqIF, RDF/OWL, OpenCDD.
 13. [Model diff and lifecycle](13-diff-and-lifecycle.md).
+14. [Live twins and continuous compliance](14-live-twins.md) — the
+    runtime endgame: served instances, the monitor loop, the
+    model-native passport.
+15. [The model supply chain](15-model-supply-chain.md) — manufacturer
+    product reference models, mapped to the standard, consumed as
+    abstract imports or live twins.
 
 ## The one-sentence summary
 

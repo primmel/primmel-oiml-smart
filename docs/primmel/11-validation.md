@@ -17,14 +17,15 @@ assuming the one below:
 |---|---|---|
 | 1. JSON Schema | each file is well-formed for its kind | ● `data/schemas/` |
 | 2. Model linker | every cross-reference resolves | ● `browser/build/model-linker.ts` |
-| 3. `primmel check` | cross-layer invariants hold | ○ (running today as linker + semantic validation) |
+| 3. `primmel check` | cross-layer invariants hold | ◐ (C1–C5 in `@primmel/primmel` `src/check.ts`, 0 errors on R 60) |
 | 4. Coverage audits | the aspect↔requirement↔test↔form closure is complete | ◐ structural today, explicit in v3 |
 | 5. Text-coverage metric | every normative sentence is modelled, none duplicated | ○ |
 
 In the running system, layers 1–2 are wired into `npm run validate`
 (`browser/scripts/validate.ts` — schema + semantic validation) and run
-on every build of the R 60 package. Layers 3–5 are the v3 consolidation:
-same findings, one command, one report.
+on every build of the R 60 package. Layer 3 runs as `primmel check`
+over the `.prl` package (v2 plan W8, COMPLETE 2026-07-18); layers 3–5
+consolidate in v3: same findings, one command, one report.
 
 ## 11.2 Layer 1 — JSON Schema per file kind (●)
 
@@ -57,6 +58,17 @@ applicability keys, symbol→calculation/formula→profile links, and form
 | `verdict-inputs-resolve`, `verdict-no-shadow`, `verdict-restatement` | the VerdictQuantity discipline — derivations defined once, referenced, never restated inline |
 | `source-discrepancy` | a discrepancy record whose citations do not resolve (chapter 9) |
 | `test-design` | test-design metadata referencing undeclared rules |
+| `serve-targets-resolve` (○) | a `serve` binding naming an undeclared aspect or endpoint operation (chapter 14) |
+| `payload-schema-quantity` (○) | an endpoint operation whose payload is not a QuantityValue with unit and timestamp (chapter 14) |
+| `freshness-required` (○) | a live binding without `fresh_within` — no stale semantics, no live binding (chapter 14) |
+| `access-scope-covers-serves` (○) | an endpoint operation with no access scope, or a scope that does not cover the consumers of its `serve` bindings (chapter 14) |
+| `monitor-refs-resolve` (○) | a monitor's `evaluate` referencing requirements or promises not applicable to the monitored subjects (chapter 14) |
+| `product-maps-resolves`, `unmapped-promises` (○) | a `product_reference` mapping target dangling into the Recommendation; an unmapped IS promise flagged at authoring (chapter 15) |
+| `abstract-import-pinned` (○) | an abstract import of a product model without a version pin (chapter 15) |
+
+The ○ rows are the twin-era rules — chapters 14 (§14.12) and 15 (§15.9)
+are their authority; they join the catalog with the v3 primitives they
+guard.
 
 ### The allowlist discipline
 
@@ -77,11 +89,13 @@ The standing burn-down plan (the repo's tasks 12–14) takes every list to
 empty; an allowlist that only grows is a failed validation strategy, not
 a safety valve.
 
-## 11.4 Layer 3 — `primmel check`: cross-layer invariants (○)
+## 11.4 Layer 3 — `primmel check`: cross-layer invariants (◐)
 
 Above reference resolution sits the tier law itself. `primmel check`
 evaluates the invariants that span layers, the checks that made chapter
-1's dependency law and chapter 2's anatomy enforceable:
+1's dependency law and chapter 2's anatomy enforceable. The five below
+are the C1–C5 set, implemented in `@primmel/primmel` `src/check.ts`
+(0 errors on the R 60 package):
 
 - **anchor paths vs attribute scopes** — a `binds_to` or `bind:` path
   must exist *and* be read at a legal scope: no sample-scope attribute
@@ -234,7 +248,7 @@ The checker's own inputs are models too, and get checked:
 ## 11.10 Summary
 
 - Validation is a five-layer stack: schema (●), linker (●),
-  cross-layer invariants (○ as one command), coverage audits (◐),
+  cross-layer invariants (◐ C1–C5), coverage audits (◐),
   text coverage (○). Each layer assumes the one below.
 - The linker resolves every cross-file reference; the allowlist
   discipline (KNOWN prints, STALE must die) keeps inherited debt honest

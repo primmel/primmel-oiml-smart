@@ -3,7 +3,9 @@
 > *In this document:* what exists today (●), what is partial (◐), what
 > is planned (○), and the v3 program grouped into phases with their
 > dependencies — kernel first, then the OIML Core re-home, then
-> Recommendation re-expression, then interop.
+> Recommendation re-expression, then interop, then platform and release
+> — with the live-twin program free to run in parallel once its
+> interface primitives land.
 
 Sources: the concept frame (`docs/primmel-concepts.md`, incl. its
 Appendix B) and the v2 delivery record (`docs/primmel-v2-plan.md`,
@@ -26,9 +28,9 @@ running system disagree, the running system is right — fix this page.
 ## 2. What exists today (●)
 
 **The running packages.** Three Recommendations run in the new
-`data/<id>/` layout: **R 60** (the reference depth: subject model, 38
+`data/<id>/` layout: **R 60** (the reference depth: subject model, 40
 attribute definitions, requirements, conformance tests, R 60-3 forms
-with 182 `bind:` paths, the full certification workflow, 13 seeded
+with 164 `bind:` paths, the full certification workflow, 13 seeded
 real-certificate flows), **R 91** and **R 144** (new-layout trees with
 model/entities/specification/execution/evaluation). `data/oiml-r129/`
 and the legacy `data/oiml-r144/` tree remain unmigrated.
@@ -68,7 +70,7 @@ and the public register at `/app/register`.
 |---|---|---|
 | **Promises** | parameter-valued claims only (`origin: declared`, the application matrix) | claims on *characteristics and behavior* — envelope-shaped, conditional, verified at evaluation and printed on the certificate — do not exist yet (G11) |
 | **Characteristics** | defined specification-side as observables / VerdictQuantities | definitions must hoist into the primary model (symbol + derivation from behavior I/O), with the specification *referencing* them (INV-3 completeness) |
-| **The workflow** | the certification workflow lives inside each rec package (`data/<id>/evaluation/`, byte-identical across recs) | it is an *implementation model* of the OIML-CS with no name: PD-05 clause refs in `approvals.yaml` are embryonic mappings with no mapping machinery around them (§4, phase 2) |
+| **The workflow** | the certification workflow lives inside each rec package (`data/<id>/evaluation/` — the same seven files per rec under the same names: approvals/state-machines/roles identical but for header comments and quoting style, the other four differing in rec-specific clause refs and content; nothing byte-identical) | it is an *implementation model* of the OIML-CS with no name: PD-05 clause refs in `approvals.yaml` are embryonic mappings with no mapping machinery around them (§4, phase 2) |
 | **Designed/exhibited value duality** | `ConditionRole: [reference, rated, limiting, actual]` encodes it for conditions | the general duality (one value structure, two aspect roles) is not yet a kernel relation (as-found verification is the driver) |
 | **BIML registration** | record builder + idempotent register action + public register | true OIML-CS API integration (export feed) |
 | **Quantity vocabulary** | QuantityValue everywhere (INV-1); unit registry | quantity kinds are string ids at the domain layer; no first-class QuantityKind/Unit instance registry (dimension vectors, SI conversion) |
@@ -76,8 +78,10 @@ and the public register at `/app/register`.
 
 ## 4. The v3 program, in phases
 
-Dependency order is load-bearing: **kernel → core → recs → interop.**
-Each item names its Appendix B driver.
+Dependency order is load-bearing: **kernel → core → recs → interop →
+platform/release**, with the twin program (phase 6) free to run in
+parallel once task 32 lands. Each item names its Appendix B driver —
+phase 6's drivers are Volume I, chapters 14–15.
 
 ### Phase 1 — the language kernel
 
@@ -159,6 +163,48 @@ re-authoring, and text coverage depends on it:
   mappings added/removed/changed) powering edition comparison, change
   audit and clause-drift detection; 'edition' packages built on top.
 
+### Phase 5 — platform + release
+
+Depends on phases 2–3, and — for the monitor adoption — on phase 6's
+tasks 32–34; the release itself is last by definition:
+
+- **platform runtime v3** (task 29) — the app adopts every landed v3
+  primitive: subject anatomy, promises, artifacts, operational state,
+  `uses` composition, the mapping calculus, the twin interface;
+- **documentation site** (task 30) — this docs tree, published as a
+  site; can start any time after the tree stabilizes;
+- **gates and release** (task 31) — every command gate green from v3
+  sources, then the release ships.
+
+### Phase 6 — live twins + continuous compliance
+
+The twin direction of Volume I, chapters 14–15, as executable tasks.
+Task 32 depends only on kernel pieces (the subject construct,
+instantiation, quantities, operational state), so phase 6 can run in
+parallel with phases 2–4 once it lands:
+
+- **twin interface primitives** (task 32) — `endpoint` (operations,
+  access scopes), `serve` bindings, connector profiles, freshness
+  windows: the integration language of chapter 14, §14.4;
+- **API gateway** (task 33, depends on 32) — the connector layer:
+  external sources bind to the implementation model's registers with
+  authentication by role and freshness semantics — the 2021 plugin
+  pattern generalized (chapter 14, §14.7);
+- **Compliance Engine — the monitor runtime** (task 34, depends on
+  02 + 32 + 33) — continuous evaluation as a service: trigger → fetch →
+  freshness → the same OCL (INV-9) → verdict → time-stamped evidence →
+  escalation (chapter 14, §14.5);
+- **DPP projection** (task 35, depends on 08 + 32) — the model-native
+  passport in its two modes (abstract / live), answering ESPR and
+  JTC24's eight areas (chapter 14, §14.6);
+- **product reference packages** (task 36, depends on 04 + 05 + 15 +
+  16) — the manufacturer's `product_reference` kind: the product model
+  mapped aspect-by-aspect to the Recommendation, consumed by abstract
+  import or live integration (chapter 15);
+- **live-twin pilot** (task 37, depends on 18 + 32–36) — ACME LC-500
+  into the quarry's belt scale, end to end (chapter 15, §15.7): author,
+  map, certify, import, go live, audit.
+
 ## 5. The consolidated status table
 
 | Area | Marker | Where it stands |
@@ -172,6 +218,10 @@ re-authoring, and text coverage depends on it:
 | OIML Core re-home + OIML-CS reference package | ○ | phase 2 |
 | Rec re-expression (R 60 native; R 91/R 144 stress; R 129) | ○ | phase 3 |
 | Fragment provenance, ISO 24229, text coverage, projections, model diff | ○ | phase 4 |
+| Platform runtime v3, documentation site, gates & release | ○ | phase 5, tasks 29–31 |
+| Twin interface primitives (endpoint, serve, connector profiles, freshness) | ○ | phase 6, task 32 (Volume I, ch 14 §14.4) |
+| API gateway + Compliance Engine monitor runtime | ○ | phase 6, tasks 33–34 (ch 14 §14.5/§14.7) |
+| Passport projection, product reference packages, live-twin pilot | ○ | phase 6, tasks 35–37 (ch 14 §14.6, ch 15) |
 
 ## 6. Summary
 
@@ -181,9 +231,14 @@ re-authoring, and text coverage depends on it:
   specification-side, the workflow an unnamed implementation model.
 - The v3 program is phased by dependency: kernel primitives first, then
   the OIML Core re-home (with OIML-CS as its own reference package),
-  then Recommendation re-expression, then interop.
-- Every ○ item traces to the concept frame's Appendix B; every ● item
-  traces to a gate. Nothing here is aspiration without an address.
+  then Recommendation re-expression, then interop; the platform release
+  (phase 5) ships it, and the twin program (phase 6 — endpoint / serve /
+  freshness, the gateway, the monitor runtime, the passport projection,
+  product reference packages, the LC-500 → quarry pilot, all ○) takes
+  the standard to the product, continuously.
+- Every ○ item traces to the concept frame's Appendix B or to the twin
+  chapters (Volume I, 14–15); every ● item traces to a gate. Nothing
+  here is aspiration without an address.
 
 *Next: [Volume I — Primmel, the language kernel](../primmel/README.md):
 the concepts this roadmap realizes.*

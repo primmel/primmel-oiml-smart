@@ -181,18 +181,21 @@ MDLO test):
           pass_if: "ocl{abs(e_r) <= abs(mpe)}"
         - name: mdlo_criterion
           target: /req/metrological/temperature-effect-mdlo
-          pass_if: "ocl{abs(c_m) <= abs(mpc_mdlo)}"
+          accepts:
+            verdict: mdlo_normalized
+            op: lte
+            limit: "ocl{p_lc}"
 ```
 
 Three rules make this structure load-bearing. Every `target` resolves to
 a requirement in the test's `targets` — the test judges nothing the
-Recommendation did not require. Every item's expression reads only
+Recommendation did not require. Every `pass_if` expression reads only
 declared variables and bound paths — the same closed-world `uses`
 discipline as requirement limits. And where a quantity is shared with a
-requirement's registered VerdictQuantity, the test references the
-registry rather than re-deriving it — the `mdlo_normalized` lesson of
-§3.7 applies here with full force, because form, test, and requirement
-must compute the *same* number.
+requirement's registered VerdictQuantity, the item *references* the
+registry (`accepts:`, as the MDLO item does) rather than re-deriving it —
+the `mdlo_normalized` lesson of §3.7 applies here with full force,
+because form, test, and requirement must compute the *same* number.
 
 ## 4.7 Class inheritance
 
@@ -233,21 +236,28 @@ Three axes complete the test model; mark them honestly:
   against fault limits, durability over use. ◐ The R 60 data still tags
   tests `type: Testing | Inspection` — for a new Recommendation, fill
   `kind` from the enumeration and expect to normalize R 60 the same way.
-  ○ v3 adds the kinds the R 91 audit surfaced: `field` (in-situ
-  verification), `simulation` (executor is a simulator, not a lab), and
-  `software-examination` — R 60's software examination foreshadows the
-  last.
+  The v3 kinds the R 91 audit surfaced are ◐ as well:
+  `field` (in-situ verification) and `simulation` (executor is a
+  simulator, not a lab) ship in the R 91 data
+  (`/conf/field/stationary-field-test` and its moving/ego siblings;
+  `dynamic-performance`, `acceleration-test` — §9.2.5), and the cc
+  schema vocabulary already names all three; `software-examination` has
+  no carrier yet — R 91's own software examination still ships
+  `type: Inspection`, its D 31 item matrix as guidance prose.
 - **obligation** ○ — `mandatory | optional | conditional`, with
   `conditional` carrying its applicability condition. R 60 approximates
   this today at the report layer (`required: always | conditional` on
   forms, chapter 5); v3 moves the declaration onto the test, where the
   Recommendation states it.
-- **statistics** ○ — a block for the statistical-justification clauses
-  (R 91-2 §4.4/§4.7): the number-of-specimens rule (`N`) and the
-  distribution-analysis method by which a sample of N stands for the
-  type. R 60 needs no statistics block; Recommendations that accept
-  statistical evidence do, and v3 models it as data on the test, not as
-  prose.
+- **statistics** ● — landed in the R 91 data (gap G6 resolved,
+  §9.2.5): `design.counts` carries the measurement-count rule with its
+  `override: statistical_analysis` escape (R 91-2 §4.4), and
+  `acceptance.statistics` declares the distribution-analysis method by
+  which a sample of N stands for the type (§4.7 —
+  `method: error_distribution`, engine primitives `stddev` /
+  `m_sigma_coverage` behind it). R 60 needs no statistics block;
+  Recommendations that accept statistical evidence declare it as data on
+  the test, not as prose.
 
 ## 4.9 Grammar sketch *(illustrative v3 syntax)*
 
@@ -345,8 +355,10 @@ conformance_test /conf/class-a/measurement-error {
   run with calibration references.
 - Acceptance criteria are composite with per-item `target` requirements;
   inheritance via `inherits_from` restates only class deltas.
-- Kinds (● metamodel taxonomy, ◐ R 60 tagging), obligation levels (○),
-  and statistics blocks (○, from the R 91 gap) complete the model.
+- Kinds (● metamodel taxonomy; ◐ R 60 tagging and the new
+  field/simulation kinds, software-examination pending), obligation
+  levels (○), and statistics blocks (●, landed from the R 91 gap)
+  complete the model.
 
 *Next: [Chapter 5 — Forms and Reports](05-forms-and-reports.md): the
 evidence views — bind paths, measurement methods, pass/fail blocks, the

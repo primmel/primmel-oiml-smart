@@ -144,7 +144,7 @@ Packages arrange into the layer stack the concept frame fixes:
 |---|---|---|---|
 | 0 | vocabulary registers | glossarist VIML/VIM term registers (sibling repo) | ● |
 | 1 | Primmel kernel | the language itself — this volume | ● (this documentation) |
-| 2 | OIML core | subject chain, parties, workflow entities, state machines, approvals, roles, obligation, value-type base | ◐ (content identified; `data/core/` not yet stood up) |
+| 2 | OIML core | subject chain, parties, workflow entities, state machines, approvals, roles, obligation, value-type base | ◐ (`data/core/` in embryo — layer manifest + CS process requirements, inert until composition wiring) |
 | 2b | shared modules | parameterized test/form families | ◐ (seven identified; manifests sketched) |
 | 3 | rec packages | normative content only: subject, dimensions, attributes, requirements, tests, forms, tables, terminology | ● (R 60, R 91, R 144) |
 
@@ -170,14 +170,23 @@ and declares what consumers must bind — `provides` (the patterns),
 `with:` bindings (its attribute ids, severities, acceptance
 expressions, clause URNs). R 60 consumes `emc-disturbances` with
 observable `indication` in counts/v and the significant-fault verdict;
-R 144 with `e_x` in ppm and within-MPE-or-detected — one skeleton,
-two bindings, zero copies.
+R 144 with `e_x` in ppm and the `within_limits_or_detected` verdict —
+one skeleton, two bindings, zero copies.
+
+The supply chain of chapter 15 adds one package kind beside the stack:
+**`product_reference`** (○) — the manufacturer's product model, mapped
+aspect-by-aspect to the Recommendation. A user consumes it as an
+**abstract import** — static reference content under the same
+version-pinning discipline `uses` enforces: no unpinned consumption —
+or as a **live integration** of the deployed instance's twin. Chapter
+15 is the authority for both modes; the package layer treats the kind
+as one more composable unit.
 
 ## 8.5 Editions and lifecycle
 
 The manifest's `editions { 2021 2017 2000 1996 }` is not decoration.
 Editions are **arbitrary packagings used for provenance and lifecycle
-management** — orthogonal to the kernel, and implemented as such:
+management** — orthogonal to the kernel, and to be implemented as such:
 
 - **Edition pinning.** Every definition executed in a run is
   version-pinned in the test report (● INV-8), so a re-evaluation
@@ -247,7 +256,7 @@ module emc-disturbances {
   parameters {
     observable      : symbol        # consumer's measured quantity
     severity_table  : table         # consumer's severities
-    verdict_pattern : expression    # significant-fault | within-mpe-or-detected
+    verdict_pattern : expression    # significant-fault | within_limits_or_detected
   }
 }
 

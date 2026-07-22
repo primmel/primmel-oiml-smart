@@ -15,8 +15,8 @@ in those years, only the document did. The kernel takes the consequence
 seriously:
 
 > **An 'edition' package is an arbitrary packaging used for provenance
-> and lifecycle management — orthogonal to the core, and implemented as
-> such.**
+> and lifecycle management — orthogonal to the core, and to be
+> implemented as such.**
 
 Two design facts follow. First, the *subject models stay timeless*: a
 Model of a load cell is what it is; it carries no "deprecated" flag, no
@@ -28,12 +28,12 @@ and the `editions: [2021, 2017, 2000, 1996]` line
 relation hangs off that manifest (§13.4).
 
 This orthogonality is what keeps editions cheap. Because an edition is
-*packaging*, producing one is: pin the content, run the diff, declare
-the relations — never a rewrite of subject models. And because the
-content itself is tier-structured (chapter 1), an edition diff reports
-in the vocabulary the tiers already provide.
+*packaging*, producing one is ○ today: pin the content, run the diff,
+declare the relations — never a rewrite of subject models. And because
+the content itself is tier-structured (chapter 1), an edition diff
+reports in the vocabulary the tiers already provide.
 
-## 13.2 The model diff
+## 13.2 The model diff (○)
 
 The one capability the core owes lifecycle management is **model diff**:
 a structural diff between two package versions. Not a text diff of YAML
@@ -136,7 +136,11 @@ attributes by delegation through Family ← Group ← Model ← Sample
 (INV-10), and the report records *which version of the definitions*
 those resolutions drew on. Copying the values into the report would be
 the data-rot move INV-10 forbids; pinning the versions is the
-auditable alternative.
+auditable alternative. The twin era inherits the pin unchanged:
+monitor-emitted evidence (chapter 14) is a time series of verdicts, and
+every entry carries the same definition pins — so a fleet's year of
+continuous verdicts re-judges against a new edition exactly as a lab
+report does (○).
 
 ## 13.6 Grammar sketch *(illustrative v3 syntax)*
 
@@ -149,7 +153,7 @@ diff oiml-r60@2017 -> oiml-r60@2021 {
   mappings {
     added   [ lab-sop-7 -> /cc/metrological/repeatability ]
     removed [ lab-sop-3 -> /cc/legacy ]
-    coverage_delta { /req/metrological : full -> full ; /req/legacy : partial -> none }
+    coverage_delta { /req/metrological : full -> full ; /req/legacy : partial -> no cover }
   }
   clause_drift [ R60-3#2.1.7 reworded — cited by 2 elements ]
 }
@@ -164,17 +168,17 @@ edition oiml-r60@2021 of oiml-r60 {
 ## 13.7 Validation rules
 
 - `supersedes` / `replaces` targets resolve to published package
-  versions; the supersedes graph is acyclic (a package cannot supersede
-  itself through a chain);
+  versions; the supersedes graph is acyclic — a package cannot
+  supersede itself through a chain (○);
 - a `validity` window is well-formed time (Foundations primitives) and
   windows of a superseding chain do not contradict: the old window
-  closes no later than the new one opens, or the overlap is declared;
+  closes no later than the new one opens, or the overlap is declared (○);
 - a diff report's `added`/`removed`/`changed`/`moved` sets partition the
   element space of the two versions — nothing both added and removed,
-  nothing changed without a classified aspect;
+  nothing changed without a classified aspect (○);
 - coverage deltas in a mapping diff are *computed* (chapter 5's
   calculus), never authored — an authored delta that disagrees is an
-  error;
+  error (○);
 - every executed definition in a workspace record carries a version pin
   resolving to a package version (INV-8); an unpinned run fails
   admissibility at the report gate.

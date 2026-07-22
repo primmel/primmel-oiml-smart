@@ -64,6 +64,17 @@ All of it lives in `data/<rec>/model/`, in order:
 8. **Operating conditions.** The three VIM tiers — `reference`, `rated`,
    `limiting` — plus `common_test_conditions`, each a named set of
    influence-quantity values.
+9. **Twin readiness (○).** Declare the subject so it can later be
+   *served*: the endpoint declaration (operations, access scopes,
+   connector profile) as one more IS-level fact, promises stated so an
+   engine can check them, and characteristics whose derivations a monitor
+   can re-run — the same OCL the lab will use (Volume I, chapter 14).
+
+Item 9 is additive and entirely ○ — nothing executes it today. But the
+endpoint is part of the type definition, like a software identification:
+retrofitting one means re-opening the subject model, declaring one at
+authoring time is a stanza. Chapter 2, §2.11 shows the declaration;
+Volume I, chapter 14 shows what it wakes up.
 
 ## 1.3 Move 2 — Situate the taxonomy
 
@@ -105,7 +116,11 @@ full id is scope + `identifier_fragment`. The anatomy (INV-3):
 - `verification.method` — `definitional | computational | testing | inspection
   | deferred` (durability is `deferred`);
 - `acceptance_criteria` — legacy human-readable form, provenance only; never
-  author it without the machine-checkable pair.
+  author it without the machine-checkable pair;
+- **register the shared vocabulary** — symbols (`kind: attribute | formula |
+  observable`) and calculation primitives go in `symbols.yaml` /
+  `calculations.yaml` with clause refs, so the `observable:` / `formula:` ids
+  every limit cites have one home (checklist item 21).
 
 **Constraint vs requirement.** A Constraint is an intrinsic *validity* rule
 (OCL `inv`) — test-setup geometry like `constr:r60:fig3-2b` (`0.9 * E_max <=

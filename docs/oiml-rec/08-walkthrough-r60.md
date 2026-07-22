@@ -12,9 +12,9 @@
 
 R 60 arrives as three source documents — R 60-1 (requirements),
 R 60-2 (test procedures), R 60-3 (test report format), 2021 editions —
-and leaves as a package: 111 YAML files under `data/r60/`, 38
-attributes, 60 requirements, 62 conformance tests, 33 symbols,
-16 calculations, 13 seeded evaluation flows, zero validation errors.
+and leaves as a package: 107 YAML files under `data/r60/`, 40
+attributes, 60 requirements, 62 conformance tests, 38 symbols,
+17 calculations, 13 seeded evaluation flows, zero validation errors.
 The mapping from documents to layers is the methodology's own:
 
 | Source | Lands in | As |
@@ -91,7 +91,7 @@ merit walk (smallest E_max per group, 5–10× steps) is data in
 
 ## 8.4 The attribute register: three decisions
 
-The 38-entry register (`data/r60/model/attributes.yaml`) is the INV-2
+The 40-entry register (`data/r60/model/attributes.yaml`) is the INV-2
 schema layer: each attribute defined once — snake_case id, print
 `symbol`, definition, clause source, quantity kind, unit, `origin`,
 `scope`, `category` — then *valued* per chain level. Three entries
@@ -261,9 +261,10 @@ evaluated results.
 
 It also carries the register's most instructive defect. The
 `conversionFactor` calculation declares an input named `n` — the
-verification intervals *of the tested range*, which equals Y per
-R 60-3, 2.1.2.4. The form's sibling field `n_lc` is a different
-quantity: the manufacturer's declared *maximum* intervals
+verification intervals *of the tested range*: `(E_max − E_min)/v_min`
+when the test spans the classified range (R 60-3, 2.1.2.4), equal to Y
+in that case. The form's sibling field `n_lc` is a different quantity:
+the manufacturer's declared *maximum* intervals
 (`group.parameters.n_lc`). The methodology's pitfall register (§9.4,
 item 8) records the drift — the form bound `n_lc` where the calc
 declares `n` — and the repaired binding is what ships:
@@ -273,12 +274,12 @@ declares `n` — and the repaired binding is what ships:
       calculation_bindings:
         avgIndicationAt75pct: reference_indication_75pct
         indicationAtDmin: indication_at_dmin
-        "n": "y"                                 # calc input n ← form field y
+        "n": n_test_intervals                    # calc input n ← dedicated derived field
 ```
 
 Two lessons in one line: binding *keys* must equal the calc's declared
-input names, and two integer quantities that are easy to confuse
-(`n_lc` vs `n`) are different semantics — the linker rule
+input names, and easy-to-confuse integer quantities (`n_lc` vs `n` vs
+`y`) are different semantics — the linker rule
 ("`calculation_bindings` key matches a declared calc input") exists
 because this exact drift shipped green once.
 
@@ -304,7 +305,27 @@ order — delegation through the chain, applicability over the five axes,
 calculations over bound evidence, the verdict chain — and it fails the
 build when any layer drifts.
 
-## 8.9 Grammar sketch *(illustrative v3 syntax)*
+## 8.9 The twin angle: this package, switched on (○)
+
+Everything above built the package for the laboratory. Volume I,
+[chapter 14](../primmel/14-live-twins.md), §14.9 shows the same package
+*switched on*: ACME ships LC-500 units with the endpoint `lc500_api`
+declared on the subject (chapter 2, §2.11 of this volume), a quarry's
+belt scale integrates one, and the IA's Compliance Engine subscribes to
+`watch_state` and runs an hourly monitor over the served values.
+
+Nothing in §8.2–§8.8 changes to make that possible — that is the
+point. The monitor evaluates the §8.5 requirements' own
+`lookupMPE(...)` against a live indication; a unit reporting `fault`
+yields `invalid` through the same precondition semantics as §8.6; the
+quarterly creep re-derivation is §8.6's characteristic computed over a
+streamed series instead of a lab run; and the freshness rule (stale ⇒
+`indeterminate`, never a silent pass) guards every served value. The
+package authored once judges the Tuesday in the lab — and every day
+after it. (Endpoint, monitor and engine are ○ in v3; the model they
+consume is the one this chapter just walked.)
+
+## 8.10 Grammar sketch *(illustrative v3 syntax)*
 
 The whole walkthrough as one closure slice — each secondary element
 anchoring the primary tier, each judgment referencing one derivation:
@@ -340,13 +361,13 @@ form r60-3/table-6.8 {
   header  r60-3/header-a
   fields  { emax bind model.parameters.e_max
             dmax bind sample.test_context.d_max
-            f    computed conversionFactor { n <- y } }              # key = calc input
-  pass_if ocl{ creep_30min_result = 'pass' and creep_20_30_result = 'pass'
-               and dr_half_v_result = 'pass' }
+            f    computed conversionFactor { n <- n_test_intervals } }  # key = calc input
+  pass_if ocl{ creep_30min_result and creep_20_30_result
+               and dr_half_v_result }
 }
 ```
 
-## 8.10 Validation rules
+## 8.11 Validation rules
 
 The walkthrough exercises, concretely, the checks the author of the
 next Recommendation should run first:
@@ -368,10 +389,10 @@ next Recommendation should run first:
 - the seed compiles: every flow's chain (family → … → certificate)
   has all FKs resolving and `standard_id: oiml-r60` throughout.
 
-## 8.11 Summary
+## 8.12 Summary
 
 - R 60 is the methodology executed once: three source documents → one
-  package of 111 files, with each clause landing in its tier's layer.
+  package of 107 files, with each clause landing in its tier's layer.
 - The subject is four IS variants over five HAS classification axes;
   dimension values carry machine-checkable payloads (`n_lc_limits`).
 - The family matrix is criteria (verbatim) + groups (identical
@@ -383,6 +404,9 @@ next Recommendation should run first:
   per class; forms bind into the chain and their binding keys are
   checked names, not suggestions; thirteen seeded flows carry the whole
   synthesis to a certificate.
+- Switched on, nothing is re-modelled: Volume I, chapter 14, §14.9 runs
+  *this* package — the `lc500_api` endpoint, the hourly monitor, the
+  same `lookupMPE` — as its live-twin worked example (○).
 
 *Next: [Chapter 9 — Walkthrough: R 91 and R 144](09-walkthrough-r91-r144.md):
 two Recommendations of different kinds — and what modelling them forced

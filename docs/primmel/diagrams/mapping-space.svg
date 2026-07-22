@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="arrMS" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9333ea"/>
+    </marker>
+    <marker id="arrIM" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+
+  <text x="50" y="34" font-size="18" font-weight="700" fill="#0f172a">The mapping space — layers, imports, multi-targets, views</text>
+  <text x="50" y="54" font-size="12.5" fill="#475569">Every arrow is either a mapping (fulfilment claim) or an import (structural inclusion) — never both.</text>
+
+  <!-- reference layer -->
+  <rect x="520" y="80" width="180" height="60" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.6"/>
+  <text x="610" y="104" font-size="11.5" font-weight="700" fill="#334155" text-anchor="middle">ISO 9001</text>
+  <text x="610" y="121" font-size="9.5" fill="#64748b" text-anchor="middle">QMS reference model</text>
+
+  <rect x="740" y="80" width="180" height="60" rx="10" fill="#f8fafc" stroke="#64748b" stroke-width="1.6"/>
+  <text x="830" y="104" font-size="11.5" font-weight="700" fill="#334155" text-anchor="middle">ISO 27001</text>
+  <text x="830" y="121" font-size="9.5" fill="#64748b" text-anchor="middle">ISMS reference model</text>
+
+  <!-- intermediate layer -->
+  <rect x="560" y="200" width="300" height="70" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+  <text x="710" y="224" font-size="11.5" font-weight="700" fill="#3730a3" text-anchor="middle">customer / sector scheme</text>
+  <text x="710" y="242" font-size="9.5" fill="#4f46e5" text-anchor="middle">intermediate model — fulfiller upward, reference downward</text>
+  <text x="40" y="240" font-size="10.5" font-weight="700" fill="#16a34a">a · any number of layers</text>
+  <text x="40" y="256" font-size="9.5" fill="#475569">compliance flows hop by hop;</text>
+  <text x="40" y="270" font-size="9.5" fill="#475569">only through shared mapped components</text>
+
+  <!-- IMS -->
+  <rect x="300" y="340" width="420" height="130" rx="12" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="510" y="366" font-size="13" font-weight="700" fill="#92400e" text-anchor="middle">Acme integrated management system (IMS)</text>
+  <text x="510" y="384" font-size="10" fill="#92600e" text-anchor="middle">one implementation model — the organization's actual operations</text>
+  <rect x="322" y="398" width="180" height="52" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="1.2"/>
+  <text x="412" y="418" font-size="10" fill="#92400e" text-anchor="middle">QMS operations</text>
+  <text x="412" y="433" font-size="9" fill="#b45309" text-anchor="middle">(imported component)</text>
+  <rect x="520" y="398" width="180" height="52" rx="8" fill="#ffffff" stroke="#d97706" stroke-width="1.2"/>
+  <text x="610" y="418" font-size="10" fill="#92400e" text-anchor="middle">ISMS operations</text>
+  <text x="610" y="433" font-size="9" fill="#b45309" text-anchor="middle">(imported component)</text>
+  <text x="40" y="410" font-size="10.5" font-weight="700" fill="#16a34a">b · implementation imports implementation</text>
+  <text x="40" y="426" font-size="9.5" fill="#475569">import = structural inclusion;</text>
+  <text x="40" y="440" font-size="9.5" fill="#475569">mapping = fulfilment claim</text>
+
+  <!-- imports -->
+  <line x1="412" y1="340" x2="412" y2="316" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arrIM)"/>
+  <line x1="610" y1="340" x2="610" y2="316" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arrIM)"/>
+  <rect x="330" y="288" width="164" height="28" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1"/>
+  <text x="412" y="306" font-size="9.5" fill="#166534" text-anchor="middle">QMS ops package</text>
+  <rect x="528" y="288" width="164" height="28" rx="6" fill="#f0fdf4" stroke="#16a34a" stroke-width="1"/>
+  <text x="610" y="306" font-size="9.5" fill="#166534" text-anchor="middle">ISMS ops package</text>
+
+  <!-- mappings multi-target -->
+  <g stroke="#9333ea" stroke-width="2" fill="none" stroke-dasharray="7 4">
+    <path d="M 560 340 C 560 300, 600 240, 610 144" marker-end="url(#arrMS)"/>
+    <path d="M 680 340 C 740 300, 810 240, 826 144" marker-end="url(#arrMS)"/>
+  </g>
+  <text x="760" y="380" font-size="10.5" font-weight="700" fill="#16a34a">c · one implementation,</text>
+  <text x="760" y="396" font-size="10.5" font-weight="700" fill="#16a34a">many reference models</text>
+  <text x="760" y="412" font-size="9.5" fill="#475569">coverage computed per target;</text>
+  <text x="760" y="426" font-size="9.5" fill="#475569">one process may satisfy both standards</text>
+
+  <!-- chain up -->
+  <line x1="710" y1="200" x2="660" y2="144" stroke="#9333ea" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrMS)"/>
+  <line x1="710" y1="200" x2="780" y2="144" stroke="#9333ea" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#arrMS)"/>
+
+  <!-- view lens -->
+  <rect x="300" y="520" width="420" height="90" rx="12" fill="#faf5ff" stroke="#9333ea" stroke-width="1.8"/>
+  <text x="510" y="546" font-size="12" font-weight="700" fill="#6b21a8" text-anchor="middle">view: “the IMS through the QMS lens”</text>
+  <text x="510" y="566" font-size="10" fill="#7e22ce" text-anchor="middle">only QMS-relevant processes + their coverage vs ISO 9001</text>
+  <text x="510" y="584" font-size="10" fill="#7e22ce" text-anchor="middle">read-only — never mutates the model or its mappings</text>
+  <line x1="510" y1="520" x2="510" y2="474" stroke="#9333ea" stroke-width="1.6" stroke-dasharray="3 3" marker-end="url(#arrMS)"/>
+  <text x="40" y="556" font-size="10.5" font-weight="700" fill="#16a34a">d · views of different depths</text>
+  <text x="40" y="572" font-size="9.5" fill="#475569">a shallower lens model reads a</text>
+  <text x="40" y="586" font-size="9.5" fill="#475569">complex one (the 2021 view profiles,</text>
+  <text x="40" y="600" font-size="9.5" fill="#475569">generalized)</text>
+
+  <!-- legend -->
+  <rect x="760" y="470" width="170" height="140" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="775" y="492" font-size="11" font-weight="700" fill="#334155">legend</text>
+  <line x1="775" y1="512" x2="805" y2="512" stroke="#9333ea" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="812" y="516" font-size="10" fill="#475569">mapping (A ⇒ B)</text>
+  <line x1="775" y1="536" x2="805" y2="536" stroke="#16a34a" stroke-width="2"/>
+  <text x="812" y="540" font-size="10" fill="#475569">import (uses)</text>
+  <text x="775" y="566" font-size="9.5" fill="#64748b">coverage is computed</text>
+  <text x="775" y="581" font-size="9.5" fill="#64748b">per target, per hop</text>
+</svg>

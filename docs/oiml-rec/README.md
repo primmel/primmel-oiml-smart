@@ -13,6 +13,12 @@ core metamodel). In particular, you should already read a requirement as
 the subject*, and a form as *an evidence view* — the methodology is those
 three ideas applied clause by clause.
 
+The audience is wider than the standards body: a manufacturer authors
+their **product reference package** — the product modelled and mapped to
+the Recommendation — by these same moves (Volume I, chapter 15), and a
+subject declared twin-ready here (chapter 2, §2.11) can later be served
+and monitored live (Volume I, chapter 14).
+
 ## Who reads this volume
 
 **Track C — the Recommendation author.** You are a metrologist or a
@@ -28,7 +34,11 @@ Chapter 1 is the method in one pass: seven moves, from the subject to the
 validated package, with the gates and the pitfalls. Chapters 2–7 develop
 one move each — read them when you actually sit down to author that layer.
 Chapters 8–9 are walkthroughs: the same seven moves applied to real
-Recommendations, end to end, including the mistakes. If you are starting a
+Recommendations, end to end, including the mistakes. Chapter 10 turns the
+direction around: not the Recommendation but **your laboratory** — its
+SOPs as an implementation package mapped to the required methods, with
+the coverage calculus answering whether the lab's procedures fulfil them.
+If you are starting a
 new Recommendation today: read chapter 1, keep the directory contract
 below open in another window, and work the moves in order.
 
@@ -125,6 +135,10 @@ honestly — the method is the target, R 60 is the evidence.
    end.
 9. [Walkthrough: R 91 and R 144](09-walkthrough-r91-r144.md) — speed
    meters and gas analyzers: the stress cases.
+10. [Modelling your lab](10-modelling-your-lab.md) — the laboratory's
+    SOPs, equipment register and record forms as an implementation
+    package; the `.prm` to the required methods; full cover by the
+    calculus (the MTL Rhein Ruhr pilot).
 
 ## The one-sentence summary
 

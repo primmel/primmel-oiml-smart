@@ -17,6 +17,8 @@ them, never restates a subject fact, and never contains a number that
 belongs to the instrument (INV-3). The "shall" sentence is the human
 rendering; the model is the binding plus the limit.
 
+![Secondary models anchor to the subject](diagrams/secondary-binding.svg)
+
 Requirements live in `data/<rec>/specification/requirements/`, grouped in
 scopes `/req/<area>`; a requirement's full id is its scope plus its
 `identifier_fragment` — `/req/metrological/creep`. Every requirement is
@@ -317,7 +319,9 @@ The linker and `primmel check` enforce:
   consumer shadows or divergently restates a registered VerdictQuantity;
 - no tier breakpoint, MPE number, or profile value appears inside an OCL
   expression — data lives in tables, expressions read data through named
-  lookups.
+  lookups. Clause-fixed constants are exempt: they are part of the
+  limit, not table data (the creep clause's own `0.7`, R 60-1 §5.5.1,
+  is authored in the expression, never in `mpe_tiers`).
 
 ## 3.10 Summary
 

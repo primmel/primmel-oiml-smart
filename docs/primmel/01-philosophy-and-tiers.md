@@ -10,8 +10,8 @@
 
 A standard, as published, is prose. A conformance requirement like
 
-> "The value of the largest load applied to a load cell during test shall
-> not be greater than E_max." — OIML R 60-1:2021, clause 5.2
+> "The value of the largest load applied to a load cell during test […]
+> shall not be greater than E_max." — OIML R 60-1:2021, clause 5.2
 
 carries, in one English sentence, at least five machine-relevant facts:
 a **subject** (a load cell), an **aspect** of it under test (the largest
@@ -101,6 +101,11 @@ only *bind* them. An evaluation can be re-run against new limits without
 re-testing, because tertiary judgments never *contain* evidence — they
 only *consume* it.
 
+The tertiary tier also has a *continuous* member ○: the **monitor** — a
+process that re-runs the same evaluations against live subject instances
+indefinitely, so that judgment keeps pace with the product
+(chapter 14).
+
 ### The two firewall rules
 
 The tier law has two named consequences you will meet constantly:
@@ -143,15 +148,22 @@ it speaks for*:
 - **Reference model** — the semantic content of a standard document,
   published by the standards body. Faithful, machine-applicable,
   machine-readable, transferable. Speaks for the standard.
+- **Product reference model** ○ *(planned v3)* — a manufacturer's model
+  of their own product: what it is and claims, mapped aspect-by-aspect
+  to the standards-reference model. Speaks for the product. The
+  instrument user consumes it in two modes — abstract import (static,
+  version-pinned) or live integration (the twin of chapter 14 inside
+  their own implementation model); chapter 15 develops the supply chain.
 - **Implementation model** — the operations of an organization: its
   actual processes as a digital twin of reality. Speaks for the
   organization. (Chapter 5 develops the mapping relation between them.)
 - **Workspace** — the records produced by running implementation models:
   one store per registry, one file per record. Speaks for the evidence.
 
-A standards publisher publishes reference models. A lab or certification
-body publishes implementation models mapped to them. The platform runs
-implementation models and fills workspaces.
+A standards publisher publishes reference models. A manufacturer
+publishes a product reference model ○ mapped to the standard's. A lab or
+certification body publishes implementation models mapped to them. The
+platform runs implementation models and fills workspaces.
 
 ## 1.7 Artifact kinds
 
@@ -163,6 +175,8 @@ Four artifact kinds carry these models on disk:
 | `.prd` | file | a **Primmel Document** — clause-level extracts of a source standard: the addressable fragments provisions trace to (chapter 9) |
 | `.prm` | file | a **Primmel Map** — a JSON mapping between two models, with per-pair description and justification (chapter 5) |
 | `.pws/` | directory | a **Primmel Workspace** — records produced by running a model: one YAML file per record, one subdirectory per registry, a `manifest.yaml` at the root |
+
+![The four artifact kinds and who produces them](../shared/diagrams/artifact-kinds.svg)
 
 ## 1.8 What Primmel v3 is not
 
@@ -178,6 +192,9 @@ rejected (see `shared/alternatives-audit.md` for the full comparison):
 - **Diagrams with semantics by convention.** Not boxes-and-arrows whose
   meaning lives in a style guide. Every construct has execution semantics.
 - **A second expression language.** All computable statements are OCL.
+- **BCP 47 language tags.** Multilingual content carries ISO 24229
+  spelling codes instead (chapter 10) — precise, registry-resolvable
+  identifications of language, script and conversion system.
 
 ## 1.9 Summary
 

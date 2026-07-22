@@ -7,7 +7,8 @@
 
 The audit record lives in `docs/primmel-concepts.md` §1, §9 and §12 of
 the `oimlsmart/smart` repository; this document is the developed form.
-Sources: the DIN DKE SPEC 99200 project
+Sources (both are sibling checkouts under `~/src/`): the DIN DKE SPEC
+99200 project
 (`external/DIN_DKE_SPEC_99200__ReqIF_interpretation_for_public_standards/`)
 and the IEC-ISO Core Ontology share
 (`mn/sdu-smart/reference-docs/smartsdu-information-model-share-c6362d946900/`).
@@ -51,10 +52,13 @@ The model, read from the profile's own ReqIF serialization
 - **`obj.modality`** — an enumeration: `constraint`, `requirement`,
   `recommendation`, `capability`, `permission`, `possibility`,
   `ambiguous`, `undefined`, ordered by bindingness. The profile's own
-  note admits the seam: *"Although an external constraint is formally
-  not a modality, the obj.modality contains the value 'constraint' since
-  the attribute represents not only modalities but all levels of
-  obligations"* — so `requirement` is duplicated in effect by
+  note on the `constraint` value admits the seam (clause 8.2.1.2 of the
+  spec, per its ReqIF serialization in
+  `Examples/DIN_DKE_SPEC_99200.reqifz`): *"Although an external
+  constrains [sic] is formally not a modality, the obj.modality
+  (8.2.1.2) contains the value 'constraint' since the attribute
+  represents not only modalities but all levels of obligations for the
+  user."* — so `requirement` is duplicated in effect by
   `constraint`, and the enum conflates verbal form with obligation
   source. Because modality is mined from text by NLP, the enum needs its
   escape hatches (`ambiguous` when a fragment mixes modalities;
@@ -113,7 +117,7 @@ The class structure (verified in the `.ttl`):
   document is *reconstructable* from the graph (the
   `docs/Competency Questions.md` CQ: "From which identified fragment in
   the authoritative file is the Provision derived? Is the extracted
-  content congruous with the original?").
+  content within the core ontology congruous with the original?").
 - **Validation and query** — SHACL shapes
   (`information_model/schemas/shacl/*.ttl`) and SPARQL competency
   questions.
@@ -135,7 +139,7 @@ the boundary is exactly where Primmel starts.
 | **Executable conformance** | none | none | conformance tests with preconditions, observables, acceptance; verdicts re-computed from evidence |
 | **Processes** | none | none | abstract + executable processes, step vocabulary, executors; the workflow runs |
 | **Applicability** | `use.*` tag filters | none | dimension-driven evaluation through one engine (`implies:`, `instances:`) |
-| **Compliance of implementations** | none | none | mapping (A ⇒ B) + the coverage calculus (full/minimal/partial/none, inherited, aggregated, transitive at process level) |
+| **Compliance of implementations** | none | none | mapping (A ⇒ B) + the coverage calculus (full/minimal/partial/no cover, inherited, aggregated, transitive at process level) |
 | **Rule language** | none | SHACL (validation only) | OCL everywhere — constraints, derivations, guards (INV-9) |
 
 The relation is *strict superset*: everything both alternatives express

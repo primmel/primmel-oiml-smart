@@ -97,6 +97,15 @@ Per-measurement sign-off lives on the record (`signed_by` / `signed_at`),
 not on the form — the evaluator who captured this value signs this value.
 ● (`data/r60/entities/test-execution.yaml` — EvidenceRecord.)
 
+**Lab record vs live stream** (Volume I, Chapter 14 ○). An EvidenceRecord
+is captured at a bench; the twin direction adds a second provenance: the
+*evidence stream*, served by the instrument's endpoint and appended
+continuously. The distinction is provenance, not kind — a stream record
+carries this section's parts (value, conditions, timestamp) plus the
+freshness window its `serve` binding declares. And the firewall holds on
+the wire: neither the lab record nor the stream carries a verdict. Facts
+flow; judgments are computed downstream, in D3, over both.
+
 ## 6.4 TestRunResult and the admissibility gate
 
 The **TestRunResult** is the raw fact set of one run — its evidence

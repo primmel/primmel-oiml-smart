@@ -133,8 +133,17 @@ Two parameterizations keep one process definition serving many runs:
   accuracy classes A/B, 3 for C/D). The applicability engine expands the
   concrete run plan per subject at execution time.
 - **timer-driven recurrence** — the process re-fires on a period
-  (initial verification, then re-verification every 12 months; tyre
-  change on an ego meter re-triggers out of cycle via a signal event).
+  (initial verification, then re-verification at legislated intervals;
+  a tyre change on an ego meter re-triggers out of cycle via a signal
+  event).
+
+**The continuous limit case: the monitor ○.** Recurrence taken to its
+limit is a process that never ends: the **monitor** — triggered by
+schedule, signal, or a watched value's change, looping fetch → freshness
+→ evaluate → verdict → evidence (the loop is chapter 14, §14.5).
+Monitors evaluate against *served* instances, and the same endpoint
+machinery makes a subject's own processes remotely callable: an `invoke`
+operation triggers a behavior over the wire (chapter 14, §14.4).
 
 ## 4.8 Processes across model kinds
 

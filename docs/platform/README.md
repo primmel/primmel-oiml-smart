@@ -117,7 +117,7 @@ Five engines evaluate the models; all are data-driven.
   `should` is an observation, never a blocker). ●
 - **The form-context binding engine** (`browser/src/data/form-context.ts`)
   — `resolveBind` / `writeBind` / `persistBindingContext`. Form fields
-  with `bind:` paths (182 of them across the R 60-3 forms) prefill from
+  with `bind:` paths (164 of them across the R 60-3 forms) prefill from
   the resolved subject chain and write through to the owning entity on
   submit; `FormInstance.values` keeps only unbound entries
   (`stripBoundFields`). The vocabulary: `model.parameters.e_max`,
@@ -138,6 +138,25 @@ Five engines evaluate the models; all are data-driven.
   capability-based lab selection (`lab-selection.service.ts` over
   `evaluation/lab-selection-criteria.yaml` — a generic evaluator reading
   `TestLaboratory.capabilities`). ●
+
+### B.5.1 v3: the monitor runtime and the API gateway (○)
+
+Two more components join this list when the twin direction lands
+(Volume I, chapter 14). Both are reuse, not new science:
+
+- **The monitor runtime** (○) — a scheduler and trigger bus (schedule /
+  signal / change) driving the *same* verdict service over values
+  fetched from subject endpoints: fetch → freshness check (stale ⇒
+  `indeterminate`, never a silent pass) → the requirement's own OCL →
+  verdict → time-stamped evidence appended to the workspace → escalate
+  on fail/invalid. Preconditions, modality and the VerdictQuantity
+  registry keep their single homes.
+- **The API gateway** (○) — the connector layer: external sources
+  (domain models like IFC, APIs, file drops, streams) bind to model
+  registers through declared connector profiles (`rest_json`, `mqtt`,
+  `opc_ua`, `file_drop`), with role-based access and a freshness window
+  on every binding — the 2021 PAS 2060 plugin pattern generalized
+  (chapter 14, §14.7).
 
 ## B.6 Consoles and the public register
 
@@ -281,6 +300,10 @@ Recommendations authored Primmel-native only ○).
 - The shell is Astro 7 + Vue islands with generated routes, a permanent
   router shim, and a client-side guard; the gates (vue-tsc, astro check,
   vitest, build, validate, e2e) are the definition of done.
+- v3 adds two engine components (○): the monitor runtime — scheduled or
+  triggered continuous evaluation reusing the same verdict service —
+  and the API gateway, binding external sources to model registers with
+  freshness semantics (§B.5.1).
 
 *Next: [Shared — Glossary](../shared/glossary.md): every term of the
 frame, one definition each.*

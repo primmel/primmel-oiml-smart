@@ -206,7 +206,35 @@ usable? does the sample satisfy each requirement? does the type conform
 across specimens? does the application succeed?* — and the architecture
 refuses to let one level answer another's question.
 
-## 7.8 Grammar sketch *(illustrative v3 syntax)*
+## 7.8 Continuous verdicts — the same judgment, on a new rhythm ○
+
+Nothing in this chapter changes when the evidence arrives continuously. A
+verdict was never an event; it is a function (§7.1), and the twin
+direction (Volume I, Chapter 14 ○) only calls that function on a new
+rhythm: monitors evaluate the same requirement OCL over served live
+evidence, and each outcome is a Verdict in exactly this chapter's sense —
+one requirement × one subject, fact under judgment, limit snapshot, four
+outcomes.
+
+Two of this chapter's disciplines carry the live case without
+modification:
+
+- **`indeterminate` absorbs staleness.** A stale served value is not a
+  metrological event, and silence is not evidence: the verdict degrades
+  to `indeterminate` with the reason recorded (§7.3). No fifth outcome is
+  needed.
+- **INV-5 is the audit story.** Continuous verdicts remain re-runnable
+  functions over the accumulated evidence stream: a later engine
+  re-judges any time window against new limits without asking the
+  instrument anything.
+
+And one boundary holds: continuous verdicts feed surveillance and the
+certificate's post-issue life (Chapter 8); they do not replace
+TypeEvaluation. Type conformity is still established across Samples
+(INV-6) — a fleet of passing monitors is evidence about units, not a type
+verdict.
+
+## 7.9 Grammar sketch *(illustrative v3 syntax)*
 
 ```prl
 sample_evaluation SE-0091 {
@@ -257,7 +285,7 @@ type_approval_decision {
 }
 ```
 
-## 7.9 Validation rules
+## 7.10 Validation rules
 
 - a SampleEvaluation references exactly one TestReport and its Sample
   (INV-6); `evidenceValidation` must precede verdict computation;
@@ -276,7 +304,7 @@ type_approval_decision {
 - D3 references D1 and D2 only — a verdict touching a physical entity
   (sample, equipment) is a dependency-rule violation.
 
-## 7.10 Summary
+## 7.11 Summary
 
 - Evaluation is a pure function over D1 definitions and D2 facts:
   re-runnable by construction, re-evaluation without re-testing (INV-5).

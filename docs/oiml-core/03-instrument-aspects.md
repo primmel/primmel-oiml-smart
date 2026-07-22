@@ -31,6 +31,15 @@ classes (Formula, Constraint) that make the catalog computable. Grounding:
 `oiml-core-ontology.yaml` (Module C) and the R 60 profile
 (`ontology-remix/OIML Recommendation Models/Ontology/R 60/`).
 
+The twin direction adds two instrument-facing notes to this catalog
+(Volume I, Chapter 14 ○), and neither is a new aspect kind. An **endpoint
+declaration** is IS-level: "this instrument offers this interface" sits
+next to its software identification and markings as part of what the type
+*is*. **Serve bindings** are HAS-level: they bind exhibited aspects —
+test-context values, classification, state — to endpoint operations, with
+freshness windows declared on the binding. Both are plumbing over the
+anatomy above, not additions to it.
+
 ## 3.2 AttributeDefinition and Parameter — INV-2
 
 The schema/instance split at its sharpest (`oiml-core-ontology.yaml` —
@@ -149,7 +158,10 @@ test yet: R 60's `durability` has none in R 60-2 and is deliberately left
 without `verified_by` — an honest hole the coverage audit reports, not a
 silent one. In kernel terms a behavior is a Process (Volume I, Chapter 4):
 the abstract form is always valid; the executable form is layered on when
-simulation demands it.
+simulation demands it. A third form is the *served* one (Volume I,
+Chapter 14 ○): the behavior made remotely invocable — the measurement
+process as the archetype, invoked through the endpoint, its response
+processes streaming as telemetry.
 
 ## 3.6 Operating condition sets — the designed tiers
 
@@ -190,7 +202,7 @@ formula:r60:max-measuring-range):
     - { name: E_min, binding: "self.E_min", from: attrdef:r60:E_min }
   expression: "self.E_max - self.E_min"
   output: { symbol: MR_max, quantityKind: qk:mass, type: Mass }
-  source: { doc: rec:oiml-r60:2017, clause: "3.5.2" }
+  source: { doc: rec:oiml-r60:2017, clause: "3.5.7" }
 ```
 
 Two laws apply. **INV-9** — the language is OCL, always: the same

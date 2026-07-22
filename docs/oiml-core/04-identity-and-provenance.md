@@ -199,6 +199,13 @@ the `C6` group label of Chapter 2 surfacing on the legal document). On
 approval, `Model.typeApprovalRef` is filled: the sanctioned flow D3 → B →
 C, completed.
 
+**A note on the passport** (Volume I, Chapter 14 ○): the model-native
+passport is the public *projection* of this identity layer — manufacturer,
+software identity, markings — served from the instrument's endpoint. It
+is not a certificate. The Certificate remains the legal artifact: issued
+by D3, basis-bound, spine-walkable. The passport projects what the
+instrument *is*; the certificate attests what it has *earned*.
+
 ## 4.9 Grammar sketch *(illustrative v3 syntax)*
 
 ```prl

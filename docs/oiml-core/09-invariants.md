@@ -244,6 +244,19 @@ running system honours only implicitly:
   under exactly one of IS, HAS, DOES: a declaration in the wrong family is an
   error, and an aspect in no family is unmodelled.
 
+The twin direction (Volume I, Chapter 14) adds two more candidates, both
+arising the moment evidence is *served* rather than recorded:
+
+- **INV-14 ○ — Freshness is semantics.** Every served value carries a
+  validity window; a stale value degrades the verdict to `indeterminate` —
+  never a silent pass, never a metrological fail. Nothing checks freshness
+  today because nothing is served yet; the law is stated now so that v3's
+  live bindings have something to answer to.
+- **INV-15 ○ — The firewall holds in streams.** Evidence streams carry facts
+  only; no verdict travels on the wire. INV-4 and INV-7 restated for
+  continuous evidence: a stream record with an outcome field is the same
+  schema defect as a TestReport that says 'pass'.
+
 ## 9.13 Grammar sketch *(illustrative v3 syntax)*
 
 Machine-checkable invariants are declared with the package they govern:
@@ -293,7 +306,9 @@ through schema + linker + codegen; the executable `check:` is the v3 elevation
   that depends on reviewer vigilance is already broken.
 - The frame adds three candidates ○: characteristics defined in the primary
   model and referenced elsewhere; designed/exhibited duality coherence; every
-  aspect anchored under exactly one of IS/HAS/DOES.
+  aspect anchored under exactly one of IS/HAS/DOES. The twin direction adds
+  two more ○: freshness as semantics (stale ⇒ `indeterminate`, never a
+  silent pass) and the fact/judgment firewall extended to live streams.
 
 *Next: [Chapter 10 — Shared modules](10-shared-modules.md): the seven
 parameterized test/form families between core and Recommendations.*

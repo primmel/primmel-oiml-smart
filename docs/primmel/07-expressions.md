@@ -139,6 +139,12 @@ judgment is reproducible. Change the class limits for a surveillance
 audit and re-judge last year's report — no re-testing, no divergence
 between lab computation and evaluator judgment (INV-5).
 
+Chapter 14 adds a third execution to the same parse: the Compliance
+Engine's monitors evaluate these statements over *served* values (○ —
+§14.5). There is no "online dialect" — a monitor runs the lab's OCL
+verbatim, which is precisely what makes continuous compliance a judgment
+by the standard and not by a second semantics.
+
 ## 7.5 The dialect surface
 
 The dialect is a deliberately small OCL subset, frozen by the engine

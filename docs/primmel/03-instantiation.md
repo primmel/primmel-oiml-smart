@@ -82,6 +82,11 @@ subject, the anatomy answers what instantiation *means* per question:
 One line to remember: **the Model is what is certified; the Sample is
 what is tested; the chain is what makes the two commensurable.**
 
+One last instance shape belongs here: the **live twin** ○ — a Sample
+whose anatomy is *served*, instantiation extended from a record into a
+service (chapter 14). The delegation rules above are untouched; only the
+answering moves online.
+
 ## 3.4 Delegation (INV-10)
 
 Attribute resolution along the chain:
@@ -120,6 +125,7 @@ instance duality recurs across every model kind:
 | AttributeDefinition | Parameter (valued attribute) | the value of the attribute on one subject level |
 | requirement | Verdict | the judgment of that requirement for one sample — *not* an instance, but a re-executable function of the requirement + evidence |
 | certificate template | Certificate | one issued artifact |
+| product reference model ○ | live twin ○ | one served instance of the manufacturer's product model, imported abstractly or integrated live (chapter 15) |
 
 Two discipline rules follow:
 
