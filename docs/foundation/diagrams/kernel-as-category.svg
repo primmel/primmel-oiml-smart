@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The kernel as a category</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Objects as identity morphisms. Transitions as morphisms. Composition as categorical composition.</text>
+
+  <!-- Equation -->
+  <rect x="60" y="90" width="780" height="56" rx="10" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.6"/>
+  <text x="450" y="124" font-size="13" font-family="ui-monospace, Menlo, monospace" fill="#115e59" text-anchor="middle">K  =  ⟨ U, τ, ∘ ⟩   — a category</text>
+
+  <!-- Categorical picture -->
+  <rect x="60" y="170" width="780" height="280" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <rect x="60" y="170" width="780" height="32" rx="10" fill="#475569"/>
+  <text x="450" y="191" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">A category — entities and morphisms</text>
+
+  <!-- Three entities -->
+  <circle cx="160" cy="320" r="22" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+  <text x="160" y="324" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">A</text>
+
+  <circle cx="450" cy="320" r="22" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+  <text x="450" y="324" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">B</text>
+
+  <circle cx="740" cy="320" r="22" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+  <text x="740" y="324" font-size="11" font-weight="700" fill="#0f172a" text-anchor="middle">C</text>
+
+  <!-- f : A → B -->
+  <line x1="184" y1="320" x2="426" y2="320" stroke="#0d9488" stroke-width="2" marker-end="url(#cat-morph)"/>
+  <text x="305" y="308" font-size="13" font-weight="700" fill="#0d9488" text-anchor="middle">f</text>
+  <text x="305" y="338" font-size="10" font-style="italic" fill="#115e59" text-anchor="middle">a transition</text>
+
+  <!-- g : B → C -->
+  <line x1="474" y1="320" x2="716" y2="320" stroke="#0d9488" stroke-width="2" marker-end="url(#cat-morph)"/>
+  <text x="595" y="308" font-size="13" font-weight="700" fill="#0d9488" text-anchor="middle">g</text>
+  <text x="595" y="338" font-size="10" font-style="italic" fill="#115e59" text-anchor="middle">a transition</text>
+
+  <!-- g ∘ f : A → C (curved above) -->
+  <path d="M 160 298 Q 450 220 740 298" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#cat-comp)"/>
+  <text x="450" y="232" font-size="14" font-weight="700" fill="#dc2626" text-anchor="middle">g ∘ f</text>
+  <text x="450" y="252" font-size="10" fill="#991b1b" text-anchor="middle">the composite (a transition)</text>
+
+  <!-- Identity morphisms (self-loops) -->
+  <path d="M 144 306 C 122 290 122 270 160 270 C 198 270 198 290 176 306" stroke="#94a3b8" stroke-width="1.4" fill="none" marker-end="url(#cat-id)"/>
+  <text x="160" y="262" font-size="9" fill="#475569" text-anchor="middle">id_A</text>
+
+  <path d="M 434 306 C 412 290 412 270 450 270 C 488 270 488 290 466 306" stroke="#94a3b8" stroke-width="1.4" fill="none" marker-end="url(#cat-id)"/>
+  <text x="450" y="262" font-size="9" fill="#475569" text-anchor="middle">id_B</text>
+
+  <path d="M 724 306 C 702 290 702 270 740 270 C 778 270 778 290 756 306" stroke="#94a3b8" stroke-width="1.4" fill="none" marker-end="url(#cat-id)"/>
+  <text x="740" y="262" font-size="9" fill="#475569" text-anchor="middle">id_C</text>
+
+  <text x="450" y="386" font-size="11" fill="#475569" text-anchor="middle">Associativity: (h ∘ g) ∘ f = h ∘ (g ∘ f)</text>
+  <text x="450" y="406" font-size="11" fill="#475569" text-anchor="middle">Unit laws: f ∘ id_A = f = id_B ∘ f</text>
+  <text x="450" y="426" font-size="10" font-style="italic" fill="#475569" text-anchor="middle">Required by the category axioms.</text>
+
+  <!-- Mapping table -->
+  <rect x="60" y="470" width="780" height="110" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.4"/>
+  <text x="80" y="494" font-size="11" font-weight="700" fill="#3730a3">Categorical concepts → kernel concepts</text>
+
+  <g font-size="10" fill="#4338ca">
+    <text x="80" y="516">Object → entity ∈ U</text>
+    <text x="290" y="516">Morphism → transition ∈ τ</text>
+    <text x="530" y="516">Identity morphism → unit transition</text>
+    <text x="80" y="536">Composition → ∘</text>
+    <text x="290" y="536">Associativity → required</text>
+    <text x="530" y="536">Unit laws → required</text>
+    <text x="80" y="562" font-style="italic" fill="#4f46e5">The kernel is not *like* a category — it *is* one. Every categorical theorem applies.</text>
+  </g>
+
+  <defs>
+    <marker id="cat-morph" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0d9488"/>
+    </marker>
+    <marker id="cat-comp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/>
+    </marker>
+    <marker id="cat-id" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Adoption timeline — engines first, standards follow</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">SQL, RDF, BPMN succeeded because engines existed first. OPM failed because the ISO PAS came first.</text>
+
+  <!-- Timeline axis -->
+  <line x1="60" y1="320" x2="840" y2="320" stroke="#475569" stroke-width="2"/>
+  <polygon points="840,320 830,314 830,326" fill="#475569"/>
+  <text x="848" y="324" font-size="10" fill="#475569">time</text>
+
+  <!-- Tick marks -->
+  <g stroke="#475569" stroke-width="1.4">
+    <line x1="120" y1="316" x2="120" y2="324"/>
+    <line x1="240" y1="316" x2="240" y2="324"/>
+    <line x1="360" y1="316" x2="360" y2="324"/>
+    <line x1="480" y1="316" x2="480" y2="324"/>
+    <line x1="600" y1="316" x2="600" y2="324"/>
+    <line x1="720" y1="316" x2="720" y2="324"/>
+  </g>
+
+  <!-- SQL: engines then standard (above timeline) -->
+  <g>
+    <circle cx="180" cy="240" r="10" fill="#16a34a"/>
+    <text x="180" y="220" font-size="10" font-weight="700" fill="#14532d" text-anchor="middle">System R / Oracle</text>
+    <text x="180" y="208" font-size="9" fill="#166534" text-anchor="middle">engines (1970s)</text>
+
+    <line x1="190" y1="240" x2="280" y2="240" stroke="#16a34a" stroke-width="1.6" stroke-dasharray="3,2"/>
+    <circle cx="290" cy="240" r="10" fill="#16a34a"/>
+    <text x="290" y="220" font-size="10" font-weight="700" fill="#14532d" text-anchor="middle">SQL-86 / SQL-92</text>
+    <text x="290" y="208" font-size="9" fill="#166534" text-anchor="middle">standard followed</text>
+
+    <text x="235" y="262" font-size="11" font-weight="700" fill="#16a34a" text-anchor="middle">SQL ✓ adopted</text>
+  </g>
+
+  <!-- RDF: engines then standard -->
+  <g>
+    <circle cx="380" cy="180" r="10" fill="#16a34a"/>
+    <text x="380" y="160" font-size="10" font-weight="700" fill="#14532d" text-anchor="middle">Jena / Sesame</text>
+    <text x="380" y="148" font-size="9" fill="#166534" text-anchor="middle">triplestores (~2000)</text>
+
+    <line x1="390" y1="180" x2="480" y2="180" stroke="#16a34a" stroke-width="1.6" stroke-dasharray="3,2"/>
+    <circle cx="490" cy="180" r="10" fill="#16a34a"/>
+    <text x="490" y="160" font-size="10" font-weight="700" fill="#14532d" text-anchor="middle">RDF 1.0 / OWL</text>
+    <text x="490" y="148" font-size="9" fill="#166534" text-anchor="middle">standard (2004)</text>
+
+    <text x="435" y="202" font-size="11" font-weight="700" fill="#16a34a" text-anchor="middle">RDF ✓ adopted</text>
+  </g>
+
+  <!-- BPMN: engines then standard -->
+  <g>
+    <circle cx="560" cy="120" r="10" fill="#16a34a"/>
+    <text x="560" y="100" font-size="10" font-weight="700" fill="#14532d" text-anchor="middle">jBPM / Activiti</text>
+    <text x="560" y="88" font-size="9" fill="#166534" text-anchor="middle">engines (~2002)</text>
+
+    <line x1="570" y1="120" x2="660" y2="120" stroke="#16a34a" stroke-width="1.6" stroke-dasharray="3,2"/>
+    <circle cx="670" cy="120" r="10" fill="#16a34a"/>
+    <text x="670" y="100" font-size="10" font-weight="700" fill="#14532d" text-anchor="middle">BPMN 2.0</text>
+    <text x="670" y="88" font-size="9" fill="#166534" text-anchor="middle">standard (2011)</text>
+
+    <text x="615" y="142" font-size="11" font-weight="700" fill="#16a34a" text-anchor="middle">BPMN ✓ adopted</text>
+  </g>
+
+  <!-- OPM: standard first, no engine (below timeline) -->
+  <g>
+    <circle cx="500" cy="400" r="10" fill="#dc2626"/>
+    <text x="500" y="430" font-size="10" font-weight="700" fill="#7f1d1d" text-anchor="middle">ISO/PAS 19450</text>
+    <text x="500" y="444" font-size="9" fill="#991b1b" text-anchor="middle">standard first (2015)</text>
+
+    <line x1="510" y1="400" x2="660" y2="400" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="3,2"/>
+    <text x="585" y="390" font-size="9" fill="#dc2626" text-anchor="middle">no engine ecosystem emerged</text>
+
+    <text x="700" y="395" font-size="11" font-weight="700" fill="#dc2626" text-anchor="middle">OPM ✗</text>
+    <text x="700" y="412" font-size="9" fill="#991b1b" text-anchor="middle">negligible adoption</text>
+  </g>
+
+  <!-- Foundation: where it stands -->
+  <g>
+    <circle cx="780" cy="320" r="14" fill="#eef2ff" stroke="#4f46e5" stroke-width="2.4"/>
+    <text x="780" y="324" font-size="10" font-weight="700" fill="#3730a3" text-anchor="middle">?</text>
+    <text x="780" y="354" font-size="10" font-weight="700" fill="#3730a3" text-anchor="middle">Foundation</text>
+    <text x="780" y="368" font-size="9" fill="#4338ca" text-anchor="middle">"to be earned"</text>
+  </g>
+
+  <!-- Bottom thesis -->
+  <rect x="60" y="490" width="780" height="90" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.4"/>
+  <text x="80" y="514" font-size="11.5" font-weight="700" fill="#3730a3">The thesis</text>
+  <text x="80" y="534" font-size="10.5" fill="#4338ca">Standardization does not drive adoption. Executability drives adoption, and standardization follows it.</text>
+  <text x="80" y="552" font-size="10.5" fill="#4338ca">The foundation's conforming-runtime trusted base is small enough that independent implementations</text>
+  <text x="80" y="566" font-size="10.5" fill="#4338ca">are a weekend project. That is how the second and third implementations arise — the test a standard is for.</text>
+</svg>

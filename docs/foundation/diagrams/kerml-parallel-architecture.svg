@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">KerML — independent convergence</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">SysML v2 arrived at the same kernel/surface architecture independently. External validation.</text>
+
+  <!-- Left: SysML v2 / KerML -->
+  <rect x="60" y="100" width="380" height="380" rx="12" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <rect x="60" y="100" width="380" height="36" rx="12" fill="#0d9488"/>
+  <text x="250" y="123" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">SysML v2 / KerML (OMG)</text>
+
+  <text x="80" y="160" font-size="11" font-weight="700" fill="#115e59">Surface (SysML v2)</text>
+  <text x="100" y="180" font-size="10" fill="#0d9488">SysML syntax with parts, ports,</text>
+  <text x="100" y="194" font-size="10" fill="#0d9488">connections, requirements, etc.</text>
+
+  <!-- Elaboration arrow down -->
+  <line x1="250" y1="216" x2="250" y2="252" stroke="#0d9488" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#krm1)"/>
+  <text x="265" y="236" font-size="9.5" font-style="italic" fill="#0d9488">elaborate ↓</text>
+
+  <text x="80" y="276" font-size="11" font-weight="700" fill="#115e59">Kernel (KerML)</text>
+  <text x="100" y="296" font-size="10" fill="#0d9488">Small kernel language with</text>
+  <text x="100" y="310" font-size="10" fill="#0d9488">declarative formal semantics.</text>
+  <text x="100" y="324" font-size="10" fill="#0d9488">Mapped to formal logic.</text>
+
+  <text x="80" y="356" font-size="11" font-weight="700" fill="#115e59">Semantics</text>
+  <text x="100" y="376" font-size="10" font-weight="700" fill="#dc2626">declarative / logical</text>
+  <text x="100" y="390" font-size="10" fill="#991b1b">specifications to be checked</text>
+  <text x="100" y="404" font-size="10" fill="#991b1b">model-theoretic</text>
+
+  <text x="80" y="436" font-size="11" font-weight="700" fill="#115e59">Size</text>
+  <text x="100" y="456" font-size="10" font-weight="700" fill="#dc2626">larger than 8 terms</text>
+  <text x="100" y="470" font-size="10" fill="#991b1b">carries more into the kernel</text>
+
+  <!-- Right: Foundation -->
+  <rect x="460" y="100" width="380" height="380" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <rect x="460" y="100" width="380" height="36" rx="12" fill="#4f46e5"/>
+  <text x="650" y="123" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Primmel foundation</text>
+
+  <text x="480" y="160" font-size="11" font-weight="700" fill="#3730a3">Surface (8 primitives)</text>
+  <text x="500" y="180" font-size="10" fill="#4338ca">IS, HAS, DOES, object, property,</text>
+  <text x="500" y="194" font-size="10" fill="#4338ca">value, process, transition</text>
+
+  <!-- Elaboration arrow -->
+  <line x1="650" y1="216" x2="650" y2="252" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#krm2)"/>
+  <text x="665" y="236" font-size="9.5" font-style="italic" fill="#4f46e5">elaborate ↓</text>
+
+  <text x="480" y="276" font-size="11" font-weight="700" fill="#3730a3">Kernel</text>
+  <text x="500" y="296" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#4338ca">U + τ + ∘</text>
+  <text x="500" y="310" font-size="10" fill="#4338ca">one sort, one operation</text>
+  <text x="500" y="324" font-size="10" fill="#4338ca">a category</text>
+
+  <text x="480" y="356" font-size="11" font-weight="700" fill="#3730a3">Semantics</text>
+  <text x="500" y="376" font-size="10" font-weight="700" fill="#16a34a">operational / evaluation</text>
+  <text x="500" y="390" font-size="10" fill="#166534">processes to be run</text>
+  <text x="500" y="404" font-size="10" fill="#166534">Curry–Howard–Lambek applies</text>
+
+  <text x="480" y="436" font-size="11" font-weight="700" fill="#3730a3">Size</text>
+  <text x="500" y="456" font-size="10" font-weight="700" fill="#16a34a">8 surface terms</text>
+  <text x="500" y="470" font-size="10" fill="#166534">kernel is minimal</text>
+
+  <!-- Bottom: convergence -->
+  <rect x="60" y="500" width="780" height="80" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+  <text x="80" y="524" font-size="11" font-weight="700" fill="#78350f">Convergence is external validation</text>
+  <text x="80" y="544" font-size="10.5" fill="#92600e">Two independent efforts (this foundation, and OMG's SysML v2 after two decades of UML) arrived at the</text>
+  <text x="80" y="558" font-size="10.5" fill="#92600e">same kernel/surface architecture. The differences are in semantics (declarative vs operational) and size.</text>
+  <text x="80" y="572" font-size="10" font-style="italic" fill="#d97706">When independent lines of work converge, the convergence is probably where the design space lives.</text>
+
+  <defs>
+    <marker id="krm1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0d9488"/>
+    </marker>
+    <marker id="krm2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4f46e5"/>
+    </marker>
+  </defs>
+</svg>

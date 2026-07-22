@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">What's proven, what's argued, what's open</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Three concentric regions of confidence. The outermost is where the next attack would land.</text>
+
+  <!-- Outermost: open -->
+  <circle cx="450" cy="320" r="220" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="450" y="124" font-size="12" font-weight="700" fill="#7f1d1d" text-anchor="middle">OPEN — what could break</text>
+
+  <!-- Middle: argued -->
+  <circle cx="450" cy="320" r="155" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="450" y="184" font-size="12" font-weight="700" fill="#78350f" text-anchor="middle">ARGUED — supported, not proven</text>
+
+  <!-- Innermost: proven -->
+  <circle cx="450" cy="320" r="90" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.4"/>
+  <text x="450" y="248" font-size="12" font-weight="700" fill="#14532d" text-anchor="middle">PROVEN</text>
+
+  <!-- Proven content -->
+  <text x="450" y="296" font-size="10.5" fill="#14532d" text-anchor="middle">Theorem 1 — Closure</text>
+  <text x="450" y="312" font-size="10.5" fill="#14532d" text-anchor="middle">Theorem 2 — Completeness</text>
+  <text x="450" y="328" font-size="9" fill="#166534" text-anchor="middle">(relative to axiom)</text>
+  <text x="450" y="346" font-size="10.5" fill="#14532d" text-anchor="middle">Theorem 3 — Extensibility</text>
+  <text x="450" y="362" font-size="9" fill="#166534" text-anchor="middle">(relative to axiom)</text>
+
+  <!-- Argued content (around the proven circle) -->
+  <text x="450" y="220" font-size="10" fill="#78350f" text-anchor="middle">Empirical completeness (Ch 7)</text>
+  <text x="290" y="380" font-size="10" fill="#78350f" text-anchor="middle">Comparative</text>
+  <text x="290" y="394" font-size="10" fill="#78350f" text-anchor="middle">advantage (Ch 8)</text>
+  <text x="610" y="380" font-size="10" fill="#78350f" text-anchor="middle">Categorical</text>
+  <text x="610" y="394" font-size="10" fill="#78350f" text-anchor="middle">standing (Ch 9)</text>
+  <text x="450" y="430" font-size="10" fill="#78350f" text-anchor="middle">Practical properties (Ch 10)</text>
+
+  <!-- Open content (outermost) -->
+  <text x="450" y="160" font-size="10" fill="#7f1d1d" text-anchor="middle">Decidability</text>
+  <text x="220" y="320" font-size="10" fill="#7f1d1d" text-anchor="middle">CCC verification</text>
+  <text x="680" y="320" font-size="10" fill="#7f1d1d" text-anchor="middle">Implementation</text>
+  <text x="680" y="334" font-size="10" fill="#7f1d1d" text-anchor="middle">conformance</text>
+  <text x="450" y="478" font-size="10" fill="#7f1d1d" text-anchor="middle">Adoption</text>
+
+  <!-- Bottom: what each region means -->
+  <rect x="60" y="500" width="780" height="80" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="1.4"/>
+  <text x="80" y="522" font-size="10.5" font-weight="700" fill="#16a34a">Proven:</text>
+  <text x="140" y="522" font-size="10" fill="#475569">mathematical theorems, formal proofs in Chapter 4.</text>
+  <text x="80" y="542" font-size="10.5" font-weight="700" fill="#d97706">Argued:</text>
+  <text x="140" y="542" font-size="10" fill="#475569">supported by evidence (empirical record, comparative analysis), not by proof.</text>
+  <text x="80" y="562" font-size="10.5" font-weight="700" fill="#dc2626">Open:</text>
+  <text x="140" y="562" font-size="10" fill="#475569">not established; future work, or falsifiability surface.</text>
+  <text x="80" y="576" font-size="10" font-style="italic" fill="#475569">The strongest honest claim: closure is unconditional; the other theorems are relative to the Claim-Form Axiom.</text>
+</svg>

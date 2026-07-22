@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The model-execution divide</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Other methodologies bridge the divide with code generation — and the bridge drifts. The foundation erases it.</text>
+
+  <!-- Top: the divide in existing methodologies -->
+  <rect x="60" y="100" width="780" height="240" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+  <rect x="60" y="100" width="780" height="32" rx="10" fill="#dc2626"/>
+  <text x="450" y="121" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Existing methodologies — model and program are two artifacts</text>
+
+  <!-- Model side -->
+  <rect x="100" y="160" width="240" height="140" rx="8" fill="#ffffff" stroke="#475569" stroke-width="1.6"/>
+  <text x="220" y="184" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">The Model</text>
+  <text x="220" y="208" font-size="10" fill="#475569" text-anchor="middle">class diagram</text>
+  <text x="220" y="222" font-size="10" fill="#475569" text-anchor="middle">activity diagram</text>
+  <text x="220" y="236" font-size="10" fill="#475569" text-anchor="middle">BPMN flow</text>
+  <text x="220" y="250" font-size="10" fill="#475569" text-anchor="middle">data schema</text>
+  <text x="220" y="276" font-size="9" font-style="italic" fill="#dc2626" text-anchor="middle">documents intent</text>
+
+  <!-- The chasm -->
+  <line x1="340" y1="230" x2="560" y2="230" stroke="#dc2626" stroke-width="2.4" stroke-dasharray="8,4"/>
+  <text x="450" y="218" font-size="11" font-weight="700" fill="#dc2626" text-anchor="middle">drift</text>
+  <text x="450" y="246" font-size="9" font-style="italic" fill="#dc2626" text-anchor="middle">code generation bridges</text>
+  <text x="450" y="260" font-size="9" font-style="italic" fill="#dc2626" text-anchor="middle">but always drifts</text>
+
+  <!-- Program side -->
+  <rect x="560" y="160" width="240" height="140" rx="8" fill="#ffffff" stroke="#475569" stroke-width="1.6"/>
+  <text x="680" y="184" font-size="12" font-weight="700" fill="#0f172a" text-anchor="middle">The Program</text>
+  <text x="680" y="208" font-size="10" fill="#475569" text-anchor="middle">Java / Python / C++</text>
+  <text x="680" y="222" font-size="10" fill="#475569" text-anchor="middle">config files</text>
+  <text x="680" y="236" font-size="10" fill="#475569" text-anchor="middle">scripts</text>
+  <text x="680" y="250" font-size="10" fill="#475569" text-anchor="middle">infrastructure-as-code</text>
+  <text x="680" y="276" font-size="9" font-style="italic" fill="#dc2626" text-anchor="middle">implements intent</text>
+
+  <!-- Bottom: the foundation -->
+  <rect x="60" y="360" width="780" height="220" rx="10" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <rect x="60" y="360" width="780" height="32" rx="10" fill="#0d9488"/>
+  <text x="450" y="381" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Foundation — one artifact, four uses</text>
+
+  <!-- One box for the unified artifact -->
+  <rect x="180" y="420" width="540" height="100" rx="10" fill="#ffffff" stroke="#0d9488" stroke-width="2.4"/>
+  <text x="450" y="448" font-size="14" font-weight="700" fill="#115e59" text-anchor="middle">The Model = The Program</text>
+  <text x="450" y="472" font-size="11" font-family="ui-monospace, Menlo, monospace" fill="#0d9488" text-anchor="middle">U + τ + ∘</text>
+  <text x="450" y="496" font-size="10" fill="#0d9488" text-anchor="middle">describe · exchange · instantiate · execute · inspect · pause · resume · compose</text>
+
+  <!-- Annotation -->
+  <text x="450" y="546" font-size="11" font-weight="700" fill="#115e59" text-anchor="middle">No drift — they cannot drift, because they are the same thing.</text>
+  <text x="450" y="562" font-size="10" font-style="italic" fill="#0d9488" text-anchor="middle">Every change to the model is a change to the program; every change to the program is a change to the model.</text>
+</svg>
