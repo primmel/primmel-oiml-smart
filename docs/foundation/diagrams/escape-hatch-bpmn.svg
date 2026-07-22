@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">BPMN's escape hatch — prose semantics + vendor behavior</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Adopted because engines exist. But semantics is "roughly what the major engines do."</text>
+
+  <!-- BPMN task -->
+  <rect x="60" y="100" width="780" height="200" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+  <rect x="60" y="100" width="780" height="32" rx="10" fill="#dc2626"/>
+  <text x="450" y="121" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">BPMN — task is a rounded rectangle with a name</text>
+
+  <!-- A BPMN task shape (rounded rectangle) -->
+  <rect x="100" y="170" width="280" height="80" rx="40" ry="40" fill="#ffffff" stroke="#0f172a" stroke-width="2"/>
+  <text x="240" y="208" font-size="14" font-weight="700" fill="#0f172a" text-anchor="middle">Approve Loan</text>
+  <text x="240" y="228" font-size="10" font-style="italic" fill="#475569" text-anchor="middle">— a task —</text>
+
+  <!-- Arrow to prose -->
+  <line x1="380" y1="210" x2="480" y2="210" stroke="#dc2626" stroke-width="2" marker-end="url(#bpmn-arr)"/>
+  <text x="430" y="200" font-size="10" font-weight="700" fill="#dc2626" text-anchor="middle">defined by</text>
+
+  <!-- Prose box -->
+  <rect x="490" y="160" width="320" height="100" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+  <text x="650" y="184" font-size="11" font-weight="700" fill="#78350f" text-anchor="middle">Prose + vendor behavior</text>
+  <text x="650" y="208" font-size="10" fill="#92600e" text-anchor="middle">"the engine evaluates the loan</text>
+  <text x="650" y="222" font-size="10" fill="#92600e" text-anchor="middle">application against the rules,</text>
+  <text x="650" y="236" font-size="10" fill="#92600e" text-anchor="middle">then routes to approval or</text>
+  <text x="650" y="250" font-size="10" fill="#92600e" text-anchor="middle">rejection."</text>
+
+  <!-- Adoption record -->
+  <rect x="60" y="320" width="780" height="120" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+  <text x="80" y="344" font-size="11.5" font-weight="700" fill="#3730a3">Why BPMN was adopted anyway — engines existed first</text>
+  <text x="80" y="364" font-size="10.5" fill="#4338ca">Camunda, Flowable, jBPM, Activiti — multiple implementations created interoperability pressure,</text>
+  <text x="80" y="378" font-size="10.5" fill="#4338ca">and the BPMN standard codified what those engines already did (roughly).</text>
+  <text x="80" y="402" font-size="10.5" font-weight="700" fill="#3730a3">But "roughly" accumulates debt:</text>
+  <text x="80" y="420" font-size="10" fill="#4338ca">Token flow through inclusive gateways was famously ambiguous for years.</text>
+
+  <!-- Semantic debt -->
+  <rect x="60" y="460" width="780" height="120" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.6"/>
+  <text x="80" y="484" font-size="11.5" font-weight="700" fill="#7f1d1d">The lesson — executability without a formal kernel accumulates semantic debt</text>
+  <text x="80" y="504" font-size="10.5" fill="#991b1b">BPMN proves executability wins adoption. It also proves executability without a formal kernel</text>
+  <text x="80" y="518" font-size="10.5" fill="#991b1b">accumulates semantic debt that can never be repaid — every "roughly" is permanent.</text>
+  <text x="80" y="544" font-size="10.5" font-weight="700" fill="#7f1d1d">The foundation's repair:</text>
+  <text x="80" y="562" font-size="10.5" fill="#991b1b">Closure under composition is proven (Theorem 1), not negotiated. The debt cannot accumulate.</text>
+
+  <defs>
+    <marker id="bpmn-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+</svg>

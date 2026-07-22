@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">OPM vs the foundation</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">OPM postulates two irreducible sorts. The foundation derives one sort with object/process as roles.</text>
+
+  <!-- Left: OPM -->
+  <rect x="60" y="100" width="380" height="380" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <rect x="60" y="100" width="380" height="36" rx="12" fill="#dc2626"/>
+  <text x="250" y="123" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">OPM (ISO/PAS 19450)</text>
+
+  <text x="80" y="158" font-size="11" font-weight="700" fill="#7f1d1d">Two axiomatic sorts</text>
+
+  <!-- Object sort -->
+  <rect x="100" y="180" width="140" height="80" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.8"/>
+  <text x="170" y="208" font-size="13" font-weight="700" fill="#3730a3" text-anchor="middle">OBJECT</text>
+  <text x="170" y="228" font-size="9" fill="#4338ca" text-anchor="middle">things that exist</text>
+  <text x="170" y="246" font-size="9" font-style="italic" fill="#4338ca" text-anchor="middle">axiomatic sort #1</text>
+
+  <!-- Process sort -->
+  <rect x="260" y="180" width="140" height="80" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.8"/>
+  <text x="330" y="208" font-size="13" font-weight="700" fill="#78350f" text-anchor="middle">PROCESS</text>
+  <text x="330" y="228" font-size="9" fill="#92600e" text-anchor="middle">things that transform</text>
+  <text x="330" y="246" font-size="9" font-style="italic" fill="#92600e" text-anchor="middle">axiomatic sort #2</text>
+
+  <!-- Hard-coded link types -->
+  <text x="80" y="296" font-size="11" font-weight="700" fill="#7f1d1d">~12 hard-coded link types</text>
+  <g font-size="9.5" fill="#991b1b">
+    <text x="90" y="316">consumption, result, effect,</text>
+    <text x="90" y="330">agent, instrument  (procedural)</text>
+    <text x="90" y="350">aggregation, exhibition,</text>
+    <text x="90" y="364">generalization, instantiation</text>
+    <text x="90" y="378">(structural)</text>
+  </g>
+  <text x="80" y="408" font-size="10" font-style="italic" fill="#dc2626">Each link is a semantic atom —</text>
+  <text x="80" y="422" font-size="10" font-style="italic" fill="#dc2626">defined by prose, not derivable.</text>
+
+  <text x="80" y="452" font-size="10" font-weight="700" fill="#7f1d1d">Animated simulation only</text>
+  <text x="80" y="468" font-size="9.5" fill="#991b1b">qualitative token-flashing,</text>
+  <text x="80" y="482" font-size="9.5" fill="#991b1b">no evaluation relation</text>
+
+  <!-- Right: Foundation -->
+  <rect x="460" y="100" width="380" height="380" rx="12" fill="#f0fdfa" stroke="#0d9488" stroke-width="2"/>
+  <rect x="460" y="100" width="380" height="36" rx="12" fill="#0d9488"/>
+  <text x="650" y="123" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Primmel foundation</text>
+
+  <text x="480" y="158" font-size="11" font-weight="700" fill="#115e59">One sort, with roles</text>
+
+  <!-- One universe U -->
+  <rect x="500" y="180" width="300" height="80" rx="8" fill="#ffffff" stroke="#0d9488" stroke-width="2"/>
+  <text x="650" y="208" font-size="13" font-weight="700" fill="#115e59" text-anchor="middle">U — universe of entities</text>
+  <text x="650" y="228" font-size="9" fill="#0d9488" text-anchor="middle">objects = entities with identity transition</text>
+  <text x="650" y="246" font-size="9" fill="#0d9488" text-anchor="middle">processes = entities with non-trivial transition</text>
+
+  <!-- Surface vocabulary derives -->
+  <text x="480" y="296" font-size="11" font-weight="700" fill="#115e59">Eight primitives (elaborate to U + τ + ∘)</text>
+  <g font-size="9.5" fill="#0d9488">
+    <text x="490" y="316">IS, HAS, DOES</text>
+    <text x="490" y="330">object, property, value,</text>
+    <text x="490" y="344">process, transition</text>
+  </g>
+  <text x="480" y="372" font-size="9.5" fill="#115e59">+ 3 closure rules</text>
+  <text x="480" y="386" font-size="9.5" font-style="italic" fill="#0d9488">Each primitive desugars to the kernel —</text>
+  <text x="480" y="400" font-size="9.5" font-style="italic" fill="#0d9488">none is axiomatic.</text>
+
+  <text x="480" y="430" font-size="10" font-weight="700" fill="#115e59">Executes by construction</text>
+  <text x="480" y="446" font-size="9.5" fill="#0d9488">composition + application;</text>
+  <text x="480" y="460" font-size="9.5" fill="#0d9488">state-location (σ) is a tuple</text>
+  <text x="480" y="474" font-size="9.5" fill="#0d9488">of values, not a primitive</text>
+
+  <!-- Bottom -->
+  <rect x="60" y="500" width="780" height="80" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.4"/>
+  <text x="80" y="524" font-size="11" font-weight="700" fill="#3730a3">The crux</text>
+  <text x="80" y="544" font-size="10.5" fill="#4338ca">OPM's surface vocabulary IS its foundation — each link is a semantic atom. The foundation's surface</text>
+  <text x="80" y="558" font-size="10.5" fill="#4338ca">DESGARS into a one-sort kernel. Same eight-or-so surface terms; one has a proof of closure, the other doesn't.</text>
+</svg>

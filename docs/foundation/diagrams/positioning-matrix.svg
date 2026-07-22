@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Positioning matrix — 9 approaches compared</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">The foundation is the only entry satisfying all four columns simultaneously.</text>
+
+  <!-- Table header -->
+  <rect x="60" y="90" width="780" height="34" fill="#0f172a"/>
+  <text x="80" y="111" font-size="10" font-weight="700" fill="#ffffff">Approach</text>
+  <text x="280" y="111" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Kernel formal</text>
+  <text x="400" y="111" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Executable</text>
+  <text x="540" y="111" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Derived ontology</text>
+  <text x="700" y="111" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Authoring surface</text>
+  <text x="820" y="111" font-size="10" font-weight="700" fill="#ffffff" text-anchor="middle">Adoption</text>
+
+  <!-- Row 1: OPM -->
+  <rect x="60" y="124" width="780" height="32" fill="#fef2f2"/>
+  <text x="80" y="144" font-size="10" fill="#7f1d1d">OPM</text>
+  <text x="280" y="144" font-size="11" fill="#dc2626" text-anchor="middle">✗</text>
+  <text x="400" y="144" font-size="11" fill="#dc2626" text-anchor="middle">✗</text>
+  <text x="540" y="144" font-size="11" fill="#dc2626" text-anchor="middle">✗</text>
+  <text x="700" y="144" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="820" y="144" font-size="9.5" fill="#dc2626" text-anchor="middle">negligible</text>
+
+  <!-- Row 2: OOP -->
+  <rect x="60" y="156" width="780" height="32" fill="#ffffff"/>
+  <text x="80" y="176" font-size="10" fill="#0f172a">OOP (classes/methods)</text>
+  <text x="280" y="176" font-size="11" fill="#dc2626" text-anchor="middle">✗</text>
+  <text x="400" y="176" font-size="11" fill="#d97706" text-anchor="middle">~</text>
+  <text x="540" y="176" font-size="11" fill="#dc2626" text-anchor="middle">✗</text>
+  <text x="700" y="176" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="820" y="176" font-size="9.5" fill="#16a34a" text-anchor="middle">high</text>
+
+  <!-- Row 3: UML -->
+  <rect x="60" y="188" width="780" height="32" fill="#fef2f2"/>
+  <text x="80" y="208" font-size="10" fill="#7f1d1d">UML / SysML v1</text>
+  <text x="280" y="208" font-size="11" fill="#dc2626" text-anchor="middle">✗</text>
+  <text x="400" y="208" font-size="11" fill="#d97706" text-anchor="middle">~</text>
+  <text x="540" y="208" font-size="11" fill="#dc2626" text-anchor="middle">✗</text>
+  <text x="700" y="208" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="820" y="208" font-size="9.5" fill="#d97706" text-anchor="middle">declining</text>
+
+  <!-- Row 4: SysML v2 -->
+  <rect x="60" y="220" width="780" height="32" fill="#ffffff"/>
+  <text x="80" y="240" font-size="10" fill="#0f172a">SysML v2 / KerML</text>
+  <text x="280" y="240" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="400" y="240" font-size="11" fill="#d97706" text-anchor="middle">~</text>
+  <text x="540" y="240" font-size="11" fill="#d97706" text-anchor="middle">~</text>
+  <text x="700" y="240" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="820" y="240" font-size="9.5" fill="#d97706" text-anchor="middle">emerging</text>
+
+  <!-- Row 5: BPMN -->
+  <rect x="60" y="252" width="780" height="32" fill="#fef2f2"/>
+  <text x="80" y="272" font-size="10" fill="#7f1d1d">BPMN</text>
+  <text x="280" y="272" font-size="11" fill="#dc2626" text-anchor="middle">✗</text>
+  <text x="400" y="272" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="540" y="272" font-size="11" fill="#dc2626" text-anchor="middle">✗</text>
+  <text x="700" y="272" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="820" y="272" font-size="9.5" fill="#16a34a" text-anchor="middle">high</text>
+
+  <!-- Row 6: EXPRESS -->
+  <rect x="60" y="284" width="780" height="32" fill="#ffffff"/>
+  <text x="80" y="304" font-size="10" fill="#0f172a">EXPRESS (ISO 10303)</text>
+  <text x="280" y="304" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="400" y="304" font-size="11" fill="#dc2626" text-anchor="middle">✗</text>
+  <text x="540" y="304" font-size="11" fill="#d97706" text-anchor="middle">~</text>
+  <text x="700" y="304" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="820" y="304" font-size="9.5" fill="#16a34a" text-anchor="middle">niche</text>
+
+  <!-- Row 7: RDF/OWL -->
+  <rect x="60" y="316" width="780" height="32" fill="#fef2f2"/>
+  <text x="80" y="336" font-size="10" fill="#7f1d1d">RDF / OWL</text>
+  <text x="280" y="336" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="400" y="336" font-size="11" fill="#d97706" text-anchor="middle">~</text>
+  <text x="540" y="336" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="700" y="336" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="820" y="336" font-size="9.5" fill="#16a34a" text-anchor="middle">high (niche)</text>
+
+  <!-- Row 8: Petri nets -->
+  <rect x="60" y="348" width="780" height="32" fill="#ffffff"/>
+  <text x="80" y="368" font-size="10" fill="#0f172a">Petri nets / π-calculus</text>
+  <text x="280" y="368" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="400" y="368" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="540" y="368" font-size="11" fill="#dc2626" text-anchor="middle">N/A</text>
+  <text x="700" y="368" font-size="11" fill="#dc2626" text-anchor="middle">✗</text>
+  <text x="820" y="368" font-size="9.5" fill="#d97706" text-anchor="middle">academic</text>
+
+  <!-- Row 9: Foundation (highlighted) -->
+  <rect x="60" y="380" width="780" height="36" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="80" y="402" font-size="10.5" font-weight="700" fill="#3730a3">Primmel foundation</text>
+  <text x="280" y="402" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="400" y="402" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="540" y="402" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="700" y="402" font-size="11" fill="#16a34a" text-anchor="middle">✓</text>
+  <text x="820" y="402" font-size="9.5" fill="#d97706" text-anchor="middle">to be earned</text>
+
+  <!-- Legend -->
+  <rect x="60" y="440" width="780" height="80" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="80" y="462" font-size="11" font-weight="700" fill="#0f172a">Legend</text>
+  <text x="100" y="484" font-size="11" fill="#16a34a">✓</text>
+  <text x="120" y="484" font-size="10" fill="#475569">satisfies the column</text>
+  <text x="280" y="484" font-size="11" fill="#d97706">~</text>
+  <text x="300" y="484" font-size="10" fill="#475569">partial / qualified</text>
+  <text x="460" y="484" font-size="11" fill="#dc2626">✗</text>
+  <text x="480" y="484" font-size="10" fill="#475569">does not satisfy</text>
+  <text x="100" y="506" font-size="10" font-style="italic" fill="#475569">The foundation is the only entry with a full row of ✓ marks. Each prior approach satisfies one or two columns</text>
+  <text x="100" y="518" font-size="10" font-style="italic" fill="#475569">and pays for the missing ones with escape hatches, metamodel towers, or bolted-on semantics.</text>
+</svg>

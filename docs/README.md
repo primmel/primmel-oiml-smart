@@ -94,16 +94,17 @@ IS/HAS/DOES trichotomy used throughout Volumes I–III.*
 | 05 | `05-kernel-surface-architecture.md` | Professional | Tier 0 (entities + transitions + composition) and Tier 1 (the eight primitives) with the desugaring map |
 | 06 | `06-algorithms.md` | Professional | elaboration, resugaring, reification (ρ), evaluation, state-location (σ) |
 | 07 | `07-derived-vocabulary-proofs.md` | Professional | six retired terms (STATE, STEP, CAN, RECEIVES, RELATES-TO, BECOMES), full derivations |
-| 08 | `08-comparative-analysis.md` *(Phase 3)* | Expert | vs OPM, OOP, UML/fUML, SysML v2/KerML, BPMN, EXPRESS, RDF/OWL, Petri nets; positioning matrix |
-| 09 | `09-categorical-foundations.md` *(Phase 3)* | Expert | arrows-only category; identity morphisms; Curry–Howard–Lambek; KerML as precedent |
-| 10 | `10-executable-ground.md` *(Phase 3)* | Expert | no escape hatch; reification; scale invariance; model=program; adoption lesson |
-| 11 | `11-open-questions.md` *(Phase 3)* | Expert | what is not proven; falsifiability; future work |
+| 08 | `08-comparative-analysis.md` | Expert | vs OPM, OOP, UML/fUML, SysML v2/KerML, BPMN, EXPRESS, RDF/OWL, Petri nets; positioning matrix |
+| 09 | `09-categorical-foundations.md` | Expert | arrows-only category; identity morphisms; Curry–Howard–Lambek; KerML as precedent |
+| 10 | `10-executable-ground.md` | Expert | no escape hatch; reification; scale invariance; model=program; adoption lesson |
+| 11 | `11-open-questions.md` | Expert | what is not proven; falsifiability; future work |
 | — | `faq.md` *(Phase 4)* | Annex | Q&A |
 | — | `notation.md` *(Phase 4)* | Annex | math notation reference |
 
-Chapters marked *(Phase N)* are planned but not yet written; the
+Chapters marked *(Phase 4)* are planned but not yet written; the
 four-phase expansion plan is in `.claude/plans/read-this-poe-txt-greedy-walrus.md`.
-Phases 1–2 are shipped; Phases 3–4 remain.
+Phases 1–3 are shipped (all 11 numbered chapters); Phase 4 (FAQ +
+notation annexes) remains.
 
 ---
 

@@ -1,15 +1,22 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
 // NOTE: `site` is a placeholder for the GitHub Pages deployment URL —
 // update it (and add `base: '/<repo>/'` for a project page) when the
 // canonical host is known. Sitemap generation requires an absolute URL.
 export default defineConfig({
   site: 'https://oimlsmart.github.io/primmel-oiml-smart/',
+  markdown: {
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
+  },
   integrations: [
     starlight({
       title: 'Primmel v3 + OIML SMART',
+      customCss: ['katex/dist/katex.min.css'],
       // Built-in pagefind search; dark-first theme with light toggle (Starlight defaults).
       sidebar: [
         { label: 'Overview', link: '/' },
@@ -24,6 +31,10 @@ export default defineConfig({
             { label: '05 — Kernel/Surface Architecture', slug: 'foundation/05-kernel-surface-architecture' },
             { label: '06 — Algorithms', slug: 'foundation/06-algorithms' },
             { label: '07 — Derived Vocabulary Proofs', slug: 'foundation/07-derived-vocabulary-proofs' },
+            { label: '08 — Comparative Analysis', slug: 'foundation/08-comparative-analysis' },
+            { label: '09 — Categorical Foundations', slug: 'foundation/09-categorical-foundations' },
+            { label: '10 — Executable Ground', slug: 'foundation/10-executable-ground' },
+            { label: '11 — Open Questions', slug: 'foundation/11-open-questions' },
           ],
         },
         {

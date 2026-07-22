@@ -14,7 +14,10 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
     "@astrojs/starlight": "^0.41.3",
-    "astro": "^7.1.1"
+    "astro": "^7.1.1",
+    "katex": "^0.16.22",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",

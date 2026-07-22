@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">EXPRESS — only the static half</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">ISO 10303 / STEP. Behavior is explicitly out of scope — always a separate application protocol.</text>
+
+  <!-- EXPRESS half -->
+  <rect x="60" y="100" width="380" height="380" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <rect x="60" y="100" width="380" height="36" rx="10" fill="#16a34a"/>
+  <text x="250" y="123" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">EXPRESS (ISO 10303-11)</text>
+
+  <text x="80" y="160" font-size="11" font-weight="700" fill="#14532d">What EXPRESS models</text>
+
+  <g font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#166534">
+    <text x="90" y="184">ENTITY load_cell;</text>
+    <text x="90" y="200">  e_max : mass_measure;</text>
+    <text x="90" y="216">  accuracy_class : class_id;</text>
+    <text x="90" y="232">  material : label;</text>
+    <text x="90" y="248">WHERE</text>
+    <text x="90" y="264">  WR1: e_max > 0;</text>
+    <text x="90" y="280">  WR2: accuracy_class IN</text>
+    <text x="90" y="294">       ['A','B','C','D','E'];</text>
+    <text x="90" y="310">END_ENTITY;</text>
+  </g>
+
+  <text x="80" y="346" font-size="11" font-weight="700" fill="#14532d">What it does well</text>
+  <g font-size="10" fill="#166534">
+    <text x="90" y="366">• mature ISO standard</text>
+    <text x="90" y="380">• binary/text interchange</text>
+    <text x="90" y="394">  (Part 21)</text>
+    <text x="90" y="408">• used in global manufacturing</text>
+    <text x="90" y="422">• strong data constraints</text>
+    <text x="90" y="436">  (WHERE clauses)</text>
+    <text x="90" y="450">• decidable type checking</text>
+  </g>
+
+  <text x="80" y="476" font-size="10" font-style="italic" fill="#16a34a">Static half: solid.</text>
+
+  <!-- Missing dynamic half -->
+  <rect x="460" y="100" width="380" height="380" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,3"/>
+  <rect x="460" y="100" width="380" height="36" rx="10" fill="#dc2626"/>
+  <text x="650" y="123" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Behavior: out of scope</text>
+
+  <text x="480" y="160" font-size="11" font-weight="700" fill="#7f1d1d">What EXPRESS does NOT model</text>
+
+  <g font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#991b1b">
+    <text x="490" y="184">-- no transitions</text>
+    <text x="490" y="200">-- no processes</text>
+    <text x="490" y="216">-- no execution semantics</text>
+    <text x="490" y="232">-- no composition algebra</text>
+  </g>
+
+  <text x="480" y="270" font-size="11" font-weight="700" fill="#7f1d1d">Where behavior goes instead</text>
+  <g font-size="10" fill="#991b1b">
+    <text x="490" y="290">A separate "application protocol"</text>
+    <text x="490" y="304">(AP) layered on top.</text>
+    <text x="490" y="324">Different spec, different team,</text>
+    <text x="490" y="338">different semantics.</text>
+  </g>
+
+  <text x="480" y="370" font-size="11" font-weight="700" fill="#7f1d1d">The ISO text (precision)</text>
+  <g font-size="10" font-style="italic" fill="#991b1b">
+    <text x="490" y="390">"process control, information</text>
+    <text x="490" y="404">processing, exception handling,</text>
+    <text x="490" y="418">and file or transfer formats are</text>
+    <text x="490" y="432">outside the scope of the</text>
+    <text x="490" y="446">EXPRESS language itself."</text>
+  </g>
+
+  <text x="480" y="476" font-size="10" font-style="italic" fill="#dc2626">Dynamic half: explicitly excluded.</text>
+
+  <!-- Bottom -->
+  <rect x="60" y="500" width="780" height="80" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.4"/>
+  <text x="80" y="524" font-size="11" font-weight="700" fill="#3730a3">The foundation's repair</text>
+  <text x="80" y="544" font-size="10.5" fill="#4338ca">Structure and behavior are two halves of one closed system. ENTITY + ATTRIBUTE + WHERE maps to</text>
+  <text x="80" y="558" font-size="10.5" fill="#4338ca">OBJECT + PROPERTY + value-domain restriction; transitions are first-class, not a separate AP.</text>
+</svg>

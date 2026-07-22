@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">OPM's escape hatch — two axiomatic sorts</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">OPM has no kernel underneath its surface. The link types ARE the foundation.</text>
+
+  <!-- OPM's two sorts with no kernel below -->
+  <rect x="60" y="100" width="780" height="240" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+  <rect x="60" y="100" width="780" height="32" rx="10" fill="#dc2626"/>
+  <text x="450" y="121" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">OPM — surface IS foundation (no kernel below)</text>
+
+  <!-- Link atoms as the "foundation" -->
+  <g font-size="9.5" font-family="ui-monospace, Menlo, monospace">
+    <rect x="90" y="160" width="120" height="32" rx="5" fill="#ffffff" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="150" y="180" font-size="9.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">consumption</text>
+
+    <rect x="220" y="160" width="100" height="32" rx="5" fill="#ffffff" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="270" y="180" font-size="9.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">result</text>
+
+    <rect x="330" y="160" width="100" height="32" rx="5" fill="#ffffff" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="380" y="180" font-size="9.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">effect</text>
+
+    <rect x="440" y="160" width="100" height="32" rx="5" fill="#ffffff" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="490" y="180" font-size="9.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">agent</text>
+
+    <rect x="550" y="160" width="100" height="32" rx="5" fill="#ffffff" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="600" y="180" font-size="9.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">instrument</text>
+
+    <rect x="660" y="160" width="160" height="32" rx="5" fill="#ffffff" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="740" y="180" font-size="9.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">aggregation</text>
+
+    <rect x="90" y="200" width="120" height="32" rx="5" fill="#ffffff" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="150" y="220" font-size="9.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">exhibition</text>
+
+    <rect x="220" y="200" width="160" height="32" rx="5" fill="#ffffff" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="300" y="220" font-size="9.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">generalization</text>
+
+    <rect x="390" y="200" width="160" height="32" rx="5" fill="#ffffff" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="470" y="220" font-size="9.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">instantiation</text>
+
+    <rect x="560" y="200" width="80" height="32" rx="5" fill="#ffffff" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="600" y="220" font-size="9.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">…</text>
+  </g>
+
+  <text x="450" y="266" font-size="11" font-weight="700" fill="#7f1d1d" text-anchor="middle">~12 hard-coded link atoms — each defined by prose, none derivable</text>
+
+  <!-- Nothing below -->
+  <line x1="60" y1="300" x2="840" y2="300" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="6,3"/>
+  <text x="450" y="324" font-size="12" font-weight="700" fill="#dc2626" text-anchor="middle">┴┴┴ no kernel below ┴┴┴</text>
+
+  <!-- Foundation comparison -->
+  <rect x="60" y="360" width="780" height="200" rx="10" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.8"/>
+  <rect x="60" y="360" width="780" height="32" rx="10" fill="#0d9488"/>
+  <text x="450" y="381" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Foundation — eight primitives elaborate to a kernel</text>
+
+  <text x="80" y="416" font-size="11" font-weight="700" fill="#115e59">Surface (8 primitives)</text>
+  <text x="100" y="436" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#0d9488">IS, HAS, DOES, object, property, value, process, transition</text>
+
+  <text x="80" y="466" font-size="11" font-weight="700" fill="#115e59">Kernel (1 sort + 1 operation)</text>
+  <text x="100" y="486" font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#0d9488">U + τ + ∘</text>
+
+  <text x="80" y="516" font-size="11" font-weight="700" fill="#115e59">3 closure rules + 3 theorems</text>
+  <text x="100" y="536" font-size="10" font-style="italic" fill="#0d9488">proven closed, complete, extensible</text>
+</svg>
