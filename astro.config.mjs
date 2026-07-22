@@ -17,6 +17,10 @@ export default defineConfig({
           label: 'Volume 0 — Foundation',
           items: [
             { label: 'The IS–HAS–DOES Modelling System', slug: 'foundation' },
+            { label: '01 — Intuition', slug: 'foundation/01-intuition' },
+            { label: '02 — Claims and Falsifiability', slug: 'foundation/02-claims-and-falsifiability' },
+            { label: '03 — Eight Terms and Closure Rules', slug: 'foundation/03-eight-terms-and-closure-rules' },
+            { label: '04 — Proofs', slug: 'foundation/04-proofs' },
           ],
         },
         {

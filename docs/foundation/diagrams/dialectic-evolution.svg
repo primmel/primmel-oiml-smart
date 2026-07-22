@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The dialectic — from 7 buckets to 8 terms</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Every "extra" bucket collapsed back into the primitives. Each collapse is documented in Chapter 7.</text>
+
+  <!-- Stage 1: 7-part scheme (left) -->
+  <rect x="40" y="110" width="180" height="220" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.6"/>
+  <rect x="40" y="110" width="180" height="32" rx="12" fill="#94a3b8"/>
+  <text x="130" y="131" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Round 1: 7-part</text>
+  <g font-size="10.5" fill="#334155">
+    <text x="56" y="162">IS</text>
+    <text x="56" y="180">HAS</text>
+    <text x="56" y="198">DOES</text>
+    <text x="56" y="216" fill="#dc2626">RECEIVES</text>
+    <text x="56" y="234" fill="#dc2626">CAN</text>
+    <text x="56" y="252" fill="#dc2626">RELATES-TO</text>
+    <text x="56" y="270" fill="#dc2626">BECOMES</text>
+  </g>
+  <text x="56" y="304" font-size="9.5" font-style="italic" fill="#64748b">failure: same fact fits</text>
+  <text x="56" y="316" font-size="9.5" font-style="italic" fill="#64748b">multiple buckets</text>
+
+  <!-- Arrow to stage 2 -->
+  <line x1="220" y1="220" x2="252" y2="220" stroke="#475569" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="236" y="210" font-size="9.5" fill="#475569" text-anchor="middle">kill 4</text>
+
+  <!-- Stage 2: 3-part refined (middle-left) -->
+  <rect x="254" y="110" width="180" height="220" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+  <rect x="254" y="110" width="180" height="32" rx="12" fill="#16a34a"/>
+  <text x="344" y="131" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Round 2: 3-part</text>
+  <g font-size="10.5" fill="#14532d">
+    <text x="270" y="162">IS — identity</text>
+    <text x="270" y="180">HAS — attributes</text>
+    <text x="270" y="198">DOES — behavior</text>
+  </g>
+  <text x="270" y="232" font-size="9.5" fill="#166534">RECEIVES absorbed</text>
+  <text x="270" y="246" font-size="9.5" fill="#166534">into DOES (passive</text>
+  <text x="270" y="258" font-size="9.5" fill="#166534">voice of one event)</text>
+  <text x="270" y="282" font-size="9.5" fill="#166534">RELATES-TO split:</text>
+  <text x="270" y="294" font-size="9.5" fill="#166534">static → HAS,</text>
+  <text x="270" y="306" font-size="9.5" fill="#166534">dynamic → DOES</text>
+
+  <!-- Arrow to stage 3 -->
+  <line x1="434" y1="220" x2="466" y2="220" stroke="#475569" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="450" y="210" font-size="9.5" fill="#475569" text-anchor="middle">+STATE</text>
+
+  <!-- Stage 3: 4-part with STATE -->
+  <rect x="468" y="110" width="180" height="220" rx="12" fill="#fef2f2" stroke="#dc2626" stroke-width="1.6"/>
+  <rect x="468" y="110" width="180" height="32" rx="12" fill="#dc2626"/>
+  <text x="558" y="131" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Round 3: +STATE</text>
+  <g font-size="10.5" fill="#7f1d1d">
+    <text x="484" y="162">IS</text>
+    <text x="484" y="180">HAS</text>
+    <text x="484" y="198">STATE</text>
+    <text x="484" y="216">DOES</text>
+  </g>
+  <text x="484" y="252" font-size="9.5" font-style="italic" fill="#64748b">STATE = positional</text>
+  <text x="484" y="264" font-size="9.5" font-style="italic" fill="#64748b">identifier for a</text>
+  <text x="484" y="276" font-size="9.5" font-style="italic" fill="#64748b">process execution;</text>
+  <text x="484" y="288" font-size="9.5" font-style="italic" fill="#64748b">collapses to (instance,</text>
+  <text x="484" y="300" font-size="9.5" font-style="italic" fill="#64748b">current-node) pointer</text>
+  <text x="484" y="316" font-size="9.5" font-style="italic" fill="#64748b">→ bookkeeping over DOES</text>
+
+  <!-- Arrow to stage 4 -->
+  <line x1="648" y1="220" x2="680" y2="220" stroke="#475569" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="664" y="210" font-size="9.5" fill="#475569" text-anchor="middle">-STATE</text>
+
+  <!-- Stage 4: 8-term final (right) -->
+  <rect x="682" y="110" width="178" height="220" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <rect x="682" y="110" width="178" height="32" rx="12" fill="#4f46e5"/>
+  <text x="771" y="131" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">Final: 8 terms</text>
+  <g font-size="10.5" fill="#3730a3">
+    <text x="698" y="158" font-weight="700">Relations</text>
+    <text x="698" y="174">IS, HAS, DOES</text>
+    <text x="698" y="198" font-weight="700">Sorts</text>
+    <text x="698" y="214">object, property,</text>
+    <text x="698" y="226">value, transition,</text>
+    <text x="698" y="238">process</text>
+  </g>
+  <text x="698" y="270" font-size="9.5" font-style="italic" fill="#4338ca">state, step, can,</text>
+  <text x="698" y="282" font-size="9.5" font-style="italic" fill="#4338ca">becomes, receives,</text>
+  <text x="698" y="294" font-size="9.5" font-style="italic" fill="#4338ca">relates-to → all</text>
+  <text x="698" y="306" font-size="9.5" font-style="italic" fill="#4338ca">materialized views</text>
+  <text x="698" y="318" font-size="9.5" font-style="italic" fill="#4338ca">(Chapter 7)</text>
+
+  <!-- Bottom legend -->
+  <rect x="40" y="380" width="820" height="180" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="60" y="406" font-size="12" font-weight="700" fill="#0f172a">What each candidate primitive turned out to be</text>
+  <g font-size="10.5" fill="#334155">
+    <text x="60" y="430"><tspan font-weight="700" fill="#dc2626">RECEIVES</tspan>  →  DOES seen from the other end (passive voice of the same event)</text>
+    <text x="60" y="450"><tspan font-weight="700" fill="#dc2626">CAN</tspan>  →  DOES with actualization stripped (a transition defined but not running)</text>
+    <text x="60" y="470"><tspan font-weight="700" fill="#dc2626">RELATES-TO</tspan>  →  HAS with v = ι(y) (a value that points at another object)</text>
+    <text x="60" y="490"><tspan font-weight="700" fill="#dc2626">BECOMES</tspan>  →  diff across two timestamped value-readings (arithmetic, not a primitive)</text>
+    <text x="60" y="510"><tspan font-weight="700" fill="#dc2626">STATE</tspan>  →  (instance-identity, current-node-address); a pointer, not a property</text>
+    <text x="60" y="530"><tspan font-weight="700" fill="#dc2626">STEP</tspan>  →  ρ(t) + bound I/O + timestamp; one firing of a transition</text>
+    <text x="60" y="552" font-style="italic" fill="#475569">Full derivations: Chapter 7 (Derived Vocabulary Proofs).</text>
+  </g>
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+</svg>

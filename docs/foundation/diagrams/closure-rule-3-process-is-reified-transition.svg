@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Closure Rule 3 — process is reified transition</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">PROCESS = ρ(T) ⊆ O. Processes are a subset of objects, not a separate sort.</text>
+
+  <!-- Venn diagram: T, ρ(T), O -->
+  <!-- O universe (largest) -->
+  <ellipse cx="450" cy="320" rx="340" ry="180" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="170" y="190" font-size="13" font-weight="700" fill="#3730a3">O — objects</text>
+  <text x="170" y="208" font-size="10" fill="#4338ca">the universe of bearers</text>
+
+  <!-- PROCESS ⊆ O -->
+  <ellipse cx="450" cy="320" rx="200" ry="120" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="290" y="244" font-size="13" font-weight="700" fill="#7f1d1d">PROCESS = ρ(T) ⊆ O</text>
+  <text x="290" y="262" font-size="10" fill="#991b1b">reified transitions — a subset</text>
+
+  <!-- T inside -->
+  <ellipse cx="450" cy="320" rx="100" ry="60" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="450" y="316" font-size="13" font-weight="700" fill="#14532d" text-anchor="middle">T</text>
+  <text x="450" y="334" font-size="9.5" fill="#166534" text-anchor="middle">transitions</text>
+
+  <!-- Arrow: ρ from T to PROCESS -->
+  <text x="540" y="290" font-size="14" font-weight="700" fill="#4f46e5">ρ</text>
+  <text x="540" y="306" font-size="9" fill="#4f46e5">reify</text>
+
+  <!-- Plain objects (not processes) — outside PROCESS but inside O -->
+  <g font-size="9" fill="#4338ca">
+    <circle cx="200" cy="380" r="14" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.2"/>
+    <text x="200" y="384" font-size="8" font-weight="700" fill="#3730a3" text-anchor="middle">Rex</text>
+
+    <circle cx="240" cy="420" r="14" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.2"/>
+    <text x="240" y="424" font-size="8" font-weight="700" fill="#3730a3" text-anchor="middle">door</text>
+
+    <circle cx="160" cy="350" r="14" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.2"/>
+    <text x="160" y="354" font-size="8" font-weight="700" fill="#3730a3" text-anchor="middle">42</text>
+  </g>
+  <text x="200" y="460" font-size="9" font-style="italic" fill="#4f46e5" text-anchor="middle">plain objects —</text>
+  <text x="200" y="472" font-size="9" font-style="italic" fill="#4f46e5" text-anchor="middle">no transition reified</text>
+
+  <!-- Reified transitions inside PROCESS -->
+  <g font-size="9" fill="#991b1b">
+    <rect x="290" y="280" width="80" height="32" rx="5" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="330" y="294" font-size="8.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">boil_water</text>
+    <text x="330" y="306" font-size="7.5" fill="#991b1b" text-anchor="middle">process object</text>
+
+    <rect x="290" y="330" width="80" height="32" rx="5" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="330" y="344" font-size="8.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">validate_form</text>
+    <text x="330" y="356" font-size="7.5" fill="#991b1b" text-anchor="middle">process object</text>
+
+    <rect x="540" y="280" width="80" height="32" rx="5" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="580" y="294" font-size="8.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">measure_load</text>
+    <text x="580" y="306" font-size="7.5" fill="#991b1b" text-anchor="middle">process object</text>
+
+    <rect x="540" y="330" width="80" height="32" rx="5" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+    <text x="580" y="344" font-size="8.5" font-weight="700" fill="#7f1d1d" text-anchor="middle">approve_loan</text>
+    <text x="580" y="356" font-size="7.5" fill="#991b1b" text-anchor="middle">process object</text>
+  </g>
+
+  <!-- Why this matters -->
+  <rect x="60" y="430" width="780" height="120" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+  <text x="80" y="454" font-size="11.5" font-weight="700" fill="#3730a3">Consequence — the onion closes on itself</text>
+  <text x="80" y="476" font-size="10.5" fill="#4338ca">A process inherits all the object machinery: IS (which run is this?), HAS (started-at,</text>
+  <text x="80" y="490" font-size="10.5" fill="#4338ca">current-position, registers), reference (other objects can point at it as a value).</text>
+  <text x="80" y="514" font-size="10.5" fill="#4338ca">Process is a <tspan font-weight="700">role</tspan> played by an object ("has a non-trivial transition"), not a separate</text>
+  <text x="80" y="528" font-size="10.5" fill="#4338ca">ontological category. The dynamic axis folds into the static axis; one machinery serves both.</text>
+
+  <!-- Bottom trap -->
+  <rect x="60" y="560" width="780" height="32" rx="6" fill="#fef2f2" stroke="#dc2626" stroke-width="1"/>
+  <text x="80" y="580" font-size="10" fill="#7f1d1d">
+    <tspan font-weight="700">The trap:</tspan> any use of "process" that a transition doesn't already cover signals redundancy. See Chapter 9 §categorical-foundations.
+  </text>
+</svg>

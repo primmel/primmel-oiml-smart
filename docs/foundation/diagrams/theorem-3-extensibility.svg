@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Theorem 3 — Extensibility</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Sorts grow; operations stay fixed. Adding content never requires adding primitives.</text>
+
+  <!-- Before extension (left) -->
+  <rect x="60" y="100" width="340" height="280" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <rect x="60" y="100" width="340" height="32" rx="12" fill="#475569"/>
+  <text x="230" y="121" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">Before extension</text>
+
+  <text x="80" y="156" font-size="11" font-weight="700" fill="#0f172a">Sorts (small)</text>
+  <g font-size="10" font-family="ui-monospace, Menlo, monospace">
+    <text x="90" y="178" fill="#4338ca">O = {Rex, Alice, door, 42}</text>
+    <text x="90" y="194" fill="#166534">P = {color, mass, owner}</text>
+    <text x="90" y="210" fill="#92600e">V = {brown, 25kg, ref(Alice)}</text>
+    <text x="90" y="226" fill="#991b1b">T = {boil, swing, fetch}</text>
+  </g>
+
+  <text x="80" y="258" font-size="11" font-weight="700" fill="#0f172a">Operations (fixed)</text>
+  <g font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#475569">
+    <text x="90" y="278">∘ : T × T ⇀ T</text>
+    <text x="90" y="294">ρ : T → O</text>
+    <text x="90" y="310">ι : O ↪ V</text>
+  </g>
+  <text x="80" y="340" font-size="10" font-style="italic" fill="#475569">3 sorts of content +</text>
+  <text x="80" y="354" font-size="10" font-style="italic" fill="#475569">3 fixed operations =</text>
+  <text x="80" y="368" font-size="10" font-style="italic" fill="#475569">the entire algebra 𝓜</text>
+
+  <!-- Arrow -->
+  <line x1="400" y1="240" x2="500" y2="240" stroke="#4f46e5" stroke-width="2.4" marker-end="url(#ext)"/>
+  <text x="450" y="220" font-size="11" font-weight="700" fill="#4f46e5" text-anchor="middle">extend</text>
+  <text x="450" y="270" font-size="9.5" font-style="italic" fill="#4f46e5" text-anchor="middle">add content</text>
+
+  <!-- After extension (right) -->
+  <rect x="500" y="100" width="340" height="280" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <rect x="500" y="100" width="340" height="32" rx="12" fill="#4f46e5"/>
+  <text x="670" y="121" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">After extension (e.g. OIML domain)</text>
+
+  <text x="520" y="156" font-size="11" font-weight="700" fill="#0f172a">Sorts (grown)</text>
+  <g font-size="10" font-family="ui-monospace, Menlo, monospace">
+    <text x="530" y="178" fill="#4338ca">O grows: +LoadCell, Sample, Cert, …</text>
+    <text x="530" y="194" fill="#166534">P grows: +e_max, d_min, accuracy_class</text>
+    <text x="530" y="210" fill="#92600e">V grows: +500kg, C6, ref(LoadCell-007)</text>
+    <text x="530" y="226" fill="#991b1b">T grows: +measure, calibrate, approve</text>
+  </g>
+
+  <text x="520" y="258" font-size="11" font-weight="700" fill="#0f172a">Operations (unchanged)</text>
+  <g font-size="10" font-family="ui-monospace, Menlo, monospace" fill="#475569">
+    <text x="530" y="278">∘ : T × T ⇀ T   ← same</text>
+    <text x="530" y="294">ρ : T → O        ← same</text>
+    <text x="530" y="310">ι : O ↪ V        ← same</text>
+  </g>
+  <text x="520" y="340" font-size="10" font-style="italic" fill="#4338ca">content grew,</text>
+  <text x="520" y="354" font-size="10" font-style="italic" fill="#4338ca">algebra didn't.</text>
+  <text x="520" y="368" font-size="10" font-style="italic" fill="#4338ca">Extension is monotone.</text>
+
+  <!-- Part B: no new primitives -->
+  <rect x="60" y="400" width="780" height="180" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.6"/>
+  <text x="80" y="424" font-size="11.5" font-weight="700" fill="#7f1d1d">Part B — no new primitives can be admitted</text>
+
+  <text x="80" y="448" font-size="10.5" fill="#991b1b">Suppose a ninth primitive X is proposed. Either:</text>
+
+  <text x="100" y="470" font-size="10.5" font-weight="700" fill="#7f1d1d">(a) every claim made with X falls under the Claim-Form trichotomy →</text>
+  <text x="120" y="486" font-size="10" fill="#991b1b">by Theorem 2, X is definable from the eight. It's a composite, not a primitive.</text>
+
+  <text x="100" y="510" font-size="10.5" font-weight="700" fill="#7f1d1d">(b) some claim made with X falls outside the trichotomy →</text>
+  <text x="120" y="526" font-size="10" fill="#991b1b">X contradicts the Claim-Form Axiom that bounds the modeling domain.</text>
+  <text x="120" y="540" font-size="10" fill="#991b1b">Admitting it changes what "modeling" means.</text>
+
+  <text x="80" y="566" font-size="10.5" font-style="italic" fill="#dc2626">Either way, X cannot enter the system as a new primitive. The list stops at eight.</text>
+
+  <defs>
+    <marker id="ext" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4f46e5"/>
+    </marker>
+  </defs>
+</svg>
