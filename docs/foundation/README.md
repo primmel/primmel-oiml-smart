@@ -179,11 +179,11 @@ and check what composite it is shorthand for.
 
 ## Source
 
-This volume is the formal reconstruction of a multi-model design
-dialogue consolidated in `poe.txt` (the `oimlsmart/smart` repository,
-3,442 lines). The dialogue is the negotiation record; this volume is
-the developed form. Where prose here and the dialogue disagree, this
-volume is canonical.
+This volume is the formal reconstruction of the design dialogue
+that produced the IS–HAS–DOES system through dialectic. The
+dialogue is the negotiation record; this volume is the developed
+form. Where prose here and the dialogue disagree, this volume is
+canonical.
 
 ---
 
