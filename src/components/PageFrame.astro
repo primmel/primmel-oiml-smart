@@ -2,13 +2,15 @@
 import MobileMenuToggle from 'virtual:starlight/components/MobileMenuToggle';
 
 const { hasSidebar } = Astro.locals.starlightRoute;
+const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
+const showSidebar = hasSidebar && !isHomepage;
 const year = new Date().getFullYear();
 ---
 
-<div class="page sl-flex">
+<div class="page sl-flex" class:list={{ 'page--fullwidth': isHomepage }}>
   <header class="header"><slot name="header" /></header>
   {
-    hasSidebar && (
+    showSidebar && (
       <nav class="sidebar print:hidden" aria-label={Astro.locals.t('sidebarNav.accessibleLabel')}>
         <MobileMenuToggle />
         <div id="starlight__sidebar" class="sidebar-pane">
@@ -19,7 +21,7 @@ const year = new Date().getFullYear();
       </nav>
     )
   }
-  <div class="main-frame"><slot /></div>
+  <div class="main-frame" class:list={{ 'main-frame--fullwidth': isHomepage }}><slot /></div>
 
   <!-- Site-wide branded footer -->
   <footer class="site-footer">

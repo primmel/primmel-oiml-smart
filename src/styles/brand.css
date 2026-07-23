@@ -430,6 +430,48 @@ sl-sidebar details > ul > li + li > a::before {
 }
 
 /* =============================================================================
+ * Homepage full-width layout — no sidebar, no TOC, centered hero
+ * Triggered by PageFrame when Astro.url.pathname === '/'
+ * ========================================================================== */
+
+.page--fullwidth {
+  /* Override Starlight's sidebar-grid behavior */
+}
+
+.main-frame--fullwidth {
+  padding-inline-start: 0 !important;
+  width: 100%;
+}
+
+/* On homepage, hide sidebar + TOC + make content full-width */
+.main-frame--fullwidth {
+  padding-inline-start: 0 !important;
+  width: 100%;
+  max-width: none;
+}
+
+/* Hide the right-column TOC */
+.main-frame--fullwidth .right-sidebar-container {
+  display: none !important;
+}
+
+/* Override the two-column grid to single column */
+.main-frame--fullwidth [class*='lg:sl-flex'] {
+  display: block !important;
+}
+
+/* Hide the mobile TOC bar */
+.main-frame--fullwidth nav[aria-labelledby*='on-this-page'] {
+  display: none !important;
+}
+
+/* Remove data-has-toc behavior on homepage */
+.main-frame--fullwidth ~ [class*='right-toc'],
+.main-frame--fullwidth [class*='toc-mobile'] {
+  display: none !important;
+}
+
+/* =============================================================================
  * STARLIGHT COMPONENT OVERRIDES — fix every light-mode visibility bug.
  * The default Starlight rules use var(--sl-color-white) for many text
  * treatments that are correctly dark-in-dark-mode but invisible-in-light.
