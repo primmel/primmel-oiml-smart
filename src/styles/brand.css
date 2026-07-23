@@ -136,14 +136,9 @@
  * This is what makes Starlight's components use OUR palette.
  * -------------------------------------------------------------------------- */
 
-:root,
-[data-theme='light'],
-[data-theme='dark'] {
+:root {
   --sl-font: var(--font-body);
   --sl-font-mono: var(--font-mono);
-
-  --sl-color-white: #ffffff;
-  --sl-color-black: var(--color-ink);
 
   --sl-color-bg: var(--color-paper);
   --sl-color-bg-nav: var(--color-paper-soft);
@@ -155,7 +150,6 @@
 
   --sl-color-text: var(--color-ink);
   --sl-color-text-accent: var(--color-accent);
-  --sl-color-text-invert: #ffffff;
 
   --sl-color-gray-1: var(--color-ink);
   --sl-color-gray-2: var(--color-ink-soft);
@@ -169,12 +163,28 @@
   --sl-color-hairline-light: var(--color-rule-soft);
   --sl-color-hairline-shade: var(--color-rule-strong);
 
-  /* Pagefind UI — force light-on-light / dark-on-dark */
   --pagefind-ui-primary: var(--color-ink);
   --pagefind-ui-text: var(--color-ink-soft);
   --pagefind-ui-background: var(--color-paper-soft);
   --pagefind-ui-border: var(--color-rule);
   --pagefind-ui-tag: var(--color-rule);
+}
+
+/* THE NUCLEAR FIX: --sl-color-white and --sl-color-black are THEME-AWARE.
+   In light mode, "white" = ink (dark text for backgrounds), "black" = paper-soft (backgrounds).
+   In dark mode, "white" = #ffffff (light text), "black" = ink (dark backgrounds).
+   This fixes ~34 Starlight rules that hardcode var(--sl-color-white) for text
+   that should be dark-on-light in light mode. */
+[data-theme='light'] {
+  --sl-color-white: var(--color-ink);
+  --sl-color-black: var(--color-paper-soft);
+  --sl-color-text-invert: #ffffff;
+}
+
+[data-theme='dark'] {
+  --sl-color-white: #ffffff;
+  --sl-color-black: var(--color-ink);
+  --sl-color-text-invert: var(--color-ink);
 }
 
 /* -----------------------------------------------------------------------------
@@ -469,6 +479,26 @@ sl-sidebar details > ul > li + li > a::before {
 .main-frame--fullwidth ~ [class*='right-toc'],
 .main-frame--fullwidth [class*='toc-mobile'] {
   display: none !important;
+}
+
+/* --- Elements that need ACTUAL white text on accent backgrounds (both modes) --- */
+/* Because --sl-color-white is now theme-aware (ink in light mode), these
+   elements would get dark text on accent backgrounds. Restore white. */
+.sl-link-button.primary,
+.sl-link-button:where(.astro-hlbqph7b).primary,
+.sl-link-button:where(.astro-hlbqph7b).primary:hover {
+  color: #ffffff !important;
+}
+
+/* Active tab text on accent border — restore accent, not white */
+.tab:where(.astro-hbt4ddzs) :where(.astro-hbt4ddzs)[role='tab'][aria-selected='true'] {
+  color: var(--color-accent) !important;
+}
+
+/* Steps marker — accent colored, not white */
+.sl-steps > li::before {
+  color: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
 }
 
 /* =============================================================================
