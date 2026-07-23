@@ -79,18 +79,18 @@ if (path === '/' || path === '' || path.startsWith('/index')) {
   }
 
   /* Logo theme-toggle: light variant visible by default, dark variant hidden.
-     Both rules inside the scoped component style so they have higher cascade
-     priority than the unscoped `.brand-mark__logo { display: block }` above. */
+     !important guarantees the toggle wins over any base `.brand-mark__logo`
+     rule regardless of cascade order. */
   .brand-mark__logo--dark {
-    display: none;
+    display: none !important;
   }
 
   :global([data-theme='dark']) .brand-mark__logo--light {
-    display: none;
+    display: none !important;
   }
 
   :global([data-theme='dark']) .brand-mark__logo--dark {
-    display: block;
+    display: block !important;
   }
 
   .brand-mark__wordmark {
