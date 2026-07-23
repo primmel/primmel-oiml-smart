@@ -1,0 +1,1127 @@
+/* =============================================================================
+ * brand.css — the editorial rebrand for primmel-oiml-smart
+ *
+ * Aesthetic direction: editorial-governatorial warmth.
+ * Warm cream paper background. Fraunces serif display (with SOFT axis).
+ * Hanken Grotesk body. JetBrains Mono code. Two-brand context switching:
+ * Primmel sections use indigo; OIML sections use OIML blue.
+ * The design language is constant; the brand accent shifts per section.
+ * ========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Font imports — Fraunces (display), Hanken Grotesk (body), JetBrains Mono
+ * -------------------------------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Hanken+Grotesk:ital,wght@0,300..700;1,300..600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* -----------------------------------------------------------------------------
+ * Design tokens
+ * -------------------------------------------------------------------------- */
+
+:root {
+  /* Type families */
+  --font-display: 'Fraunces', 'Times New Roman', Georgia, serif;
+  --font-body: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Fraunces optical settings (the distinctive touch — soft, rounded terminals) */
+  --display-wonk: 0;
+  --display-soft: 30;
+
+  /* Warm paper palette (the signature — warm cream, not SaaS white) */
+  --paper: #faf6ee;
+  --paper-soft: #ffffff;
+  --paper-tint: #f5ede0;
+  --paper-deep: #ede4d0;
+
+  /* Ink neutrals */
+  --ink: #0a1628;
+  --ink-soft: #3a4a63;
+  --ink-muted: #6b7a92;
+
+  /* Warm-toned rules */
+  --rule: #ddd2bd;
+  --rule-soft: #ebe3d2;
+  --rule-strong: #c8b896;
+
+  /* Status colors (soft pastel fills, g18-registry style) */
+  --ok-bg: #dcfce7;       --ok-text: #064e3b;       --ok-border: #6ee7b7;
+  --warn-bg: #fef3c7;     --warn-text: #92400e;     --warn-border: #fde68a;
+  --error-bg: #fee2e2;    --error-text: #7f1d1d;    --error-border: #fecaca;
+  --info-bg: #dbeafe;     --info-text: #1e3a8a;     --info-border: #93c5fd;
+
+  /* Default accent (used on the homepage / overview — a neutral indigo-blue blend) */
+  --accent: #2a5cb8;
+  --accent-hover: #1f478a;
+  --accent-soft: #e0e9f7;
+  --accent-tint: #f0f4fa;
+  --accent-text-on: #ffffff;
+
+  /* Motion durations */
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 350ms;
+
+  /* Radii */
+  --radius-card: 8px;
+  --radius-pill: 9999px;
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  /* Shadows (warm-tinted, never pure black) */
+  --shadow-sm: 0 1px 2px rgba(10, 22, 40, 0.04);
+  --shadow-md: 0 1px 2px rgba(10, 22, 40, 0.04), 0 8px 20px -12px rgba(10, 22, 40, 0.08);
+  --shadow-lg: 0 1px 2px rgba(10, 22, 40, 0.04), 0 16px 40px -20px rgba(10, 22, 40, 0.12);
+
+  /* Starlight mappings — bridge our tokens to Starlight's --sl-* variables */
+  --sl-color-white: #ffffff;
+  --sl-color-black: #0a1628;
+
+  --sl-font: var(--font-body);
+  --sl-font-mono: var(--font-mono);
+
+  --sl-nav-height: 4rem;
+  --sl-nav-pad-x: 1.5rem;
+  --sl-nav-pad-y: 0;
+  --sl-sidebar-width: 18rem;
+  --sl-sidebar-pad-x: 1rem;
+  --sl-content-width: 48rem;
+  --sl-content-pad-x: 1.5rem;
+  --sl-content-gap-y: 1rem;
+  --sl-mobile-toc-height: 3rem;
+
+  --sl-line-height: 1.65;
+  --sl-line-height-headings: 1.2;
+}
+
+/* -----------------------------------------------------------------------------
+ * Section theming — Primmel vs OIML SMART
+ * Both brands live on the same warm-paper base; the accent shifts.
+ * -------------------------------------------------------------------------- */
+
+/* Primmel sections (foundation, kernel, language, modelling) — indigo */
+[data-section='primmel'] {
+  --accent: #1e3a8a;
+  --accent-hover: #3b6ee6;
+  --accent-soft: #e0e8fa;
+  --accent-tint: #f0f4fd;
+  --accent-text-on: #ffffff;
+}
+
+/* OIML SMART sections (core, recommendations, certification, platform) — OIML blue */
+[data-section='oiml'] {
+  --accent: #004996;
+  --accent-hover: #003a78;
+  --accent-soft: #dde9fc;
+  --accent-tint: #f0f6ff;
+  --accent-text-on: #ffffff;
+}
+
+/* -----------------------------------------------------------------------------
+ * Dark mode — true dark, not just inverted. Deep navy-charcoal.
+ * Footer stays brand-deep in both modes for consistency.
+ * -------------------------------------------------------------------------- */
+
+[data-theme='light'] {
+  --sl-color-bg: var(--paper);
+  --sl-color-bg-nav: var(--paper-soft);
+  --sl-color-bg-sidebar: var(--paper);
+  --sl-color-bg-inline-code: var(--paper-tint);
+  --sl-color-bg-accent: var(--accent);
+  --sl-color-bg-accent-low: var(--accent-soft);
+  --sl-color-bg-accent-high: var(--accent-tint);
+
+  --sl-color-text: var(--ink);
+  --sl-color-text-accent: var(--accent);
+  --sl-color-text-invert: var(--accent-text-on);
+
+  --sl-color-hairline: var(--rule);
+  --sl-color-hairline-light: var(--rule-soft);
+  --sl-color-hairline-shade: var(--rule-strong);
+
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --paper: #0e1620;
+  --paper-soft: #131c28;
+  --paper-tint: #1a2634;
+  --paper-deep: #232f3e;
+
+  --ink: #e8eef5;
+  --ink-soft: #b8c4d4;
+  --ink-muted: #7d8b9e;
+
+  --rule: #2a3848;
+  --rule-soft: #1f2a38;
+  --rule-strong: #3a4a5f;
+
+  --ok-bg: #0d3a25;       --ok-text: #6ee7b7;       --ok-border: #1a5c3a;
+  --warn-bg: #3a2810;     --warn-text: #fcd34d;     --warn-border: #5c4018;
+  --error-bg: #3a1212;    --error-text: #f87171;    --error-border: #5c1a1a;
+  --info-bg: #1a2a4a;     --info-text: #93c5fd;     --info-border: #2a4070;
+
+  /* Dark-mode accent override (both sections lift to a lighter indigo) */
+  --accent: #5fa4f5;
+  --accent-hover: #89bcf8;
+  --accent-soft: #1e3a5c;
+  --accent-tint: #15233a;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 20px -12px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px -20px rgba(0, 0, 0, 0.7);
+
+  --sl-color-bg: var(--paper);
+  --sl-color-bg-nav: var(--paper-soft);
+  --sl-color-bg-sidebar: var(--paper);
+  --sl-color-bg-inline-code: var(--paper-tint);
+  --sl-color-bg-accent: var(--accent);
+  --sl-color-bg-accent-low: var(--accent-soft);
+  --sl-color-bg-accent-high: var(--accent-tint);
+
+  --sl-color-text: var(--ink);
+  --sl-color-text-accent: var(--accent);
+  --sl-color-text-invert: var(--accent-text-on);
+
+  --sl-color-hairline: var(--rule);
+  --sl-color-hairline-light: var(--rule-soft);
+  --sl-color-hairline-shade: var(--rule-strong);
+
+  color-scheme: dark;
+}
+
+/* Dark-mode per-section refinement */
+[data-theme='dark'][data-section='primmel'] {
+  --accent: #8aabf5;
+  --accent-hover: #aac4f7;
+}
+[data-theme='dark'][data-section='oiml'] {
+  --accent: #5fa4f5;
+  --accent-hover: #89bcf8;
+}
+
+/* -----------------------------------------------------------------------------
+ * Base typography — the editorial backbone
+ * -------------------------------------------------------------------------- */
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  font-feature-settings: 'ss01', 'cv01';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--dur-base) ease, color var(--dur-base) ease;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+/* The ambient warm wash — a barely-visible radial gradient that gives every page atmosphere */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 80% 50% at 15% 0%, rgba(217, 165, 68, 0.08), transparent),
+    radial-gradient(ellipse 70% 40% at 85% 100%, rgba(30, 58, 138, 0.06), transparent);
+  pointer-events: none;
+}
+
+[data-theme='dark'] body::before {
+  background:
+    radial-gradient(ellipse 80% 50% at 15% 0%, rgba(217, 165, 68, 0.05), transparent),
+    radial-gradient(ellipse 70% 40% at 85% 100%, rgba(95, 164, 245, 0.06), transparent);
+}
+
+/* Tabular numerals everywhere numbers matter */
+table, .num, .stat-value {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Selection */
+::selection {
+  background: rgba(30, 58, 138, 0.18);
+  color: inherit;
+}
+[data-theme='dark'] ::selection {
+  background: rgba(95, 164, 245, 0.25);
+}
+
+/* -----------------------------------------------------------------------------
+ * Headings — Fraunces with the SOFT axis. The signature editorial touch.
+ * -------------------------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6,
+.starlight__page-title,
+h1[id], h2[id], h3[id] {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-variation-settings:
+    'opsz' 96,
+    'SOFT' var(--display-soft),
+    'WONK' var(--display-wonk);
+}
+
+h1, .starlight__page-title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: -0.028em;
+  line-height: 1.15;
+  font-variation-settings:
+    'opsz' 144,
+    'SOFT' var(--display-soft),
+    'WONK' var(--display-wonk);
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rule-soft);
+  font-variation-settings:
+    'opsz' 60,
+    'SOFT' var(--display-soft),
+    'WONK' var(--display-wonk);
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 550;
+  margin-top: 2rem;
+  font-variation-settings:
+    'opsz' 36,
+    'SOFT' var(--display-soft),
+    'WONK' var(--display-wonk);
+}
+
+h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+h5, h6 {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* Lede / intro paragraph after h1 */
+.starlight__page-title + p,
+h1 + p {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 68ch;
+}
+
+/* -----------------------------------------------------------------------------
+ * Body text, links, emphasis
+ * -------------------------------------------------------------------------- */
+
+p {
+  margin: 1rem 0;
+  max-width: 70ch;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color var(--dur-fast) ease, border-color var(--dur-fast) ease;
+}
+
+a:hover {
+  color: var(--accent-hover);
+  border-bottom-color: var(--accent-hover);
+}
+
+strong { font-weight: 600; }
+em { font-style: italic; }
+
+/* -----------------------------------------------------------------------------
+ * Code — JetBrains Mono, warm-tinted background
+ * -------------------------------------------------------------------------- */
+
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+:not(pre) > code {
+  background: var(--paper-tint);
+  padding: 0.1em 0.4em;
+  border-radius: var(--radius-sm);
+  font-size: 0.85em;
+  color: var(--ink);
+  border: 1px solid var(--rule-soft);
+}
+
+pre {
+  background: var(--paper-tint);
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--radius-card);
+  padding: 1.2rem 1.4rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-sm);
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  border: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* -----------------------------------------------------------------------------
+ * Lists, blockquotes, tables
+ * -------------------------------------------------------------------------- */
+
+ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+li { margin: 0.3rem 0; }
+li::marker { color: var(--ink-muted); }
+
+blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 0.5rem 0 0.5rem 1.2rem;
+  margin: 1.5rem 0;
+  color: var(--ink-soft);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  font-variation-settings: 'opsz' 36, 'SOFT' var(--display-soft);
+  background: var(--accent-tint);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.92rem;
+  box-shadow: var(--shadow-sm);
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.7rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--rule-soft);
+  vertical-align: top;
+}
+
+th {
+  background: var(--paper-tint);
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: var(--ink);
+  border-bottom: 2px solid var(--rule);
+}
+
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: var(--accent-tint); }
+
+/* -----------------------------------------------------------------------------
+ * Starlight: header (sticky, blur) — the .header class is from PageFrame
+ * -------------------------------------------------------------------------- */
+
+.header {
+  background-color: color-mix(in srgb, var(--paper-soft) 88%, transparent) !important;
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border-bottom: 1px solid var(--rule) !important;
+  transition: background var(--dur-base) ease, border-color var(--dur-base) ease;
+}
+
+[data-theme='dark'] .header {
+  background-color: color-mix(in srgb, var(--paper-soft) 82%, transparent) !important;
+}
+
+/* -----------------------------------------------------------------------------
+ * Starlight: site title (logo + wordmark)
+ * -------------------------------------------------------------------------- */
+
+.sl-site-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-variation-settings: 'opsz' 36, 'SOFT' var(--display-soft);
+  letter-spacing: -0.02em;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 0.4rem 0;
+}
+
+.brand-mark:hover { color: var(--ink); }
+
+.brand-mark__logo {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.brand-mark__logo--light { display: block; }
+.brand-mark__logo--dark  { display: none; }
+
+[data-theme='dark'] .brand-mark__logo--light { display: none; }
+[data-theme='dark'] .brand-mark__logo--dark  { display: block; }
+
+.brand-mark__wordmark {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 36, 'SOFT' var(--display-soft);
+}
+
+.brand-mark__section-tag {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--accent-soft);
+  border-radius: var(--radius-pill);
+  background: var(--accent-tint);
+  margin-left: 0.4rem;
+  transition: color var(--dur-base) ease, background var(--dur-base) ease, border-color var(--dur-base) ease;
+}
+
+/* -----------------------------------------------------------------------------
+ * Starlight: sidebar — quiet, paper-toned
+ * -------------------------------------------------------------------------- */
+
+.sl-sidebar {
+  background: transparent;
+  border-right: 1px solid var(--rule-soft);
+  font-size: 0.9rem;
+}
+
+.sl-sidebar__inner {
+  padding-top: 1.5rem;
+}
+
+.sl-sidebar-group-title {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-muted);
+  padding: 0 0.75rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.sl-sidebar-link {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-md);
+  border-left: 2px solid transparent;
+  transition: color var(--dur-fast) ease, background var(--dur-fast) ease, border-color var(--dur-fast) ease;
+}
+
+.sl-sidebar-link:hover {
+  color: var(--accent);
+  background: var(--accent-tint);
+}
+
+.sl-sidebar-link[aria-current='page'],
+.sl-sidebar-link.is-active {
+  color: var(--accent);
+  font-weight: 600;
+  background: var(--accent-tint);
+  border-left-color: var(--accent);
+}
+
+/* -----------------------------------------------------------------------------
+ * Starlight: card grid, link cards, badges (g18-registry style)
+ * -------------------------------------------------------------------------- */
+
+.sl-link-card,
+.sl-card,
+.starlight__card,
+.starlight__link-card {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-card);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--dur-base) ease,
+    border-color var(--dur-base) ease,
+    box-shadow var(--dur-base) ease;
+}
+
+.sl-link-card:hover,
+.sl-card:hover,
+.starlight__card:hover,
+.starlight__link-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.sl-link-card-title,
+.sl-card-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-variation-settings: 'opsz' 60, 'SOFT' var(--display-soft);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+/* Badges / pills */
+.sl-badge,
+.badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent-soft);
+  letter-spacing: 0.04em;
+}
+
+/* -----------------------------------------------------------------------------
+ * Starlight: asides / callouts — soft pastel fills
+ * -------------------------------------------------------------------------- */
+
+.sl-callout,
+aside[data-title] {
+  background: var(--info-bg) !important;
+  border: 1px solid var(--info-border) !important;
+  border-left: 3px solid var(--accent) !important;
+  color: var(--info-text) !important;
+  border-radius: var(--radius-card) !important;
+  padding: 0.9rem 1.2rem !important;
+  margin: 1.25rem 0 !important;
+  box-shadow: var(--shadow-sm);
+  font-size: 0.92rem;
+}
+
+.sl-callout--note,
+aside[data-title='Note'],
+aside[title='Note'] {
+  background: var(--info-bg) !important;
+  border-color: var(--info-border) !important;
+  color: var(--info-text) !important;
+}
+
+.sl-callout--tip,
+aside[data-title='Tip'] {
+  background: var(--ok-bg) !important;
+  border-color: var(--ok-border) !important;
+  color: var(--ok-text) !important;
+}
+
+.sl-callout--warning,
+aside[data-title='Warning'],
+aside[title='Caution'] {
+  background: var(--warn-bg) !important;
+  border-color: var(--warn-border) !important;
+  color: var(--warn-text) !important;
+}
+
+.sl-callout--danger,
+aside[data-title='Danger'] {
+  background: var(--error-bg) !important;
+  border-color: var(--error-border) !important;
+  color: var(--error-text) !important;
+}
+
+/* Callout heading uses the display font */
+.sl-callout-title,
+aside[data-title] > :first-child,
+aside[title] > :first-child {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-variation-settings: 'opsz' 24, 'SOFT' var(--display-soft);
+}
+
+/* -----------------------------------------------------------------------------
+ * Starlight: pagination
+ * -------------------------------------------------------------------------- */
+
+.sl-pagination {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule-soft);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.sl-pagination__link {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-card);
+  padding: 0.85rem 1.1rem;
+  transition: border-color var(--dur-base) ease, background var(--dur-base) ease;
+}
+
+.sl-pagination__link:hover {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+}
+
+.sl-pagination__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-muted);
+}
+
+.sl-pagination__title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-variation-settings: 'opsz' 36, 'SOFT' var(--display-soft);
+  color: var(--ink);
+  margin-top: 0.2rem;
+}
+
+/* -----------------------------------------------------------------------------
+ * Starlight: footer
+ * -------------------------------------------------------------------------- */
+
+footer.sl-footer,
+.sl-footer {
+  background: #001e41;
+  color: #c8d4e6;
+  border-top: 0;
+  padding: 2.5rem 1.5rem;
+  margin-top: 4rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+footer.sl-footer a,
+.sl-footer a {
+  color: #89bcf8;
+  border-bottom-color: transparent;
+}
+
+footer.sl-footer a:hover,
+.sl-footer a:hover {
+  color: #aac4f7;
+  border-bottom-color: #89bcf8;
+}
+
+.sl-footer__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+}
+
+.sl-footer__copy {
+  color: #c8d4e6;
+}
+
+.sl-footer__copy strong {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-variation-settings: 'opsz' 36, 'SOFT' var(--display-soft);
+  color: #ffffff;
+}
+
+.sl-footer__meta {
+  font-size: 0.78rem;
+  color: #89a0bd;
+  text-align: right;
+}
+
+/* -----------------------------------------------------------------------------
+ * Motion — staggered page-load reveal
+ * Only fires when the user has not asked for reduced motion.
+ * -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: reveal-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .reveal-1 { animation-delay: 0.04s; }
+  .reveal-2 { animation-delay: 0.10s; }
+  .reveal-3 { animation-delay: 0.16s; }
+  .reveal-4 { animation-delay: 0.22s; }
+  .reveal-5 { animation-delay: 0.28s; }
+
+  @keyframes reveal-up {
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+ * Custom layout: hero / homepage
+ * -------------------------------------------------------------------------- */
+
+.hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 4rem;
+}
+
+.hero__eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero__eyebrow::before {
+  content: '';
+  width: 1.5rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' var(--display-soft), 'WONK' var(--display-wonk);
+  max-width: 22ch;
+}
+
+.hero__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+  font-variation-settings: 'opsz' 144, 'SOFT' var(--display-soft);
+}
+
+.hero__lede {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin-bottom: 2.5rem;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--dur-base) ease;
+  border: 1px solid transparent;
+}
+
+.hero__cta--primary {
+  background: var(--accent);
+  color: var(--accent-text-on);
+  border-color: var(--accent);
+}
+
+.hero__cta--primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--accent-text-on);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.hero__cta--secondary {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--rule-strong);
+}
+
+.hero__cta--secondary:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+/* Dual-brand entry cards on the homepage */
+.dual-brand {
+  max-width: 1100px;
+  margin: 2rem auto 4rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 760px) {
+  .dual-brand { grid-template-columns: 1fr; }
+}
+
+.brand-card {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-card);
+  padding: 2rem;
+  text-decoration: none;
+  color: var(--ink);
+  transition:
+    transform var(--dur-base) ease,
+    border-color var(--dur-base) ease,
+    box-shadow var(--dur-base) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.brand-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity var(--dur-base) ease;
+}
+
+.brand-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.brand-card:hover::before { opacity: 1; }
+
+.brand-card[data-brand='primmel'] {
+  --accent: #1e3a8a;
+  --accent-hover: #3b6ee6;
+  --accent-soft: #e0e8fa;
+  --accent-tint: #f0f4fd;
+}
+
+.brand-card[data-brand='oiml'] {
+  --accent: #004996;
+  --accent-hover: #003a78;
+  --accent-soft: #dde9fc;
+  --accent-tint: #f0f6ff;
+}
+
+[data-theme='dark'] .brand-card[data-brand='primmel'] {
+  --accent: #8aabf5;
+  --accent-hover: #aac4f7;
+  --accent-soft: #1e3a5c;
+  --accent-tint: #15233a;
+}
+
+[data-theme='dark'] .brand-card[data-brand='oiml'] {
+  --accent: #5fa4f5;
+  --accent-hover: #89bcf8;
+  --accent-soft: #1e3a5c;
+  --accent-tint: #15233a;
+}
+
+.brand-card__logo {
+  height: 36px;
+  margin-bottom: 1.5rem;
+}
+
+.brand-card__logo--light { display: block; }
+.brand-card__logo--dark  { display: none; }
+
+[data-theme='dark'] .brand-card__logo--light { display: none; }
+[data-theme='dark'] .brand-card__logo--dark  { display: block; }
+
+.brand-card__eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.brand-card__title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+  font-variation-settings: 'opsz' 96, 'SOFT' var(--display-soft);
+}
+
+.brand-card__lede {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin-bottom: 1.5rem;
+}
+
+.brand-card__chapters {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--rule-soft);
+  padding-top: 1rem;
+}
+
+.brand-card__chapters li {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+  padding: 0.3rem 0;
+}
+
+.brand-card__chapters li::before {
+  content: '→ ';
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.brand-card__cta {
+  margin-top: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.brand-card:hover .brand-card__cta { color: var(--accent-hover); }
+
+/* -----------------------------------------------------------------------------
+ * Breadcrumbs with the editorial ::before dash detail
+ * -------------------------------------------------------------------------- */
+
+.sl-breadcrumb,
+.breadcrumb {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.sl-breadcrumb::before,
+.breadcrumb::before {
+  content: '';
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--rule-strong);
+}
+
+/* -----------------------------------------------------------------------------
+ * Theme toggle (Starlight's default, restyled)
+ * -------------------------------------------------------------------------- */
+
+.sl-theme-select {
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) ease, background var(--dur-fast) ease;
+}
+
+.sl-theme-select:hover {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+}
+
+/* -----------------------------------------------------------------------------
+ * Search input
+ * -------------------------------------------------------------------------- */
+
+.sl-search-input,
+input[type='search'].sl-search-input {
+  background: var(--paper-soft);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  padding: 0.5rem 0.85rem;
+  transition: border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
+}
+
+.sl-search-input:focus,
+input[type='search'].sl-search-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-tint);
+  outline: none;
+}
+
+/* -----------------------------------------------------------------------------
+ * Scrollbar (subtle warm tint)
+ * -------------------------------------------------------------------------- */
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb {
+  background: var(--rule);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--paper);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--rule-strong); }

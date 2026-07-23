@@ -1,0 +1,139 @@
+---
+// Section-aware site title — switches logo and wordmark based on current path.
+// Primmel sections (foundation, primmel): Primmel mark + "Primmel" wordmark + indigo tag
+// OIML sections (oiml-core, oiml-rec, oiml-cs, platform): OIML SMART mark + "OIML SMART" wordmark + blue tag
+// Homepage (overview): OIML SMART mark + "Primmel + OIML SMART" wordmark, no tag
+
+const path = Astro.url.pathname;
+
+let section: 'primmel' | 'oiml' | 'overview';
+let wordmark: string;
+let logoLight: string;
+let logoDark: string;
+let tag: string | null;
+
+if (path === '/' || path === '' || path.startsWith('/index')) {
+  section = 'overview';
+  wordmark = 'Primmel + OIML SMART';
+  logoLight = '/oiml-logo-light.svg';
+  logoDark = '/oiml-logo-dark.svg';
+  tag = null;
+} else if (
+  path.startsWith('/foundation') ||
+  path.startsWith('/primmel')
+) {
+  section = 'primmel';
+  wordmark = 'Primmel';
+  logoLight = '/primmel-logo-light.svg';
+  logoDark = '/primmel-logo-dark.svg';
+  tag = 'Foundation';
+} else {
+  // /oiml-core, /oiml-rec, /oiml-cs, /platform, /shared — all OIML SMART context
+  section = 'oiml';
+  wordmark = 'OIML SMART';
+  logoLight = '/oiml-logo-light.svg';
+  logoDark = '/oiml-logo-dark.svg';
+  tag = 'SMART';
+}
+---
+
+<a href="/" class="brand-mark" data-section={section}>
+  <img
+    class="brand-mark__logo brand-mark__logo--light"
+    src={logoLight}
+    alt=""
+    aria-hidden="true"
+    loading="eager"
+  />
+  <img
+    class="brand-mark__logo brand-mark__logo--dark"
+    src={logoDark}
+    alt=""
+    aria-hidden="true"
+    loading="eager"
+  />
+  <span class="brand-mark__wordmark">{wordmark}</span>
+  {tag && <span class="brand-mark__section-tag">{tag}</span>}
+</a>
+
+<style>
+  .brand-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: var(--ink);
+    padding: 0.4rem 0;
+    font-family: var(--font-display);
+    min-width: 0;
+  }
+
+  .brand-mark:hover {
+    color: var(--ink);
+  }
+
+  .brand-mark__logo {
+    height: 30px;
+    width: auto;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .brand-mark__wordmark {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    font-variation-settings: 'opsz' 36, 'SOFT' var(--display-soft);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .brand-mark__section-tag {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--accent-soft);
+    border-radius: var(--radius-pill);
+    background: var(--accent-tint);
+    transition: color var(--dur-base) ease, background var(--dur-base) ease, border-color var(--dur-base) ease;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 760px) {
+    .brand-mark__section-tag { display: none; }
+  }
+</style>
+
+<script is:inline>
+  // No-flash theme + section detection — runs before paint.
+  // Theme comes from localStorage.theme (or prefers-color-scheme).
+  // Section comes from the current URL.
+  (function () {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const stored = (localStorage.getItem('theme') || '').toLowerCase();
+    const theme = stored === 'light' || stored === 'dark' ? stored : (prefersDark ? 'dark' : 'light');
+    document.documentElement.dataset.theme = theme;
+
+    const path = window.location.pathname;
+    let section = 'overview';
+    if (path.startsWith('/foundation') || path.startsWith('/primmel')) {
+      section = 'primmel';
+    } else if (
+      path.startsWith('/oiml-core') ||
+      path.startsWith('/oiml-rec') ||
+      path.startsWith('/oiml-cs') ||
+      path.startsWith('/platform') ||
+      path.startsWith('/shared')
+    ) {
+      section = 'oiml';
+    }
+    document.documentElement.dataset.section = section;
+  })();
+</script>

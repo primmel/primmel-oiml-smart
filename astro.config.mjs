@@ -15,8 +15,17 @@ export default defineConfig({
   },
   integrations: [
     starlight({
-      title: 'Primmel v3 + OIML SMART',
-      customCss: ['katex/dist/katex.min.css'],
+      title: 'Primmel + OIML SMART',
+      // Custom CSS: KaTeX for math + the editorial rebrand
+      customCss: [
+        'katex/dist/katex.min.css',
+        './src/styles/brand.css',
+      ],
+      // Custom components: section-aware SiteTitle + branded PageFrame with site-wide footer
+      components: {
+        SiteTitle: './src/components/SiteTitle.astro',
+        PageFrame: './src/components/PageFrame.astro',
+      },
       // Built-in pagefind search; dark-first theme with light toggle (Starlight defaults).
       sidebar: [
         { label: 'Overview', link: '/' },
