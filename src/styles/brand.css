@@ -386,6 +386,50 @@ tbody tr:last-child td { border-bottom: 0; }
 tbody tr:hover { background: var(--color-accent-tint); }
 
 /* =============================================================================
+ * Sidebar chapter numbering — CSS counter, per-volume reset
+ * The sidebar config no longer embeds "NN —" in the label.
+ * We use a CSS counter to add a small accent-colored number prefix.
+ * Volume overviews (the first link in each volume) are skipped so
+ * chapter 1 is the first real chapter.
+ * ========================================================================== */
+
+/* Each <details> (volume group) gets its own counter */
+.sidebar details,
+sl-sidebar details {
+  counter-reset: chapter;
+}
+
+/* Increment on direct link <li> items inside the volume's <ul>,
+   skipping the volume overview (the first child) by targeting siblings. */
+.sidebar details > ul > li + li,
+sl-sidebar details > ul > li + li {
+  counter-increment: chapter;
+}
+
+/* Render the counter as a styled prefix on the link inside */
+.sidebar details > ul > li + li > a::before,
+sl-sidebar details > ul > li + li > a::before {
+  content: counter(chapter, decimal-leading-zero);
+  display: inline-block;
+  width: 1.8em;
+  margin-inline-end: 0.4em;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  opacity: 0.7;
+  letter-spacing: 0.04em;
+  vertical-align: 0.05em;
+}
+
+/* Active link: counter more prominent */
+.sidebar details > ul > li + li > a[aria-current='page']::before,
+.sidebar details > ul > li + li > a.is-active::before {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+/* =============================================================================
  * STARLIGHT COMPONENT OVERRIDES — fix every light-mode visibility bug.
  * The default Starlight rules use var(--sl-color-white) for many text
  * treatments that are correctly dark-in-dark-mode but invisible-in-light.
