@@ -482,11 +482,7 @@ tbody tr:hover { background: var(--accent-tint); }
   display: block;
 }
 
-.brand-mark__logo--light { display: block; }
-.brand-mark__logo--dark  { display: none; }
-
-[data-theme='dark'] .brand-mark__logo--light { display: none; }
-[data-theme='dark'] .brand-mark__logo--dark  { display: block; }
+/* Logo theme-toggle lives in SiteTitle.astro's scoped style for correct cascade priority. */
 
 .brand-mark__wordmark {
   font-family: var(--font-display);
@@ -1125,3 +1121,111 @@ input[type='search'].sl-search-input:focus {
   border: 2px solid var(--paper);
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--rule-strong); }
+
+/* =============================================================================
+ * Starlight default overrides — fix elements that hardcode white/gray text
+ * (the defaults assume dark mode; in light mode they become invisible).
+ * ========================================================================== */
+
+/* Sidebar group titles (the "VOLUME 0 — FOUNDATION" labels) — Starlight
+   sets these to --sl-color-white. Use the muted ink instead. */
+:where(.astro-zts4jgjd) .title,
+.sl-sidebar .title,
+.sidebar .title,
+.sl-sidebar-group-title {
+  color: var(--ink) !important;
+}
+
+/* Sidebar links — text-accent for active, ink-soft for inactive (NOT white) */
+:where(.astro-xk5gmzsg),
+.sl-sidebar-link,
+.sidebar a {
+  color: var(--ink-soft);
+}
+:where(.astro-xk5gmzsg):hover,
+.sl-sidebar-link:hover,
+.sidebar a:hover {
+  color: var(--accent);
+}
+
+/* Pagination link titles ("Chapter 4 — Proofs" on prev/next buttons) */
+.link-title:where(.astro-jgq3vlii),
+.sl-pagination__link-title,
+.pagination-links .link-title {
+  color: var(--ink) !important;
+}
+
+/* Pagination link labels (the "Previous" / "Next" small label) */
+.pagination-links :where([class*='label']),
+.sl-pagination__label {
+  color: var(--ink-muted) !important;
+}
+
+/* Link-card titles (used in card grids on the homepage) */
+.title:where(.astro-vodiqeol),
+.sl-link-card .title {
+  color: var(--ink) !important;
+}
+
+/* Link-card descriptions */
+.description:where(.astro-vodiqeol),
+.sl-link-card .description {
+  color: var(--ink-soft) !important;
+}
+
+/* Search input text — Starlight hard-codes white; use ink */
+#starlight__search .pagefind-ui__search-input,
+.pagefind-ui__search-input {
+  color: var(--ink) !important;
+  font-weight: 400 !important;
+}
+
+/* Search input — use our paper background, not the default dark */
+.pagefind-ui__search-input {
+  background-color: var(--paper-soft) !important;
+  border-color: var(--rule) !important;
+}
+
+/* Search results use --sl-color-white for headings too */
+.pagefind-ui__result-title,
+.pagefind-ui__result-inner * {
+  color: var(--ink);
+}
+.pagefind-ui__result-title a,
+.pagefind-ui__result-link {
+  color: var(--accent);
+}
+
+/* Search dialog itself */
+dialog[aria-label='Search'] {
+  background: var(--paper-soft);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-card);
+}
+
+/* Aside / callout heading titles — use ink, not white */
+.starlight-aside :where(h1, h2, h3, h4, h5, h6),
+.sl-callout-title,
+aside[data-title] > :first-child {
+  color: var(--ink);
+}
+
+/* Mobile menu toggle and other header icons — ink color not white */
+.sl-mobile-menu-toggle,
+.mobile-menu-toggle {
+  color: var(--ink);
+}
+
+/* Tab labels (in tab groups in markdown) */
+.sl-tab {
+  color: var(--ink-soft);
+}
+.sl-tab[aria-selected='true'] {
+  color: var(--accent);
+}
+
+/* Ensure code-block text inside Starlight's pre uses ink, not white */
+pre :where(.tok) {
+  color: inherit;
+}
