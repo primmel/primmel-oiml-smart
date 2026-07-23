@@ -3,6 +3,7 @@ import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import tailwindcss from '@tailwindcss/vite';
 
 // NOTE: `site` is a placeholder for the GitHub Pages deployment URL —
 // update it (and add `base: '/<repo>/'` for a project page) when the
@@ -12,6 +13,9 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkMath],
     rehypePlugins: [rehypeKatex],
+  },
+  vite: {
+    plugins: [tailwindcss()],
   },
   integrations: [
     starlight({
