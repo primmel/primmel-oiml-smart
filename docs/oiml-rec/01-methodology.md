@@ -109,7 +109,10 @@ full id is scope + `identifier_fragment`. The anatomy (INV-3):
 
 - `statement` + `reference` — the normative "shall" sentence + clause URN;
 - `binds_to` — canonical paths: `model|family|group.parameters.<attr>`,
-  `*.classification.<dim>`, `sample.test_context.<attr>`, `observable:<symbol>`;
+  `*.classification.<dim>`, `sample.test_context.<attr>`,
+  `model.identity.<slot>` / `model.aspects.<aspect>` (§2.12),
+  `model.capabilities|characteristics|behaviors.<id>`;
+  `observable:<symbol>` belongs to `limit.uses`;
 - `limit.expression` — machine-checkable OCL; `uses` lists every input
   (attribute paths, observables, `formula:` / `table:` references);
   `applicability` filters by classification (`humidity_class: [CH]`);

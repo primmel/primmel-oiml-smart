@@ -103,6 +103,11 @@ aspect paths into the primary tier:
 | `family.parameters.<attr>` | family-scope attributes | `family.parameters.p_lc`, `family.parameters.t_min` |
 | `*.classification.<dim>` | dimension membership at its scope | `group.classification.accuracy_class`, `family.classification.humidity_class` |
 | `sample.test_context.<attr>` | sample-scope, test-dependent values | `sample.test_context.d_max`, `sample.test_context.v` |
+| `model.identity.<slot>` | documentary identity slots (`identity.yaml`, §2.12) | `model.identity.manufacturer`, `model.identity.serial_number` |
+| `model.aspects.<aspect>` | qualitative aspects (`aspects.yaml`, §2.12) | `model.aspects.markings`, `model.aspects.sealing` |
+| `model.capabilities.<id>` | declared capabilities | `model.capabilities.digital` |
+| `model.characteristics.<id>` | declared characteristics | `model.characteristics.creep` |
+| `model.behaviors.<id>` | declared behaviors | `model.behaviors.span-stability` |
 | `observable:<symbol>` | test-output quantities (in `uses`) | `observable:e_l`, `observable:c_c`, `observable:c_p` |
 | `formula:<id>` / `table:<id>` / `profile:<id>` | named calculations and data (in `uses`) | `formula:lookupMPE`, `table:mpe_tiers`, `profile:min_temperature_span` |
 

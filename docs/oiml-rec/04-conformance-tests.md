@@ -43,6 +43,13 @@ The anchor example is R 60's base metrological procedure (●
       - /req/metrological/temperature-effect-mdlo
       - /req/metrological/temperature-limits
       - /req/metrological/special-temperature-limits
+      binds_to:
+      - group.parameters.mpe
+      - group.classification.accuracy_class
+      - family.parameters.p_lc
+      - group.parameters.v_min
+      - family.parameters.t_min
+      - family.parameters.t_max
       purpose: |
         Verify that load cell errors do not exceed the MPE values given in
         Table 4, …
@@ -67,6 +74,14 @@ The anchor example is R 60's base metrological procedure (●
   ways: the requirement's `verification.method: testing` expects a test;
   capabilities reference the test id in `verified_by_tests`; behaviors
   reference it in `verified_by`. The linker resolves all three.
+- **binds_to** — the subject items the test exercises or inspects
+  (§2.12): the HAS-inventory paths in the requirement `binds_to`
+  vocabulary (§3.3). An executed test binds the attributes/dimensions
+  its variables measure against; an examination binds the aspects it
+  inspects (`model.aspects.markings`, `model.aspects.software`, …).
+  `targets` names the *requirements verified*; `binds_to` names the
+  *subject touched* — linker rule R28 resolves every entry and requires
+  ≥1 per test.
 - **purpose / method** — the normative procedure prose (R 60-2 §2.10.1),
   provenance included. Prose for humans; the machine-readable procedure
   is `variables` + `steps` + `acceptance_criteria`.
@@ -321,7 +336,8 @@ conformance_test /conf/class-a/measurement-error {
 - every `targets` entry resolves to a declared requirement, and every
   acceptance item's `target` is among them; every requirement with
   `verification.method: testing` is targeted by at least one test
-  (coverage);
+  (coverage); every `binds_to` entry resolves against the subject's HAS
+  inventory, and every test binds ≥1 such home (R28);
 - every variable declares a `source`; `derived`/`computed` variables
   carry OCL `derivation` reading only declared variables, bound paths,
   and resolvable lookups; step `input_variables`/`output_variables` name

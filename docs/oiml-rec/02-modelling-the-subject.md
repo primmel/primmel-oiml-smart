@@ -3,9 +3,10 @@
 > *In this chapter:* how to declare the primary tier of a Recommendation
 > package — the subject type and its variants, classification dimensions,
 > family criteria, model groups, the attribute definition discipline,
-> capabilities, behaviors, operating conditions, and the endpoint and
-> serve declarations that make a subject twin-ready (○). Everything else
-> in the package anchors to what you declare here.
+> capabilities, behaviors, operating conditions, the documentary identity
+> slots and qualitative aspects that complete the subject's HAS inventory,
+> and the endpoint and serve declarations that make a subject twin-ready
+> (○). Everything else in the package anchors to what you declare here.
 
 ---
 
@@ -23,10 +24,13 @@ compensates with duplication.
 
 All subject content lives in `data/<rec>/model/`, instantiating Module C
 (instrument-description) of the OIML core metamodel. The R 60 package is
-the running example throughout: `data/r60/model/` holds five files —
+the running example throughout: `data/r60/model/` holds
 `instrument.yaml` (subject type, dimensions, family, groups),
 `attributes.yaml` (the attribute schema), `capabilities.yaml`,
-`behaviors.yaml`, `conditions.yaml`. Author them in that order.
+`behaviors.yaml`, `conditions.yaml`, `promises.yaml`,
+`characteristics.yaml`, `identity.yaml` (documentary identity slots) and
+`aspects.yaml` (the qualitative aspect registry). Author them in that
+order.
 
 ## 2.2 Subject type and variants
 
@@ -353,7 +357,74 @@ instrument is expected to be queryable in service; declare a serve
 binding for every aspect a requirement will want *live* — and give each
 its freshness window, because a live binding without one is an error.
 
-## 2.12 Grammar sketch *(illustrative v3 syntax)*
+## 2.12 Documentary identity and qualitative aspects: completing the HAS inventory
+
+Sections 2.2–2.10 declare the quantitative and behavioural subject:
+attributes, dimensions, capabilities, behaviors, conditions. But a
+Recommendation also constrains things that are *not* quantities — "verify
+markings and inscriptions for a Class C load cell" presupposes the load
+cell **has** markings and inscriptions. A requirement can only constrain
+what exists: every constraint needs a home in the subject's IS/HAS/DOES
+inventory. Two registries complete the inventory (TODO.roadmap/47), and
+one linker rule makes the coverage machine-checked.
+
+**The derivation protocol** is an audit, not an invention. Read every
+requirement and every conformance test of the Recommendation and ask
+*what the subject must have for this constraint to be checkable*:
+
+| the constraint is about… | the home is |
+|---|---|
+| a quantity the subject carries | an attribute (§2.6), bound `<layer>.parameters.<id>` |
+| category membership | a dimension (§2.3), bound `<layer>.classification.<id>` |
+| a sample/test-run value | a sample-scope attribute, bound `sample.test_context.<id>` |
+| documentary identity (who/what/when, approval marks) | an identity slot, bound `model.identity.<id>` |
+| a qualitative facet (markings, sealing, software, construction, power supply, interfaces, documentation) | an aspect, bound `model.aspects.<id>` |
+| a capability / characteristic / behavior | those registries, bound `model.capabilities.<id>` / `model.characteristics.<id>` / `model.behaviors.<id>` |
+
+**Identity slots** (`model/identity.yaml`, `identity_slots:`) are the
+instrument's documentary identity as first-class HAS items — the typed
+content vocabulary of metamodel Module B `Marking.items
+{content, location}`. Each slot: snake_case `id`, `label`, `type`
+(`string | designation | serial | year | mark | map`), `presentation`
+(`marked-on-instrument` and/or `accompanying-document` — the *location*
+axis; R 60-1 6.2.1 vs 6.2.2), optional `optional: true` for conditional
+slots (a type approval mark "if applicable"), and clause `source`. Never
+a quantity: a marked E_max stays an attribute; the slot is only the
+documentary fact. R 60 ships five: `manufacturer`, `model_designation`,
+`serial_number`, `year_of_production`, `type_approval_mark`.
+
+**Aspects** (`model/aspects.yaml`, `aspects:`) are the qualitative HAS
+registry. Each aspect: `id`, `label`, `kind` (`marking | inscription |
+sealing | display | control | interface | power-supply | enclosure |
+construction | documentation | other`), `definition`, clause `source`,
+and optional links — `term_ref` (the terminology term defining it),
+`component` (a declared component it sits on), `attribute` (its
+quantitative facet, e.g. `power_supply` → `power_voltage`), and
+`contains:` (sub-slots it presents: `model.identity.<slot>` paths or
+attribute ids — never redeclaring quantities). Where the metamodel has
+the class, say so via `metamodel_class` (Module B `Marking`, `Sealing`,
+`SoftwareComponent`); the remaining kinds are rec-level registries by
+design. R 60 ships eight: `markings`, `accompanying_document`,
+`application_documentation`, `sealing`, `software`, `construction`,
+`power_supply`, `interfaces` — derived from R 60-1 6.x and the R 60-2
+2.5/2.6 examination targets.
+
+**Binding coverage is machine-checked** (linker rule
+`requirement-binding-targets`, R28): every requirement `binds_to` and
+every test `binds_to` — the test's *inspection/verification targets*,
+distinct from its `targets:` (the requirements it verifies) — must
+resolve against the full inventory, and once a package declares an
+aspect registry, every requirement and every test must bind ≥1 home; a
+constraint on nothing is a modelling error. (CASCO/scheme-layer
+provisions — `/req/cs/*`, `/req/iso-*` — are exempt from coverage: they
+constrain the certification body, not the subject.) The metamodel
+decision: identity slots and the Module-B-backed aspects *realize*
+existing metamodel classes (`Marking`, `Sealing`, `SoftwareComponent`),
+so no metamodel addition was needed for the pilot — a generic `Aspect`
+class for Module C is deferred until a second Recommendation's
+enrichment audit confirms the pattern recurs.
+
+## 2.13 Grammar sketch *(illustrative v3 syntax)*
 
 ```prl
 subject LoadCell extends MeasuringInstrumentModel {
@@ -396,7 +467,7 @@ subject LoadCell extends MeasuringInstrumentModel {
 }
 ```
 
-## 2.13 Validation rules
+## 2.14 Validation rules
 
 The schema, linker, and coverage audit enforce:
 
@@ -417,11 +488,17 @@ The schema, linker, and coverage audit enforce:
 - every behavior's `verified_by` resolves, or the behavior is reported as
   unverified coverage — a finding, not an error;
 - every `quantity_kind` and `unit` resolves against `value-types.yaml`;
+- every requirement and test `binds_to` path resolves against the full
+  HAS inventory (attributes, dimensions, identity slots, aspects,
+  capabilities, characteristics, behaviors), and — once an aspect
+  registry is declared — every requirement and test binds ≥1 home;
+  aspect `contains` / `attribute` / `component` / `term_ref` links
+  resolve against the same inventory;
 - every `serve` binding (○) names a declared aspect and a declared
   endpoint operation, and carries its freshness window — a live binding
   without `fresh_within` is an error.
 
-## 2.14 Summary
+## 2.15 Summary
 
 - The subject is declared once, in `model/`, before anything secondary;
   every later element anchors to it.
@@ -440,6 +517,11 @@ The schema, linker, and coverage audit enforce:
   making a new variant an additive edit. Behaviors are declared with
   `verified_by` links, or deliberately without. Conditions come in the
   three designed tiers plus shared test conditions.
+- The HAS inventory is complete before the secondary models start:
+  identity slots (`identity.yaml`) for the documentary identity, aspects
+  (`aspects.yaml`) for the qualitative facets — derived by auditing every
+  requirement and test for what the subject must HAVE — and linker rule
+  R28 proves every requirement and test binds ≥1 declared home.
 - Twin readiness is two additive declarations (○): the endpoint (IS —
   operations with kinds and access scopes, one connector profile) and
   the serve bindings (HAS — aspect via operation, each with a freshness
