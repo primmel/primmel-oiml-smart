@@ -63,7 +63,7 @@
 
 ## The volume map
 
-The documentation is written as four courses in dependency order. Each
+The documentation is written as five courses in dependency order. Each
 volume is designed to carry a semester's worth of teaching.
 
 | # | Volume | Contents |
@@ -72,7 +72,8 @@ volume is designed to carry a semester's worth of teaching.
 | I | [**Primmel Kernel**](/primmel/) | the language: tier system, subject anatomy (IS/HAS/DOES), processes, mappings, data and values, packages |
 | II | [**OIML Core**](/oiml-core/) | the OIML metamodel: measurement vocabulary, the subject chain, the six modules, the shared modules |
 | III | [**Authoring Recommendations**](/oiml-rec/) | the methodology: from Recommendation text to a validated package |
-| — | [Annexes](/shared/glossary/) | OIML-CS certification scheme · platform runtime · glossary · alternatives audit · roadmap |
+| IV | [**The OIML-CS Scheme**](/oiml-cs/) | the certification system: the B 18 constitution, the CASCO foundation, the documents corpus, the runtimes, the coverage machinery |
+| — | [Annexes](/shared/glossary/) | platform runtime · glossary · alternatives audit · roadmap |
 
 ## How to read this documentation
 
@@ -88,13 +89,17 @@ volume is designed to carry a semester's worth of teaching.
 - **Track C — Recommendation author.** `foundation/` (skim §10–12), then
   `primmel/` chapters 1–5, `oiml-core/` chapters 1–5, then `oiml-rec/`
   cover to cover.
+- **Track D — scheme operator / certification body / assessor.**
+  `primmel/` chapters 4–5, `oiml-core/` chapter 8, then `oiml-cs/` cover
+  to cover.
 
 ### Prerequisites chain
 
 Volume 0 assumes nothing but literacy about formal systems. Volume I
 assumes Volume 0 (chapter 2 of Volume I operationalizes the formal
 system). Volume II assumes Volumes 0–I. Volume III assumes Volumes 0–II.
-The Annexes are reference material, readable out of order.
+Volume IV assumes Volumes I–II. The Annexes are reference material,
+readable out of order.
 
 ### Conventions
 

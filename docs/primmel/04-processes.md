@@ -1,8 +1,9 @@
 # Chapter 4 — Processes
 
 > *In this chapter:* the process model — the DOES of every subject.
-> Abstract and executable forms, the step vocabulary, executors, state,
-> and how process I/O becomes evidence.
+> Abstract and executable forms, the classification facets
+> (`activity_kind`, `segregation:`), the step vocabulary, executors,
+> state, and how process I/O becomes evidence.
 
 ---
 
@@ -48,7 +49,54 @@ an abstract process refined later is an extension, not a modification
 axis with the model-kind axis of chapter 5 (reference vs implementation
 — related by mapping, never by refinement).
 
-## 4.3 The step vocabulary
+## 4.3 The classification facets: `activity_kind` and `segregation:`
+
+Two optional facets enrich an abstract process beyond its signature.
+Both are **classification, never inheritance**: the process holds a
+*reference* into a register (or to its sibling processes), checked at
+link time, silent when the register is not in scope.
+
+**`activity_kind: [<kind-id>, …]` — what kind of activity is this?**
+Conformity-assessment vocabularies (ISO/IEC 17000:2020's functional
+approach is the canonical case) classify every activity under functions
+like selection, determination, review, decision, attestation. When such
+a vocabulary is modelled as an *activity-archetype register* (chapter 8
+— a package of classifiable kinds, each clause-anchored), an abstract
+process may tag itself with one or more kind ids. Multi-kind is
+deliberate: the vocabulary itself defines composite kinds (ISO/IEC
+17065 3.3's *evaluation* = selection + determination), and forcing a
+single tag would falsify it. The register records a kind's `parent`
+only where the source standard states a type-of relationship — a
+grouping title is not a taxonomy. Resolution: every tag must resolve
+against a register composed into the same tree (linker-checked; an
+unknown kind is an error); with no register in scope the facet is
+inert documentation. Volume IV, chapter 2 shows the OIML-CS process
+model tagged end to end — `application` as `[selection]`, `testing` as
+`[testing]`, `issue` as `[certification]`.
+
+**`segregation: [{ id, kind, clause, pair?, … }]` — whose hands must
+stay off this case?** Certification standards carry non-involvement
+norms: the reviewer shall not have been involved in the evaluation
+(ISO/IEC 17065 7.5.1), nor the decider (7.6.2); complaint resolution
+shall be independent of the case (7.13.5); consultancy creates a barred
+relation, temporal where the standard fixes a period (7.13.6). These
+are **cross-process relations over personnel sets, relative to one
+case** — and they are first-class structured declarations, not
+`invariants:` strings, for three disqualifying reasons: invariant
+strings are never parsed by the toolchain (a rule that cannot fail is
+not a rule); the constraint quantifies over several processes'
+personnel, not one process's own signature records; and the members
+cannot be *roles* — a scheme may legitimately bind one role to
+evaluation, review and decision (the OIML-CS binds `issuing_authority`
+to all three), so the norms quantify over process *involvement*. Pair
+members are therefore **abstract-process ids**; the reserved token
+`case_personnel` names the case-relative personnel set. Two kinds cover
+the shapes: `case_personnel_disjoint` (exactly two distinct pair
+members) and `consultancy_bar` (barred relations, `period` only where
+the standard fixes one). Declaration well-formedness is linker-checked;
+per-assignment enforcement is the runtime's (Volume IV, chapter 5).
+
+## 4.4 The step vocabulary
 
 Eight step kinds cover the standard's process content:
 
@@ -74,7 +122,7 @@ taken (first match in document order; an explicit default edge catches
 the rest). If no edge is conditioned, the gateway is fulfilled when *any*
 outgoing path is fulfilled (the "implement at least one option" reading).
 
-## 4.4 Executors
+## 4.5 Executors
 
 Every step declares its **executor** as an IS-level property:
 
@@ -90,7 +138,7 @@ precise rather than rhetorical: the engine executes machine steps
 directly, drives actor steps by presenting their input forms, and treats
 the process as blocked until the actor's record lands in the registry.
 
-## 4.5 State and registers
+## 4.6 State and registers
 
 A process's HAS is where its memory lives:
 
@@ -111,7 +159,7 @@ precondition voids the run *as a run* (its verdicts become `invalid`,
 never `fail`) — the state gate that keeps an unwarmed instrument from
 producing misleading evidence.
 
-## 4.6 Process I/O = evidence
+## 4.7 Process I/O = evidence
 
 Steps consume and produce **records in registries** (chapter 6): a test
 step reads the subject's parameters, enforces conditions, and writes
@@ -124,7 +172,7 @@ Evidence model stores, and it lives in the workspace (`.pws/`): one
 record per filled slot, typed by the process output it satisfies. Facts
 only: no verdicts in a trace (the firewall, chapter 1).
 
-## 4.7 Repetition and instances
+## 4.8 Repetition and instances
 
 Two parameterizations keep one process definition serving many runs:
 
@@ -145,7 +193,7 @@ Monitors evaluate against *served* instances, and the same endpoint
 machinery makes a subject's own processes remotely callable: an `invoke`
 operation triggers a behavior over the wire (chapter 14, §14.4).
 
-## 4.8 Processes across model kinds
+## 4.9 Processes across model kinds
 
 The same process concept, three voices:
 
@@ -157,7 +205,7 @@ The same process concept, three voices:
   workflow — mapped to the reference process (chapter 5);
 - in the **workspace**: "this is what happened" — the execution traces.
 
-## 4.9 Grammar sketch *(illustrative v3 syntax)*
+## 4.10 Grammar sketch *(illustrative v3 syntax)*
 
 ```prl
 process creep_test {
@@ -168,6 +216,7 @@ process creep_test {
     }
     preconditions { ocl{ self.state = #ready and self.warmed_up } }
     executor lab
+    activity_kind [testing]              # classification, not inheritance
   }
   does {
     start_event s
@@ -179,9 +228,18 @@ process creep_test {
     flow { s -> stabilize -> apply_load -> hold -> record -> e }
   }
 }
+
+process review {
+  is { activity_kind [review] }
+  segregation [{
+    kind case_personnel_disjoint         # cross-process, per case,
+    pair [review, evaluation]            # members are process ids
+    clause "iso-iec-17065:7.5.1"         # — never roles, never prose
+  }]
+}
 ```
 
-## 4.10 Validation rules
+## 4.11 Validation rules
 
 - exactly one start event per process; end events on every terminal path
   (mandatory on empty gateway branches);
@@ -192,14 +250,23 @@ process creep_test {
 - an executable process's steps realize its own signature (the OUT
   parameters are written; the IN parameters are read);
 - a timer event's period is a time primitive; a self-loop contains a
-  timer (no unguarded infinite loops).
+  timer (no unguarded infinite loops);
+- every `activity_kind` id resolves against an activity-archetype
+  register composed into the same tree (silent when none is in scope);
+- every `segregation:` entry is well-formed: a known kind, exactly two
+  distinct pair members for `case_personnel_disjoint`, pair members
+  resolving to abstract-process ids, `period` only where the source
+  standard fixes one.
 
-## 4.11 Summary
+## 4.12 Summary
 
 - A process is a subject: IS the signature, HAS the state and registers,
   DOES the steps.
 - Abstract is always valid; executable is added when simulation or
   automation demands it.
+- `activity_kind` classifies a process against a register (multi-kind
+  deliberate); `segregation:` declares cross-process non-involvement
+  over personnel sets — both classification, never inheritance.
 - Eight step kinds, three connection rules, two executor kinds.
 - Preconditions void runs, never instruments; traces are facts, never
   verdicts.
