@@ -76,6 +76,20 @@ if (path === '/' || path === '' || path.startsWith('/index')) {
     height: 30px;
     width: auto;
     flex-shrink: 0;
+  }
+
+  /* Logo theme-toggle: light variant visible by default, dark variant hidden.
+     Both rules inside the scoped component style so they have higher cascade
+     priority than the unscoped `.brand-mark__logo { display: block }` above. */
+  .brand-mark__logo--dark {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .brand-mark__logo--light {
+    display: none;
+  }
+
+  :global([data-theme='dark']) .brand-mark__logo--dark {
     display: block;
   }
 
