@@ -39,18 +39,13 @@ if (path === '/' || path === '' || path.startsWith('/index')) {
 
 <a href="/" class="brand-mark" data-section={section}>
   <img
-    class="brand-mark__logo brand-mark__logo--light"
+    class="brand-mark__logo"
     src={logoLight}
     alt=""
     aria-hidden="true"
     loading="eager"
-  />
-  <img
-    class="brand-mark__logo brand-mark__logo--dark"
-    src={logoDark}
-    alt=""
-    aria-hidden="true"
-    loading="eager"
+    data-logo-light={logoLight}
+    data-logo-dark={logoDark}
   />
   <span class="brand-mark__wordmark">{wordmark}</span>
   {tag && <span class="brand-mark__section-tag">{tag}</span>}
@@ -72,25 +67,15 @@ if (path === '/' || path === '' || path.startsWith('/index')) {
     color: var(--color-ink);
   }
 
+  /* Single logo img — JS swaps the src based on data-theme (see script below).
+     No CSS display-toggle, no dual-img layering. */
   .brand-mark__logo {
     height: 30px;
     width: auto;
+    max-width: 100px;
     flex-shrink: 0;
-  }
-
-  /* Logo theme-toggle: light variant visible by default, dark variant hidden.
-     !important guarantees the toggle wins over any base `.brand-mark__logo`
-     rule regardless of cascade order. */
-  .brand-mark__logo--dark {
-    display: none !important;
-  }
-
-  :global([data-theme='dark']) .brand-mark__logo--light {
-    display: none !important;
-  }
-
-  :global([data-theme='dark']) .brand-mark__logo--dark {
-    display: block !important;
+    object-fit: contain;
+    object-position: left center;
   }
 
   .brand-mark__wordmark {
@@ -123,6 +108,54 @@ if (path === '/' || path === '' || path.startsWith('/index')) {
     .brand-mark__section-tag { display: none; }
   }
 </style>
+
+<script is:inline>
+  // No-flash theme + section detection — runs before paint.
+  // Theme comes from localStorage.theme (or prefers-color-scheme).
+  // Section comes from the current URL.
+  (function () {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const stored = (localStorage.getItem('theme') || '').toLowerCase();
+    const theme = stored === 'light' || stored === 'dark' ? stored : (prefersDark ? 'dark' : 'light');
+    document.documentElement.dataset.theme = theme;
+
+    const path = window.location.pathname;
+    let section = 'overview';
+    if (path.startsWith('/foundation') || path.startsWith('/primmel')) {
+      section = 'primmel';
+    } else if (
+      path.startsWith('/oiml-core') ||
+      path.startsWith('/oiml-rec') ||
+      path.startsWith('/oiml-cs') ||
+      path.startsWith('/platform') ||
+      path.startsWith('/shared')
+    ) {
+      section = 'oiml';
+    }
+    document.documentElement.dataset.section = section;
+
+    // Swap logo src based on theme. Both light and dark variants are
+    // declared on the img as data attributes; pick the right one.
+    const logo = document.querySelector('.brand-mark__logo');
+    if (logo) {
+      const light = logo.getAttribute('data-logo-light');
+      const dark = logo.getAttribute('data-logo-dark');
+      logo.src = theme === 'dark' ? dark : light;
+    }
+
+    // Listen for theme changes and re-swap.
+    let lastTheme = theme;
+    new MutationObserver(function () {
+      const current = document.documentElement.dataset.theme || 'dark';
+      if (current !== lastTheme && logo) {
+        lastTheme = current;
+        const light = logo.getAttribute('data-logo-light');
+        const dark = logo.getAttribute('data-logo-dark');
+        logo.src = current === 'dark' ? dark : light;
+      }
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
+</script>
 
 <script is:inline>
   // No-flash theme + section detection — runs before paint.
