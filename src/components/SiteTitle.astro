@@ -62,14 +62,14 @@ if (path === '/' || path === '' || path.startsWith('/index')) {
     align-items: center;
     gap: 0.65rem;
     text-decoration: none;
-    color: var(--ink);
+    color: var(--color-ink);
     padding: 0.4rem 0;
     font-family: var(--font-display);
     min-width: 0;
   }
 
   .brand-mark:hover {
-    color: var(--ink);
+    color: var(--color-ink);
   }
 
   .brand-mark__logo {
@@ -98,7 +98,7 @@ if (path === '/' || path === '' || path.startsWith('/index')) {
     font-weight: 500;
     font-size: 1.1rem;
     letter-spacing: -0.02em;
-    color: var(--ink);
+    color: var(--color-ink);
     font-variation-settings: 'opsz' 36, 'SOFT' var(--display-soft);
     white-space: nowrap;
     overflow: hidden;
@@ -111,12 +111,11 @@ if (path === '/' || path === '' || path.startsWith('/index')) {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--accent);
+    color: var(--color-accent);
     padding: 0.15rem 0.5rem;
-    border: 1px solid var(--accent-soft);
+    border: 1px solid var(--color-accent-soft);
     border-radius: var(--radius-pill);
-    background: var(--accent-tint);
-    transition: color var(--dur-base) ease, background var(--dur-base) ease, border-color var(--dur-base) ease;
+    background: var(--color-accent-tint);
     white-space: nowrap;
   }
 
