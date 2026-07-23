@@ -27,13 +27,43 @@ running system disagree, the running system is right — fix this page.
 
 ## 2. What exists today (●)
 
-**The running packages.** Three Recommendations run in the new
+**The running packages.** Four Recommendations run in the new
 `data/<id>/` layout: **R 60** (the reference depth: subject model, 40
 attribute definitions, requirements, conformance tests, R 60-3 forms
 with 164 `bind:` paths, the full certification workflow, 13 seeded
 real-certificate flows), **R 91** and **R 144** (new-layout trees with
-model/entities/specification/execution/evaluation). `data/oiml-r129/`
-and the legacy `data/oiml-r144/` tree remain unmigrated.
+model/entities/specification/execution/evaluation), and **R 129**
+(migrated off the legacy tree). The legacy `data/oiml-r144/` tree
+remains unmigrated.
+
+**The OIML-CS full implementation (phase 7, tasks 39–45,
+2026-07-22/23).** The certification system is now modelled, executed
+and audited end to end — Volume IV is the full treatment:
+
+- **the CASCO foundation packages** (`data/iso-iec-17000/`, `-17065/`,
+  `-17025/`, `-17067/`) — each standard's vocabulary and model as its
+  own reference package, composed first into every rec; the facet trio
+  `activity_kind` (the 17000 activity-archetype register),
+  `segregation:` (machine-checkable non-involvement), `scheme_type:`
+  (the oiml-cs layer's `type_1a` self-classification);
+- **the B 18:2025 framework model** (`data/oiml-cs/framework/`) —
+  participants, schemes (the per-category B→A two-year lifecycle),
+  declarations (the PD-08 signing gate), documents, governance;
+- **the documents corpus** (`data/oiml-cs/documents/<doc>/`) — eleven
+  per-document modules (PD-01…PD-09 bar PD-05, CID-01, OD-01/02), 105
+  clause-anchored provisions, plus PD-05's full clause coverage (34
+  provisions + the coverage header table);
+- **the participant runtime** — the registry, the approval pipeline
+  with the MC 80 % tally, and **the PD-08 issuance gate enforced on
+  both issuance paths, failing closed**;
+- **the CS operations runtime** — Scheme A MTL/ANR discipline, PD-06
+  utilization with the denial discipline, PD-01 appeals windows as
+  model content, post-issuance revision/parallel/deregistration, and
+  the public register as the B 18 §15.8 validity source (SHA-256
+  registered copies);
+- **the coverage machinery** — four `.prm` maps folded into one
+  unified, mutation-proven report: 152 of 200 mandatory components
+  covered, 48 justified named gaps, zero errors.
 
 **The Primmel v2 toolchain — W1–W8 complete.** Per the delivery record:
 
@@ -50,9 +80,9 @@ and the legacy `data/oiml-r144/` tree remain unmigrated.
   (oiml-r91 and oiml-r144 packages exist alongside it);
 - W8 `primmel check` — the C1–C5 cross-layer linter, 0 errors on R 60.
 
-**The platform.** All command gates green as of 2026-07-18 (vue-tsc 0
-errors; astro check 0 errors; vitest 1408 tests; production build;
-validate; e2e 19/19). Feature-level ● includes: the ONE applicability
+**The platform.** All command gates green as of 2026-07-23 (vue-tsc 0
+errors; astro check 0 errors; vitest 2788 tests; production build;
+validate; e2e 39/39). Feature-level ● includes: the ONE applicability
 engine (dimension conditions, `implies:`, `instances:`); the
 VerdictQuantity registry with per-requirement verdict re-execution;
 preconditions (invalid ≠ fail), modality (observation ≠ blocker) and the
@@ -62,7 +92,10 @@ capability-based lab selection; the TestRun/EvidenceRecord runtime with
 custody; machine-checked reference materials (R 144 CGMs); the
 certificate template and the PD-05 18-element checklist; the model
 linker with clause-referenced allowlists; the BIML registration record
-and the public register at `/app/register`.
+and the public register at `/app/register`; **the participant registry
++ approval pipeline + the fail-closed issuance gate** (`/app/cs`); and
+**the CS operations runtime** (utilization, appeals, post-issuance,
+the register as the §15.8 validity source).
 
 ## 3. What is partial (◐)
 
@@ -70,7 +103,6 @@ and the public register at `/app/register`.
 |---|---|---|
 | **Promises** | parameter-valued claims only (`origin: declared`, the application matrix) | claims on *characteristics and behavior* — envelope-shaped, conditional, verified at evaluation and printed on the certificate — do not exist yet (G11) |
 | **Characteristics** | defined specification-side as observables / VerdictQuantities | definitions must hoist into the primary model (symbol + derivation from behavior I/O), with the specification *referencing* them (INV-3 completeness) |
-| **The workflow** | the certification workflow lives inside each rec package (`data/<id>/evaluation/` — the same seven files per rec under the same names: approvals/state-machines/roles identical but for header comments and quoting style, the other four differing in rec-specific clause refs and content; nothing byte-identical) | it is an *implementation model* of the OIML-CS with no name: PD-05 clause refs in `approvals.yaml` are embryonic mappings with no mapping machinery around them (§4, phase 2) |
 | **Designed/exhibited value duality** | `ConditionRole: [reference, rated, limiting, actual]` encodes it for conditions | the general duality (one value structure, two aspect roles) is not yet a kernel relation (as-found verification is the driver) |
 | **BIML registration** | record builder + idempotent register action + public register | true OIML-CS API integration (export feed) |
 | **Quantity vocabulary** | QuantityValue everywhere (INV-1); unit registry | quantity kinds are string ids at the domain layer; no first-class QuantityKind/Unit instance registry (dimension vectors, SI conversion) |
@@ -121,15 +153,23 @@ Depends on phase 1 (the core is re-expressed *in* the new kernel):
 
 - re-express the metamodel (`oiml-core-ontology.yaml` v0.5.0) as the
   OIML Core package on the v3 kernel, keeping INV-1..10 as its laws;
-- publish **OIML-CS (PD-05 / PD-02) as its own reference package** —
-  the scheme content out of the rec packages (Annex A);
-- re-home the certification workflow as **implementation packages**
-  mapping to the scheme — the ◐ of §3 closed by construction, and the
-  coverage calculus answering "how much of PD-05 does this platform
-  fulfil?";
-- the seven shared modules (emc-disturbances, env-iec60068,
+- ● (phase 7) — publish **the OIML-CS as its own reference package**:
+  the scheme content out of the rec packages — the B 18:2025 framework
+  model, the twelve-document corpus, PD-05's 34 provisions — composed
+  into every rec after the four CASCO foundation packages (Volume IV).
+  The framework/documents content is YAML-only for the PRL codecs so
+  far (the `provides` tokens sit in `UNSHIPPED_PROVIDES`);
+- ● (phase 7) — re-home the certification workflow as **implementation
+  content mapping to the scheme**: the concrete processes live in
+  `data/core/` and map to the abstract scheme model via
+  `platform-to-oiml-cs.prm` — the ◐ of §3 closed, and the unified
+  coverage report answering "how much of PD-05 does this platform
+  fulfil?" (42 mandatory, 37 covered, 5 justified named gaps);
+- ● — the seven shared modules (emc-disturbances, env-iec60068,
   software-d31, reference-materials, specimen-governance,
-  report-headers, examination-docs) re-cut as layer-2b packages.
+  report-headers, examination-docs) cut as layer-2b packages
+  (`data/modules/<name>/` with `provides:`/`requires:`/`with_slots:`;
+  recs consume them via `{ module: …, with: … }` entries).
 
 ### Phase 3 — Recommendation re-expression
 
@@ -140,7 +180,8 @@ Depends on phase 2 (recs sit on the core):
 - **R 91 and R 144 as the stress cases** — set-valued dimensions,
   verification processes, simulator test kinds, statistics blocks: the
   features that forced the kernel's hand, exercised on real content;
-- **R 129 migration** off the legacy tree;
+- ● **R 129 migration** off the legacy tree (`data/r129/` runs the
+  gates alongside the other three recs);
 - per-lab implementation models of R 60-2 / R 91-2 test methods become
   possible (SOPs mapped to required methods).
 
@@ -209,14 +250,17 @@ parallel with phases 2–4 once it lands:
 
 | Area | Marker | Where it stands |
 |---|---|---|
-| R 60 / R 91 / R 144 packages (new layout) | ● | running, gates green |
+| R 60 / R 91 / R 144 / R 129 packages (new layout) | ● | running, gates green |
 | Primmel v2 toolchain (W1–W8) | ● | parser, packages, round-trip, plug, linter |
-| App command gates | ● | 0/0 errors, 1408 tests, 19/19 e2e (2026-07-18) |
+| App command gates | ● | 0/0 errors, 2788 tests, 39/39 e2e (2026-07-23) |
 | Applicability / verdict / form / state / dispatch engines | ● | `browser/src/data`, `browser/src/services` |
-| Promises, characteristics, workflow-as-implementation | ◐ | §3 — closed in phases 1–2 |
+| CASCO foundation packages + facet trio | ● | phase 7, tasks 39a–d — Volume IV, ch. 2 |
+| OIML-CS reference package (framework + corpus + PD-05) | ● | phase 7, tasks 40–43 — Volume IV, ch. 1/3/4 |
+| Participant + operations runtimes, unified coverage | ● | phase 7, tasks 44–45 — Volume IV, ch. 5–7 |
+| Promises, characteristics | ◐ | §3 — closed in phases 1–2 |
 | Kernel primitives (structure, artifacts, state, duality, set-dimensions, process extensions, mapping calculus, uses) | ○ | phase 1 |
-| OIML Core re-home + OIML-CS reference package | ○ | phase 2 |
-| Rec re-expression (R 60 native; R 91/R 144 stress; R 129) | ○ | phase 3 |
+| OIML Core re-home (metamodel as a v3 package) | ○ | phase 2 |
+| Rec re-expression (R 60 native; R 91/R 144 stress) | ○ | phase 3 (R 129 migration ●) |
 | Fragment provenance, ISO 24229, text coverage, projections, model diff | ○ | phase 4 |
 | Platform runtime v3, documentation site, gates & release | ○ | phase 5, tasks 29–31 |
 | Twin interface primitives (endpoint, serve, connector profiles, freshness) | ○ | phase 6, task 32 (Volume I, ch 14 §14.4) |
@@ -225,12 +269,16 @@ parallel with phases 2–4 once it lands:
 
 ## 6. Summary
 
-- The system runs today: three Recommendations in the new layout, the
-  v2 toolchain complete (W1–W8), all gates green.
-- The honest partials are three: promises declared-only, characteristics
-  specification-side, the workflow an unnamed implementation model.
+- The system runs today: four Recommendations in the new layout, the
+  v2 toolchain complete (W1–W8), the OIML-CS fully implemented (phase
+  7: CASCO foundation, B 18 framework, the documents corpus, both
+  runtimes, the unified coverage report), all gates green.
+- The honest partials are two: promises declared-only, characteristics
+  specification-side. (The third former partial — the workflow as an
+  unnamed implementation model — closed in phase 7: the OIML-CS is its
+  own reference package, the concrete processes map to it by `.prm`.)
 - The v3 program is phased by dependency: kernel primitives first, then
-  the OIML Core re-home (with OIML-CS as its own reference package),
+  the OIML Core re-home (whose OIML-CS half landed early, as phase 7),
   then Recommendation re-expression, then interop; the platform release
   (phase 5) ships it, and the twin program (phase 6 — endpoint / serve /
   freshness, the gateway, the monitor runtime, the passport projection,

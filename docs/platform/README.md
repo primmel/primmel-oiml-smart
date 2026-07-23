@@ -28,7 +28,7 @@ Recommendation means a new data tree with zero schema changes
 The browser app (`browser/`, a typed component-based rendering layer)
 renders the Recommendation content and runs the entire certification
 workflow from that data: application, dispatch, testing, evaluation,
-certificate, register (Annex A). What follows is how the engine is
+certificate, register (Volume IV). What follows is how the engine is
 built.
 
 ## B.2 Four layers, one direction

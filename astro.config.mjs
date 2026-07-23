@@ -99,9 +99,21 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Volume IV — The OIML-CS Scheme',
+          items: [
+            { label: 'Volume overview', slug: 'oiml-cs' },
+            { label: '01 — The Scheme Architecture', slug: 'oiml-cs/01-scheme-architecture' },
+            { label: '02 — The CASCO Foundation', slug: 'oiml-cs/02-casco-foundation' },
+            { label: '03 — The Documents Corpus', slug: 'oiml-cs/03-documents-corpus' },
+            { label: '04 — The Certification Workflow', slug: 'oiml-cs/04-certification-workflow' },
+            { label: '05 — The Participant Runtime', slug: 'oiml-cs/05-participant-runtime' },
+            { label: '06 — The Operations Runtime', slug: 'oiml-cs/06-operations-runtime' },
+            { label: '07 — The Coverage Machinery', slug: 'oiml-cs/07-coverage-machinery' },
+          ],
+        },
+        {
           label: 'Annexes',
           items: [
-            { label: 'OIML-CS', slug: 'oiml-cs' },
             { label: 'Platform', slug: 'platform' },
             { label: 'Glossary', slug: 'shared/glossary' },
             { label: 'Alternatives Audit', slug: 'shared/alternatives-audit' },

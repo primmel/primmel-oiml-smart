@@ -207,7 +207,7 @@ as amended; number and labels come from the certificate template
 (`number_format`, `dimension_labels`); the approval chain (IA sign, BIML
 register) is data. The workflow entities it runs on (Application → TestRequest
 → TestAssignment → TestReport → EvaluationReport → Certificate) are Volume II,
-chapter 8, and the CS annex.
+chapter 8, and Volume IV.
 
 ## 1.8 Move 7 — Package and validate *(chapter 7)*
 

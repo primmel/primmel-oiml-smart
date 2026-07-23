@@ -135,6 +135,18 @@ The semantics:
   package declares `uses` for vocabulary, then *maps* its processes to
   the reference package (chapter 5). Composition is for structure;
   mapping is for compliance.
+- **A package classifies itself in its own manifest.** Facets like
+  `scheme_type: <type-id>` let a package that *implements a scheme*
+  classify itself against a taxonomy package (ISO/IEC 17067's scheme
+  types 1a–6 — chapter 4's classification doctrine, hoisted to package
+  level): the OIML-CS layer declares `scheme_type: type_1a` (B 18:2025
+  §1.3). The declaration never lives in the taxonomy package — a
+  foundation package naming its consumer would invert the composition.
+  The id must resolve against a register composed *earlier* in the
+  `uses` list (`checkUses` fails the composition otherwise), and
+  downstream gates may read the classification mechanically — the
+  OIML-CS coverage gate discharges type-conditioned checklist items
+  against it (Volume IV, chapter 7).
 
 ## 8.4 The layer stack
 
@@ -144,7 +156,7 @@ Packages arrange into the layer stack the concept frame fixes:
 |---|---|---|---|
 | 0 | vocabulary registers | glossarist VIML/VIM term registers (sibling repo) | ● |
 | 1 | Primmel kernel | the language itself — this volume | ● (this documentation) |
-| 2 | OIML core | subject chain, parties, workflow entities, state machines, approvals, roles, obligation, value-type base | ◐ (`data/core/` in embryo — layer manifest + CS process requirements, inert until composition wiring) |
+| 2 | OIML core + CASCO foundation + scheme | `data/core/` (subject chain, parties, workflow, state machines, CS registries); the four ISO/IEC CASCO packages (17000/17065/17025/17067); the `oiml-cs` scheme package — composed into every rec's effective tree in `uses:` order | ● (composition, linker and coverage gates green — Volume IV) |
 | 2b | shared modules | parameterized test/form families | ◐ (seven identified; manifests sketched) |
 | 3 | rec packages | normative content only: subject, dimensions, attributes, requirements, tests, forms, tables, terminology | ● (R 60, R 91, R 144) |
 
@@ -243,6 +255,13 @@ package {
          reference-materials, report-headers, examination-docs ]
 }
 
+# ── a scheme package classifies itself ─────────────────────
+package {
+  id oiml-cs
+  uses [ iso-iec-17000, iso-iec-17065, iso-iec-17025, iso-iec-17067 ]
+  scheme_type type_1a        # resolves against the 17067 register
+}                            # composed earlier — never a record inside it
+
 # ── a module manifest ──────────────────────────────────────
 module emc-disturbances {
   provides {
@@ -279,6 +298,9 @@ use emc-disturbances with {
   every `requires` is satisfied by an earlier layer; every module
   `provides` is consumed or explicitly waived (○);
 - `uses` is acyclic and topologically mergeable; a cycle is an error (○);
+- a manifest classification facet (`scheme_type:`) resolves its id
+  against a register package composed earlier in the `uses` list;
+  the classification record never lives inside the taxonomy package (●);
 - every cross-file and cross-package reference resolves by id
   (`Namespace#ElementID` across packages); path references are
   rejected (● within packages, ○ across);
@@ -298,9 +320,11 @@ use emc-disturbances with {
 - `uses: [core, modules…]` replaces single-string `extends` —
   topological merge, overlay-may-reference-never-redefine.
   Composition is for structure; implementation packages map, they do
-  not extend.
-- Packages stack: vocabulary registers, kernel, OIML core, seven
-  shared parameterized modules, rec overlays.
+  not extend; a scheme package classifies itself (`scheme_type:`)
+  against a register composed earlier.
+- Packages stack: vocabulary registers, kernel, OIML core with the
+  CASCO foundation and the scheme package (● — composed into every
+  rec), seven shared parameterized modules, rec overlays.
 - Editions are lifecycle packaging: pinning (INV-8) today, model diff in chapter 13.
 - The native ⇔ YAML semantic round-trip is implemented and
   property-tested; the app runs from either serialization.

@@ -36,6 +36,13 @@ invariants + state skeleton, without steps; always valid. In a
 *reference model* it reads as "a process is required to fulfil these
 provisions". ●
 
+**activity kind** — a classification of an *abstract process* against an
+activity-archetype register (ISO/IEC 17000's functional approach:
+selection → determination → review, decision, attestation), declared
+via the `activity_kind:` facet — multi-kind deliberate, `parent` only
+where the source standard states a type-of. Classification, never
+inheritance; resolves when the register is in scope, silent otherwise. ●
+
 **applicability** — the computed relation deciding which requirements,
 tests and forms apply to a given subject, derived from its *dimension*
 values by the ONE applicability engine (dimension conditions, `implies:`
@@ -109,6 +116,18 @@ mapped, below the minimum), no cover (nothing mapped) — computed by the
 coverage calculus: inherited down process trees, aggregated up,
 transitive at process level, never at model level. ○ (calculus; ● v2
 serialization)
+
+**named gap** — a *coverage* entry recording a mandatory reference-model
+component the implementation does not fulfil, with a reason and a
+closure — the calculus's honesty form: a gap that becomes covered is
+STALE and fails the gate; a mandatory component neither covered nor
+gapped fails outright. ●
+
+**Declaration (OIML-CS)** — the scheme's binding instrument (PD-08): a
+signed, statused record (`draft → signed → suspended → withdrawn`)
+scoping a participant to a categories × schemes matrix — IA, Utilizer
+and Associate kinds; Test Laboratories sign none. Only `signed`
+discharges the *issuance gate*. ●
 
 **delegation (INV-10)** — attribute resolution upward Family ← Group ←
 Model ← Sample: a value set at a lower level overrides the inherited
@@ -228,6 +247,13 @@ the *subject anatomy* in
 subject is — intrinsic; change it and you have a different subject.
 Formally: the `IS ⊆ O × O` relation.
 Canonical definition: [Volume 0 ch 3 §3.2](../foundation/03-eight-terms-and-closure-rules.md). ●
+
+**issuance gate** — the OIML-CS signing gate (PD-08 cl. 5): an Issuing
+Authority issues nothing before its *Declaration* covering the
+(instrument category × scheme) is signed. Enforced on both issuance
+paths (the action funnel and the workflow guard) and failing closed —
+no composed gate definition, no registered category, or no signed
+in-scope Declaration all block. ●
 
 **live integration** — a consumption mode of a *product reference
 model*: the deployed instance serves a *live twin* integrated directly
@@ -376,6 +402,12 @@ this: transition-as-object, and nothing more. ●
 published by the standards body: faithful, machine-applicable,
 machine-readable, transferable; speaks for the standard. ●
 
+**registered copy** — the OIML-CS validity record (B 18:2025 §15.8):
+one per registered certificate revision, carrying the SHA-256 digest of
+the canonical registration content; the register's validity check
+answers match / mismatch / superseded / deregistered /
+no_registered_copy against it. ●
+
 **registry vs data class** — a *place where records are kept* (compiles
 to a store with indexes) versus a pure embedded value structure;
 registries are storable classes, data classes are helpers. ●
@@ -388,9 +420,21 @@ verification method; it binds, never restates (INV-3). ●
 physical unit under test, with serial number, custody events and
 `test_context` values. ●
 
+**scheme type** — a package's self-classification against the ISO/IEC
+17067 scheme taxonomy (types 1a–6), declared as `scheme_type:` in the
+package's own manifest (the OIML-CS declares `type_1a`, B 18:2025
+§1.3) — never a record inside the taxonomy package; coverage gates
+discharge type-conditioned provisions against it mechanically. ●
+
 **secondary tier** — the *tier* of models anchored to primary aspect
 paths: *requirements* (constraints), *conformance tests* (operations),
 *forms* (evidence views); owns no subject facts. ●
+
+**segregation** — a machine-checkable non-involvement constraint
+between *abstract processes* (ISO/IEC 17065 7.5.1 reviewer ∉
+evaluation, 7.6.2 decider ∉ evaluation, 7.13.5 complaint resolution ∉
+case): declared via the `segregation:` facet with process-id pair
+members — never roles, never invariant prose. ●
 
 **serve binding** — the HAS-level binding from an aspect to an
 *endpoint* operation, carrying its *freshness* window (`serve

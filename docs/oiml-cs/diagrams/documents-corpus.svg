@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 660" font-family="ui-sans-serif, system-ui, sans-serif">
+  <defs>
+    <marker id="docarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The documents corpus — eleven governance modules + PD-05</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">One module convention: requirements.yaml + abstract-processes.yaml (+ optional annex). Counts are /req/cs/&lt;doc&gt;/* provisions.</text>
+
+  <!-- ================= B 18 on top ================= -->
+  <rect x="285" y="76" width="330" height="52" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+  <rect x="285" y="76" width="330" height="26" rx="12" fill="#475569"/>
+  <text x="450" y="94" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">B 18:2025 — the framework (chapter 1)</text>
+  <text x="450" y="118" font-size="9.5" fill="#334155" text-anchor="middle">participants &#183; schemes &#183; declarations &#183; documents &#183; governance</text>
+  <line x1="450" y1="128" x2="450" y2="152" stroke="#475569" stroke-width="1.6" fill="none" marker-end="url(#docarr)"/>
+  <text x="462" y="144" font-size="9.5" fill="#475569">clause 6 hierarchy: B 18 &gt; CID &gt; OD &gt; PD</text>
+
+  <!-- ================= FAMILY: admission (green) ================= -->
+  <text x="60" y="176" font-size="12" font-weight="700" fill="#15803d">ADMISSION — who may join</text>
+  <g>
+    <rect x="60" y="186" width="190" height="66" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+    <text x="74" y="208" font-size="11.5" font-weight="700" fill="#14532d">pd-03 &#183; IA approval</text>
+    <text x="74" y="224" font-size="10" fill="#14532d">Ed 5 2025 &#183; 16 prov. &#183; D 32 annex</text>
+    <text x="74" y="240" font-size="9.5" fill="#15803d">17065 per D 32 &#183; &#8805;1-TL precondition</text>
+
+    <rect x="60" y="262" width="190" height="66" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+    <text x="74" y="284" font-size="11.5" font-weight="700" fill="#14532d">pd-04 &#183; TL approval</text>
+    <text x="74" y="300" font-size="10" fill="#14532d">Ed 5 2025 &#183; 13 prov. &#183; D 30 annex</text>
+    <text x="74" y="316" font-size="9.5" fill="#15803d">17025 per D 30 &#183; MTL 7.1 a&#8211;f</text>
+
+    <rect x="60" y="338" width="190" height="66" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+    <text x="74" y="360" font-size="11.5" font-weight="700" fill="#14532d">pd-02 &#183; expert approval</text>
+    <text x="74" y="376" font-size="10" fill="#14532d">Ed 3 2022 &#183; 11 prov.</text>
+    <text x="74" y="392" font-size="9.5" fill="#15803d">LME/MSE &#183; the NDA is the gate</text>
+
+    <rect x="60" y="414" width="190" height="66" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+    <text x="74" y="436" font-size="11.5" font-weight="700" fill="#14532d">pd-09 &#183; Utilizer/Associate</text>
+    <text x="74" y="452" font-size="10" fill="#14532d">Ed 1 2025 &#183; 7 prov.</text>
+    <text x="74" y="468" font-size="9.5" fill="#15803d">Exec-Sec-only admission, no vote</text>
+  </g>
+
+  <!-- ================= FAMILY: binding (red) ================= -->
+  <text x="275" y="176" font-size="12" font-weight="700" fill="#b91c1c">BINDING — what binds the joined</text>
+  <g>
+    <rect x="275" y="186" width="190" height="82" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.6"/>
+    <text x="289" y="208" font-size="11.5" font-weight="700" fill="#7f1d1d">pd-08 &#183; Declarations</text>
+    <text x="289" y="224" font-size="10" fill="#7f1d1d">Ed 3 2024 &#183; 7 prov.</text>
+    <text x="289" y="240" font-size="9.5" fill="#b91c1c">the signing gate cl. 5 (no signing</text>
+    <text x="289" y="254" font-size="9.5" fill="#b91c1c">act here — pd-03/pd-09 sign)</text>
+
+    <rect x="275" y="286" width="190" height="76" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+    <text x="289" y="308" font-size="11.5" font-weight="700" fill="#78350f">PD-05 &#183; processing</text>
+    <text x="289" y="324" font-size="10" fill="#78350f">Ed 6 + Amd 1 &#183; 34 prov.</text>
+    <text x="289" y="340" font-size="9.5" fill="#b45309">the rec-facing workflow —</text>
+    <text x="289" y="354" font-size="9.5" fill="#b45309">chapter 4, not a module</text>
+  </g>
+
+  <!-- ================= FAMILY: discipline (amber) ================= -->
+  <text x="490" y="176" font-size="12" font-weight="700" fill="#b45309">DISCIPLINE — when it goes wrong</text>
+  <g>
+    <rect x="490" y="186" width="190" height="66" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+    <text x="504" y="208" font-size="11.5" font-weight="700" fill="#78350f">pd-01 &#183; appeals &#183; BoA</text>
+    <text x="504" y="224" font-size="10" fill="#78350f">Ed 3 2024 &#183; 9 prov.</text>
+    <text x="504" y="240" font-size="9.5" fill="#b45309">one-month windows &#183; MC-binding</text>
+
+    <rect x="490" y="262" width="190" height="66" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+    <text x="504" y="284" font-size="11.5" font-weight="700" fill="#78350f">pd-06 &#183; use / misuse</text>
+    <text x="504" y="300" font-size="10" fill="#78350f">Ed 4 2024 &#183; 12 prov.</text>
+    <text x="504" y="316" font-size="9.5" fill="#b45309">denial discipline 4.8/4.9</text>
+
+    <rect x="490" y="338" width="190" height="66" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.6"/>
+    <text x="504" y="360" font-size="11.5" font-weight="700" fill="#78350f">pd-07 &#183; transitions</text>
+    <text x="504" y="376" font-size="10" fill="#78350f">Ed 4 2024 &#183; 7 prov.</text>
+    <text x="504" y="392" font-size="9.5" fill="#b45309">legacy validity &#183; appraisals</text>
+  </g>
+
+  <!-- ================= FAMILY: governance (violet) ================= -->
+  <text x="705" y="176" font-size="12" font-weight="700" fill="#7e22ce">GOVERNANCE</text>
+  <g>
+    <rect x="705" y="186" width="160" height="66" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.6"/>
+    <text x="719" y="208" font-size="11.5" font-weight="700" fill="#581c87">cid-01 &#183; clarifications</text>
+    <text x="719" y="224" font-size="10" fill="#581c87">Ed 6 2024 &#183; 6 prov.</text>
+    <text x="719" y="240" font-size="9.5" fill="#7e22ce">TL issues TR &#183; IA issues ER</text>
+
+    <rect x="705" y="262" width="160" height="66" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.6"/>
+    <text x="719" y="284" font-size="11.5" font-weight="700" fill="#581c87">od-01 &#183; MC rules</text>
+    <text x="719" y="300" font-size="10" fill="#581c87">Ed 4 2022 &#183; 11 prov.</text>
+    <text x="719" y="316" font-size="9.5" fill="#7e22ce">2/3 RC validity &#183; a&#8211;k census</text>
+
+    <rect x="705" y="338" width="160" height="66" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.6"/>
+    <text x="719" y="360" font-size="11.5" font-weight="700" fill="#581c87">od-02 &#183; TLF</text>
+    <text x="719" y="376" font-size="10" fill="#581c87">Ed 3 2024 &#183; 6 prov.</text>
+    <text x="719" y="392" font-size="9.5" fill="#7e22ce">consensus &#183; ISO/IEC 17043</text>
+  </g>
+
+  <!-- ================= registers strip ================= -->
+  <rect x="60" y="500" width="805" height="64" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1"/>
+  <text x="80" y="522" font-size="11.5" font-weight="700" fill="#3730a3">Registers the corpus maintains (top-level registers: in the pipelines)</text>
+  <text x="80" y="541" font-size="10" fill="#3730a3">ia_register &#183; tl_register (BIML) — lme_register &#183; mse_register &#183; declaration_register &#183;</text>
+  <text x="80" y="556" font-size="10" fill="#3730a3">utilizer_register &#183; associate_register (Exec. Sec.) — tlf_representative_register</text>
+
+  <!-- ================= BOTTOM BAR ================= -->
+  <rect x="60" y="580" width="805" height="60" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="80" y="601" font-size="11.5" font-weight="600" fill="#0f172a">105 provisions &#183; 11 pipelines &#183; 8 registers — one module convention, a pinned namespace (/req/cs/&lt;doc&gt;), framework-bound facets.</text>
+  <text x="80" y="617" font-size="11" fill="#475569">Pipelines bind the constitution (organs:, decision:, declaration:, discharges_gate:) — they never restate it. Anchors cite the official PDFs.</text>
+  <text x="80" y="633" font-size="11" fill="#475569">Which pipelines the platform executes is chapters 5&#8211;6; which it does not is a named gap in chapter 7.</text>
+</svg>

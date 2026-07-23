@@ -41,14 +41,16 @@ layer the compliance use-case always needed: **the subject**.
    HAS vs DOES.
 3. [Instantiation](03-instantiation.md) — definition and instance; the
    subject chain; Sample as instance of Model; delegation.
-4. [Processes](04-processes.md) — abstract and executable processes; the
+4. [Processes](04-processes.md) — abstract and executable processes;
+   the classification facets (`activity_kind`, `segregation:`); the
    step vocabulary; executors; state; evidence.
 5. [Mappings](05-mappings.md) — reference and implementation models; the
    coverage calculus.
 6. [Data and values](06-data-and-values.md) — registries, variables,
    quantities, tables, time.
 7. [Expressions](07-expressions.md) — OCL as the one rule language.
-8. [Packages](08-packages.md) — composition, modules, editions.
+8. [Packages](08-packages.md) — composition, modules, editions,
+   package-level classification (`scheme_type:`).
 9. [Provenance and documents](09-provenance.md) — fragments, `.prd`,
    reconstruction.
 10. [Multilinguality](10-multilingual.md) — ISO 24229.
