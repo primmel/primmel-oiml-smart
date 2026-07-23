@@ -11,8 +11,8 @@
 
 Each section follows the same structure: (1) the proposal as
 originally stated, (2) the counterexample or reduction, (3) the
-materialized-view reconstruction as a composite, (4) the poe.txt
-citation for the dialectical record.
+materialized-view reconstruction as a composite, (4) the argument
+that retires the candidate.
 
 ---
 
@@ -40,8 +40,6 @@ from inside, but we can show every attack so far has failed).
 
 > "What about STATE? A kettle is *currently boiling*. Surely that's
 > a different kind of fact from a slow-changing property like mass."
-
-(poe.txt:124–158 — the STATE round of the dialectic.)
 
 ### The reduction
 
@@ -78,11 +76,11 @@ identifier* for an execution, like a program counter. It tells you
 where to resume. It does not describe the entity — it locates a run
 within a graph of transitions.
 
-**The poe.txt moment that killed it.** "State is therefore not an
+**The argument that retires it.** "State is therefore not an
 independent substance or behavior. It is a secondary execution
-locator." (poe.txt:1332, GPT-5.6-Sol's analysis.) The phrasing
-"secondary" is precise — STATE exists because we surface it for
-querying, not because it carries new content.
+locator." The phrasing "secondary" is precise — STATE exists
+because we surface it for querying, not because it carries new
+content.
 
 ---
 
@@ -93,8 +91,6 @@ querying, not because it carries new content.
 > "A transition is a rule. But each individual firing of that rule —
 > with specific inputs and outputs, at a specific time — is a *step*.
 > Don't we need a STEP primitive?"
-
-(poe.txt:312–362 — the STEP round.)
 
 ### The reduction
 
@@ -121,10 +117,9 @@ individuating step 3 across attempts — which is the same individuation
 problem objects have, solved by IS. Steps inherit the IS dependency;
 they don't introduce a new sort.
 
-**The poe.txt moment that killed it.** "STEP is to DOES what STATE
+**The argument that retires it.** "STEP is to DOES what STATE
 was to DOES — an internal unit promoted to an addressable field, for
 engineering convenience, not ontological necessity."
-(poe.txt:340 — Claude-Sonnet-5's analysis.)
 
 ---
 
@@ -134,8 +129,6 @@ engineering convenience, not ontological necessity."
 
 > "A bird *can* fly, whether or not it is currently flying. That
 > sounds like a distinct category from DOES."
-
-(poe.txt:46–84 — the CAN round, killed early.)
 
 ### The reduction
 
@@ -163,7 +156,6 @@ unbounded number of things under some hypothetical condition (a rock
 'can' be thrown, ground, used as a paperweight, melted at 1200°C...).
 A bucket that's infinite and untestable without external
 condition-specification isn't doing real partitioning work."
-(poe.txt:54 — Claude-Sonnet-5's self-critique.)
 
 CAN without a condition is too coarse to be useful; CAN with a
 condition is just "DOES under condition C" — still the same primitive.
@@ -176,8 +168,6 @@ condition is just "DOES under condition C" — still the same primitive.
 
 > "The door *is pushed* by the wind. That's RECEIVES — passive
 > reception of an action. Different from DOES, surely?"
-
-(poe.txt:56–60 — the RECEIVES round, killed alongside CAN.)
 
 ### The reduction
 
@@ -200,10 +190,10 @@ across all entities, every RECEIVES-fact would already be there,
 filed under a different entity's ledger. Listing both is
 double-counting, not exhaustiveness.
 
-**The double-counting argument that killed it.** "If RECEIVES
+**The double-counting argument that retires it.** "If RECEIVES
 statements are just DOES statements with the subject and object
 swapped, then RECEIVES doesn't add new content to a MECE tree — it's
-a mirror, not a sibling." (poe.txt:57 — Claude-Sonnet-5's analysis.)
+a mirror, not a sibling."
 
 ---
 
@@ -214,8 +204,6 @@ a mirror, not a sibling." (poe.txt:57 — Claude-Sonnet-5's analysis.)
 > "Things stand in relations to other things. Alice is *part of* the
 > team. The door is *adjacent to* the wall. That's a different kind
 > of fact from HAS."
-
-(poe.txt:60–64 — the RELATES-TO round.)
 
 ### The reduction
 
@@ -247,10 +235,9 @@ to bear properties (start-date, role, terms), reify it as its own
 object — the ER-diagram junction-entity move. Same machinery, no new
 sort.
 
-**The poe.txt moment that killed it.** "RELATES-TO just generalizes
+**The argument that retires it.** "RELATES-TO just generalizes
 the relation's direction and kind (adjacency, dependency, membership)
-— a difference of degree, not of logical kind." (poe.txt:62 —
-Claude-Sonnet-5's analysis.)
+— a difference of degree, not of logical kind."
 
 ---
 
@@ -260,8 +247,6 @@ Claude-Sonnet-5's analysis.)
 
 > "Things change over time. A caterpillar *becomes* a butterfly. The
 > door *becomes* closed. That's BECOMES — the temporal delta."
-
-(poe.txt:162–194 — the BECOMES round, the hardest kill.)
 
 ### The reduction
 
@@ -299,10 +284,10 @@ Two cases:
 
 Either way, BECOMES is not needed.
 
-**The poe.txt moment that killed it.** "There is no third fact hiding
+**The argument that retires it.** "There is no third fact hiding
 between the two snapshots that needs its own category. Calling BECOMES
 'the delta operator on STATE' is an admission of this: a derived
-quantity isn't a primitive." (poe.txt:209 — Claude-Fable-5's analysis.)
+quantity isn't a primitive."
 
 ---
 
