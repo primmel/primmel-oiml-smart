@@ -3,10 +3,11 @@
 > *In this chapter:* the deliverable itself. A Recommendation is shipped
 > as a package with a fixed directory contract: `standard.yaml` as the
 > manifest, five content layers, root document files, a Layer-1 domain
-> profile, JSON Schemas, a seeded sample flow, and a `primmel-packages`
-> twin for the `.prl` round-trip. Then the composition question: how a
-> rec package consumes core and shared modules by `uses` — reference,
-> never redefine.
+> profile, JSON Schemas, a seeded sample flow, a `primmel-packages`
+> twin for the `.prl` round-trip, and `.prd` fragment extracts whose
+> reconstruction gate proves the model still says what the source says.
+> Then the composition question: how a rec package consumes core and
+> shared modules by `uses` — reference, never redefine.
 
 ---
 
@@ -320,7 +321,117 @@ cd browser && npx vitest run     # unit tests over the generated data
 A package that passes all three is registered, generated, seeded and
 executable. Anything less is a directory.
 
-## 7.9 Grammar sketch *(illustrative v3 syntax)*
+## 7.9 Fragment provenance: `.prd` extracts and the reconstruction gate ●
+
+Clause provenance (every element carries a clause URN) tells you *which
+clause* — not *which sentence* — and it cannot prove the model still says
+what the source says. Fragment provenance closes that loop: each source
+document is decomposed into **addressable fragments**, published as a
+**`.prd` file** (Primmel Document, the formal successor of the Demo
+`.sdc` seed), model elements bind fragment addresses, and a congruence
+gate reconstructs the document from the model.
+
+### The `.prd` artifact
+
+One file per source document part, at `data/<rec>/sources-prd/
+<part>.prd.yaml` (schema `data/schemas/prd.yaml`):
+
+```yaml
+prd: "0.1.0"
+document:
+  urn: "urn:oiml:pub:r:60-1:2021"
+  title: "Metrological regulation for load cells — Metrological and technical requirements"
+  edition: "2021"
+  part: "1"
+  source: { adoc: "sources/r060/1/document.adoc",
+            presentation: "data/r60/documents/1/document.presentation.xml",
+            extractor: "scripts/extract-prd.py" }
+fragments:
+  - path: clause-5.2.1        # address = document.urn + "#" + path
+    kind: provision           # provision | definition | table | figure | note | example | front-matter
+    normative: true           # coverage counts normative fragments
+    clause: "5.2.1"
+    title: "Minimum load of the measuring range (D_{\"min\"}) (see 3.5.12)"
+    parent: clause-5.2
+    text: |-                  # near-verbatim: math as asciimath, xrefs resolved
+      The value of the smallest load applied to a load cell during test which
+      is expressed in units of mass shall not be less than E_{"min"} (see 3.5.9).
+  - path: clause-5.3/note-1   # block sub-addresses within a clause
+    kind: note
+    normative: false
+    parent: clause-5.3
+    text: MPE is applicable after increasing as well as decreasing …
+  - path: table-4             # numbered tables/figures are document-level
+    kind: table
+    normative: true
+    parent: clause-5.3.2
+    text: …
+```
+
+Extracts are **regenerable artifacts, never hand-edited**
+(`scripts/extract-prd.py` reads the compiled Metanorma presentation XML
+of the `sources/<rec>/` tree — the presentation materializes the printed
+clause numbering, obligations and captions the raw adoc lacks). Where
+extraction is imperfect, curations go in the extractor's `OVERRIDES`
+table with a clause-referenced reason; `prd.test.ts` re-runs the
+extractor and fails on any drift.
+
+### The binding protocol
+
+Every provenance form an element already carries is a fragment address,
+and the linker's **R27 `fragment-references`** rule resolves all of them
+against the cited document's `.prd`:
+
+- `reference: "urn:…#clause-5.2"` — the coarse, human-legible citation;
+- **`source: { doc, clause, fragment? }`** — the machine-checkable
+  binding (rc/cc schemas): a single map, or a list when the element
+  realizes a whole clause family (a test binding its procedure's step
+  clauses 2.10.1.1–16). The optional `fragment` key composes
+  sub-addresses (`…#clause-5.2/s2`) once finer fragments exist;
+- form `references: [{ urn, role }]` — the report form realizes its
+  R 60-3 section (`role: report-format`) and the calculation procedures
+  behind its derivations (`role: calculation`);
+- terminology `source:` — a URN list citing both the vocabulary origin
+  (VIML/VIM) and the Recommendation's own clause-3 definition fragment;
+- tables' `source: { doc, clause }` maps (a table address like
+  `table-1` passes through as-is).
+
+A citation that resolves to no declared fragment is a build error — the
+rule burned every dangling pseudo-address the corpus carried (lettered
+list items, `-option`/`-cond` suffices, a pre-2021 renumbering), each
+remapped to the clause the content actually resides at, with the remap
+recorded in the file's header comment.
+
+### The congruence gate
+
+The model emits an ordered fragment stream per document — every `.prd`
+fragment in document order, carrying its bound elements (clause tree →
+provisions → supplements) — and the gate (a `npm run validate` section,
+`browser/build/prd-congruence.ts`) proves it on three axes:
+
+- **coverage** — every *normative* fragment is bound by ≥1 model
+  element. Deliberate absences are **named gaps** in
+  `sources-prd/congruence.yaml` with clause-referenced reasons; a gap
+  that becomes bound is STALE and fails.
+- **order** — the model does not reorder the document's logic: an
+  element's bindings follow source order, and each document-following
+  file's elements follow source order by first bound fragment. Thematic
+  registries (per-class variants, symbol/calculation registers) take
+  `order_exceptions`, stale-guarded. Form files are evidence views keyed
+  by the report structure and are exempt.
+- **text identity** — a bound statement/definition appears verbatim, up
+  to normalization (asciimath → plain symbols, punctuation dropped), in
+  its fragment's subtree text. Paraphrase drift fails; deliberate
+  condensations and per-class specializations take `text_exceptions`,
+  stale-guarded.
+
+The acceptance discipline: the R 60 reconstruction covers **100 % of
+normative fragments — bound or documented gap** (R 60-1: 120 bound +
+19 gaps of 139; R 60-2: 141 + 10 of 151; R 60-3: 275 + 16 of 291), and
+the gate is mutation-proven (`prd-congruence.test.ts`: dropping a
+binding flags the fragment as uncovered).
+
+## 7.10 Grammar sketch *(illustrative v3 syntax)*
 
 ```prl
 package oiml-r144 {
@@ -348,7 +459,7 @@ package module-emc-disturbances {
 }
 ```
 
-## 7.10 Validation rules
+## 7.11 Validation rules
 
 Package-level checks the linker and gates enforce:
 
@@ -369,7 +480,7 @@ Package-level checks the linker and gates enforce:
 - `source:` resolves: the declared parts exist under `sources/`, and
   the `primmel:` twin (when declared) loads with zero errors.
 
-## 7.11 Summary
+## 7.12 Summary
 
 - One directory per Recommendation, self-describing via
   `standard.yaml`: identity block, `structure:` registry (unregistered
@@ -386,6 +497,12 @@ Package-level checks the linker and gates enforce:
 - `sample-data.yaml` seeds one full flow family → … → certificate; the
   `.prl` twin under `primmel-packages/` is round-tripped and
   runtime-pluggable today (◐ for non-R-60-shaped content).
+- `sources-prd/` holds the `.prd` fragment extracts — regenerable from
+  the Metanorma presentation by `scripts/extract-prd.py`, schema-checked
+  by `data/schemas/prd.yaml`; every element's provenance resolves
+  against them (linker R27), and the reconstruction gate proves
+  coverage + order + text identity at 100 % of normative fragments,
+  bound or documented named gap (TODO.roadmap/24).
 - Registration is discovery by manifest id plus the three gates:
   validate, build, vitest.
 - A fourth package kind, `product_reference` (○), lets a manufacturer
