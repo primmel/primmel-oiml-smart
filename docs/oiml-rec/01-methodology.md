@@ -241,6 +241,56 @@ cd browser && npx vitest run     # unit tests over the generated data
 - every enum value used in `applicability` exists on its dimension; every unit
   is a `value-types.yaml` unit id.
 
+### 1.9.1 The 100%-coverage discipline (text metric)
+
+Two more gates close the loop with the *source text* (Volume II, chapter 9
+provenance; chapter 11 §11.6 for the mechanics):
+
+```
+cd browser && npm run validate                                    # .prd congruence (clause level)
+primmel check --audit --coverage primmel-packages/oiml-<rec>     # text coverage (sentence level)
+```
+
+- **Reconstruction congruence (clause level).** Every normative fragment of
+  the `.prd` extracts is bound by ≥1 model element — or carries a named gap
+  with a clause-referenced reason (`sources-prd/congruence.yaml`; a gap that
+  becomes bound is STALE and fails).
+- **Text coverage (sentence level).** Every *normative sentence* of the source
+  maps to at least one model element — **target 100 %** — and no two elements
+  are semantic duplicates — **target 0 unresolved**. The `.prd` fragments
+  decompose into addressed sentences (`<fragment>/s<N>`); the modality
+  classifier (shall/should/may/must + negatives, definitions and informative
+  fragments by context) decides which sentences gate. Elements bind sentences
+  with the same grammar they bind fragments (`source: { doc, clause,
+  fragment: s1 }`).
+
+The discipline for the author:
+
+1. **Bind, don't paraphrase.** A requirement/term that realizes a clause
+   carries the `source:` map; its statement keeps the source wording (the
+   congruence gate's text-identity axis proves containment).
+2. **An uncovered normative sentence is a finding, never a shrug.** Either
+   bind it (element or sentence binding) or declare a *sentence-pinned
+   allowance* in `sources-prd/coverage.yaml` with the reason (expository
+   prose, jurisdiction clauses, YAML-only surfaces). The pins make a *new*
+   normative sentence in an allowed fragment a finding again.
+3. **The budget is 0.** The package's `text_coverage_budget` in
+   `primmel-allowlist.yaml` stays 0: any regression — a dropped binding, a
+   reclassified sentence, an edited fragment — fails `primmel check --audit`
+   (C71/C72).
+4. **Duplicate pairs are adjudicated, never auto-failed.** The metric flags
+   near-duplicate provisions (similarity ≥ 0.8 over bound texts); every
+   flagged pair gets a verdict in `duplicate_adjudications` (distinct /
+   merge-planned / source-duplicate) with a clause-referenced reason. A pair
+   that drops below the threshold makes its adjudication STALE — delete it.
+   Acceptance is **0 unresolved**, and the R 60 baseline shows what clean
+   looks like: 59 flagged pairs, all per-class specializations, register
+   mirror-definitions, or term↔variant realizations — 0 true duplicates.
+5. **Definitions live in the register.** A clause-3 definition without a
+   `terminology.yaml` entry is an uncovered normative sentence — add the
+   term (one entry may bind several fragments when the source repeats a
+   definition verbatim).
+
 ## 1.10 The pitfalls catalog
 
 Nine ways the R 60 build went wrong — what it is, the gate, the fix.
@@ -248,7 +298,8 @@ Nine ways the R 60 build went wrong — what it is, the gate, the fix.
 1. **Clause-number drift between editions.** *What:* legacy data carried R
    60-1:2017 numbering; the 2021 edition renumbered (barometric-pressure 2.10.3
    → 2.10.4; vMin 3.7.5 → 3.5.11). *Gate:* none mechanical — provenance review
-   against the edition in `standard.yaml` (text-coverage audit ○ closes this).
+   against the edition in `standard.yaml` (the text-coverage metric ● of
+   §1.9.1 closes this: a drifted clause ref unbinds its sentences).
    *Fix:* verify every clause ref; record fixes in the header.
 2. **Scope/origin confusion.** *What:* `dr` — origin test-dependent, scope
    group. *Gate:* semantic validation of bind paths and the sample-scope

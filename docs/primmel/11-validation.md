@@ -19,7 +19,7 @@ assuming the one below:
 | 2. Model linker | every cross-reference resolves | ● `browser/build/model-linker.ts` |
 | 3. `primmel check` | cross-layer invariants hold | ◐ (C1–C5 in `@primmel/primmel` `src/check.ts`, 0 errors on R 60) |
 | 4. Coverage audits | the aspect↔requirement↔test↔form closure is complete | ◐ structural today, explicit in v3 |
-| 5. Text-coverage metric | every normative sentence is modelled, none duplicated | ○ |
+| 5. Text-coverage metric | every normative sentence is modelled, none duplicated | ● `src/text-coverage.ts` (C71–C73 + `--coverage`), R 60 at 100 % / 0 unresolved |
 
 In the running system, layers 1–2 are wired into `npm run validate`
 (`browser/scripts/validate.ts` — schema + semantic validation) and run
@@ -143,7 +143,7 @@ recorded, not a gap. The same calculus covers **mappings** (chapter 5):
 mapping coverage per reference component — full / minimal / partial /
 none — is part of the same audit run.
 
-## 11.6 Layer 5 — the normative-text coverage metric (○)
+## 11.6 Layer 5 — the normative-text coverage metric (●)
 
 The top of the stack closes the loop with chapter 9. Given `.prd`
 fragments and provenance maps:
@@ -159,6 +159,29 @@ the document?"; text coverage asks "did anything in the document escape
 the model — or enter it twice?" Semantic duplication is the quiet killer
 here: two requirements interpreting the same sentence differently is
 worse than a gap, because both will compute verdicts.
+
+**Implemented (TODO.roadmap/26).** The `.prd` fragments decompose into
+addressed *sentences* (`<fragment>/s<N>`, the reserved finer address
+space of the fragment grammar — computed at package build, never stored
+in the extract); a documented modality classifier (shall/should/may/must
++ negatives; definitions normative, informative fragments demoted —
+pinned precision ≈ 0.91 / recall ≈ 0.79 on a 70-sentence labelled sample
+of R 60, with every false negative proven to sit in a bound fragment)
+decides which sentences gate. The sentence manifests + the package's
+declarations (sentence-pinned allowances, duplicate adjudications) ship
+inside the PRL package as `sources-prd/*.sentences.json` +
+`coverage.json`, and `primmel check` computes the metric: **C71** warns
+per uncovered normative sentence (audit level, budgeted by the package's
+`text_coverage_budget` — **C72**, the C51/C52 budget pattern; a package
+at 100 % declares 0, so any regression fails), **C73** fails stale or
+malformed declarations (an allowance matching no normative sentence, an
+adjudication whose pair is no longer flagged). `--coverage` prints the
+full report: per-document ratios with and without allowances, the
+allowed exclusions, and the duplicate pairs with their adjudication
+status — pairs are *reported*, never auto-failed; acceptance is 0
+*unresolved*. The R 60 baseline: 100 % gated normative-sentence coverage
+on all three parts (273 bound, 20 sentence-pinned allowances, 0
+uncovered) and 59/59 duplicate pairs adjudicated distinct (0 unresolved).
 
 ## 11.7 The pitfalls catalog (from the R 60 build)
 
@@ -249,7 +272,7 @@ The checker's own inputs are models too, and get checked:
 
 - Validation is a five-layer stack: schema (●), linker (●),
   cross-layer invariants (◐ C1–C5), coverage audits (◐),
-  text coverage (○). Each layer assumes the one below.
+  text coverage (●). Each layer assumes the one below.
 - The linker resolves every cross-file reference; the allowlist
   discipline (KNOWN prints, STALE must die) keeps inherited debt honest
   and finite.
