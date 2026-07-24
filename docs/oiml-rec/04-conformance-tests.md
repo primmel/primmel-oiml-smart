@@ -171,6 +171,7 @@ requires, and the equipment it runs on — three different slots:
   constraint/requirement distinction of §3.4 made operational at
   execution time, following `inherits_from` chains so an inherited test
   keeps its parent's preconditions.
+
 - **Equipment** is per run, not per test: the TestRun records
   `TestRunEquipment` entries — a lab-local id plus calibration
   certificate reference (`cal_cert`) — identity and traceability only

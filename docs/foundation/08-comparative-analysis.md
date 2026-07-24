@@ -28,7 +28,8 @@ consequence is universal and expensive — the model and the
 implementation become two artifacts, they drift, and the model
 becomes documentation rather than truth.
 
-The foundation has no escape hatch. A transition is $t : V_{in} \to V_{out}$, and the transform is not an opaque body — it decomposes
+The foundation has no escape hatch. A transition is $t : V_{in} \to V_{out}$,
+and the transform is not an opaque body — it decomposes
 into smaller transitions, by the same composition operator, all the
 way down. Behavior is inside the model all the way down.
 
@@ -270,8 +271,8 @@ language.
 
 - Mature ISO standard with real binary/text interchange (Part 21)
   used in global manufacturing pipelines.
-- ENTITY + ATTRIBUTE + WHERE-clause maps cleanly to OBJECT + PROPERTY
-  + value-domain restriction.
+- ENTITY + ATTRIBUTE + WHERE-clause maps cleanly to OBJECT + PROPERTY + value-domain
+  restriction.
 - Decades of interoperability testing.
 
 ### Where EXPRESS stops

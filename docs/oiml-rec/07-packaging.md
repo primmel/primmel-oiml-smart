@@ -33,7 +33,7 @@ layering census (`analysis/cross-standard-layering.md`) measurable.
 
 ## 7.2 The `data/<rec>/` directory contract ●
 
-```
+```text
 data/<rec>/
   standard.yaml         identity + structure registry + source
   terminology.yaml      terms; vocab_ref → viml-2022 / vim-2012
@@ -227,7 +227,7 @@ A package without instances is a claim; a package with a seeded flow is
 a demonstration. The checklist (methodology §9.2, item 26) requires
 **one full flow, end to end**:
 
-```
+```text
 family → group → model → sample → application → request
        → report → evaluation → certificate
 ```
@@ -254,7 +254,7 @@ Every rec package has a native-language twin under `primmel-packages/`
 `package.primmel` manifest), mirroring the YAML
 layout by convention (`docs/primmel-v2-plan.md` §3):
 
-```
+```text
 oiml-r60/
   package.primmel            # the only required file — manifest
   model/  entities/  specification/  execution/  evaluation/
@@ -264,7 +264,7 @@ oiml-r60/
 
 The manifest carries identity and composition intent:
 
-```
+```text
 package {
   id oiml-r60
   title "OIML R 60:2021 — R 60 package"
@@ -312,7 +312,7 @@ know:
 
 Then the gates decide whether the package *is* a package:
 
-```
+```text
 cd browser && npm run validate   # JSON-Schema + semantic (x-refs, anchors) + sample-data
 cd browser && npm run build      # full codegen; YAML errors fail here
 cd browser && npx vitest run     # unit tests over the generated data

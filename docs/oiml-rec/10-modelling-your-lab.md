@@ -30,7 +30,7 @@ general and the platform's PD-05 coverage gate (TODO.roadmap/16 —
 mapped to the OIML-CS abstract process model) does for the certification
 workflow:
 
-```
+```text
 lab's implementation model ──maps──▶ Recommendation (required methods)
 ```
 
@@ -205,7 +205,7 @@ chapter 5 (the same format the platform-to-OIML-CS mapping uses). The
 reference tree per mapped method spans the whole meaning of "the
 method":
 
-```
+```text
 /conf/metrological-tests/creep                     ← the method (root)
   …/step/<abstract procedure step>                 ← the procedure
   …/criterion/<acceptance criterion>               ← the acceptance
@@ -269,7 +269,7 @@ enforces seven rules:
 
 The pilot's report, computed by the calculus:
 
-```
+```text
 lab-mtl-rhein (data/lab-mtl-rhein/lab-to-r60-2.prm)
   ● full    /conf/metrological-tests/creep ⇐ sop_mtl_012_creep
   ● full    …/step/check_test_conditions ⇐ …/verify_environment, …/verify_equipment_calibration
@@ -356,6 +356,7 @@ gate keeps the sharing impossible.)
   insufficient alone warns);
 - equipment calibration is in date when a step executes.
 
-*Next: the [Annexes](../README.md#annexes) — the OIML-CS
+*Next: [Volume IV — the OIML-CS Scheme](../oiml-cs/README.md) and the
+[platform annex](../platform/README.md) — the OIML-CS
 certification-scheme reference package and the platform runtime the
 packages run on.*

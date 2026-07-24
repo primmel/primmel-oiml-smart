@@ -929,6 +929,41 @@ starlight-file-tree .file { color: var(--color-accent) !important; }
 }
 
 /* =============================================================================
+ * Status badges — the tree's ● ◐ ○ markers, wrapped in spans at build time
+ * by src/plugins/remark-status-badges.mjs. Colors use the shared status
+ * tokens, so both themes are covered.
+ * ========================================================================== */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72em;
+  line-height: 1;
+  padding: 0.22em 0.4em;
+  border-radius: var(--radius-pill);
+  border: 1px solid;
+  vertical-align: 0.12em;
+  font-style: normal;
+  cursor: help;
+}
+.status-badge--done {
+  background: var(--color-ok-bg);
+  color: var(--color-ok-text);
+  border-color: var(--color-ok-border);
+}
+.status-badge--partial {
+  background: var(--color-warn-bg);
+  color: var(--color-warn-text);
+  border-color: var(--color-warn-border);
+}
+.status-badge--planned {
+  background: var(--color-info-bg);
+  color: var(--color-info-text);
+  border-color: var(--color-info-border);
+}
+
+/* =============================================================================
  * Scrollbar (subtle warm tint)
  * ========================================================================== */
 

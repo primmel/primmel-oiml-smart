@@ -61,13 +61,21 @@ carries everything except the value — field by field below, from
   category: metrological
 ```
 
-- **`id` / `symbol`** — the id is the snake_case machine key used in bind paths, calculations and forms (`E_max` → `e_max`); the symbol is the typeset notation for rendering. Never mix the two.
+- **`id` / `symbol`** — the id is the snake_case machine key used in bind
+  paths, calculations and forms (`E_max` → `e_max`); the symbol is the
+  typeset notation for rendering. Never mix the two.
 - **`definition` + `source`** — the normative sentence and its clause-URN provenance. Nothing is provenance-free.
-- **`quantityKind` + `valueType`** — kind from the closed registry (Chapter 1); type is `QuantityValue | string | MeasurementResult`.
-- **`origin`** — `design-fixed` (set by design; R 60's E-terms), `test-dependent` (chosen under test; D-terms), or `declared` (manufacturer rating). Origin is the IS/HAS discriminator at the attribute level (§3.3).
+- **`quantityKind` + `valueType`** — kind from the closed registry (Chapter 1);
+  type is `QuantityValue | string | MeasurementResult`.
+- **`origin`** — `design-fixed` (set by design; R 60's E-terms),
+  `test-dependent` (chosen under test; D-terms), or `declared` (manufacturer
+  rating). Origin is the IS/HAS discriminator at the attribute level (§3.3).
 - **`scope`** — the chain level where the value is stated (Chapter 2, §2.8).
-- **`category`** — the characteristics breakdown: `metrological | electrical | dimensional | material | administrative`.
-- **`irdi`** — the IEC CDD identifier, where a registry entry exists (e.g. `rated_output`), so a shared attribute is citable in an international dictionary rather than invented per package.
+- **`category`** — the characteristics breakdown:
+  `metrological | electrical | dimensional | material | administrative`.
+- **`irdi`** — the IEC CDD identifier, where a registry entry exists (e.g.
+  `rated_output`), so a shared attribute is citable in an international
+  dictionary rather than invented per package.
 
 A **Parameter** is then only the value layer: `{ definition: ref,
 category, value: QuantityValue }` — or `fields[]` for composite parameters
@@ -292,20 +300,38 @@ constraint fig3_2b context LoadCell kind test_setup {
 
 ## 3.10 Validation rules
 
-- **INV-2.** Every valued Parameter resolves to exactly one AttributeDefinition; the value matches the definition's `valueType`, `quantityKind`, `scope` and (for composites) its named `fields`.
-- **Origin/scope coherence.** `test-dependent` values are stated at sample scope or — the declared-group-characteristic case — carry a derivation and a verification path (the `dr` pattern).
-- **Capability algebra.** `extends`/`requires` graphs are acyclic and resolvable; `abstract` capabilities are never declared directly; every referenced parameter, requirement and test id exists.
-- **Behavior signatures.** `kind` is one of the four BehaviorKind values; a `characteristic` reference resolves to a QuantityValue or Formula; every `verified_by` target exists (or its absence is deliberate).
-- **Condition tiers.** `reference` and `rated` are required, `limiting` optional; every tier is a Module A `Conditions` instance.
-- **INV-7 / INV-9.** Formula outputs are typed values via OCL `derive`; Constraint outputs are Booleans via OCL `inv`; neither judges — and `violationMeaning` is mandatory on every Constraint.
+- **INV-2.** Every valued Parameter resolves to exactly one AttributeDefinition;
+  the value matches the definition's `valueType`, `quantityKind`, `scope` and
+  (for composites) its named `fields`.
+- **Origin/scope coherence.** `test-dependent` values are stated at sample
+  scope or — the declared-group-characteristic case — carry a derivation and a
+  verification path (the `dr` pattern).
+- **Capability algebra.** `extends`/`requires` graphs are acyclic and
+  resolvable; `abstract` capabilities are never declared directly; every
+  referenced parameter, requirement and test id exists.
+- **Behavior signatures.** `kind` is one of the four BehaviorKind values; a
+  `characteristic` reference resolves to a QuantityValue or Formula; every
+  `verified_by` target exists (or its absence is deliberate).
+- **Condition tiers.** `reference` and `rated` are required, `limiting`
+  optional; every tier is a Module A `Conditions` instance.
+- **INV-7 / INV-9.** Formula outputs are typed values via OCL `derive`;
+  Constraint outputs are Booleans via OCL `inv`; neither judges — and
+  `violationMeaning` is mandatory on every Constraint.
 
 ## 3.11 Summary
 
-- Module C is the kernel anatomy realized: design-fixed attributes and condition tiers are IS; test-dependent values, dimensions and actual logs are HAS; behaviors are DOES.
-- INV-2: an attribute is defined once (symbol, clause, IRDI, kind, origin, scope, category) and valued per chain level; derived attributes are OCL over siblings.
-- Capabilities are mixins — `extends` / `requires` / `abstract` — and the OCP variant mechanism: new variant, zero schema change.
-- Behaviors carry `kind`, stimulus, response and the `verified_by` chain into tests and requirements; uncovered behaviors are visible holes.
-- Formulas compute values (INV-7), Constraints check validity (OCL `inv`), Requirements limit — three kinds of statement, three homes.
+- Module C is the kernel anatomy realized: design-fixed attributes and
+  condition tiers are IS; test-dependent values, dimensions and actual logs
+  are HAS; behaviors are DOES.
+- INV-2: an attribute is defined once (symbol, clause, IRDI, kind, origin,
+  scope, category) and valued per chain level; derived attributes are OCL
+  over siblings.
+- Capabilities are mixins — `extends` / `requires` / `abstract` — and the
+  OCP variant mechanism: new variant, zero schema change.
+- Behaviors carry `kind`, stimulus, response and the `verified_by` chain
+  into tests and requirements; uncovered behaviors are visible holes.
+- Formulas compute values (INV-7), Constraints check validity (OCL `inv`),
+  Requirements limit — three kinds of statement, three homes.
 - A violated test-setup constraint voids the run, not the instrument.
 
 *Next: [Chapter 4 — Identity and Provenance](04-identity-and-provenance.md):

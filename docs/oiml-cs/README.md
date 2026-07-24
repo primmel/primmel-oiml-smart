@@ -45,7 +45,7 @@ The scheme is one layer under `data/oiml-cs/` — a `kind: core` package
 that every Recommendation composes after the four CASCO foundation
 packages:
 
-```
+```text
 data/oiml-cs/
   layer.yaml                    id oiml-cs, requires the four CASCO layers,
                                 scheme_type: type_1a  (B 18:2025 §1.3)
@@ -87,7 +87,7 @@ Three rules make the contract binding, and every chapter leans on them:
 The scheme package is held to the same command gates as every layer, run
 in the `oimlsmart/smart` repo:
 
-```
+```text
 cd browser && npm run validate   # schemas + linker (R23–R26) + the coverage gates
 cd browser && npx vitest run     # unit suites: framework, pipelines, runtimes, coverage
 cd browser && npm run test:e2e   # puppeteer: the gate, the vote, appeals, validity

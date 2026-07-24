@@ -2,7 +2,7 @@
 
 > *A Q&A annex. Each question links to the chapter that answers it
 > in depth. If your question isn't here, consult the
-> [chapter dependency graph](README.md#chapter-dependency-graph) or
+> [chapter dependency graph](README.md#annexes) or
 > the [open questions](11-open-questions.md).*
 
 ![FAQ decision tree](diagrams/faq-decision-tree.svg)
@@ -41,7 +41,7 @@ derivation in [Chapter 7 §7.4 CAN](07-derived-vocabulary-proofs.md).
 
 ---
 
-## Q3. Why not BECOMES? Things change over time.
+## Q3. Why not BECOMES? Things change over time
 
 BECOMES is not a fact about an entity — it is a *comparison* across
 two facts. "The door becomes closed" is the diff of two timestamped
@@ -58,7 +58,7 @@ case) in
 
 ---
 
-## Q4. What about relations? Things stand in relation to each other.
+## Q4. What about relations? Things stand in relation to each other
 
 Relations are HAS with object-valued values. Closure Rule 2
 (`ι : O ↪ V`) permits a value to be a reference to another object:
@@ -286,8 +286,7 @@ If you only have ten minutes, read
 
 ---
 
-## Q18. How does this connect to Primmel (Volume I) and OIML SMART
-(Volumes II–III)?
+## Q18. How does this connect to Primmel (Volume I) and OIML SMART (Volumes II–III)?
 
 - **Primmel** operationalizes the eight primitives as a subject
   anatomy (Volume I, chapter 2).

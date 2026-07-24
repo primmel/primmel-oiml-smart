@@ -13,13 +13,19 @@
  *        title: "<first H1 text, stripped of '# ' and of any 'Chapter N — ' prefix>"
  *        ---
  *      For index.md (former README.md) files the title is the volume name.
- *   5. rewrites relative .md links to Starlight route paths (docs/ uses
- *      file links like `](07-evaluation.md)`; the site needs `/oiml-core/07-evaluation/`).
+ *   5. optimizes SVGs with SVGO on the way in (docs/ sources stay
+ *      hand-authored; the shipped copies are minified). The config keeps
+ *      viewBox, hand-authored ids (marker cross-references) and shape
+ *      elements (the full-bleed background rect must stay a valid rect).
+ *   6. rewrites relative .md links to base-relative Starlight route paths
+ *      (docs/ uses file links like `](07-evaluation.md)`; the site needs
+ *      `](../../oiml-core/07-evaluation/)` so any deploy base works).
  *      Broken upstream links are left untouched and reported on stdout.
  */
-import { mkdir, readdir, readFile, rm, writeFile, copyFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { optimize } from 'svgo';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'docs');
@@ -85,12 +91,15 @@ function firstH1(lines) {
 const yamlDoubleQuoted = (s) => s.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
 
 /**
- * Rewrite relative .md links in one line to route paths.
+ * Rewrite relative .md links in one line to base-relative route paths.
  * Only runs on lines outside fenced code blocks. Image/asset links (.svg etc.)
- * and absolute/anchor links are untouched.
+ * and absolute/anchor links are untouched. Routes are emitted relative to the
+ * current page's route (../../oiml-core/07-evaluation/ style) so the site
+ * works under any deploy base without rewriting.
  */
 function rewriteLinks(line, rel, routes, broken) {
-  return line.replace(/]\((<)?([^)\s>]+)(>)?\)/g, (match, open, target, close) => {
+  const fromRoute = routes.get(rel) ?? '/';
+  return line.replace(/]\((<)?([^)\s>]+)(>)?\)/g, (match, _open, target, _close) => {
     if (/^(#|[a-z][a-z0-9+.-]*:)/i.test(target)) return match; // anchor or scheme (http:, mailto:)
     const m = target.match(/^(.+?\.md)(#.*)?$/i);
     if (!m) return match; // not a markdown link (e.g. diagrams/x.svg)
@@ -101,9 +110,26 @@ function rewriteLinks(line, rel, routes, broken) {
       broken.push({ file: rel, target });
       return match; // leave untouched; reported upstream
     }
-    return `](${route}${anchor})`;
+    let relRoute = path.posix.relative(fromRoute, route);
+    if (relRoute === '') relRoute = '.';
+    if (route.endsWith('/') && !relRoute.endsWith('/')) relRoute += '/';
+    return `](${relRoute}${anchor})`;
   });
 }
+
+/** SVGO: minify shipped SVGs; keep viewBox, hand-authored ids, and shape elements. */
+const SVGO_PLUGINS = [
+  {
+    name: 'preset-default',
+    params: {
+      overrides: {
+        removeViewBox: false, // diagrams scale via viewBox — dropping it breaks sizing
+        cleanupIds: false, // keep hand-authored ids (marker/arrow cross-references)
+        convertShapeToPath: false, // keep the full-bleed background <rect> a valid rect
+      },
+    },
+  },
+];
 
 async function main() {
   // 1. wipe the build-output content dir
@@ -119,6 +145,8 @@ async function main() {
   const broken = [];
   let copiedMd = 0;
   let copiedSvg = 0;
+  let svgBefore = 0;
+  let svgAfter = 0;
 
   for (const file of files) {
     const rel = toPosix(path.relative(SRC, file));
@@ -128,7 +156,11 @@ async function main() {
     await mkdir(path.dirname(dest), { recursive: true });
 
     if (/\.svg$/i.test(file)) {
-      await copyFile(file, dest);
+      const svg = await readFile(file, 'utf8');
+      const result = optimize(svg, { path: file, plugins: SVGO_PLUGINS, multipass: true });
+      await writeFile(dest, result.data);
+      svgBefore += svg.length;
+      svgAfter += result.data.length;
       copiedSvg++;
       continue;
     }
@@ -155,6 +187,9 @@ async function main() {
   }
 
   console.log(`sync: copied ${copiedMd} .md (README.md → index.md) and ${copiedSvg} .svg into ${path.relative(ROOT, OUT)}/`);
+  if (copiedSvg > 0) {
+    console.log(`sync: svgo ${copiedSvg} svg(s), ${(svgBefore / 1024).toFixed(1)} kB → ${(svgAfter / 1024).toFixed(1)} kB`);
+  }
   if (broken.length > 0) {
     console.log(`sync: ${broken.length} unresolved upstream .md link(s) (left untouched):`);
     for (const b of broken) console.log(`  ${b.file} -> ${b.target}`);

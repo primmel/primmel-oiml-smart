@@ -66,8 +66,8 @@ test-dependent`, `scope: sample`), valued per unit in
 > instrument-description; nothing physical is defined in
 > conformity-specification."
 
-**Rationale.** This is the anchoring rule of the tier system (Volume I, chapter
-1) stated as metamodel law: a secondary model owns no subject facts. A
+**Rationale.** This is the anchoring rule of the tier system (Volume I, chapter 1)
+stated as metamodel law: a secondary model owns no subject facts. A
 requirement that restates an instrument fact forks the truth — the copies
 drift, and the requirement stops surviving a revised subject model.
 

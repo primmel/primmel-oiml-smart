@@ -4,14 +4,16 @@ import sitemap from '@astrojs/sitemap';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import tailwindcss from '@tailwindcss/vite';
+import remarkStatusBadges from './src/plugins/remark-status-badges.mjs';
 
-// NOTE: `site` is a placeholder for the GitHub Pages deployment URL —
-// update it (and add `base: '/<repo>/'` for a project page) when the
-// canonical host is known. Sitemap generation requires an absolute URL.
+// Canonical deployment URL: GitHub Pages project page for the
+// `primmel/primmel-oiml-smart` remote (no custom domain configured).
+// Sitemap generation requires an absolute URL; `base` matches the path.
 export default defineConfig({
-  site: 'https://oimlsmart.github.io/primmel-oiml-smart/',
+  site: 'https://primmel.github.io/primmel-oiml-smart/',
+  base: '/primmel-oiml-smart/',
   markdown: {
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkMath, remarkStatusBadges],
     rehypePlugins: [rehypeKatex],
   },
   vite: {
@@ -122,6 +124,8 @@ export default defineConfig({
             { label: 'Glossary', slug: 'shared/glossary' },
             { label: 'Alternatives Audit', slug: 'shared/alternatives-audit' },
             { label: 'Roadmap', slug: 'shared/roadmap' },
+            { label: 'Releases', slug: 'shared/releases' },
+            { label: 'Keeping Docs Current', slug: 'shared/keeping-current' },
           ],
         },
       ],

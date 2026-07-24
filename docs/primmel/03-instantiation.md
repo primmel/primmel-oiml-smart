@@ -30,7 +30,7 @@ definition versions, keep the evidence, recompute the judgment.
 The primary subject is not one class but a **chain** of definition
 levels, anchored in the vocabulary of legal metrology:
 
-```
+```text
 ModelFamily (VIML 4.02) ──has many──▶ ModelGroup ──has many──▶ Model (VIML 4.06, "type")
                                                                       │ instantiates
                                                                       ▼
@@ -91,7 +91,7 @@ answering moves online.
 
 Attribute resolution along the chain:
 
-```
+```text
 resolve(sample, attr):
     if attr is sample-scoped:       return sample.test_context[attr]   # never inherited
     if attr has value on sample:    return sample.parameters[attr]

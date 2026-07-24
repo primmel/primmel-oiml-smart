@@ -52,7 +52,7 @@ inside it.
 
 ![The onion at a glance](diagrams/onion-at-a-glance.svg)
 
-```
+```text
 IS  ⊂  OBJECT  ⊂  {HAS, PROPERTY, VALUE}  ⊂  {DOES, TRANSITION}  ⊂  PROCESS
 ```
 

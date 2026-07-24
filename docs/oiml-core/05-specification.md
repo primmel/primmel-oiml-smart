@@ -176,6 +176,7 @@ measurement-error-repeatability-mdlo, R 60-2 §2.10.1):
   `mpe` is not a number written into the test; it is the requirement's
   limit, looked up at the test point. Change the MPE table and every test
   changes with it.
+
 - **`preconditions`** — run-validity rules evaluated **before** any limit,
   e.g. `temperature-stability` (R 60-2 §2.7.3.1): `ocl{temperature_variation
   <= min(2, 0.2 * (family.parameters.t_max - family.parameters.t_min))}`.

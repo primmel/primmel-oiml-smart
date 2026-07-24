@@ -58,7 +58,7 @@ Only the second reading was the live contender. And even it reduces:
 
 ### The materialized view
 
-```
+```text
 STATE(e)  =  (instance-identity, current-node-address)
            =  (ρ(t), t_i)
 ```
@@ -100,7 +100,7 @@ DOES, surfaced for addressability."
 
 ### The materialized view
 
-```
+```text
 STEP  =  ρ(t) + bound-input + bound-output + timestamp
        =  (process-instance, I_i, O_i, t)
 ```
@@ -138,7 +138,7 @@ particular firing.
 
 ### The materialized view
 
-```
+```text
 CAN(x, t)  ≡  DOES(x, t) ∧ ¬running(ρ(t))
             (i.e., transition t is defined for x, but no instance of
              ρ(t) is currently executing)
@@ -177,7 +177,7 @@ subject/object assignment changed.
 
 ### The materialized view
 
-```
+```text
 RECEIVES(y, x, t)  ≡  DOES(x, t) ∧ input(t) includes y
                    (i.e., x does t, and y is in the input of t)
 ```
@@ -212,7 +212,7 @@ another object. Closure Rule 2 (§3.8) already permits this — `ι : O ↪ V`.
 
 ### The materialized view
 
-```
+```text
 RELATES-TO(x, y)  ≡  HAS(x, p, ι(y))   for some property p
                   (i.e., x has a property whose value refers to y)
 ```
@@ -220,6 +220,7 @@ RELATES-TO(x, y)  ≡  HAS(x, p, ι(y))   for some property p
 ![RELATES-TO as HAS-with-reference](diagrams/derived-relates-to.svg)
 
 Specific instances:
+
 - "owns" → `HAS(x, owner, ι(y))`
 - "adjacent to" → `HAS(x, adjacency, ι(y))`
 - "depends on" → `HAS(x, dependency, ι(y))`
@@ -257,7 +258,7 @@ value-readings and a subtraction operation.
 
 ### The materialized view
 
-```
+```text
 BECOMES(x, p, t₁, t₂)  ≡  HAS(x, p)(t₁) ≠ HAS(x, p)(t₂)
                        (i.e., the value of x's property p differs
                         between two timestamps)
@@ -294,9 +295,10 @@ quantity isn't a primitive."
 ## 7.8 TIME — ordering from composition
 
 ### The bonus reduction. TIME was not one of the original candidates
+
 but it falls out for free once BECOMES is killed.
 
-```
+```text
 TIME  =  ordering imposed by transition composition
        + timestamps as values attached via HAS
 ```

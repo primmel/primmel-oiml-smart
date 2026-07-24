@@ -70,7 +70,7 @@ identical in every rec: rec → OIML D 11 → IEC 61000-4-x (R 144 names the par
 
 **The shared skeleton** (evidenced by the cross-rec ESD comparison):
 
-```
+```text
 kind: disturbance
 steps: record baseline observable
      → apply disturbance at severity S
@@ -163,8 +163,8 @@ applicability / selector / test_kind — the IA auto-select walks these) and the
 EUT-continuity contract (the `design.specimens` block: `count`,
 `max_additional`, `continuity`, `rules`). **requires:** core — the TestRun →
 sample linkage is the run-level face; the test-report checklist's
-sample-selection row is the checklist face. **consumers:** R 60 ● (R 60-2 §2.4
-+ Annex D: smallest `e_max` per group; the merit walk class → n_lc → v_min in
+sample-selection row is the checklist face. **consumers:** R 60 ● (R 60-2 §2.4 + Annex D:
+smallest `e_max` per group; the merit walk class → n_lc → v_min in
 5–10× steps; same-capacity de-duplication; partial-evaluation flags), R 144 ●
 (R 144-1 §7.1.2, definitive-type-per-model), R 91 ○ (when its evaluation layer
 lands). **deltas:** the normative rules themselves — selection law is rec

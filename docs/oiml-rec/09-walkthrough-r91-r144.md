@@ -429,6 +429,7 @@ The stress cases added these checks to the linker and `primmel check`:
   finding: schema validation validates grammar; the model needs a
   linker that validates meaning.
 
-*Next: the [Annexes](../README.md#annexes) — the OIML-CS
+*Next: [Volume IV — the OIML-CS Scheme](../oiml-cs/README.md) and the
+[platform annex](../platform/README.md) — the OIML-CS
 certification-scheme reference package and the platform runtime the
 packages run on.*

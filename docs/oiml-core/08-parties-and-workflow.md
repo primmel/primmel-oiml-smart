@@ -65,7 +65,7 @@ Two modelling decisions deserve note:
 Parties are organizations; **roles are functions in the process**. The
 role model (`data/r60/evaluation/roles.yaml`) declares exactly eleven ●:
 
-```
+```text
 applicant            manufacturer          issuing_authority
 test_laboratory      manufacturer_test_laboratory
 evaluator            supervisor            test_operator
@@ -101,7 +101,7 @@ The workflow runs five phases with actor handoffs
 (IA → BIML). Each step declares actor, inputs, outputs, and **gates** —
 preconditions that must hold before the next step begins. The entity chain:
 
-```
+```text
 Application ──< TestRequest (one per lab) ──< TestAssignment (form × sample × lab)
                                     TestReport (per lab × group) ──< FormInstance / TestRun
 EvaluationReport ──< TestReportDetermination ──< ModelEvaluation
@@ -166,23 +166,23 @@ Three mechanics make the machines executable rather than decorative:
    completes its assignments, and locks its FormInstances — one atomic
    act:
 
-```yaml
-    - from: IN_PROGRESS
-      to: COMPLETED
-      action: lab_issues_test_report
-      cascade:
-      - entity: test_request
-        set: { status: 'COMPLETED', completed_date: 'now' }
-      - entity: test_report
-        where: 'test_request_id = ${this.id}'
-        set: { status: 'SUBMITTED', submitted_date: 'now' }
-      - entity: test_assignment
-        where: 'test_request_id = ${this.id} AND status != OMITTED'
-        set: { status: 'COMPLETED', completed_date: 'now' }
-      - entity: form_instance
-        where: 'test_report_id = ${testReport.id} AND status != LOCKED'
-        set: { status: 'LOCKED', locked_at: 'now' }
-```
+   ```yaml
+   - from: IN_PROGRESS
+     to: COMPLETED
+     action: lab_issues_test_report
+     cascade:
+     - entity: test_request
+       set: { status: 'COMPLETED', completed_date: 'now' }
+     - entity: test_report
+       where: 'test_request_id = ${this.id}'
+       set: { status: 'SUBMITTED', submitted_date: 'now' }
+     - entity: test_assignment
+       where: 'test_request_id = ${this.id} AND status != OMITTED'
+       set: { status: 'COMPLETED', completed_date: 'now' }
+     - entity: form_instance
+       where: 'test_report_id = ${testReport.id} AND status != LOCKED'
+       set: { status: 'LOCKED', locked_at: 'now' }
+   ```
 
 3. **Multi-source transitions.** `from` may be a list: the applicant
    withdraws from any of five pre-decision states; the IA reopens a

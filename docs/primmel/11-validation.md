@@ -122,7 +122,7 @@ Coverage is the graph property chapter 1 stated as a theorem; the audit
 is its computation. Four closure questions, each mechanically answered
 from typed anchor sets:
 
-```
+```text
 aspect ──▶ requirement ──▶ conformance test ──▶ form ──▶ verdict
 ```
 
@@ -163,8 +163,8 @@ worse than a gap, because both will compute verdicts.
 **Implemented (TODO.roadmap/26).** The `.prd` fragments decompose into
 addressed *sentences* (`<fragment>/s<N>`, the reserved finer address
 space of the fragment grammar — computed at package build, never stored
-in the extract); a documented modality classifier (shall/should/may/must
-+ negatives; definitions normative, informative fragments demoted —
+in the extract); a documented modality classifier (shall/should/may/must + negatives;
+definitions normative, informative fragments demoted —
 pinned precision ≈ 0.91 / recall ≈ 0.79 on a 70-sentence labelled sample
 of R 60, with every false negative proven to sit in a bound fragment)
 decides which sentences gate. The sentence manifests + the package's

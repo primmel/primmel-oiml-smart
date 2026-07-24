@@ -15,7 +15,7 @@ one element. This chapter is the OIML realization of that relation — the
 concrete subject chain of legal metrology, every level anchored to a
 VIML clause:
 
-```
+```text
 MeasuringInstrumentModelFamily (VIML 4.02)
   └── MeasuringInstrumentModelGroup   (domain level — not VIML)
         └── MeasuringInstrumentModel  (VIML 4.06, "type" — CENTRE of conformity)
@@ -228,8 +228,7 @@ state a value; delegation tells you how unstated values resolve.
 
 Because a group's members differ only by `e_max`, selection runs **per
 group**, not per model — and the algorithm is data
-(`data/r60/evaluation/sample-selection-rules.yaml`, encoding R 60-2, 2.4
-+ Annex D):
+(`data/r60/evaluation/sample-selection-rules.yaml`, encoding R 60-2, 2.4 + Annex D):
 
 ```yaml
 - id: D.2.2-smallest-per-group
@@ -286,7 +285,9 @@ subject_chain load_cell {
   (no `sample.test_context.e_max`); sample-scope attributes are never
   inherited.
 - **Scope/origin independence.** `origin` and `scope` are validated separately (the `dr` case is legal).
-- **Group coherence.** Models in one group agree on the declared `identical_characteristics` / `identical_attributes`; any family-criterion difference implies a different family.
+- **Group coherence.** Models in one group agree on the declared
+  `identical_characteristics` / `identical_attributes`; any family-criterion
+  difference implies a different family.
 - **Chain references.** `Model.family`, `Sample.model` and
   `Model.typeApprovalRef` resolve; `typeApprovalRef` is set only from D3.
 

@@ -27,7 +27,7 @@ OIML Core sits at layer 1 of a four-layer stack. Each layer depends only
 on the layers above it; the running system's R 60 realization is cited per
 layer.
 
-```
+```text
 Layer 0  Vocabularies    glossarist registers viml-2022 (OIML V 1:2022) and
                          vim-2012 (OIML V 2-200, the VIM) — terms are anchored,
                          never invented (vocab_ref → register + clause)
