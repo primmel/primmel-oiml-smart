@@ -161,7 +161,7 @@ canonical — an unbound requirement judges nothing.
 shows the table discipline: the limit is computed from data, never
 restated —
 
-```
+```text
 ocl{abs(c_c) <= 0.7 * abs(lookupMPE(sample.test_context.d_max,
     group.classification.accuracy_class, 0.7))
     and sample.test_context.d_max >= 0.9 * model.parameters.e_max

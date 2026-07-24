@@ -102,7 +102,7 @@ Source typing is not documentation; it drives the machinery:
 **INV-1: no bare numbers.** Every physical quantity in a Primmel model
 is a `QuantityValue`:
 
-```
+```text
 QuantityValue = value + unit [ + uncertainty ] [ + tolerance ]
 ```
 

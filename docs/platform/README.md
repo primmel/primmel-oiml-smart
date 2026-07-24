@@ -33,7 +33,7 @@ built.
 
 ## B.2 Four layers, one direction
 
-```
+```text
 Layer 0  Vocabularies   ../vocab/datasets/{viml-2022, vim-2012}  (glossarist registers)
 Layer 1  Metamodel      ontology-remix/OIML Core Models/Ontology/oiml-core-ontology.yaml (v0.5.0)
                         + R 60 domain profile (ontology-remix/OIML Recommendation Models/)
@@ -127,8 +127,8 @@ Five engines evaluate the models; all are data-driven.
   `test_report.report_number`). Form-level verdict fields evaluate
   through the same cached registry (`data/form-calculation.ts`), so a
   form and a requirement can never diverge on the same quantity. ●
-- **The state engines** (`browser/src/services/state-cascade.service.ts`
-  + `browser/src/data/state-walk.ts`) — entity lifecycles declared in
+- **The state engines** (`browser/src/services/state-cascade.service.ts` + `browser/src/data/state-walk.ts`)
+  — entity lifecycles declared in
   `data/r60/evaluation/state-machines.yaml`, with guarded transitions
   and declarative cascades (`set` / `where` / `create`, token resolution
   `now` / `user` / `${...}`); `integrity.service.ts` enforces
@@ -219,7 +219,7 @@ Every claim above is kept true by gates that must stay green
 (`docs/architecture.md` §15; status as of 2026-07-18: vue-tsc 0 errors,
 astro check 0 errors, vitest 1408 tests, e2e 19/19):
 
-```
+```text
 cd browser && npx vue-tsc --noEmit     # type check (islands + vue-pages)
 cd browser && npx astro check          # .astro route shells + layouts
 cd browser && npx vitest run           # unit tests

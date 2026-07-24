@@ -72,7 +72,7 @@ current packages need neither (○).
 Every statement, whatever its stereotype, has the same declared shape —
 visible in the ontology's Formula/Constraint field lists:
 
-```
+```text
 context    : the classifier the statement is about (e.g. LoadCell)
 stereotype : inv | derive | def | init
 inputs     : bound variables — each { name, binding: 'self.<path>', from: <definition> }
@@ -115,7 +115,7 @@ theorem of chapter 1 audits over.
 
 The load-cell error tells the whole story:
 
-```
+```text
 derivation (form, during the test):
   ocl{(indication - reference_indication) / conversion_factor_f}
 

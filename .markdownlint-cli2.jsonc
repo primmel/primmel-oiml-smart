@@ -1,0 +1,28 @@
+// markdownlint-cli2 options for the docs/ source tree (task 30).
+// `config` is the markdownlint rule set; rules follow the tree's
+// established conventions — disabled rules are disabled deliberately,
+// with the reason recorded inline.
+{
+  "config": {
+    "default": true,
+
+    // Prose is soft-wrapped (~78 cols) but table rows, URLs and inline-code
+    // runs legitimately overflow; 100 is the hard ceiling for prose lines.
+    "MD013": { "line_length": 100, "tables": false, "code_blocks": false },
+
+    // The tree uses repeated parallel section structures on purpose:
+    // "The proposal" / "The reduction" under each derived term (Volume 0,
+    // ch 7), "What the foundation repairs" under each compared technology
+    // (Volume 0, ch 8). Duplicates across different parents are fine.
+    "MD024": { "siblings_only": true },
+
+    // Inline HTML is deliberate: the homepage hero/brand cards and figure
+    // markup are hand-authored HTML inside markdown by design.
+    "MD033": false,
+
+    // The tree's table style is prettier-style: padded body rows
+    // (| cell |) with compact delimiter rows (|---|) — uniform across all
+    // volumes, but "inconsistent" by MD060's definition.
+    "MD060": false
+  }
+}

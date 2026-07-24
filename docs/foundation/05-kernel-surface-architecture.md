@@ -43,7 +43,7 @@ Elaboration is the formal seam between them.
 
 The kernel has one sort and one operation:
 
-```
+```text
 U                    — a universe of individuated entities
 τ : U ⇀ U           — a (partial) transition relation
 ∘  : τ × τ ⇀ τ      — composition (when interfaces match)
@@ -99,7 +99,7 @@ compiler lowers to Tier 0.
 The first reduction. Chapter 3 treated OBJECT as a sort. The kernel
 identifies it with the **identity morphism** on the entity:
 
-```
+```text
 Object(x)  ⟹  id_x  :  x → x         (where id_x ∘ id_x = id_x)
 ```
 
@@ -129,7 +129,7 @@ The second reduction. Chapter 3 treated VALUE as a sort `V` with an
 embedding `ι : O ↪ V`. The kernel identifies a value with a transition
 from the terminal object:
 
-```
+```text
 Value(a)  ⟹  a  :  1 → A          (where 1 is the terminal object)
 ```
 
@@ -158,7 +158,7 @@ reduction genuinely removes information rather than re-encoding it.
 The third reduction. Chapter 3 treated IS as a primitive relation
 `IS ⊆ O × O`. The kernel replaces it with a distinguished property:
 
-```
+```text
 IS(x, k)  ⟹  HAS(x, κ, k)         (where κ is a reserved property)
 ```
 
@@ -190,7 +190,7 @@ it in the axioms, not in the runtime.
 The fourth reduction (going one step further than Chapter 3 stated
 explicitly). A property `p` can be read as an accessor transition:
 
-```
+```text
 p  :  O → V           (the function that takes a bearer to its value)
 ```
 
@@ -204,7 +204,7 @@ property is an ordinary calculation. Both share the same interface.
 But properties may need relational semantics — not every property is
 a total, single-valued function. The general form is:
 
-```
+```text
 p  :  U → P(U)         (a transition into the powerset — multivalued)
 ```
 

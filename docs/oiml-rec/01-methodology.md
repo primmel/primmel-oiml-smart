@@ -98,8 +98,8 @@ group; origin = where the value comes from, scope = where it is stated:
 | model | distinguishes one catalog model | e_max, mr_max, warm_up_time, software_identification |
 | sample | chosen under test — never inherited | d_min, d_max, v, n, mr, conversion_factor_f |
 
-The payoff: sample selection becomes data, not code — R 60 encodes R 60-2 §2.4
-+ Annex D as selection rules (smallest `e_max` per group, the merit walk, 5–10×
+The payoff: sample selection becomes data, not code — R 60 encodes R 60-2 §2.4 + Annex D
+as selection rules (smallest `e_max` per group, the merit walk, 5–10×
 steps, de-duplication, partial-evaluation flags).
 
 ## 1.4 Move 3 — Model the requirements *(chapter 3)*
@@ -226,7 +226,7 @@ chapter 8, and Volume IV.
 
 ## 1.9 Validation gates
 
-```
+```text
 cd browser && npm run validate   # JSON-Schema + semantic (x-refs, anchors) + sample-data
 cd browser && npm run build      # full codegen; YAML errors fail here
 cd browser && npx vitest run     # unit tests over the generated data
@@ -246,7 +246,7 @@ cd browser && npx vitest run     # unit tests over the generated data
 Two more gates close the loop with the *source text* (Volume II, chapter 9
 provenance; chapter 11 §11.6 for the mechanics):
 
-```
+```text
 cd browser && npm run validate                                    # .prd congruence (clause level)
 primmel check --audit --coverage primmel-packages/oiml-<rec>     # text coverage (sentence level)
 ```

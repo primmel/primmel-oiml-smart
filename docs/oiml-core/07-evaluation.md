@@ -16,7 +16,7 @@ is the sharpest in the metamodel: *evaluation depends on D1 and D2 only; it
 touches nothing physical.* A verdict cannot change a sample, a run, or an
 evidence record. It is a pure function:
 
-```
+```text
 verdict = f( requirement definition , bound facts , limit snapshot )
 ```
 

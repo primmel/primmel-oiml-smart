@@ -37,28 +37,32 @@ surface language and the kernel runtime.
 The lowering pass. Takes a surface statement in the eight-primitive
 vocabulary and produces the equivalent kernel triple.
 
-```
+```text
 elaborate :  Tier1Statement  →  KernelTriple
 ```
 
 ![Elaboration algorithm](diagrams/algorithm-elaboration.svg)
 
 **Input (Tier 1):**
-```
+
+```text
 Rex IS Mammal
 ```
 
 **Steps:**
+
 1. Parse — recognize `IS` as the classification relation.
 2. Recognize the reserved property `κ` (kind).
 3. Lower to a HAS-fact in the kernel.
 
 **Output (Tier 0):**
-```
+
+```text
 HAS(Rex, κ, Mammal)
 ```
 
 **Properties:**
+
 - *Total* — every well-formed Tier 1 statement elaborates.
 - *Meaning-preserving* — the kernel triple is logically equivalent to
   the surface statement.
@@ -76,28 +80,32 @@ The inverse projection for display. Takes a kernel triple and, if it
 matches a known desugaring pattern, projects it back to surface
 vocabulary.
 
-```
+```text
 resugar :  KernelTriple  ⇀  Tier1Statement
 ```
 
 ![Resugaring algorithm](diagrams/algorithm-resugaring.svg)
 
 **Input (kernel triple):**
-```
+
+```text
 HAS(Rex, κ, Mammal)
 ```
 
 **Steps:**
+
 1. Recognize `κ` as the reserved kind-property.
 2. Recognize the value `Mammal` as a kind-object.
 3. Project to the surface form.
 
 **Output (Tier 1, for display):**
-```
+
+```text
 Rex IS Mammal
 ```
 
 **Why this matters:**
+
 - Error messages should speak the user's vocabulary. "identity morphism
   incompatible with composition unit" is a failure of the architecture;
   it should say "this object cannot bear that property."
@@ -118,7 +126,7 @@ sugar). Triples with no surface form are displayed as themselves.
 The move that turns a transition (a rule) into an object (a thing
 that can bear facts).
 
-```
+```text
 ρ :  T  →  O
 ```
 
@@ -127,6 +135,7 @@ that can bear facts).
 **Input:** a transition `t` with signature `V_in → V_out`.
 
 **Steps:**
+
 1. Allocate a fresh object `ρ(t)` in `O`.
 2. Attach an IS-fact: `ρ(t)` is itself (the identity claim).
 3. Attach HAS-facts: `started-at = <timestamp>`, `current-position =
@@ -149,7 +158,7 @@ replay, and live introspection — see
 How a transition fires. Takes a transition and a bound input,
 produces a new state and an output.
 
-```
+```text
 eval :  T × V_in  →  V_out × O-state
 ```
 
@@ -159,6 +168,7 @@ eval :  T × V_in  →  V_out × O-state
 `input ∈ V_in` is a bound input value.
 
 **Steps:**
+
 1. Validate the input against `t`'s declared interface (`V_in`).
 2. If `t` is atomic, apply `t`'s implementation to the input.
 3. If `t` is composite, recursively evaluate the first sub-transition
@@ -183,13 +193,13 @@ process" versus "one step." This is the scale-invariance result
 Identifies where a particular execution currently stands in a composed
 process.
 
-```
+```text
 σ :  Execution  →  (process, current-node, bound-inputs, bound-outputs)
 ```
 
 Often abbreviated:
 
-```
+```text
 σ(e)  =  (p, t_i, I_i, O_i)
 ```
 
@@ -199,6 +209,7 @@ Often abbreviated:
 runtime context).
 
 **Steps:**
+
 1. Read the process definition `p` from `e`'s IS-facts.
 2. Read the `current-position` HAS-fact — this is `t_i`, the currently
    active (or next) transition.

@@ -48,7 +48,7 @@ What you produce is a directory `data/<rec>/` that the build discovers
 through its `standard.yaml` manifest — normative content only,
 instantiating the metamodel:
 
-```
+```text
 data/<rec>/
   standard.yaml         identity + structure registry (every file registered here)
   terminology.yaml      terms; vocab_ref → viml-2022 / vim-2012
@@ -75,8 +75,8 @@ JSON Schemas under `data/schemas/` for any new file kinds.
 
 The `standard.yaml` manifest has three parts, and all three matter: the
 identity block (`id`, `shortName`, `fullName`, `baseUrn`, `version`,
-`editions`), the `structure:` registry (every file, with `path` + `label`
-+ `description`, grouped by layer), and the `source:` attachment (the
+`editions`), the `structure:` registry (every file, with `path` + `label` + `description`,
+grouped by layer), and the `source:` attachment (the
 Metanorma sources of the Recommendation text).
 
 Three rules make the contract binding:
@@ -102,7 +102,7 @@ hundreds of times; chapter 1, §1.9 explains what each checks and lists
 the six cross-layer invariants to self-check before calling a package
 done:
 
-```
+```text
 cd browser && npm run validate   # JSON-Schema + semantic (x-refs, anchors) + sample-data
 cd browser && npm run build      # full codegen; YAML errors fail here
 cd browser && npx vitest run     # unit tests over the generated data

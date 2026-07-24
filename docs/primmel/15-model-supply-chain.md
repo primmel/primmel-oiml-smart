@@ -100,7 +100,7 @@ same product model; the manufacturer authors once.
 
 Stand back and the topology is a chain of typed mappings:
 
-```
+```text
 user's implementation ──maps──▶ product reference model ──maps──▶ Recommendation
 ```
 

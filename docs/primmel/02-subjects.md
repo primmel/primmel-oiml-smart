@@ -151,7 +151,7 @@ two levels on record side by side.
 Characteristics deserve their own note because everything downstream
 hangs off them:
 
-```
+```text
 behavior (DOES)  ──produces──▶  I/O values  ──derived──▶  characteristic (HAS)
                                                               │      │      │
                                                         promises   requirements

@@ -56,7 +56,7 @@ the dispatch (Chapter 8) — exactly one run per assignment, idempotently,
 and bridged 1:1 to the FormInstance that acts as its evidence template
 (the R 60-3 form). ● The run's lifecycle is a small machine:
 
-```
+```text
 PLANNED → IN_PROGRESS → COMPLETED
                       ↘ INVALIDATED
 ```
@@ -141,7 +141,7 @@ test-setup geometry of R 60-1 Fig. 3 is the standing example — run
 `constr:r60:fig3-2b` checks that the largest applied load lies between
 90 % and 100 % of capacity:
 
-```
+```text
 0.9 * self.E_max <= self.D_max and self.D_max <= self.E_max
 ```
 

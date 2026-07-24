@@ -1,13 +1,18 @@
 # Deploy the Starlight documentation site to GitHub Pages.
 #
-# `npm run build` first runs `npm run sync` (scripts/sync-content.mjs), which
-# copies docs/ into src/content/docs/ — so the published site always reflects
-# the docs/ source of truth.
+# The build job runs the full gate sequence first (markdown lint, SVG
+# palette contract, link check over the built site) — a red gate means
+# nothing is published. `npm run build` runs `npm run sync`
+# (scripts/sync-content.mjs), which copies docs/ into src/content/docs/ —
+# so the published site always reflects the docs/ source of truth.
+#
+# check.yml runs the same gates on pull requests, so a red build here
+# should never be a surprise.
 #
 # One-time repo setup: Settings → Pages → Build and deployment → Source:
-# "GitHub Actions". If the site is served from a project page
-# (https://<user>.github.io/<repo>/), set `site` and `base` in
-# astro.config.mjs to match.
+# "GitHub Actions". The site deploys as a project page
+# (https://primmel.github.io/primmel-oiml-smart/) — `site` and `base` in
+# astro.config.mjs already match.
 
 name: Deploy documentation to GitHub Pages
 
@@ -32,12 +37,37 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check (astro check)
+        run: npm run check
+
+      - name: Markdown lint (docs/)
+        run: npm run lint:md
+
+      - name: SVG palette contract (diagrams dark-mode safety)
+        run: npm run check:svg
+
       - name: Build with Astro (syncs docs/ → src/content/docs/ first)
-        uses: withastro/action@v3
-        # with:
-        #   path: .            # repo root
-        #   node-version: 20   # action default
-        #   package-manager: npm
+        run: npm run build
+
+      - name: Link check (zero broken internal refs over dist/)
+        run: npm run check:links
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
 
   deploy:
     needs: build

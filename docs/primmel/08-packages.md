@@ -57,7 +57,7 @@ Inside the package, content is split by layer — the same five-layer
 split the YAML tree uses (`data/r60/`), so the round-trip is
 structurally obvious:
 
-```
+```text
 oiml-r60/
   package.primmel          # the manifest — the only required file
   model/                   # the subject: instrument, attributes, capabilities,
@@ -169,8 +169,8 @@ least two Recommendations replicate with only parameters differing:
 - `env-iec60068` — climatic/mechanical methods (dry-heat, cold,
   damp-heat cyclic/steady, vibration, shock, ambient-pressure).
 - `software-d31` — the OIML D 31 software-examination checklist.
-- `reference-materials` — certified reference records (certified value
-  + uncertainty) and the U:MPE validity hook.
+- `reference-materials` — certified reference records (certified value + uncertainty)
+  and the U:MPE validity hook.
 - `specimen-governance` — sample-selection rules and EUT continuity.
 - `report-headers` — bind-driven TRF identification/conditions blocks.
 - `examination-docs` — documentation/marking examination skeletons.

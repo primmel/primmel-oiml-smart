@@ -14,7 +14,7 @@
 
 The system is the algebra
 
-```
+```text
 𝓜  =  ⟨ O, P, V, T ;  IS, HAS, DOES ;  ∘, ρ, ι ⟩
 ```
 
@@ -30,7 +30,7 @@ Five **sorts** of thing:
 
 Three **relations**:
 
-```
+```text
 IS   ⊆  O × O              (individuation: "x is the same as y" / "x is a K")
 HAS  :  O → (P ⇀ V)        (attribution: "x has value v along property p")
 DOES ⊆  O × T              (dynamics: "x does transition t")
@@ -38,7 +38,7 @@ DOES ⊆  O × T              (dynamics: "x does transition t")
 
 Three **operations**:
 
-```
+```text
 ∘  :  T × T ⇀ T            (composition: t₂ ∘ t₁ is a transition if interfaces match)
 ρ  :  T → O                (reification: a transition becomes an object)
 ι  :  O ↪ V                (embedding: an object can be a value)
@@ -65,7 +65,7 @@ belong to *one* entity's timeline.
 
 Formally:
 
-```
+```text
 IS  ⊆  O × O
 ```
 
@@ -118,7 +118,7 @@ Property is the question; value is today's answer.
 
 Formally, with `P` the set of properties and `V` the set of values:
 
-```
+```text
 HAS  :  O → (P ⇀ V)
 ```
 
@@ -140,7 +140,7 @@ Two consequences:
 Objects act. DOES is the dynamic relation, and its noun is the
 **transition**: a rule of the form
 
-```
+```text
 t  :  V_in  →  V_out
 ```
 
@@ -154,7 +154,7 @@ the output; only the interface must be declared.
 
 Transitions compose. If `t₁ : A → B` and `t₂ : B → C`, then
 
-```
+```text
 t₂ ∘ t₁  :  A  →  C
 ```
 
@@ -178,7 +178,7 @@ paused, retried, and tracked — that is, they need to bear IS-facts
 and HAS-facts. A **process** is exactly that move: a transition
 reified as an object.
 
-```
+```text
 ρ  :  T  →  O
 ```
 
@@ -204,7 +204,7 @@ list. We had two choices: add TYPE as a ninth primitive, or declare
 that kinds are themselves objects (abstract ones). We chose the
 latter.
 
-```
+```text
 IS  ⊆  O × O       (codomain is O, not a separate TYPE sort)
 ```
 
@@ -227,7 +227,7 @@ at different grains. No ninth primitive is needed.
 The second seal. A value does not have to be raw data; it can be a
 reference to another object.
 
-```
+```text
 ι  :  O ↪ V        (every object can be embedded as a value)
 ```
 
@@ -253,7 +253,7 @@ is the same move ER diagrams make with junction entities.
 The third seal. "Process" must not mean anything a transition doesn't
 already cover, or it is a redundant ninth sort.
 
-```
+```text
 PROCESS  =  ρ(T)  ⊆  O        (processes are a subset of objects)
 ```
 
@@ -274,7 +274,7 @@ not a separate ontological category.
 
 With all three closure rules in place, the full system is:
 
-```
+```text
 𝓜  =  ⟨ O, P, V, T ;  IS, HAS, DOES ;  ∘, ρ, ι ⟩
 ```
 

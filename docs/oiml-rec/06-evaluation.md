@@ -33,7 +33,7 @@ The synthesis has three levels plus a signing act, and each level is a
 declared entity in `data/r60/entities/workflow.yaml`, not a hard-coded
 pipeline:
 
-```
+```text
 Level 1   TestReportDetermination   admissibility per report (per lab)
 Level 2   Verdict                   per requirement × sample, re-executed
 Level 2b  ModelEvaluation           completeness + failures across labs

@@ -12,10 +12,10 @@
     certification pipeline — read at the level that fits.
   </p>
   <div class="hero__actions">
-    <a class="hero__cta hero__cta--primary" href="/foundation/01-intuition/">
+    <a class="hero__cta hero__cta--primary" href="foundation/01-intuition/">
       Start with the foundation →
     </a>
-    <a class="hero__cta hero__cta--secondary" href="/primmel/">
+    <a class="hero__cta hero__cta--secondary" href="primmel/">
       Browse the language
     </a>
   </div>
@@ -24,9 +24,9 @@
 ## Two brands, one design system
 
 <div class="dual-brand">
-  <a class="brand-card reveal reveal-2" data-brand="primmel" href="/foundation/">
-    <img class="brand-card__logo brand-card__logo--light" src="/primmel-logo-light.svg" alt="" aria-hidden="true"/>
-    <img class="brand-card__logo brand-card__logo--dark" src="/primmel-logo-dark.svg" alt="" aria-hidden="true"/>
+  <a class="brand-card reveal reveal-2" data-brand="primmel" href="foundation/">
+    <img class="brand-card__logo brand-card__logo--light" src="primmel-logo-light.svg" alt="" aria-hidden="true"/>
+    <img class="brand-card__logo brand-card__logo--dark" src="primmel-logo-dark.svg" alt="" aria-hidden="true"/>
     <div class="brand-card__eyebrow">The language</div>
     <h3 class="brand-card__title">Primmel</h3>
     <p class="brand-card__lede">
@@ -41,9 +41,9 @@
     <span class="brand-card__cta">Read the foundation →</span>
   </a>
 
-  <a class="brand-card reveal reveal-3" data-brand="oiml" href="/oiml-core/">
-    <img class="brand-card__logo brand-card__logo--light" src="/oiml-logo-light.svg" alt="" aria-hidden="true"/>
-    <img class="brand-card__logo brand-card__logo--dark" src="/oiml-logo-dark.svg" alt="" aria-hidden="true"/>
+  <a class="brand-card reveal reveal-3" data-brand="oiml" href="oiml-core/">
+    <img class="brand-card__logo brand-card__logo--light" src="oiml-logo-light.svg" alt="" aria-hidden="true"/>
+    <img class="brand-card__logo brand-card__logo--dark" src="oiml-logo-dark.svg" alt="" aria-hidden="true"/>
     <div class="brand-card__eyebrow">The system</div>
     <h3 class="brand-card__title">OIML SMART</h3>
     <p class="brand-card__lede">
@@ -68,18 +68,18 @@ volume is designed to carry a semester's worth of teaching.
 
 | # | Volume | Contents |
 |---|---|---|
-| 0 | [**Foundation**](/foundation/) | the IS–HAS–DOES modelling system — eight terms, three closure rules, three theorems (closure, completeness, extensibility) |
-| I | [**Primmel Kernel**](/primmel/) | the language: tier system, subject anatomy (IS/HAS/DOES), processes, mappings, data and values, packages |
-| II | [**OIML Core**](/oiml-core/) | the OIML metamodel: measurement vocabulary, the subject chain, the six modules, the shared modules |
-| III | [**Authoring Recommendations**](/oiml-rec/) | the methodology: from Recommendation text to a validated package |
-| IV | [**The OIML-CS Scheme**](/oiml-cs/) | the certification system: the B 18 constitution, the CASCO foundation, the documents corpus, the runtimes, the coverage machinery |
-| — | [Annexes](/shared/glossary/) | platform runtime · glossary · alternatives audit · roadmap |
+| 0 | [**Foundation**](foundation/README.md) | the IS–HAS–DOES modelling system — eight terms, three closure rules, three theorems (closure, completeness, extensibility) |
+| I | [**Primmel Kernel**](primmel/README.md) | the language: tier system, subject anatomy (IS/HAS/DOES), processes, mappings, data and values, packages |
+| II | [**OIML Core**](oiml-core/README.md) | the OIML metamodel: measurement vocabulary, the subject chain, the six modules, the shared modules |
+| III | [**Authoring Recommendations**](oiml-rec/README.md) | the methodology: from Recommendation text to a validated package |
+| IV | [**The OIML-CS Scheme**](oiml-cs/README.md) | the certification system: the B 18 constitution, the CASCO foundation, the documents corpus, the runtimes, the coverage machinery |
+| — | [Annexes](shared/glossary.md) | platform runtime · glossary · alternatives audit · roadmap |
 
 ## How to read this documentation
 
 ### Reading tracks
 
-- **Track 0 — formal foundations.** Read [`foundation/`](/foundation/) first.
+- **Track 0 — formal foundations.** Read [`foundation/`](foundation/README.md) first.
   It proves the IS/HAS/DOES trichotomy is exhaustive, not heuristic. Skip
   it only if you already accept the trichotomy on faith.
 - **Track A — language designer / tool implementer.** `foundation/`, then
@@ -105,7 +105,9 @@ readable out of order.
 
 - **Status markers** — ● exists in the running system · ◐ partial ·
   ○ planned in v3. Chapters describe the v3 target; markers keep the
-  gap honest.
+  gap honest. The discipline and the release scheme:
+  [Keeping the docs current](shared/keeping-current.md) and
+  [Documentation releases](shared/releases.md).
 - **Syntax blocks** tagged `prl` are Primmel v3 syntax. Where v3
   grammar is still being finalized, the block is marked
   *(illustrative)* — the *concepts* are normative, the exact keywords
@@ -117,7 +119,7 @@ readable out of order.
   with a "formal/math" set — teal (`#0d9488`) for kernel/Tier-0
   constructs, gray (`#475569`) for surface/Tier-1 constructs, dashed
   lines for elaboration/desugaring arrows, double-stroke for
-  reification — see [`foundation/README.md`](/foundation/#conventions)
+  reification — see [`foundation/README.md`](foundation/README.md#conventions)
   for details.
 - **References** to the running system use repo paths (`data/r60/…`,
   `ontology-remix/…`, `browser/…`) relative to the `oimlsmart/smart`

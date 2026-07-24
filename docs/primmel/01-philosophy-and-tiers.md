@@ -108,7 +108,6 @@ designs compete, the one that better satisfies this list wins.
    itself is neutral on which expression language fills the kernel's
    atomic transitions; see [Volume 0 ch 5 §5.2](../foundation/05-kernel-surface-architecture.md).*
 
-
 ## 1.4 The tier system
 
 ![The Primmel tier system](diagrams/tier-stack.svg)

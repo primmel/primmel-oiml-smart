@@ -9,6 +9,9 @@
     "build": "npm run sync && astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "check:links": "node scripts/check-links.mjs /primmel-oiml-smart/",
+    "check:svg": "node scripts/check-svg-palette.mjs",
+    "lint:md": "markdownlint-cli2 \"docs/**/*.md\"",
     "astro": "astro"
   },
   "dependencies": {
@@ -23,6 +26,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
+    "markdownlint-cli2": "^0.23.1",
+    "svgo": "^4.0.2",
     "typescript": "^6.0.3"
   }
 }

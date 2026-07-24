@@ -92,8 +92,8 @@ capability-based lab selection; the TestRun/EvidenceRecord runtime with
 custody; machine-checked reference materials (R 144 CGMs); the
 certificate template and the PD-05 18-element checklist; the model
 linker with clause-referenced allowlists; the BIML registration record
-and the public register at `/app/register`; **the participant registry
-+ approval pipeline + the fail-closed issuance gate** (`/app/cs`); and
+and the public register at `/app/register`; **the participant registry + approval
+pipeline + the fail-closed issuance gate** (`/app/cs`); and
 **the CS operations runtime** (utilization, appeals, post-issuance,
 the register as the §15.8 validity source).
 

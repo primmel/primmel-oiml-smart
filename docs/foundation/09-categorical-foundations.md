@@ -80,7 +80,8 @@ The **Curry–Howard–Lambek correspondence** is a decades-old,
 extremely well-established equivalence between three things:
 
 $$
-\text{Cartesian closed categories} \;\;\longleftrightarrow\;\; \text{typed $\lambda$-calculus} \;\;\longleftrightarrow\;\; \text{constructive logic}
+\text{Cartesian closed categories} \;\;\longleftrightarrow\;\;
+\text{typed $\lambda$-calculus} \;\;\longleftrightarrow\;\; \text{constructive logic}
 $$
 
 | Side | What it studies |
@@ -102,7 +103,8 @@ exponential), then it is a Cartesian closed category. By
 Curry–Howard–Lambek:
 
 $$
-\text{the kernel} \;\;\models\;\; \text{typed $\lambda$-calculus} \;\;\models\;\; \text{constructive logic}
+\text{the kernel} \;\;\models\;\; \text{typed $\lambda$-calculus}
+\;\;\models\;\; \text{constructive logic}
 $$
 
 This is not metaphor. Anything with the algebraic signature of a

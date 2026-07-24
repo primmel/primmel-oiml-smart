@@ -44,7 +44,7 @@ one script.
 A **conversion system code** names a registered system that converts one
 spelling into another, in four colon-separated segments:
 
-```
+```text
 BGN-PCGN : zho-Hans : Latn : 1979
  titular     source    target  identifying
 (authority) (spelling) (spelling) (version/year)
@@ -169,8 +169,8 @@ package oiml-r60 {
 
 - Language tags classify; ISO 24229 codes resolve to concrete writing
   and conversion rules. Primmel uses the latter, never BCP 47.
-- A spelling system = ISO 639 language + ISO 15924 script (+ country,
-  + extension); script is mandatory. A conversion system code =
+- A spelling system = ISO 639 language + ISO 15924 script (+ country, + extension);
+  script is mandatory. A conversion system code =
   titular : source spelling : target spelling : identifying segment.
 - Every human-readable string is a content set — one logical string,
   per-spelling values, conversion codes cited where a spelling was

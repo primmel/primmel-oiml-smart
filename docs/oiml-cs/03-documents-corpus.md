@@ -37,7 +37,7 @@ for each: `data/oiml-cs/documents/<doc>/`.
 
 One fixed layout, eleven times:
 
-```
+```text
 data/oiml-cs/documents/<doc>/
   requirements.yaml        — provisions /req/cs/<doc>/* (rc.yaml shape)
   abstract-processes.yaml  — the document's pipeline as abstract processes
