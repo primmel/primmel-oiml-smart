@@ -213,6 +213,40 @@ customer in both modes). Multi-manufacturer composition — one customer
 integrating two product packages — is the same pattern twice: the
 patterns compose; nothing in the chain rule privileges one manufacturer.
 
+## 12.8 The live pilot, end to end
+
+Everything in this chapter runs as ONE demonstration (TODO.roadmap/37 —
+the doctrine's worked examples made real: Volume I, §14.9 and §15.7):
+
+```bash
+cd browser && npm run pilot
+```
+
+From a clean checkout, the pilot:
+
+1. **executes the type evaluation** — the LC-500 against the real R 60
+   program (three samples, the full dispatch/run/report/verdict/
+   aggregation workflow), the certificate issued through the signing
+   gate with the five product promises **as-verified** derived from the
+   executed record through the mapping (step 1 of §15.7, no longer
+   declared-but-not-run);
+2. **integrates one simulated twin** — the quarry's deployment binding
+   the declared `lc500_api` (validated at design time against the
+   projected endpoint; the demo provider serving `get_indication` and
+   `watch_state` at the connector seam);
+3. **runs the monitor loop over a simulated quarter** — hourly +
+   `on change state`; an injected drift fails and flags the
+   certificate; a feed outage degrades to `indeterminate`; a `fault`
+   push trips the batch gate and a service case opens;
+4. **serves the passport** — the minimal §14.9 view (abstract +
+   live) at `/passport/upi:acme:lc500` (public page) and its JSON at
+   `/passport/upi:acme:lc500.json` (the QR payload's resolver);
+5. **answers the audit chain** — `5.3.2` → `mpe_within` → the quarter's
+   verdict history → the morning's batch records, printed by the run;
+6. **asserts all of it** — the six steps are the e2e spec
+   (`browser/e2e/pilot.e2e.ts`, service-level: the twin machinery's own
+   acceptance precedent).
+
 ---
 
 *The supply-chain model itself — the three publishers, the two modes,

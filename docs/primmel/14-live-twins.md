@@ -241,6 +241,24 @@ runs an hourly monitor:
   and the drift verdict history is the audit's answer to "show me the
   fleet."
 
+**Made real (TODO.roadmap/37).** This worked example runs in the smart
+repo as the live-twin pilot: `primmel-packages/acme-lc500` (the product
+reference model with the declared `lc500_api` endpoint and the aspect-
+by-aspect R 60 mapping) and `primmel-packages/quarry-belt-scale` (the
+quarry's implementation package, consuming in both modes) are the
+shipped packages; the pilot executes the type evaluation against the
+R 60 program for real (three samples, the certificate issued with
+promises-as-verified), serves ONE simulated twin from a demo provider,
+runs the hourly + `on change state` monitor loop over a simulated
+quarter (an injected drift ⇒ `fail` + the certificate flag, a feed
+outage ⇒ `indeterminate`, a `fault` push ⇒ the service case), serves
+the passport (§14.6's minimal view) at `/passport/upi:acme:lc500` with
+the QR payload resolving to its JSON, and answers the audit-chain query
+clause → promise → verdict history → batch records. One command:
+`cd browser && npm run pilot`; the six step assertions live in
+`browser/e2e/pilot.e2e.ts` (service-level, the twin machinery's own
+acceptance precedent).
+
 ## 14.10 Worked example B — a fridge under ESPR
 
 No metrology anywhere — deliberately. A fridge maker authors
