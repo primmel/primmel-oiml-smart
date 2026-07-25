@@ -13,11 +13,11 @@
     pipeline — read at the level that fits.
   </p>
   <div class="cover-hero__actions">
-    <a class="cover-cta cover-cta--primary" href="foundation/01-intuition.md">
+    <a class="cover-cta cover-cta--primary" href="foundation/01-intuition/">
       Start with the foundation
       <span class="cover-cta__arrow">→</span>
     </a>
-    <a class="cover-cta cover-cta--secondary" href="primmel/README.md">
+    <a class="cover-cta cover-cta--secondary" href="primmel/">
       Browse the language
     </a>
   </div>
@@ -32,7 +32,7 @@ semester's worth of teaching.
 
 <div class="volume-grid">
 
-  <a class="volume-card reveal reveal-2" href="foundation/README.md" data-section="primmel">
+  <a class="volume-card reveal reveal-2" href="foundation/" data-section="primmel">
     <div class="volume-card__number">0</div>
     <div class="volume-card__body">
       <h3 class="volume-card__title">Foundation</h3>
@@ -42,7 +42,7 @@ semester's worth of teaching.
     </div>
   </a>
 
-  <a class="volume-card reveal reveal-2" href="primmel/README.md" data-section="primmel">
+  <a class="volume-card reveal reveal-2" href="primmel/" data-section="primmel">
     <div class="volume-card__number">I</div>
     <div class="volume-card__body">
       <h3 class="volume-card__title">Primmel Kernel</h3>
@@ -52,7 +52,7 @@ semester's worth of teaching.
     </div>
   </a>
 
-  <a class="volume-card reveal reveal-3" href="oiml-core/README.md" data-section="oiml">
+  <a class="volume-card reveal reveal-3" href="oiml-core/" data-section="oiml">
     <div class="volume-card__number">II</div>
     <div class="volume-card__body">
       <h3 class="volume-card__title">OIML Core</h3>
@@ -62,7 +62,7 @@ semester's worth of teaching.
     </div>
   </a>
 
-  <a class="volume-card reveal reveal-3" href="oiml-rec/README.md" data-section="oiml">
+  <a class="volume-card reveal reveal-3" href="oiml-rec/" data-section="oiml">
     <div class="volume-card__number">III</div>
     <div class="volume-card__body">
       <h3 class="volume-card__title">Authoring Recommendations</h3>
@@ -72,7 +72,7 @@ semester's worth of teaching.
     </div>
   </a>
 
-  <a class="volume-card reveal reveal-4" href="oiml-cs/README.md" data-section="oiml">
+  <a class="volume-card reveal reveal-4" href="oiml-cs/" data-section="oiml">
     <div class="volume-card__number">IV</div>
     <div class="volume-card__body">
       <h3 class="volume-card__title">The OIML-CS Scheme</h3>
@@ -82,7 +82,7 @@ semester's worth of teaching.
     </div>
   </a>
 
-  <a class="volume-card reveal reveal-4" href="shared/glossary.md" data-section="oiml">
+  <a class="volume-card reveal reveal-4" href="shared/glossary/" data-section="oiml">
     <div class="volume-card__number">—</div>
     <div class="volume-card__body">
       <h3 class="volume-card__title">Annexes</h3>
@@ -114,8 +114,8 @@ semester's worth of teaching.
       desugars into composition and application.
     </p>
     <div class="brand-split__volumes">
-      <a href="foundation/README.md">Volume 0 — Foundation</a>
-      <a href="primmel/README.md">Volume I — Kernel</a>
+      <a href="foundation/">Volume 0 — Foundation</a>
+      <a href="primmel/">Volume I — Kernel</a>
     </div>
   </div>
 
@@ -137,9 +137,9 @@ semester's worth of teaching.
       platform runtime.
     </p>
     <div class="brand-split__volumes">
-      <a href="oiml-core/README.md">Volume II — Core</a>
-      <a href="oiml-rec/README.md">Volume III — Authoring</a>
-      <a href="oiml-cs/README.md">Volume IV — Certification</a>
+      <a href="oiml-core/">Volume II — Core</a>
+      <a href="oiml-rec/">Volume III — Authoring</a>
+      <a href="oiml-cs/">Volume IV — Certification</a>
     </div>
   </div>
 
