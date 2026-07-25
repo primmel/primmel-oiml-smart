@@ -115,6 +115,16 @@ serve sample.test_context.d_min via get_indication { fresh_within 5s }
 Freshness is part of the binding: the engine must know how old a value
 may be before it stops meaning anything.
 
+**Declaration vs binding.** A Recommendation ships the twin
+DECLARATION — the endpoint, the served aspects, the operational state
+machine, and the serve capabilities with their `fresh_within` windows
+(what CAN be served and how fresh it must be; R 60 does,
+`model/twin.prl`). The live BINDING — the gateway integration that
+actually serves values — is deployment content (`model/gateway.yaml` in
+the consuming package). A declared-but-unbound serve gates nothing: an
+offered capability is not an outage, verdicts stay untouched until a
+deployment binds the operation (AGENTS.d/12, TODO.roadmap/49).
+
 **Connector profiles** — protocol bindings declared per endpoint:
 `rest_json`, `mqtt`, `opc_ua`, `file_drop` (for batch/plugin sources).
 The model is protocol-neutral; profiles bind protocols. This is what
