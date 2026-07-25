@@ -145,6 +145,11 @@ honestly — the method is the target, R 60 is the evidence.
     trees and the round-trip discipline; the facets and packages of the
     v3 model; the gates, including the from-packages release proof; the
     path to Primmel-native authoring.
+12. [Modelling your product](12-modelling-your-product.md) — the
+    manufacturer's product reference package: the instrument as a
+    subject, every conformance-relevant aspect and promise mapped to the
+    Recommendation, consumed by users as an abstract import or a live
+    twin (the ACME LC-500 pilot; spec: Volume I, chapter 15).
 
 ## The one-sentence summary
 
