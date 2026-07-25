@@ -85,13 +85,27 @@ The anchor example is R 60's base metrological procedure (●
 - **purpose / method** — the normative procedure prose (R 60-2 §2.10.1),
   provenance included. Prose for humans; the machine-readable procedure
   is `variables` + `steps` + `acceptance_criteria`.
+- **method_ref** — the test's *executable* method (● smart ce10a43;
+  kernel facet primmel-ts e5fd083): the id of the model-layer process
+  (chapter 2's behavior anatomy — steps, gateways, preconditions) that
+  runs the test. Additive beside the required narrative `method` — the
+  prose stays, flat tests without the ref stay legal. Linker rule **R34
+  test-method-link** errors on a dangling ref and emits one summarizing
+  warning per test for the coverage delta — the process's signature I/O
+  and registers should cover the test's declared variables, its
+  invariants the test's precondition checks; a real delta (the R 60-3
+  evaluation-level error quantities derived from the process's
+  indication output; a lab-environment precondition) is documented by a
+  linker-allowlist entry, never by silence. The R 60 pilot is
+  `measurement-error-repeatability-mdlo → load_weight`.
 - **design** — specimen rules: `count: 1`, `continuity: same_eut` — one
   equipment-under-test across the procedure's steps.
 - **type** — ◐ today `Testing | Inspection` in the R 60 data; the
   metamodel's richer `kind` taxonomy is §4.8.
 - **result_forms** — which report forms this test's evidence lands in
-  (chapter 5). A test with no form leaves no evidence; that is a
-  coverage finding.
+  (chapter 5). The declaration is the test's **evidence contract** — the
+  one home of the test→form completeness relation (§5.5, task 55). A
+  test with no form leaves no evidence; that is a coverage finding.
 
 ## 4.3 Variables and sources
 
@@ -352,6 +366,10 @@ conformance_test /conf/class-a/measurement-error {
   a drift finding;
 - every `result_forms` entry resolves to a declared form (chapter 5), and
   every performance test lands its evidence in at least one form;
+- every `method_ref` resolves to a declared model-layer process (R34);
+  a coverage delta between the process anatomy and the test's declared
+  variables/preconditions is documented in the linker allowlist, never
+  left silent;
 - quantities shared with a VerdictQuantity are referenced, not
   re-derived (`verdict-no-shadow`, `verdict-restatement`).
 

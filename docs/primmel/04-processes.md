@@ -96,6 +96,17 @@ members) and `consultancy_bar` (barred relations, `period` only where
 the standard fixes one). Declaration well-formedness is linker-checked;
 per-assignment enforcement is the runtime's (Volume IV, chapter 5).
 
+**`source { doc "…" clause "…" }` — which clause demands this process?**
+A third facet sits beside the classification pair, provenance rather than
+classification (● primmel-ts 490bacc): the same `source` shape
+requirement, table and calculation carry (chapter 9), now on processes.
+One block names a doc + clause (plus an optional fragment); repeated
+blocks collect into `sourceRefs`, with the scalar `source` keeping the
+first entry (first-wins), so single-source processes read unchanged.
+A process of a reference model can thereby answer "R 60-2, 2.10.1" the
+way a requirement answers "R 60-1, 5.2" — clause-URN provenance for the
+DOES, not just the IS.
+
 ## 4.4 The step vocabulary
 
 Eight step kinds cover the standard's process content:
@@ -150,7 +161,22 @@ A process's HAS is where its memory lives:
   `where` guards and `create` effects).
 - **registers** — typed variables the process reads and writes:
   measurement variables with source typing (chapter 6). A step's I/O is
-  declared in terms of registers.
+  declared in terms of registers. A register may also declare an
+  **initial value** — its starting content, set at definition (●
+  primmel-ts 490bacc; proof: the kernel's `process-register-initials`
+  suite):
+
+  ```prl
+  registers { capacity : mass = 50 kg   remark : string = "unloaded" }
+  ```
+
+  The literal contract is the instance-value contract of chapter 6: one
+  value token plus an optional unit (quote multi-word values, so the
+  unit position stays unambiguous), or the `{ value … unit … }`
+  QuantityValue block form for the full structure. Initials are a
+  registers facet *only* — signature parameters and call bindings take
+  their values at the call, and an `=` there is a hard parse error, not
+  a silently mis-parsed parameter.
 - **context** — the actual conditions under which the process executes,
   logged per run.
 
@@ -217,6 +243,10 @@ process creep_test {
     preconditions { ocl{ self.state = #ready and self.warmed_up } }
     executor lab
     activity_kind [testing]              # classification, not inheritance
+    source { doc "urn:oiml:pub:r:60-2:2021" clause "2.10.1" }
+  }
+  has {
+    registers { applied_load : mass = 50 kg   stabilized : string = "pending" }
   }
   does {
     start_event s
@@ -256,7 +286,12 @@ process review {
 - every `segregation:` entry is well-formed: a known kind, exactly two
   distinct pair members for `case_personnel_disjoint`, pair members
   resolving to abstract-process ids, `period` only where the source
-  standard fixes one.
+  standard fixes one;
+- an initial value appears only on a register, in the literal contract
+  (one value token + optional unit, or the `{…}` QuantityValue block) —
+  an `=` in a signature parameter or call binding is a parse error;
+- every `source` block names doc + clause; repeated blocks collect into
+  `sourceRefs`, the scalar `source` holding the first.
 
 ## 4.12 Summary
 
@@ -266,8 +301,11 @@ process review {
   automation demands it.
 - `activity_kind` classifies a process against a register (multi-kind
   deliberate); `segregation:` declares cross-process non-involvement
-  over personnel sets — both classification, never inheritance.
+  over personnel sets — both classification, never inheritance; `source`
+  carries requirement-shape clause provenance.
 - Eight step kinds, three connection rules, two executor kinds.
+- Registers may declare initial values — a registers-only literal
+  contract; signature parameters and call bindings reject `=` outright.
 - Preconditions void runs, never instruments; traces are facts, never
   verdicts.
 - Per-classification instances and timer recurrence let one definition

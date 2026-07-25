@@ -243,11 +243,43 @@ are used for *text* only — never cited. Where no PDF exists locally,
 anchors follow the corpus audit's granularity, confirmed by the XMLs'
 surviving internal cross-references, and the module headers say so —
 with the reconciliation queued as follow-up work (task 46). Two
-source-level discrepancies are recorded rather than "fixed": PD-06's
-4.8/4.9 (the audit's reconstruction was off by one; the PDF wins), and
-PD-02's four-year expert review vs OD-01 13.4's 3-yearly — a genuine
-candidate clarification for the real scheme, documented in the od-01
-header. Honest anchors beat confident ones.
+source-level discrepancies are recorded rather than "fixed" — and since
+task 54 they are first-class records, not header prose (● smart
+8651182; the kernel construct is Volume I, chapter 9's
+`discrepancy_record`). Authored in
+`primmel-packages/oiml-cs/specification/discrepancies.prl` (regenerated
+to `data/oiml-cs/specification/discrepancies.yaml`), the corpus's three
+live records are the task-46 settlements:
+
+- `pd-02-vs-od-01-expert-review-cycle` — PD-02, 11.1's four-year expert
+  review vs OD-01, 13.4's 3-yearly: a genuine source disagreement, both
+  official texts verified verbatim against the published PDFs.
+  `resolution: annotated_only` — neither governs; both modules keep
+  their own clause's cycle and both headers record both texts; a CID-01
+  clarification candidate for the real scheme.
+- `d-32-g711-4-numbering-gap` — the official printed D 32:2018 itself
+  skips G.7.1.1-4 (an editorial gap in the source, not a local
+  conversion drop). `resolution: follows_clause_x`, governing
+  `urn:oiml:pub:d:32:2018` — the corpus cites the official body
+  numbering; no G.7.1.1-4 citation exists or may be added.
+- `od-01-toc-vs-body-numbering` — OD-01's own printed Contents skips
+  7.2, so every TOC entry from 7.2 on reads body−1.
+  `resolution: follows_clause_x`, governing the body's
+  `urn:oiml:pub:cs:od-01:2022#clause-7.2` — the body numbering that
+  every internal cross-reference uses wins.
+
+(PD-06's 4.8/4.9 stays a module-header correction: the audit's
+reconstruction was off by one and the PDF wins — a citation fix, not a
+source-vs-source conflict.) Two registry extensions ride the records:
+linker rule **R33 discrepancy-references** (every cited URN resolves;
+the resolved / follows-clause-x / annotated-only / open discipline of
+Volume I, chapter 9), and the URN grammar itself — the `cs` doctype
+with its series-letter `cs-pub-number` form (`pd-02`, `od-01`,
+`cid-01`) and the bare `#contents` front-matter element are registered
+in `data/oiml-urn-specification.adoc` (mirrored in
+`browser/src/data/urn.ts`), so CS documents are cited by URN, never by
+bare label. Honest anchors beat confident ones — and now the honesty is
+machine-checked.
 
 ## 3.8 Grammar sketch *(illustrative v3 syntax)*
 
@@ -307,8 +339,9 @@ package oiml-cs {
   register (PD-08), discipline (PD-01/06/07), and governance
   (CID-01, OD-01/02).
 - Anchors cite official numbering; unverifiable granularity is
-  disclosed in module headers, and source discrepancies are recorded,
-  not silently reconciled.
+  disclosed in module headers, and source discrepancies are first-class
+  `discrepancy_record`s checked by R33 — recorded, never silently
+  reconciled.
 
 *Next: [Chapter 4 — The certification workflow](04-certification-workflow.md):
 PD-05 as abstract processes plus 34 provisions, bound by `realized_by`

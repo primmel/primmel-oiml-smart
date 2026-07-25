@@ -116,6 +116,23 @@ A violation here is not a style complaint: it means the model would
 mis-execute — a verdict computed against the wrong scope, a form
 prefilling from a path that does not exist.
 
+The catalog has grown past the original five (C71–C73 at layer 5; the
+twin-era and supply-chain rules of chapters 14–15). The newest member
+is **C84 constraint-shape** (● primmel-ts 490bacc) — the declaration
+shape of the subject-intrinsic constraint (the «inv» entity of
+chapter 2, smart-repo task 51), five error legs mirroring the smart-side
+schema: the stereotype is always `inv` (requirements are the «req»
+counterpart); the check is a *single* `ocl{…}` boolean over the
+subject's declared anatomy; `violation_meaning` is non-empty — the
+invalidated judgment records what a violation means, never a bare id;
+`on_violation` ∈ {`invalid`, `indeterminate`} — a constraint voids the
+measurement or withholds judgment, it never *fails* the instrument; and
+a declared `source` names both doc and clause (clause-URN provenance,
+chapter 9). Duplicate constraint ids are the parse-time duplicate-id
+rule, and the resolution legs stay smart-side (linker rule R32) — C84
+polices shape only, which is why all 19 shipped packages pass with zero
+hits.
+
 ## 11.5 Layer 4 — coverage audits (◐)
 
 Coverage is the graph property chapter 1 stated as a theorem; the audit

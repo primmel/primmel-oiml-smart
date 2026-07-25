@@ -317,7 +317,7 @@ executable semantics across kernel, core, and scheme layers:
 | API gateway + Compliance Engine monitor runtime | ● | phase 6, tasks 33–34 (ch 14 §14.5/§14.7) |
 | Passport (DPP) projection | ○ DEFERRED | per user direction, phase 6 task 35 (ch 14 §14.6) |
 | Product reference packages, live-twin pilot | ● | phase 6, tasks 36–37 — ACME LC-500 → quarry, six pilot steps asserted (ch 15) |
-| Phase-8 executable-semantics program | ◐ | tasks 48–53 merged at review-SHIP; 54–55 in flight — driver `BUG.R60-SSOT.md` |
+| Phase-8 executable-semantics program | ● | tasks 48–55 merged at review-SHIP — driver `BUG.R60-SSOT.md` |
 
 ## 6. Summary
 
@@ -348,7 +348,7 @@ executable semantics across kernel, core, and scheme layers:
   packages, and the LC-500 → quarry pilot all ●; only the passport
   projection deferred) takes the standard to the product, continuously.
   Phase 8's executable-semantics enhancements (tasks 48–55, driven by
-  the external SSOT review) are landing on top.
+  the external SSOT review) have landed on top.
 - Every ○ item traces to the concept frame's Appendix B or to the twin
   chapters (Volume I, 14–15); every ● item traces to a gate. Nothing
   here is aspiration without an address.

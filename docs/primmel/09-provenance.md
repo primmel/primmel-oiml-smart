@@ -68,6 +68,21 @@ than decorative:
   `urn:oiml:pub:r:60-1:2021#clause-5.6.3.1`), with an explicit
   `resolution:` field. The linker's `source-discrepancy` rule keeps the
   record honest.
+- **Corpus-level discrepancy records** (● primmel-ts 0dbcfd5, smart
+  8651182) — the same conflict, one level up: some disagreements attach
+  to *documents*, not to any model node (PD-02, 11.1's four-year expert
+  review vs OD-01, 13.4's 3-yearly cycle — no requirement owns that).
+  The top-level `discrepancy_record` construct reuses the facet's fields
+  verbatim (`summary` / `sources` / `resolution` / `rationale`) and adds
+  `status: open | resolved` plus `governing` (the followed source, one
+  of `sources`). The discipline is mechanical (linker rule R33): a
+  resolved record carries resolution + rationale; `follows_clause_x`
+  requires `governing`; `annotated_only` never takes one — the conflict
+  is recorded, no side picked; and an `open` record prints at audit
+  level instead of hiding in a comment. The record is the corpus's
+  errata memory: a coverage gap never re-litigates a settled
+  disagreement. Volume IV, chapter 3 walks the three live records of the
+  OIML-CS corpus.
 - **The source collection** (● `sources/r060/`) — the authoritative text
   itself, as a metanorma collection (`collection.yml`, parts `1 2 3 a`),
   with the compiled presentation of each part under
@@ -215,6 +230,16 @@ reconstruct R60-1 from oiml-r60 {
   order   by fragment address
   check   { coverage, order, text_identity }
 }
+
+discrepancy_record pd-02-vs-od-01-expert-review-cycle {
+  status resolved
+  summary "PD-02, 11.1 prescribes a four-year expert-review cycle 'as
+    outlined in OD-01, 13.4', which prescribes a 3-yearly cycle"
+  sources { "urn:oiml:pub:cs:pd-02:2022#clause-11.1"
+            "urn:oiml:pub:cs:od-01:2022#clause-13.4" }
+  resolution annotated_only          # follows_clause_x ⇒ governing required
+  rationale "Both official texts verified verbatim … a CID-01 clarification candidate."
+}
 ```
 
 ## 9.8 Validation rules
@@ -231,14 +256,20 @@ reconstruct R60-1 from oiml-r60 {
   the congruence check;
 - a `source_discrepancy` record names at least two conflicting sources
   and an explicit resolution; the linker's `source-discrepancy` rule
-  verifies both citations resolve.
+  verifies both citations resolve;
+- a corpus-level `discrepancy_record` adds the corpus wrapper's laws
+  (R33): every URN in `sources` resolves; `status: resolved` requires
+  resolution + rationale; `follows_clause_x` requires `governing` naming
+  one of the sources; `annotated_only` forbids it; `open` prints at
+  audit level.
 
 ## 9.9 Summary
 
 - Provenance is cross-cutting: every element answers "which clause of
   which document" — for author, auditor, and machine alike.
 - Level 1 (● today): clause URNs on every element, a references
-  registry, source-discrepancy records, a pinned source collection.
+  registry, source-discrepancy records on nodes and `discrepancy_record`
+  at the corpus level, a pinned source collection.
 - Level 2 (○ v3): `.prd` fragments — addressable, typed,
   normativity-marked, text-bearing — bound from model elements.
 - Model↔document relations are `.prm` maps: description + justification,

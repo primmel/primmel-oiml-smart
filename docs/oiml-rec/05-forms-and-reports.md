@@ -177,6 +177,19 @@ A form declares its place in the closure (● creep-dr.yaml header block):
 - `references` carries typed clause provenance — requirement clauses,
   test-procedure clauses, calculation clauses, each with its role.
 
+One direction of that wiring is load-bearing, and since task 55 it has
+exactly one home (● smart ce10a43): **the test's `result_forms` IS the
+test's evidence contract.** Report-completeness derivations — the form
+programme, `services/program.service.ts formProgramFor` — read the
+contract *from the test node* (`evidenceContractFor` is the queryable
+accessor). The form's own `conformance_test:` field survives as the
+form-side answer to one question only — "which test does this form
+instance serve?" (test-run pinning) — and is never a second
+completeness source. Adding a form to a test's programme means authoring
+it into the test's `result_forms` (in the PRL package), never patching
+the form side; the rule already paid for itself when it exposed the R 60
+`load-test` omission in the MDLO test's programme.
+
 ## 5.6 The pass_fail block
 
 A form closes with its acceptance display:

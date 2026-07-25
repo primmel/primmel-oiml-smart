@@ -106,7 +106,11 @@ Two more fields discipline the judgment's legal force:
 
 And the human override: an evaluator may replace a computed outcome — the
 override is **recorded, never silent**: `overridden`, `override_note`
-(mandatory justification), `override_by`. The function re-runs; the
+(mandatory justification), `override_by`, `override_at`, and an
+AuditEvent on every verdict write path (`override_verdict` /
+`recompute_verdicts`) carrying actor, before/after outcome diff and a
+first-class `basis` (● smart ce10a43 — the audit-trail completion).
+The function re-runs; the
 override is data over its result, so the record always shows both what the
 machine computed and what the human decided. ●
 (`browser/src/services/verdict.service.ts`, `VerdictMatrix.vue`;
