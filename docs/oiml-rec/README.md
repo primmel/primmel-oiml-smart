@@ -81,8 +81,10 @@ Metanorma sources of the Recommendation text).
 
 Three rules make the contract binding:
 
-- **YAML is the single source of truth.** Generated TypeScript is derived
-  at build time and never edited; services carry no domain content.
+- **Primmel (PRL) is the single source of truth** (chapter 11). The
+  `.prl` packages are authoritative; the YAML data trees and the generated
+  TypeScript are derived and never edited; services carry no domain
+  content.
 - **A new Recommendation is data, not schema.** The R 60 profile states it:
   "a new profile file; zero schema changes".
 - **A file not registered in `standard.yaml` does not exist** as far as
@@ -139,6 +141,10 @@ honestly — the method is the target, R 60 is the evidence.
     SOPs, equipment register and record forms as an implementation
     package; the `.prm` to the required methods; full cover by the
     calculus (the MTL Rhein Ruhr pilot).
+11. [Migrating from the YAML era](11-migrating-from-yaml.md) — the two
+    trees and the round-trip discipline; the facets and packages of the
+    v3 model; the gates, including the from-packages release proof; the
+    path to Primmel-native authoring.
 
 ## The one-sentence summary
 

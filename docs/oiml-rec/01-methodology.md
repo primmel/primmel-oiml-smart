@@ -11,9 +11,12 @@ Authoring a Recommendation means transcribing a published text — prose, tables
 formulas, forms — into a package the platform can validate, query, execute, and
 reason about (Volume I, chapter 1). Three commitments frame everything:
 
-- **YAML is the single source of truth.** All content lives in `data/<rec>/`;
-  the app's TypeScript is generated from it; services contain no domain content
-  — adding a requirement, an attribute, or a form is a YAML edit.
+- **Primmel (PRL) is the single source of truth** (chapter 11 — the flip
+  landed). All content lives in the `.prl` packages under
+  `primmel-packages/`; the `data/<rec>/` YAML trees are generated from
+  them, and the app's TypeScript from those; services contain no domain
+  content — adding a requirement, an attribute, or a form is a Primmel
+  edit (or a YAML draft migrated via the authoring aid).
 - **A new Recommendation is data, not schema.** The metamodel (Volume II) is
   schema only; the R 60 profile states the rule: "a new profile file; zero
   schema changes."

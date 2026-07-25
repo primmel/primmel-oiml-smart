@@ -19,9 +19,11 @@ validate, and build. That somewhere is the **package**: one directory
 per Recommendation, self-describing, registered, and complete. Two
 rules from Chapter 1 govern its shape:
 
-- **YAML is the single source of truth.** TypeScript in
-  `browser/src/data/generated/` is derived at build time and never
-  edited; services carry no domain content. A new Recommendation is a
+- **Primmel (PRL) is the single source of truth** (chapter 11 — the flip
+  landed). The `.prl` packages are authoritative; the `data/<rec>/` YAML
+  trees are generated artifacts (`npm run gen:data`, never hand-edited),
+  and TypeScript in `browser/src/data/generated/` is derived from them at
+  build time; services carry no domain content. A new Recommendation is a
   *data* addition, never a code change.
 - **A new Recommendation is data, not schema.** The metamodel is schema
   only; the R 60 profile states the rule — "A new Recommendation = a new

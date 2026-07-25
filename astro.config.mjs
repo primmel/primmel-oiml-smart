@@ -102,6 +102,8 @@ export default defineConfig({
             { label: 'Packaging', slug: 'oiml-rec/07-packaging' },
             { label: 'Walkthrough: OIML R 60', slug: 'oiml-rec/08-walkthrough-r60' },
             { label: 'Walkthrough: R 91 and R 144', slug: 'oiml-rec/09-walkthrough-r91-r144' },
+            { label: 'Modelling Your Lab', slug: 'oiml-rec/10-modelling-your-lab' },
+            { label: 'Migrating from the YAML Era', slug: 'oiml-rec/11-migrating-from-yaml' },
           ],
         },
         {
