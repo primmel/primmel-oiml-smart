@@ -256,6 +256,44 @@ parallel with phases 2–4 once it lands:
   into the quarry's belt scale, end to end (chapter 15, §15.7): author,
   map, certify, import, go live, audit.
 
+### Phase 7 — the OIML-CS scheme (landed out of order)
+
+The OIML-CS half of the core re-home arrived ahead of phases 3–6 as
+its own program (tasks 39–45): the CASCO foundation packages, the
+B 18:2025 framework, the documents corpus, the participant and
+operations runtimes, and the unified coverage machinery — all told in
+Volume IV.
+
+### Phase 8 — executable-semantics enhancements
+
+Driven by an external review of the R 60 SSOT pipeline (recorded as
+`BUG.R60-SSOT.md` in the platform repo), phase 8 deepens the
+executable semantics across kernel, core, and scheme layers:
+
+- **testing-competence declarations** (task 48) — labs declare the
+  competence kinds their test runs exercise, resolved against the
+  competence-kind registry (linker rule R29);
+- **the rec twin interface** (task 49) — conformance tests exposed as
+  `endpoint`/`serve` bindings keyed endpoint::operation (D26), so a
+  live instrument twin is probed straight from the rec model;
+- **executable behavior anatomy** (task 50) — behaviors decompose into
+  typed steps over registers with invariants (R30, D27); the R 60
+  load-weight signal chain is calibrated against R 60-1's signal-path
+  figure;
+- **condition tiers** (task 53) — applicability conditions bind to
+  tiered evaluation channels (R31); a skipped tier yields an
+  indeterminate verdict, never a silent pass;
+- **constraint entities** (task 51) — subject-intrinsic `inv` rules as
+  first-class registered entities (R32, D28);
+- **cascade transitions** (task 52) — declared workflow side-effects:
+  a transition may emit follow-on transitions on other entities'
+  state machines, with audit events (D29);
+- **discrepancy records** (task 54) — recorded conflicts between
+  corpus documents become first-class, coverage-visible objects;
+- **the test hierarchy** (task 55) — Module-B marking / sealing /
+  calibration records with lifecycle machines, the method facet, and
+  single-home result shapes.
+
 ## 5. The consolidated status table
 
 | Area | Marker | Where it stands |
@@ -277,7 +315,9 @@ parallel with phases 2–4 once it lands:
 | Documentation site | ◐ | task 30 — site built + navigable; launch tag `docs-v0.1.0` pending the release |
 | Twin interface primitives (endpoint, serve, connector profiles, freshness) | ● | phase 6, task 32 (Volume I, ch 14 §14.4) |
 | API gateway + Compliance Engine monitor runtime | ● | phase 6, tasks 33–34 (ch 14 §14.5/§14.7) |
-| Passport projection, product reference packages, live-twin pilot | ○ | phase 6, tasks 35–37 (ch 14 §14.6, ch 15) |
+| Passport (DPP) projection | ○ DEFERRED | per user direction, phase 6 task 35 (ch 14 §14.6) |
+| Product reference packages, live-twin pilot | ● | phase 6, tasks 36–37 — ACME LC-500 → quarry, six pilot steps asserted (ch 15) |
+| Phase-8 executable-semantics program | ◐ | tasks 48–53 merged at review-SHIP; 54–55 in flight — driver `BUG.R60-SSOT.md` |
 
 ## 6. Summary
 
@@ -304,9 +344,11 @@ parallel with phases 2–4 once it lands:
   the OIML Core re-home (whose OIML-CS half landed early, as phase 7),
   then Recommendation re-expression, then interop; the platform release
   (phase 5) ships it, and the twin program (phase 6 — endpoint / serve /
-  freshness, the gateway, the monitor runtime, the passport projection,
-  product reference packages, the LC-500 → quarry pilot, all ○) takes
-  the standard to the product, continuously.
+  freshness, the gateway, the monitor runtime, the product reference
+  packages, and the LC-500 → quarry pilot all ●; only the passport
+  projection deferred) takes the standard to the product, continuously.
+  Phase 8's executable-semantics enhancements (tasks 48–55, driven by
+  the external SSOT review) are landing on top.
 - Every ○ item traces to the concept frame's Appendix B or to the twin
   chapters (Volume I, 14–15); every ● item traces to a gate. Nothing
   here is aspiration without an address.
