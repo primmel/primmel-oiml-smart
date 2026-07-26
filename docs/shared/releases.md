@@ -32,7 +32,7 @@ again (corrections land as patch releases).
 
 | Release | Pinned milestone | What it freezes | Status |
 |---|---|---|---|
-| `docs-v0.1.0` | **site launch** (roadmap task 30) | the site itself: all volumes navigable, search, status badges, CI gates (link check, markdown lint, SVG palette) | ◐ |
+| `docs-v0.1.0` | **site launch** (roadmap task 30) | the site itself: all volumes navigable, search, status badges, CI gates (link check, markdown lint, SVG palette) | ● 2026-07-26 |
 | `docs-v1.0.0` | **phase 1 — kernel done** | Volume 0 + Volume I against the landed kernel primitives (structure, promises, artifacts, operational state, duality, set-dimensions, process extensions, mapping calculus, `uses`) | ○ |
 | `docs-v2.0.0` | **phase 2 — core done** | Volume II against the OIML Core re-home as a v3 package | ○ |
 | `docs-v3.0.0` | **phase 3 — recs done** | Volume III against the v3-native R 60 and the R 91 / R 144 stress cases | ○ |
