@@ -24,12 +24,14 @@ property. ●
 model*: the product model enters the user's *implementation model* as
 static reference content — designation, design parameters, designed
 conditions, *promises* as point-in-time (as-certified) claims at a
-pinned version; design-time integration, nothing live. ○
+pinned version; design-time integration, nothing live. ● (task 36 —
+C83 `abstract-import-pinned`; the quarry imports the ACME LC-500 at a
+pinned edition)
 
 **abstract passport** — the point-in-time mode of the *model-native
 passport*: identity, composition and as-certified claims — what a buyer
 integrates at purchase, what a DPP registry looks up by unique
-identifier. ○
+identifier. ● (task 35)
 
 **abstract process** — a *process* in definition form: signature +
 invariants + state skeleton, without steps; always valid. In a
@@ -52,7 +54,9 @@ C/D = 3). ●
 **artifact (definition / instance)** — IS: an output the subject *must*
 produce, declared with a content contract and produced-when rules (the
 R 91 evidence file); HAS: the produced output itself, recorded as
-*evidence*. ○
+*evidence*. ● (task 09 — R 91's `enforcement-evidence-file` definition
+carries the R 91-1, 7.3 a–l content contract; instances recorded via
+the evidence-file form)
 
 **attribute** — an exhibited named property value (HAS): test-dependent
 settings, as-found/actual values; *defined* once in
@@ -71,14 +75,15 @@ laboratory declares, consumed by capability-based lab selection. ●
 through the typed *mappings* of the supply chain — transitive at
 process level through mapped aspects, guarded at model level by the
 shared-component rule (no shared aspects, no compliance flow; the
-*coverage* report says so). ○
+*coverage* report says so). ● (task 36 — the chain-rule gate rides
+`product-supply-chain.test.ts`)
 
 **characteristic** — a quantity *derived from behavior I/O* (error =
 OUT − reference IN; repeatability = dispersion of OUT under repeated IN;
 creep = ΔOUT/Δt under constant IN): the quantitative interface that
 *promises* claim, *requirements* limit, tests compute, and *verdicts*
-judge. ◐ (defined today specification-side; hoisting to the primary
-model is v3 work)
+judge. ● (task 10 — hoisted to the primary model with symbol +
+derivation, C48–C50)
 
 **classification** — see *dimension*: the exhibited membership of a
 subject in the classification axes; classification drives
@@ -98,7 +103,9 @@ parameters — never restated. ●
 
 **connector profile** — the protocol binding declared per *endpoint*:
 `rest_json`, `mqtt`, `opc_ua`, `file_drop` (for batch/plugin sources);
-the model is protocol-neutral, profiles bind protocols. ○
+the model is protocol-neutral, profiles bind protocols. ● (tasks
+32–33 — `rest_json` poll + webhook, `mqtt` subscribe and `file_drop`
+shipped; `opc_ua` a declared stub)
 
 **constraint** — a Boolean OCL statement (`inv`) bound to aspect paths;
 the shape every *requirement* limit takes. OCL is the only rule language
@@ -107,15 +114,17 @@ the shape every *requirement* limit takes. OCL is the only rule language
 **continuous compliance** — the standard executed next to the product,
 forever: *monitors* re-evaluate the same OCL (INV-9) over served values
 on schedule / signal / change triggers, appending time-stamped
-*evidence* and *verdicts* where a certificate alone freezes time. ○
+*evidence* and *verdicts* where a certificate alone freezes time. ●
+(task 34 — the monitor runtime)
 
 **coverage (full / minimal / partial / no cover)** — per reference-model
 component, how much is fulfilled by mapped implementations: full (all
 fulfilled), minimal (the gateway minimum met), partial (something
 mapped, below the minimum), no cover (nothing mapped) — computed by the
 coverage calculus: inherited down process trees, aggregated up,
-transitive at process level, never at model level. ○ (calculus; ● v2
-serialization)
+transitive at process level, never at model level. ● (calculus — task
+04's `computeCoverage`, exercised by the lab-coverage and PD-05 unified
+gates; ● v2 serialization)
 
 **named gap** — a *coverage* entry recording a mandatory reference-model
 component the implementation does not fulfil, with a reason and a
@@ -157,12 +166,13 @@ Canonical definition:
 operations (kinds `query` / `subscribe` / `invoke`, payloads
 *QuantityValue* with timestamp), access scopes (`public` / `registered`
 / `authority`) and a *connector profile* — part of the type definition,
-like a marking or a software identification. ○
+like a marking or a software identification. ● (task 32 — C60–C64)
 
 **engine operator** — the party running the Compliance Engine against
 the reference model (issuing authority, regulator, market surveillance
 — or the manufacturer self-monitoring under third-party audit); speaks
-for the standard, counterpart to the *twin provider*. ○
+for the standard, counterpart to the *twin provider*. ● (the pilot's
+quarry operates the engine — task 37)
 
 **environmental context** — the actual conditions experienced by the
 subject (HAS): logged during runs, installation context; dual of the
@@ -190,7 +200,8 @@ slots); the FormInstance is the *evidence*. ●
 **freshness** — the validity window declared on a *serve binding*
 (`fresh_within`): how old a served value may be before it stops meaning
 anything; a stale value degrades the *verdict* to `indeterminate` —
-stale ⇒ indeterminate, never a silent pass. ○
+stale ⇒ indeterminate, never a silent pass. ● (task 32 — C63; the
+gateway's freshness gate owns the judging)
 
 **HAS** — the exhibition question of the *subject* anatomy: what the
 subject exhibits — observable, varies without identity change.
@@ -199,15 +210,18 @@ Canonical definition: [Volume 0 ch 3 §3.4](../foundation/03-eight-terms-and-clo
 
 **implementation model** — a model of an organization's actual
 operations, a digital twin of reality; speaks for the organization;
-related to *reference models* only by *mapping*. ◐ (the platform
-workflow is one, today unnamed)
+related to *reference models* only by *mapping*. ● (the platform
+workflow is one, re-homed in `data/core/` and mapped via
+`platform-to-oiml-cs.prm` — phase 7; the per-lab implementation
+packages are peers — `data/lab-mtl-rhein/`)
 
 **import** — structural inclusion of one model inside another (`uses`
 composition), distinct from *mapping*: "my model contains yours" vs "my
 process fulfils your requirement". An *integrated management system*
 both imports its components and maps to its standards — confusing the
-two is how compliance gets double-counted. ◐ (v2 `includes` exists; v3
-formalizes the import/mapping distinction, Volume I, Chapter 5 §5.6)
+two is how compliance gets double-counted. ● (`uses` composition
+shipped, task 05 — C27–C31; the import/mapping distinction is Volume
+I, Chapter 5 §5.6)
 
 **instance** — a subject at the instance level realizing a
 definition-level subject (a *Sample* is an instance of a *Model*):
@@ -224,13 +238,15 @@ covering several management domains at once (quality, security,
 environment…): it *imports* its component operations (QMS, ISMS) and
 *maps* to several *reference models* (ISO 9001, ISO 27001) — the
 canonical case of import ≠ mapping and *multi-target mapping* (Volume I,
-Chapter 5 §5.6). ○
+Chapter 5 §5.6). ○ (no IMS model ships; the machinery it would use —
+`uses` imports, per-target map sets, the coverage calculus — is ●)
 
 **intermediate model** — a model sitting between the ends of a mapping
 chain: a fulfiller toward the layers above and a reference for the
 layers below (a sector scheme, a corporate policy manual, a *product
 reference model*). Compliance flows through it hop by hop, only via
-shared mapped components. ○
+shared mapped components. ● (the *product reference model* is the
+running instance — task 36)
 
 **IS–HAS–DOES Modelling System** — the formal foundation of every
 model in this tree: eight terms (`is`, `has`, `does`, `value`,
@@ -260,18 +276,19 @@ model*: the deployed instance serves a *live twin* integrated directly
 into the user's *implementation model* — served aspects feed the user's
 registers, operational state gates the user's processes, *promises* are
 monitored; *evidence* by reference with timestamps and version pins,
-never by copy. ○
+never by copy. ● (task 36 — the quarry's live mode)
 
 **live passport** — the continuous mode of the *model-native passport*:
 the same identity and composition plus live compliance status computed
 by the engine — what market surveillance reads when it scans the
-product. ○
+product. ● (task 35)
 
 **live twin** — a subject *instance* whose anatomy is served: IS (its
 identity, which is also its passport, including the *endpoint*
 declaration), HAS (live values via *serve bindings* with *freshness*
 windows), DOES (remotely invocable processes); run by its *twin
-provider*, judged by *monitors*. ○
+provider*, judged by *monitors*. ● (tasks 32–37 — interface, gateway,
+monitor, passport, supply chain, pilot)
 
 **mapping** — the typed compliance relation between models: A ⇒ B
 (fulfilling A fulfils B), carrying description + justification; neither
@@ -298,7 +315,8 @@ criteria. ●
 generated from the model, served by the *endpoint*, verified through
 the engine — it cannot drift from the model because it *is* the model
 (EU ESPR / CEN-CENELEC JTC24); modes: *abstract passport*, *live
-passport*. ○
+passport*. ● (task 35 — the kernel `passport` construct, C86–C88, the
+public `/passport/:upi` page)
 
 **modality** — the obligation strength of a *provision*: shall / should
 / may (`obligation.yaml`; ISO/IEC Directives Part 2 Annex H); a failed
@@ -308,13 +326,15 @@ passport*. ○
 trigger (schedule / signal / change) → fetch → *freshness* check →
 evaluate the same OCL (INV-9) → *verdict* (pass / fail / indeterminate /
 invalid) → time-stamped *evidence* into the *workspace* → escalate on
-fail/invalid. ○
+fail/invalid. ● (task 34 — `model/monitors.yaml` + the scheduler over
+the verdict service, C65–C70)
 
 **multi-target mapping** — one *implementation model* mapped to
 several *reference models* (`mapSet` is per target namespace), with
 coverage computed per target; a single process may fulfil provisions in
 several standards at once — the economy of integrated systems, proved
-rather than asserted. ● (serialization) / ○ (calculus)
+rather than asserted. ● (serialization + calculus — the platform maps
+to PD-05 and the CASCO resource clusters in one audit view)
 
 **object** — the bearer of claims in the foundational algebra: anything
 IS can individuate — physical or abstract. Kinds are objects (Closure
@@ -324,7 +344,8 @@ Canonical definition: [Volume 0 ch 3 §3.3](../foundation/03-eight-terms-and-clo
 **operational state** — the subject's own state machine (HAS): off →
 warming → ready → measuring → fault; transitions fired by DOES
 processes; tests gate on state via *preconditions*. Distinct from the
-lifecycle state of process artifacts (application, report, certificate). ○
+lifecycle state of process artifacts (application, report, certificate).
+● (task 07 — the kernel construct; the simulated bench exercises it)
 
 **package** — the unit of model authoring and distribution: a manifest
 plus modules composed by *uses*; on disk, `.prl` files. ●
@@ -348,7 +369,8 @@ Canonical definition: [Volume 0 ch 3 §3.6](../foundation/03-eight-terms-and-clo
 (the full IS / HAS / DOES anatomy), every aspect *mapped* to the
 Recommendation: the conformance claim made computable; the certificate
 carries its *promises*-as-verified; consumed by *abstract import* or
-*live integration*. ○
+*live integration*. ● (task 36 — `kind product_reference`, the ACME
+LC-500 package, C81–C83)
 
 **property** — the slot in the *HAS* relation: the dimension along
 which an object can vary. Defined once (an *AttributeDefinition* —
@@ -358,7 +380,8 @@ Canonical definition: [Volume 0 ch 3 §3.4](../foundation/03-eight-terms-and-clo
 **promise** — a manufacturer *claim on a characteristic or behavior*
 (IS): possibly envelope-shaped or conditional; cites no regulator — the
 manufacturer binds itself, evaluation verifies, the certificate prints
-promises-as-verified. ◐ (today only parameter-valued claims)
+promises-as-verified. ● (task 08 — envelope-shaped claims with
+`verified_by` + the certificate print projection, C42–C44)
 
 **provenance (clause / fragment)** — the pedigree of an element: clause
 level (`source: { doc, clause }` URNs, ●) and fragment level (binding to
@@ -439,12 +462,12 @@ members — never roles, never invariant prose. ●
 **serve binding** — the HAS-level binding from an aspect to an
 *endpoint* operation, carrying its *freshness* window (`serve
 sample.indication via get_indication { fresh_within 5s }`); a live
-binding without freshness is an error. ○
+binding without freshness is an error. ● (task 32 — C63)
 
 **spelling code (ISO 24229)** — the writing-system / conversion-system
 code (composed from ISO 639 language + ISO 15924 script, resolvable to
 concrete rules) carried by every human-readable string in v3
-multilinguality; BCP 47 is not used. ○
+multilinguality; BCP 47 is not used. ● (task 25 — Volume I, chapter 10)
 
 **subject** — the entity the standard governs, modelled with the
 complete IS / HAS / DOES anatomy; the center of the primary *tier*. ●
@@ -454,7 +477,8 @@ the definition/instance ladder of the measuring-instrument subject. ●
 
 **supplement** — a typed informative attachment to a *provision* (note /
 example / figure / commentary), each element marked normative or
-informative — per the IEC-ISO ProvisionSupplement taxonomy. ○
+informative — per the IEC-ISO ProvisionSupplement taxonomy. ● (the
+notes registries + the `.prd` fragments' normativity marks)
 
 **tertiary tier** — the *tier* of execution and judgment over secondary
 × primary instances: runs and *evidence*, *verdicts*, evaluations,
@@ -475,13 +499,14 @@ Cross-cutting); dependencies point only upward. ●
 
 **twin provider** — the party running a *live twin* and its *endpoint*
 (the manufacturer, or the owner-operator of the deployed unit); speaks
-for the product, counterpart to the *engine operator*. ○
+for the product, counterpart to the *engine operator*. ● (the pilot's
+demo provider process — task 37)
 
 **uses composition** — multi-package composition (`uses: [core,
 module-a, …]`): topologically merged, id-space references, no
 redefinition of upstream ids; single-string `extends` is insufficient —
 an implementation package *maps* to reference packages it does not
-extend. ○ (v2 uses `extends`)
+extend. ● (task 05 — C27–C31; `extends` retired to v2 history)
 
 **value** — the content filling a *property* slot: a
 *QuantityValue*, a string, a condition entry, a verdict outcome — or a
@@ -505,6 +530,7 @@ a shallower one: a filtered view (a view profile with no provisions of
 its own) or a deliberate lens model in the chain; shows a selection of
 elements with their coverage against the lens's reference (e.g. the IMS
 through the QMS lens). Never mutates the model or its *mappings*. ○
+(no view-profile construct ships; the coverage it would display is ●)
 
 **vocabulary register** — a glossarist term register (viml-2022 =
 OIML V 1:2022, vim-2012 = VIM): layer 0 of the architecture; terms

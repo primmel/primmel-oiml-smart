@@ -164,8 +164,9 @@ Six mechanisms were taken, each re-homed onto the executable frame:
    only, and the ontology inherits BCP 47 from RDF. The frame extends
    the vocabulary registers' existing `spelling:` practice to *all*
    prose: one content set, per-string spelling codes composed from
-   ISO 639 + ISO 15924. ◐ in progress (task 25, un-deferred 2026-07-26 —
-   machinery landing, translations explicitly out of scope).
+   ISO 639 + ISO 15924. ● (task 25, 2026-07-26 — the machinery plus the
+   English-first migration of every tree, with the byte-identical-English
+   acceptance; translations remain out of scope — Volume I, chapter 10).
 3. **Interop projections** — ReqIF export for RM-tool ecosystems (where
    manufacturers and labs already work) and an RDF/OWL + SHACL
    projection onto the Core Ontology vocabulary for linked-data

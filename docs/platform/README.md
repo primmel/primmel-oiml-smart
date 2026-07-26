@@ -191,6 +191,8 @@ escalation records and connector health against a demo deployment
 drives pass ⇒ drift-fail + escalation ⇒ outage-indeterminate end to
 end.
 
+![The Annex-B runtime: connectors serve model registers, the monitor rides the same verdict engine, evidence streams accrue](diagrams/platform-runtime.svg)
+
 ## B.6 Consoles and the public register
 
 The role model (`browser/src/auth/roles.ts`, session via
@@ -259,9 +261,10 @@ gone. The load-bearing facts (`docs/architecture.md` §14):
 
 Every claim above is kept true by gates that must stay green
 (`docs/architecture.md` §15 and the repo's `AGENTS.md`; status as of
-merge `6a9484b`, 2026-07-26: vitest **3514/3514**, validate **0 errors
-/ 435 warnings**, e2e **54/54**, `test:ssot` **byte-clean**, pilot
-**6/6**):
+merges `8de8f4d` + `8ef2752`, 2026-07-26/27: vitest **3556/3556**,
+validate **0 errors / 435 warnings**, e2e **55/55** — the ISO 24229
+render-baseline leg (task 25) is the 55th — `test:ssot` **byte-clean**,
+pilot **6/6**):
 
 ```text
 cd browser && npx vue-tsc --noEmit     # type check (islands + vue-pages)
@@ -280,7 +283,7 @@ bin/check                              # repo gate wrapper (vue-tsc + astro chec
 `npm run validate` (`browser/scripts/validate.ts`) is the model gate:
 (1) YAML sources against the JSON Schemas in `data/schemas/`; (2)
 semantic rules — the model linker (`browser/build/model-linker.ts`,
-rules R1–R42) statically resolves every cross-reference in a package
+rules R1–R43) statically resolves every cross-reference in a package
 (OCL identifiers, bind roots, applicability keys, symbol links, IRDI,
 gateway and checklist refs); known-bad sites live in
 `data/<id>/linker-allowlist.yaml` with clause-referenced reasons and go
