@@ -125,20 +125,56 @@ checked IRDI is citable in an international dictionary rather than
 invented per package — the same "defined once, referenced everywhere"
 discipline the kernel applies internally, extended across organizations.
 
-## 12.5 The passport projection — endpoint and DPP-registry feed (○)
+## 12.5 The passport projection — endpoint and DPP-registry feed (●)
 
-The twin direction's outward faces belong to this family. The **passport
-endpoint** serves the product's model-native passport (chapter 14,
-§14.6) — identity, composition, as-certified claims, and live compliance
-status under authority scopes — and the **DPP-registry feed** emits the
-same projection to the EU registry, addressed by unique identifier. Both
-are projections in this chapter's exact sense: generated from the
-product model, regenerated on every build, never authored, never
-re-imported. And both are honestly lossy: the registry receives the
-public fragment, while the executable product model and its evidence
-stay behind in the kernel. What ReqIF is to the RM-tool ecosystem, the
-passport feed is to the DPP ecosystem — the lossy-but-useful face the
-outside world actually consumes.
+The twin direction's outward faces belong to this family — and they are
+shipped (task 35, ● smart 244ea47). The **passport endpoint** serves
+the product's model-native passport (chapter 14, §14.6) — identity,
+composition, as-certified claims, and live compliance status under
+fail-closed access classes — and the **DPP-registry feed** emits the
+one-way outward projection to the EU registry, addressed by unique
+identifier. Both are projections in this chapter's exact sense:
+generated from the product model, regenerated on every build, never
+authored, never re-imported. And both are honestly lossy: the registry
+receives the public fragment, while the executable product model and
+its evidence stay behind in the kernel. What ReqIF is to the RM-tool
+ecosystem, the passport feed is to the DPP ecosystem — the
+lossy-but-useful face the outside world actually consumes.
+
+The shipped surface, each piece linted:
+
+- **The kernel `passport` construct** — a first-class declaration on
+  the product model: `upi { pattern … level … }` (ESPR model/batch/item
+  levels), the `carrier` facet (the QR payload resolves to the passport
+  endpoint URL), and the content classes — the ACME LC-500 pilot
+  declares `public { identity composition promises_as_verified }` and
+  `authority { live_compliance_status }`, with `artifacts` and
+  `sustainability` deliberately absent (nothing honest behind them
+  yet). Kernel-linted by the catalog trio: **C86
+  passport-content-resolves** (every content entry resolves against the
+  product model), **C87 passport-access-leak** (nothing restricted
+  leaks into a less-privileged class), **C88 passport-upi-scheme** (the
+  UPI pattern and level are well-formed).
+- **The projection engine** (`browser/src/data/passport.ts`) —
+  `buildPassportDocument` (abstract mode pins a version; live mode
+  requires the computed verdict-stream read — never fabricated) and
+  `projectPassportDocument` (the access-class enforcement point: public
+  output carries only public entries — fail-closed).
+- **The serving** — `GET /passport/<upi>.json?class=public|restricted|
+  authority` (the resolver) and the public rendered view at
+  `/passport/<upi>` (the authority class: the public content plus live
+  compliance status).
+- **The registry feed** — `GET /passport/registry.json`: the one-way
+  outward projection (identifiers + locators), deliberately a **stub**:
+  no authentication, no push protocol — the shape is shipped, the
+  registry integration is the honest ○ remainder.
+
+The alignment with CEN/CENELEC JTC24's eight areas is itself authored
+data, not a prose claim: `data/r60/evaluation/r60-to-dpp.prm` maps the
+R 60 content onto the areas on the existing `.prm` primitive, gated by
+the coverage calculus — an area neither mapped nor named is a silent
+gap and fails the gate (the record: `docs/dpp-jtc24-alignment.md` in
+the platform repo).
 
 ## 12.6 Grammar sketch *(illustrative v3 syntax)*
 
