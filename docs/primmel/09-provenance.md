@@ -1,9 +1,9 @@
 # Chapter 9 — Provenance and Documents
 
 > *In this chapter:* the two-level provenance system — clause references
-> that exist today and fragment addresses that v3 adds — the `.prd`
-> document artifact, model↔document maps, and the reconstruction loop
-> that proves a model still says what its source says.
+> and fragment addresses, both shipped — the `.prd` document artifact,
+> model↔document maps, and the reconstruction loop that proves a model
+> still says what its source says.
 
 ---
 
@@ -31,7 +31,8 @@ The running system already enforces the discipline: the OIML R 60
 package declares its source collection in `data/r60/standard.yaml`
 (`source: { collection: sources/r060/collection.yml, primmel:
 primmel-packages/oiml-r60 }`), and every requirement carries its clause
-reference. What v3 adds is the second, finer level.
+reference. The second, finer level — fragment provenance — shipped with
+v3 (task 24, ● smart 83be1e6).
 
 ## 9.2 Level 1 — clause provenance (● today)
 
@@ -94,12 +95,14 @@ clause* — not *which sentence* — and it cannot support reconstruction,
 because a clause is not addressable at the granularity a model element
 actually interprets.
 
-## 9.3 Level 2 — fragments and the `.prd` artifact (○ v3)
+## 9.3 Level 2 — fragments and the `.prd` artifact (● — shipped, task 24)
 
 The fine level decomposes each source document into **addressable
 fragments**, published as a **`.prd` file** — the Primmel Document, the
-v2 artifact kind carried into v3 as the successor of the Demo `.sdc`
-seed. A fragment is:
+formal successor of the Demo `.sdc` seed. The R 60 package ships one
+extract per part (`data/r60/sources-prd/r60-{1,2,3}.prd.yaml`, schema
+`data/schemas/prd.yaml` — regenerable from `sources/r060/`, never
+hand-edited). A fragment is:
 
 - **addressable** — it has a stable address composed from the document
   URN plus a fragment path: `urn:oiml:pub:r:60-1:2021#clause-5.2/s2`
@@ -111,15 +114,20 @@ seed. A fragment is:
 - **text-bearing** — it carries the source text verbatim, because text
   identity is what the congruence check compares.
 
-Model elements then bind **fragment addresses**, not just clause URNs.
-The clause URN remains as the coarse, human-legible citation; the
-fragment address is the machine-checkable one. A requirement's
+Model elements then bind **fragment addresses**, not just clause URNs —
+the map form `source: { doc, clause, fragment? }` on provisions,
+attributes and requirements, beside the URN-string forms. The clause
+URN remains as the coarse, human-legible citation; the fragment address
+is the machine-checkable one, and linker rule **R27
+`fragment-references`** resolves every binding against the cited
+document's `.prd` extract (bindings citing documents with no loaded
+extract — external vocabularies — are skipped). A requirement's
 provenance answers "R 60-1, 5.2, second sentence" — and a reviewer no
 longer has to guess which of the clause's five sentences the `limit`
 expression interprets. The twin direction reuses the machinery one
 level over: the passport's **unique identifier** is the same kind of
 address — the public, fragment-level identity of the *product*, the one
-a buyer or a DPP registry resolves (○ — chapter 14, §14.6).
+a buyer or a DPP registry resolves (● — chapter 14, §14.6).
 
 ## 9.4 Model↔document maps
 
@@ -164,9 +172,30 @@ remarkable property: **the document is a view of the model, and the view
 is provably complete.** This is the precise sense in which "the model is
 the source of truth" (design principle 1) stops being a slogan — the
 published document can be regenerated, and the regeneration is checked.
-Reconstruction is ○ in v3; the congruence axes are already the shape of
-the text-coverage audit the linter performs structurally today
-(chapter 11).
+
+Reconstruction is **shipped and gated** (● smart 83be1e6, task 24). The
+congruence gate (`browser/build/prd-congruence.ts`, validate §1g) runs
+the three axes over the real corpus on every build, and its census is
+test-pinned (`prd-congruence.test.ts`):
+
+| Document | Normative fragments | Bound | Documented named gaps |
+|---|---|---|---|
+| R 60-1:2021 | 139 | 132 | 7 |
+| R 60-2:2021 | 151 | 142 | 9 |
+| R 60-3:2021 | 291 | 275 | 16 |
+
+Every normative fragment is bound by ≥1 model element or carries a
+documented named gap; the unbound-model-text axis is live and empty —
+every requirement carries a provenance binding. The gate is
+**mutation-proven**: seeded coverage gaps, order inversions, text
+mismatches, and stale named gaps each fail it in the test kit. The
+sentence layer on the same extracts (task 26, ● smart d08e614) refines
+the census: **274/293 normative sentences bound (93.5 %)**, 19
+discharged by sentence-pinned allowance, 0 unresolved duplicates, and a
+gated ratio of **100 % per part** (R 60-1 150/154 covered + 4 allowed,
+R 60-2 111/118 + 7, R 60-3 13/21 + 8 — the release evidence block is
+`analysis/release-coverage-summary.txt`). Chapter 11's text-coverage
+metric is the linter's consolidation of the same discipline.
 
 ## 9.6 References, links, notes, figures
 
@@ -247,13 +276,15 @@ discrepancy_record pd-02-vs-od-01-expert-review-cycle {
 - every content element carries a clause reference; every clause
   reference resolves against the references registry (● linker);
 - every fragment address resolves to a declared fragment in the cited
-  `.prd` document; fragment addresses are unique per document;
+  `.prd` document (● linker rule R27 `fragment-references`); fragment
+  addresses are unique per document;
 - a `.prm` provenance map's endpoints both resolve — the model element
   and the fragment — and its direction is model → document, never the
   reverse;
 - the reconstruction stream covers every normative fragment of the
   source; a coverage gap, an order inversion, or a text mismatch fails
-  the congruence check;
+  the congruence check (● validate §1g — mutation-proven in
+  `prd-congruence.test.ts`);
 - a `source_discrepancy` record names at least two conflicting sources
   and an explicit resolution; the linker's `source-discrepancy` rule
   verifies both citations resolve;
@@ -270,13 +301,17 @@ discrepancy_record pd-02-vs-od-01-expert-review-cycle {
 - Level 1 (● today): clause URNs on every element, a references
   registry, source-discrepancy records on nodes and `discrepancy_record`
   at the corpus level, a pinned source collection.
-- Level 2 (○ v3): `.prd` fragments — addressable, typed,
-  normativity-marked, text-bearing — bound from model elements.
+- Level 2 (● task 24): `.prd` fragments — addressable, typed,
+  normativity-marked, text-bearing — bound from model elements and
+  resolved by linker rule R27.
 - Model↔document relations are `.prm` maps: description + justification,
   versioned independently of both endpoints.
 - Reconstruction emits the ordered fragment stream; congruence =
-  coverage + order + text identity. A congruent package regenerates its
-  document as a checked view.
+  coverage + order + text identity — shipped and gated (● validate §1g):
+  R 60's 581 normative fragments all bound or named-gap, 274/293
+  normative sentences bound (93.5 %, 19 allowances, 0 unresolved
+  duplicates), gated ratio 100 % per part. A congruent package
+  regenerates its document as a checked view.
 
 *Next: [Chapter 10 — Multilinguality](10-multilingual.md): ISO 24229
 spelling codes on every human-readable string.*
