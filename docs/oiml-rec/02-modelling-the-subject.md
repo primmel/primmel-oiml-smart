@@ -267,6 +267,59 @@ The three wiring lists are the capability's anchor set:
 `verified_by_tests` bind the secondary ids of chapters 3–4. The linker
 verifies every one resolves.
 
+**The decomposition carries obligations, not just mixins.** The shipped
+graph (● `primmel-packages/oiml-r60/model/capabilities.prl`) is
+`strain-gauge { requires load-cell }`; `electronic { abstract,
+satisfies_requirements /req/electronic/no-significant-faults
+/req/electronic/disturbances, verified_by_tests the six electronic
+procedures }`; `analogue-active` and `digital` each
+`extends { electronic }` + `requires { load-cell electronic }`; the base
+`load-cell` satisfies the metrological requirement set. A model
+declaring `digital` thereby *owes* the electronic requirements — the
+capability is the taxonomy's contract, not a tag. One deliberate
+residual: nothing today *entails* capability from classification —
+`technology: digital` (the dimension) does not automatically bind the
+`digital` capability; the entailment rule is recorded as an optional
+follow-up (Response 3 item 7, "62-lite"), not smuggled in.
+
+**Capability construction parameters (phase 9.5) ●.** Two parameter
+sets landed on the capability side (Response 4 items 1–2, smart
+4a9b5db), both declared with the honesty pattern rather than fabricated
+provenance:
+
+- `gauge_type` / `bridge_type` on `strain-gauge` — the sensing-element
+  construction classification: `gauge_type ∈ { bonded-foil,
+  semiconductor, thin-film, other }`, `bridge_type ∈ {
+  wheatstone-full-bridge, half-bridge, quarter-bridge }`; `origin:
+  design-fixed`, `scope: family`, `category: construction`. R 60 does
+  not enumerate gauge constructions (R 60-1, 3.2 / R 60-2, 2.7
+  territory — the construction determines the output characteristics),
+  so the enums are **engineering vocabulary, marked as such on the
+  definition** — the register-initials ENGINEERING-DEFAULT honesty
+  pattern: no clause anchor, no pretense of one.
+- `signal_bandwidth` on `analogue-active` and `digital` (the two
+  *concrete* electronics capabilities — the analog front-end exists in
+  both; the abstract `electronic` stays parameter-free) — the analog
+  bandwidth of the signal-conditioning path, `quantity_kind: frequency`,
+  `scope: model`, `category: electrical`. Again honestly marked: R 60 is
+  a quasi-static instrument standard and no bandwidth test exists (the
+  5.7.2 / 2.10.7 citations are implicit), so the parameter is an
+  engineering characteristic of the conditioning path, not a disguised
+  requirement.
+- **Declined: `excitation_voltage`.** The contribution was refused as a
+  duplicate — `recommended_excitation` already carries exactly the
+  concept ("Recommended excitation voltage range (AC or DC) for the
+  load cell", R 60-1, 3.4.2, `scope: family`). Two ids for one quantity
+  is the fork-the-truth anti-pattern of §2.6; a consumer needing the
+  other name aliases `excitation_voltage → recommended_excitation` in
+  its own projection, at zero cost.
+
+The pattern generalizes: when a Recommendation is silent on a parameter
+the model genuinely needs, declare it with an explicit `note` saying the
+vocabulary or value is an engineering default — and decline parameters
+that duplicate an existing definition. The attribute registry stays
+complete *and* honest; nothing wears a clause anchor it did not earn.
+
 ## 2.9 Behaviors
 
 Behaviors are the subject's DOES face at authoring time: the response
@@ -514,9 +567,14 @@ The schema, linker, and coverage audit enforce:
   category, irdi); derived attributes carry OCL. Add one only when a
   requirement, form, calculation, or certificate demands it.
 - Capabilities are mixins — base first, then `extends`/`requires` —
-  making a new variant an additive edit. Behaviors are declared with
-  `verified_by` links, or deliberately without. Conditions come in the
-  three designed tiers plus shared test conditions.
+  making a new variant an additive edit; the shipped graph carries
+  obligations (`satisfies_requirements`, `verified_by_tests`), not just
+  tags. Construction parameters (`gauge_type`/`bridge_type`,
+  `signal_bandwidth`) declare engineering vocabulary honestly — marked,
+  never clause-dressed; duplicates of existing attributes are declined.
+  Behaviors are declared with `verified_by` links, or deliberately
+  without. Conditions come in the three designed tiers plus shared test
+  conditions.
 - The HAS inventory is complete before the secondary models start:
   identity slots (`identity.yaml`) for the documentary identity, aspects
   (`aspects.yaml`) for the qualitative facets — derived by auditing every

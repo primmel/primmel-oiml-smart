@@ -309,5 +309,8 @@ Recommendations authored Primmel-native only ○).
   and the API gateway, binding external sources to model registers with
   freshness semantics (§B.5.1).
 
-*Next: [Shared — Glossary](../shared/glossary.md): every term of the
-frame, one definition each.*
+*Next: [Simulated Instruments](02-simulated-instruments.md) — the
+wind tunnel: a physics-core load cell whose `/twin` channel lets the
+certification loop run against behavioral truth; then
+[Shared — Glossary](../shared/glossary.md): every term of
+the frame, one definition each.*

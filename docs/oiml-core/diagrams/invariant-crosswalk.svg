@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" font-family="ui-sans-serif, system-ui, sans-serif">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="arrX" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4f46e5"/>
+    </marker>
+    <marker id="arrXg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The invariant crosswalk — every law names its machinery</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">R38 invariant-crosswalk: name · statement · severity · ≥1 resolving enforcement claim — or the explicit aspirational marker.</text>
+
+  <!-- Registry card -->
+  <rect x="60" y="86" width="300" height="240" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="76" y="110" font-size="13" font-weight="700" fill="#3730a3">The INV registry (shipped data)</text>
+  <text x="76" y="128" font-size="10.5" fill="#4f46e5">oiml-smart-core/specification/invariants.prl — INV-1..10</text>
+
+  <rect x="76" y="142" width="268" height="168" rx="8" fill="#ffffff" stroke="#a5b4fc" stroke-width="1.2"/>
+  <text x="88" y="162" font-size="11" font-weight="700" fill="#1e293b" font-family="ui-monospace, monospace">note INV-1 {</text>
+  <text x="100" y="180" font-size="10" fill="#475569" font-family="ui-monospace, monospace">type NOTE</text>
+  <text x="100" y="198" font-size="10" fill="#475569" font-family="ui-monospace, monospace">message "No bare numbers…</text>
+  <text x="100" y="216" font-size="10" fill="#475569" font-family="ui-monospace, monospace">  | severity: error</text>
+  <text x="100" y="234" font-size="10" fill="#475569" font-family="ui-monospace, monospace">  | applies_to: QuantityValue</text>
+  <text x="100" y="252" font-size="10" fill="#475569" font-family="ui-monospace, monospace">  | source: 09-invariants.md#9.2</text>
+  <text x="100" y="270" font-size="10" font-weight="700" fill="#3730a3" font-family="ui-monospace, monospace">  | enforcement: kernel:C32, …"</text>
+  <text x="88" y="292" font-size="11" font-weight="700" fill="#1e293b" font-family="ui-monospace, monospace">}</text>
+
+  <!-- Namespaces -->
+  <rect x="430" y="86" width="410" height="76" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <text x="446" y="108" font-size="12" font-weight="700" fill="#1e293b">kernel:C‹n› — the primmel check catalog</text>
+  <text x="446" y="126" font-size="10.5" fill="#475569">C1 attribute-bind-scope · C17 instance-scope · C18 instance-version-pin</text>
+  <text x="446" y="144" font-size="10.5" fill="#475569">C32/C33 quantities · C34 duality · C84 constraint-shape · C80 edition-pin</text>
+
+  <rect x="430" y="176" width="410" height="76" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <text x="446" y="198" font-size="12" font-weight="700" fill="#1e293b">linker:‹rule› — the model-linker catalog</text>
+  <text x="446" y="216" font-size="10.5" fill="#475569">ocl-identifiers · requirement-targeting · bind-paths · quantity-coherence</text>
+  <text x="446" y="234" font-size="10.5" fill="#475569">requirement-binding-targets · verdict-no-shadow · constraint-references</text>
+
+  <rect x="430" y="266" width="410" height="90" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <text x="446" y="288" font-size="12" font-weight="700" fill="#1e293b">gate:‹name› — the platform-gate registry</text>
+  <text x="446" y="306" font-size="10.5" fill="#475569">schema-quantity-value · codegen-entity-types · verdict-chain ·</text>
+  <text x="446" y="324" font-size="10.5" fill="#475569">verdict-reexecution · ocl-single-engine · instance-delegation · …</text>
+  <text x="446" y="344" font-size="10" font-weight="700" fill="#b45309">each registered with an evidence path that must exist</text>
+
+  <!-- arrows registry -> namespaces -->
+  <g stroke="#4f46e5" stroke-width="1.8" fill="none">
+    <line x1="360" y1="124" x2="426" y2="124" marker-end="url(#arrX)"/>
+    <line x1="360" y1="206" x2="426" y2="214" marker-end="url(#arrX)"/>
+    <line x1="360" y1="300" x2="426" y2="306" marker-end="url(#arrX)"/>
+  </g>
+  <text x="393" y="112" font-size="9.5" fill="#4f46e5" text-anchor="middle">claims</text>
+  <text x="393" y="200" font-size="9.5" fill="#4f46e5" text-anchor="middle">resolve</text>
+
+  <!-- honesty rules -->
+  <rect x="60" y="388" width="370" height="86" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.6"/>
+  <text x="76" y="410" font-size="11.5" font-weight="700" fill="#7f1d1d">Errors — the crosswalk must be honest</text>
+  <text x="76" y="428" font-size="10.5" fill="#991b1b">no name / statement / severity</text>
+  <text x="76" y="444" font-size="10.5" fill="#991b1b">no claim and no aspirational marker (silently unenforced)</text>
+  <text x="76" y="460" font-size="10.5" fill="#991b1b">a claim naming machinery that does not exist, or a stale path</text>
+
+  <rect x="470" y="388" width="370" height="86" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+  <text x="486" y="410" font-size="11.5" font-weight="700" fill="#14532d">Honest by declaration</text>
+  <text x="486" y="428" font-size="10.5" fill="#166534">enforcement: aspirational — explicitly unenforced, never silent</text>
+  <text x="486" y="444" font-size="10.5" fill="#166534">kernel catalog absent ⇒ the kernel leg STUBS (one note, never</text>
+  <text x="486" y="460" font-size="10.5" fill="#166534">a failure — the R36 graceful-absence discipline)</text>
+
+  <!-- redundancy band -->
+  <rect x="60" y="498" width="780" height="40" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.2"/>
+  <text x="450" y="522" font-size="11.5" font-weight="600" fill="#78350f" text-anchor="middle">INV-1 is a schema shape, two kernel checks, and a linker rule at once — no law is enforced by one machine.</text>
+
+  <!-- bottom bar -->
+  <rect x="60" y="556" width="780" height="48" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="80" y="577" font-size="11.5" font-weight="600" fill="#0f172a">A law enforced in one place is one refactor away from folklore.</text>
+  <text x="80" y="594" font-size="11" fill="#475569">INV-11..14 (v0.6) ship with their kernel checks: anatomy C6 · characteristics C48 · duality C34 · state families C38.</text>
+</svg>

@@ -200,6 +200,32 @@ passport** — point-in-time, as-certified, for a buyer doing design-time
 integration — and the **live passport** — continuously verified, for a
 regulator watching the fleet.
 
+**Shipped (task 35, ● smart 244ea47).** The passport is no longer a
+design sketch. The kernel's `passport` construct declares it on the
+product model — `upi { pattern … level … }` (the ESPR model/batch/item
+levels), the `carrier` facet (the QR payload resolves to the passport
+endpoint URL), and per-class content classes — linted by the catalog
+trio **C86** content-resolves, **C87** access-leak, **C88** upi-scheme
+(chapter 11). The projection engine (`browser/src/data/passport.ts`)
+builds both modes — abstract pins a version; live *requires* the
+computed verdict-stream read, never a fabricated status — and projects
+per access class **fail-closed**: public output carries only public
+entries (C87 is the lint, the engine is the enforcement). Serving:
+`GET /passport/<upi>.json?class=public|restricted|authority` plus the
+public rendered view; the registry feed `GET /passport/registry.json`
+is the one-way outward projection, deliberately a stub (no auth, no
+push — §12.5). The ACME LC-500 pilot declares
+`public { identity composition promises_as_verified }` and
+`authority { live_compliance_status }` — `artifacts` and
+`sustainability` deliberately absent, nothing honest behind them yet —
+and its passport serves at `/passport/upi:acme:lc500` (the pilot,
+§14.9). And the JTC24 alignment above is not prose alone: the
+machine-checkable half is authored data — `data/r60/evaluation/
+r60-to-dpp.prm`, the R 60 → JTC24 mapping on the `.prm` primitive with
+the coverage gate (an area neither mapped nor named is a silent gap and
+fails) — with `docs/dpp-jtc24-alignment.md` in the platform repo as the
+human-readable record, kept current as JTC24 publishes.
+
 ## 14.7 The API gateway for implementation models
 
 The oldest piece of this story is 2021: the PAS 2060 plugin. An

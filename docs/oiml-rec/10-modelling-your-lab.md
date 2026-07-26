@@ -5,7 +5,9 @@
 > authors its own **implementation package**: its test SOPs as executable
 > processes, its equipment register with calibration evidence, its own
 > record forms, and a `.prm` mapping every step and record to the
-> Recommendation's required methods. The coverage calculus — not prose —
+> Recommendation's required methods — while its structured
+> **accreditation scope** answers, by cover calculus, which tests the lab
+> may be dispatched at all. The coverage calculus — not prose —
 > then answers *"is this lab's procedure a fulfilment of the method?"*
 > The worked example is the pilot: **MTL Rhein Ruhr**, a fictional but
 > complete Scheme-A load-cell laboratory mapped to R 60-2.
@@ -280,7 +282,54 @@ lab-mtl-rhein (data/lab-mtl-rhein/lab-to-r60-2.prm)
   Methods at full cover — 2/2 (/conf/metrological-tests/creep, /conf/electronic-tests/esd)
 ```
 
-## 10.8 The end-to-end flow
+## 10.8 The competence half: `accreditation_scope` and the cover calculus ●
+
+The `.prm` answers *"is the procedure a fulfilment?"*; a prior question
+is *"may this lab be dispatched the test at all?"* The test side
+declares its demands (`required_competence`, §4.13); the laboratory
+side declares its **structured scope of accreditation** (task 48, ● —
+ISO/IEC 17025 §6.4/§6.6, OIML-CS PD-05 §5.3):
+
+![The competence cover](diagrams/competence-cover.svg)
+
+Every TestLaboratory carries `accreditation_scope:` entries in the same
+shape as the test's requirements — `{ kind, range?, method_standard?,
+resolution?, stability? }`, with number-only ranges (the parameter-bound
+form exists only test-side, resolved against the dispatch context). Two
+neighboring concepts stay in their own homes: the accreditation **record**
+(body, certificate number, validity) rides the existing `accreditation:`
+helper (`Accreditation.body/number/expiry_date`), and the flat
+`capabilities:` strings stay the construction-fixture / operational
+vocabulary — the scope supersedes them *for competence matching only*.
+
+The **cover calculus has one home** (`browser/src/data/competence.ts`,
+pure):
+
+- `covers(scopeEntry, required)` — kind equal; range covers;
+  method_standard equal-or-compatible; resolution/stability
+  at-least-as-good (the lab's number ≤ the required bound);
+- `coverTest` — every required entry of the test covered by the scope;
+- `planDispatch` — over the candidate labs in **caller order** (the
+  IA's preference ranking): the first covering lab wins, and a refusal
+  is **explicit, with the uncovered entries named** — never a silent
+  assignment. A lab that cannot cover the programme's tests is not a
+  worse choice; it is *ineligible*, and the record says why
+  (`lab-selection.service.ts`, the `coverage:` ranking). This is the
+  same doctrine as the admissibility gate and the issuance gate:
+  eligibility is computed, and a negative answer names its reason.
+
+Scopes are **substantiated, never copied**: the seeded scopes (the MTL
+990 register and lab-mtl-rhein) reference the per-lab registers via
+`equipment_refs` / `personnel_refs` — the scope entry says *which*
+equipment and personnel stand behind it, by id, and the registers stay
+the single home of the calibration and qualification facts. The
+multi-lab reality is proven, not asserted:
+`competence-dispatch.test.ts` dispatches the R 60 programme MTL-first
+and watches EMC, power-variation, barometric and software examinations
+spill to the NMI whose scope covers them — the preference ranking
+deciding only among labs that *can*.
+
+## 10.9 The end-to-end flow
 
 Coverage answers *"is the procedure a fulfilment?"*; the flow test
 (`browser/src/__tests__/lab-implementation.test.ts`) answers *"does the
@@ -296,7 +345,7 @@ SOP produce the required evidence?"* — by **executing** the SOP model:
 4. every executed step must be a mapping source — the fulfilment chain
    is complete end to end.
 
-## 10.9 Authoring your own lab — the moves
+## 10.10 Authoring your own lab — the moves
 
 1. **Inventory the methods.** Pick the `/conf/*` methods your lab is
    accredited for; they are the `maps_to` list.
@@ -336,7 +385,15 @@ its own documented pair. (Scoping shared targets per method root inside
 one package is the calculus's planned generalization — until then the
 gate keeps the sharing impossible.)
 
-## 10.10 Validation rules (summary)
+## 10.11 Validation rules (summary)
+
+- every `accreditation_scope` entry names a competence-kind-registry
+  kind with resolvable method standards and number-only ranges; every
+  `equipment_refs` / `personnel_refs` entry resolves against the lab's
+  registers (R29 checks every seeded dispatch assignment for cover);
+- dispatch is cover-gated: a lab not covering a test's
+  `required_competence` is ineligible for it, and a `planDispatch`
+  refusal names the uncovered entries — never a silent assignment;
 
 - an implementation package declares `kind: implementation` and a
   `maps_to` method list; unmapped declared methods fail the gate;

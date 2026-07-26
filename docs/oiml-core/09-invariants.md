@@ -2,7 +2,8 @@
 
 > *In this chapter:* INV-1..10 — the metamodel's laws, each with its statement,
 > the rot it prevents, the enforcing check, and the R 60 evidence; then the
-> candidates the frame adds.
+> shipped registry with its enforcement crosswalk (R38), the v0.6 additions
+> INV-11..14, and the twin-direction candidates the frame adds.
 
 ---
 
@@ -15,10 +16,13 @@ not confusing them: a **requirement** judges an instrument (Module D1); a
 itself.
 
 Invariants exist because each was learned from a failure mode: a model that
-violated it once, and rotted. Declared at the head of the metamodel
-(`ontology-remix/OIML Core Models/Ontology/oiml-core-ontology.yaml` —
-invariants), they are enforced by the schema validators, the model linker, and
-the code generators — not by reviewer vigilance. Each entry gives the statement
+violated it once, and rotted. They have two homes, one truth: declared at the
+head of the metamodel (`ontology-remix/OIML Core Models/Ontology/
+oiml-core-ontology.yaml` — invariants, INV-1..14 as of v0.6) and registered as
+first-class typed data in the core package (`primmel-packages/oiml-smart-core/
+specification/invariants.prl`, INV-1..10 — §9.12). They are enforced by the
+schema validators, the model linker, the kernel checks, and the code
+generators — not by reviewer vigilance. Each entry below gives the statement
 verbatim, the rationale, the check, and the R 60 example.
 
 ## 9.2 INV-1 — No bare numbers
@@ -224,75 +228,177 @@ in `test_context`, "values under test, never inherited downward"
 `d_max`, `v`, `n` sample test_context. Ask a sample for `E_max` and you receive
 its model's value — by delegation, not by copy.
 
-## 9.12 Candidate invariants ○
+## 9.12 The shipped registry and the enforcement crosswalk ●
 
-The Subject-centered frame (Volume I, chapter 2) states three further laws the
-running system honours only implicitly:
+Sections 9.2–9.11 are the normative prose. Phase 9 (task 57, ● smart
+f51c5a9) gave the laws their second home: the core package ships INV-1..10
+as **first-class typed data** —
+`primmel-packages/oiml-smart-core/specification/invariants.prl`, authored
+with the kernel's note-family construct:
 
-- **INV-11 ○ — Characteristics have one home.** Every characteristic (error,
-  repeatability, creep) is *defined* in the primary model (symbol + derivation
-  from behavior I/O) and *referenced* everywhere else: claimed by promises,
-  limited by requirements, computed by tests, judged by verdicts. Today they
-  live specification-side as observables/VerdictQuantities ◐; the frame hoists
-  them.
-- **INV-12 ○ — Duality coherence.** Every designed/exhibited pair — designed
-  operating conditions vs actual environmental context, a design parameter vs
-  its exhibited realization — shares one value structure: unit coherence
-  between the designed tier and the actual log is checked, not assumed;
-  `ConditionRole` already encodes the roles.
-- **INV-13 ○ — The anatomy is total.** Every aspect of every subject anchors
-  under exactly one of IS, HAS, DOES: a declaration in the wrong family is an
-  error, and an aspect in no family is unmodelled.
+```prl
+note INV-1 {
+  type NOTE
+  message "No bare numbers: every physical quantity is a QuantityValue
+           (value + unit [+ uncertainty]). | severity: error |
+           applies_to: QuantityValue |
+           source: docs/oiml-core/09-invariants.md#9.2 |
+           enforcement: kernel:C32, kernel:C33, linker:quantity-coherence,
+                        linker:pair-list-components, gate:schema-quantity-value"
+}
+```
 
-The twin direction (Volume I, Chapter 14) adds two more candidates, both
-arising the moment evidence is *served* rather than recorded:
+Each entry carries the canonical statement, a severity, the metamodel
+classes it applies to, a `source` pointer back to this chapter's
+normative section, and — the point of the registry — an **enforcement
+crosswalk**: the named checks that enforce it, or the explicit marker
+`aspirational`. What an invariant may *not* be is silently unenforced.
 
-- **INV-14 ○ — Freshness is semantics.** Every served value carries a
-  validity window; a stale value degrades the verdict to `indeterminate` —
-  never a silent pass, never a metrological fail. Nothing checks freshness
-  today because nothing is served yet; the law is stated now so that v3's
-  live bindings have something to answer to.
-- **INV-15 ○ — The firewall holds in streams.** Evidence streams carry facts
+Linker rule **R38 invariant-crosswalk** proves the crosswalk honest.
+Every claim must resolve against real machinery, in one of three
+namespaces:
+
+- `kernel:C<n>` — a `primmel check` rule of the C-catalog (chapter 11 of
+  Volume I); catalog absent ⇒ the kernel leg **stubs** — one
+  informational note, never a failure (the R36 graceful-absence
+  discipline);
+- `linker:<rule>` — a rule of the model linker's own catalog;
+- `gate:<name>` — a registered platform gate (schema, codegen, service,
+  or test-suite machinery), each registered **with a repo-relative
+  evidence path that must exist** — a gate whose proof is gone is a
+  stale claim, and an error.
+
+The shipped crosswalk (INV-1..10 — every row enforced, none
+aspirational):
+
+| INV | Enforcing machinery |
+|---|---|
+| INV-1 no bare numbers | kernel C32/C33 · linker quantity-coherence, pair-list-components · gate schema-quantity-value |
+| INV-2 schema/instance split | kernel C1 · linker requirement-binding-targets, bind-paths · gate codegen-entity-types |
+| INV-3 binding, never restating | linker ocl-identifiers, requirement-targeting, bind-paths, requirement-binding-targets |
+| INV-4 reports contain no verdicts | gate testreport-no-outcome, verdict-chain |
+| INV-5 re-evaluation without re-testing | gate verdict-reexecution |
+| INV-6 one sample, one report, one evaluation | gate testrun-sample-cardinality, evaluation-aggregator |
+| INV-7 values, facts, judgments | kernel C84 · linker constraint-references, verdict-no-shadow · gate codegen-entity-types |
+| INV-8 version pinning | kernel C18/C80 · gate testrun-method-version |
+| INV-9 OCL only | linker ocl-identifiers · gate ocl-single-engine, verdict-registry-cache |
+| INV-10 delegation never copies down | kernel C1/C17 · gate instance-delegation |
+
+![The invariant crosswalk](diagrams/invariant-crosswalk.svg)
+
+Read the table once, horizontally: no invariant is enforced by *one*
+check. INV-1 is a schema shape, a linker coherence rule, and two kernel
+checks at once — the law holds because four machines independently
+refuse its violation. That redundancy is the design: a law enforced in
+one place is one refactor away from folklore.
+
+## 9.13 INV-11..14 — the v0.6 additions ●
+
+The metamodel v0.6 re-home (task 12) added four laws, each shipping with
+its named enforcing checks in the kernel catalog:
+
+- **INV-11 — Anatomy families.** Every aspect of a subject is declared
+  under *exactly one* anatomy family: IS (identity/design — metadata,
+  provenance, structure, design parameters, designed condition tiers,
+  promises, artifact definitions), HAS (exhibition — attributes,
+  dimensions, operational state, characteristics, environmental context,
+  artifact instances), DOES (process — behaviors). A misplaced aspect
+  silently changes meaning: an exhibited value authored as a design
+  parameter freezes instance data into the type definition. Enforced by
+  **C6 anatomy-family** (wrong-family and undeclared aspects are
+  parse-time captures), completed by C7/C8.
+- **INV-12 — Characteristics have one home.** A characteristic — the
+  symbol'd quantity derived from behavior I/O — is DEFINED once in
+  instrument-description and only REFERENCED elsewhere; restated
+  derivations drift (the R 60 MDLO defect class: one quantity computed
+  three ways at three layers, diverging silently). Enforced by **C48
+  characteristic-one-home** (with C49/C50) and the linker VerdictQuantity
+  discipline (verdict-inputs-resolve, verdict-no-shadow,
+  verdict-restatement).
+- **INV-13 — Duality coherence.** A designed/exhibited dual is ONE value
+  structure in two roles: the designed role carries tolerance, never
+  uncertainty; the exhibited role carries uncertainty, never tolerance;
+  both share one quantity kind with coherent units. Without it, as-found
+  verification compares unlike quantities. Enforced by **C34
+  duality-coherence** (with C33 quantity-coherence).
+- **INV-14 — State-family separation.** The subject's OPERATIONAL state
+  machine (HAS — the instrument's own modes: off/warming/ready/
+  measuring/fault) and the workflow LIFECYCLE machines (chapter 8's
+  artifact states) are disjoint families: no lifecycle transition
+  cascades into an operational machine, no operational transition
+  mutates workflow state. Enforced by **C38 state-family-separation**
+  (with C40 anatomy-state-resolves).
+
+Note the numbering discipline: these four are the metamodel's canonical
+INV-11..14 — the earlier ○-candidate numbering of this chapter (which
+had characteristics as INV-11 and duality as INV-12) is superseded by
+the shipped ontology, and the registry's `source` pointers follow the
+sections, not the numbers.
+
+## 9.14 Twin-direction candidates ○
+
+The twin direction (Volume I, Chapter 14) adds two candidate laws the
+metamodel has not yet numbered, both arising the moment evidence is
+*served* rather than recorded:
+
+- **Freshness is semantics ○.** Every served value carries a validity
+  window; a stale value degrades the verdict to `indeterminate` — never
+  a silent pass, never a metrological fail. The live-binding checks
+  (freshness-required on live bindings, C63) already enforce the
+  declaration half; the law itself awaits the twin program's full
+  adoption.
+- **The firewall holds in streams ○.** Evidence streams carry facts
   only; no verdict travels on the wire. INV-4 and INV-7 restated for
   continuous evidence: a stream record with an outcome field is the same
   schema defect as a TestReport that says 'pass'.
 
-## 9.13 Grammar sketch *(illustrative v3 syntax)*
+## 9.15 Grammar sketch — the construct as shipped
 
-Machine-checkable invariants are declared with the package they govern:
+The registry is data, declared with the package it governs; the
+crosswalk grammar is `kernel:C<n> | linker:<rule-name> | gate:<gate-name>`
+— or the single token `aspirational`:
 
 ```prl
-package oiml-core {
-  invariant INV-3 "Binding, never restating" {
-    tier: secondary
-    statement: "Specification binds paths; defines nothing physical."
-    check: ocl{
-      context Requirement inv binds_resolve:
-        self.bindsTo->forAll(p | p.resolvesIn(primaryModel()))
-    }
-  }
+note INV-3 {
+  type NOTE
+  message "Binding, never restating: every D1 element references
+           attribute paths into instrument-description; nothing physical
+           is defined in conformity-specification. | severity: error |
+           applies_to: Requirement, ConformanceTest, FormSchema |
+           source: docs/oiml-core/09-invariants.md#9.4 |
+           enforcement: linker:ocl-identifiers, linker:requirement-targeting,
+                        linker:bind-paths, linker:requirement-binding-targets"
 }
 ```
 
-The running system states INV-1..10 as normative prose and enforces them
-through schema + linker + codegen; the executable `check:` is the v3 elevation
-○.
+The running system states INV-1..14 as normative prose (the metamodel
+head), registers INV-1..10 as typed data (the core package), and
+enforces them through schema + linker + kernel checks + codegen. A
+fully *executable* `check:` per invariant — the invariant running its
+own OCL against the model graph — remains the v3 elevation ○; the
+crosswalk is what makes the registry honest today.
 
-## 9.14 Validation rules
+## 9.16 Validation rules
 
 - **Schema validation** (`npm run validate`): INV-1 (QuantityValue shape),
   INV-2 (no values in definitions), INV-4 (no outcome fields in reports), INV-8
   (version pins required).
 - **Model linker** (static cross-reference resolution): INV-2/INV-3 (bind paths
   and OCL identifiers resolve at scope-appropriate levels), INV-9 (`ocl{...}`
-  and `table:`/`lookupMPE` targets exist).
+  and `table:`/`lookupMPE` targets exist); **R38 invariant-crosswalk** — every
+  registry entry carries name/statement/severity and ≥1 resolving enforcement
+  claim (or the explicit `aspirational` marker).
+- **Kernel checks** (`primmel check`, the C-catalog of Volume I chapter 11):
+  INV-1 (C32/C33), INV-2 (C1), INV-7 (C84), INV-8 (C18/C80), INV-10 (C1/C17),
+  INV-11 (C6–C8), INV-12 (C48–C50), INV-13 (C34), INV-14 (C38/C40).
 - **Codegen + unit tests** (`npm run build`, `npx vitest run`): INV-2 (one
   generated type), INV-7 (distinct value/fact/judgment types), INV-10
   (delegation over the generated graph).
-- **Metamodel level** (○ `primmel check`): the candidate invariants, enforced
-  on any package declaring `uses: [oiml-core]`.
+- **Platform gates with evidence paths** (the R38 gate registry): schema,
+  codegen, service and test-suite machinery — each claim's evidence path must
+  exist, or the claim is stale.
 
-## 9.15 Summary
+## 9.17 Summary
 
 - Invariants are laws about models — what may be modelled at all. Requirements
   judge instruments; constraints check facts; invariants keep models from
@@ -302,13 +408,20 @@ through schema + linker + codegen; the executable `check:` is the v3 elevation
   no verdicts in reports; re-evaluation without re-testing; type conformity
   only across samples); INV-8/9/10 discipline execution (pin versions; one rule
   language; delegate, never copy).
-- Every invariant has an enforcing check in schema, linker, or codegen — a law
-  that depends on reviewer vigilance is already broken.
-- The frame adds three candidates ○: characteristics defined in the primary
-  model and referenced elsewhere; designed/exhibited duality coherence; every
-  aspect anchored under exactly one of IS/HAS/DOES. The twin direction adds
-  two more ○: freshness as semantics (stale ⇒ `indeterminate`, never a
-  silent pass) and the fact/judgment firewall extended to live streams.
+- The registry is shipped data (INV-1..10, the core package's
+  `invariants.prl`), and the **R38 crosswalk** makes it honest: every
+  invariant names its enforcing machinery — kernel checks, linker rules,
+  platform gates with evidence paths — or declares itself `aspirational`.
+  Silently unenforced is an error; a claim naming machinery that does not
+  exist is an error.
+- The v0.6 re-home added INV-11..14 with their checks: anatomy families
+  (C6), characteristics one home (C48), duality coherence (C34),
+  state-family separation (C38).
+- Every invariant has an enforcing check in schema, linker, kernel, or
+  codegen — a law that depends on reviewer vigilance is already broken.
+- The twin direction adds two un-numbered candidates ○: freshness as
+  semantics (stale ⇒ `indeterminate`, never a silent pass) and the
+  fact/judgment firewall extended to live streams.
 
 *Next: [Chapter 10 — Shared modules](10-shared-modules.md): the seven
 parameterized test/form families between core and Recommendations.*

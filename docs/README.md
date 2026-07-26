@@ -86,8 +86,8 @@ semester's worth of teaching.
     <div class="volume-card__number">—</div>
     <div class="volume-card__body">
       <h3 class="volume-card__title">Annexes</h3>
-      <p class="volume-card__desc">Platform runtime · glossary · alternatives audit · roadmap ·
-        keeping current · releases.</p>
+      <p class="volume-card__desc">Platform runtime · simulated instruments · glossary ·
+        alternatives audit · roadmap · keeping current · releases.</p>
       <div class="volume-card__meta">Reference material</div>
     </div>
   </a>
