@@ -56,6 +56,17 @@ authoritative, executable form remains the Primmel package. The moment a
 consumer needs to know whether the instrument *passes*, the projection
 has nothing to say and the kernel must run.
 
+**Shipped** (task 27b, ● primmel-ts 8840617). `primmel export reqif`
+projects the R 60 package to the profile above: **1 document, 14
+requirement classes, 180 requirements, 62 conformance tests, 128
+spec-relations** (depends-on, verifies, binds), **0 dropped
+references** — and the output validates against the official OMG ReqIF
+XSD (`xmllint --noout --schema reqif.xsd`). The exporter's header note
+carries the honest survives/lost bookkeeping of the table above, and a
+reference that names nothing exported is recorded in
+`stats.droppedReferences`, never dangled. The evidence artifact is
+`analysis/reqif-export-oiml-r60.reqif` in the platform repo.
+
 ## 12.3 RDF/OWL + SHACL — the IEC-ISO Core Ontology projection
 
 The second target is linked data. The **IEC-ISO Core Ontology**
@@ -98,6 +109,27 @@ recording:
   `ProvisionShape` rejects is a projection bug; SHACL validation is part
   of the export gate, symmetric to chapter 11's own gates.
 
+**Shipped** (task 27c, ● primmel-ts f1a82d5). `primmel export rdf`
+projects the R 60 package onto the smartSDU share's IEC-ISO Core
+Ontology vocabulary (`core-ontology.ttl` v2.0.0) as **4,252 triples** —
+the provision hierarchy typed by modality (`shall → smart:Requirement`,
+with `primmel:obligation` riding as data), the clause tree, terms with
+SKOS-XL labels, provenance and cross-references
+(`dcterms:source/requires/references`, `primmel:verifies`). The export
+gate is real SHACL, twice over: the toolchain's own evaluator and
+**pyshacl 0.31.0 both report `Conforms: True`** (rdflib 7.6.0 parses
+the artifact to the exact count, zero warnings) against six shapes —
+including the clause-tree acyclicity constraint as standard SHACL-SPARQL,
+which *fires* on a seeded cycle under both evaluators. The five
+**competency questions** execute on the projected graph with pinned
+answers — shall-provisions with holding clause (157), the verification
+coverage map (91), terms by source clause (69), the modality census via
+`rdfs:subClassOf*` (242), the full clause tree (15 rows) — identical
+under rdflib's SPARQL engine and the repo evaluator. Kernel check **C85
+`baseurn-wellformed`** guards the IRI root every instance IRI resolves
+against. The evidence artifact is `analysis/rdf-export-oiml-r60.ttl` in
+the platform repo.
+
 ## 12.4 OpenCDD integration — the IRDI back-reference
 
 The third relation runs the other way. **OpenCDD** (the open form of the
@@ -105,20 +137,55 @@ IEC Common Data Dictionary, IEC 61360) is an international register of
 *property definitions*: every entry has an **IRDI** (International
 Registration Data Identifier), a quantity kind, and a unit. Primmel does
 not re-invent shared attributes per package; an attribute definition
-carries its CDD citation. This is already the metamodel's law — INV-2:
-an attribute is **defined once** as an AttributeDefinition (symbol,
-clause, IRDI) and **valued** per subject level. The R 60 attribute
-registry (`data/r60/model/attributes.yaml`) carries the slot today,
-with a format example (`0112/2///61987#ABA000#000`) pending registered
-entries — ◐, and honest about it.
+carries its CDD citation in an `irdi` facet. This is already the
+metamodel's law — INV-2: an attribute is **defined once** as an
+AttributeDefinition (symbol, clause, IRDI) and **valued** per subject
+level.
 
-Integration means validation, not export:
+The integration is **shipped** (task 27a, ● smart 8247d37) — validation,
+not export, against a **pinned snapshot** of the register
+(`data/opencdd/`; OpenCDD offers no REST/RDF/SPARQL interface — a pinned
+snapshot of the public mirror is the intended consumption, here pinned
+at mirror commit `7ea6d4c`, 2026-07-25, re-vendored on demand by
+`npm run snapshot:opencdd`). Three dictionaries ship whole — IEC 62720
+units (2,566 entries), IEC 61360-7 identification/marking (2,318),
+IEC 63213 measuring-equipment properties (224) — and IEC 61987 ships
+filtered to the referenced IRDIs plus their unit-link closure (the full
+dictionary is unvendorable). A checkout without the snapshot is a
+graceful stub: R36 prints one note, never fails.
 
-1. **existence** — the IRDI resolves to a live CDD entry;
-2. **coherence** — the definition's declared quantity kind and unit
-   match the CDD entry's (an attribute claiming mass in `kg` against a
-   CDD entry for a length quantity is a modelling error, caught before
-   it propagates into every requirement that binds the attribute).
+The R 60 attribute register carries **8 genuine annotations**
+(`accuracy_class`, `t_min`, `t_max`, `warm_up_time`, `input_impedance`,
+`output_impedance`, `interfaces`, `software_identification`) — annotate
+only on a genuine match; the register's other attributes are documented
+honest absences, and honest absence is a correct outcome. The sweep also
+*removed* a pre-existing citation (`0112/2///61987#ABA000#000`): invalid
+IRDI syntax, and ABA000 is the IEC 61987 root *class*, not a property —
+no genuine rated-output entry exists, so the honest annotation is none.
+
+Linker rule **R36 `irdi-resolve`** validates every annotation against
+the snapshot on five axes:
+
+1. **syntax** — the full ISO/IEC 11179-6 IRDI grammar
+   (registrant/semantic///scheme#code; version and revision live on the
+   CDD entity, never in the IRDI);
+2. **existence** — the IRDI resolves to an entry in the snapshot;
+3. **status** — the entry's `status_level` is in the accepted vocabulary
+   (the register measures exactly `Standard`);
+4. **unit-symbol coherence** — the attribute's unit matches the entry's
+   MDC_P041-linked unit `short_name`, Unicode-exact;
+5. **quantity-kind↔dimension coherence** — the attribute's quantity
+   kind matches the entry's dimension string via an ISO 80000
+   kind→dimension table.
+
+Deliberate divergences are **allowlisted, never silenced**: five sites
+where kind↔dimension coherence is genuine and only the symbol spelling
+diverges — the platform's `degC` vs the registry's `°C` (on `t_min` and
+`t_max`), warm-up time in `min` vs the SI second the entry links, and
+`Ω` (U+03A9) vs the registry's `Ω` (U+2126 OHM SIGN) on the two
+impedances. Each carries a reason and an audit reference in the linker
+allowlist; the issues print as KNOWN, and an entry that stops matching
+is STALE and fails.
 
 The payoff is the chapter's thesis in miniature: an attribute with a
 checked IRDI is citable in an international dictionary rather than
@@ -196,10 +263,10 @@ projection rdf-core-ontology of oiml-r60 {
   gate shacl { ProvisionShape, ClauseShape, PublicationDocumentShape }
 }
 
-attribute e_max {
-  kind mass ; unit kg
-  irdi "0112/2///61987#ABA000#000"     # IEC CDD
-  check cdd { exists, quantity_kind_coherent, unit_coherent }
+attribute output_impedance {
+  kind electrical-resistance ; unit Ω
+  irdi "0112/2///61987#ABP162"          # IEC CDD — a genuine annotation
+  check cdd { syntax, exists, status, unit_symbol_coherent, kind_dimension_coherent }
 }
 ```
 
@@ -209,15 +276,18 @@ attribute e_max {
   `carry` is mechanically verified present and faithful in the output
   (a statement whose exported text differs from the content set fails
   the export gate);
-- a projection's output passes the *target's own* validator — ReqIF
-  schema/Schematron for the ReqIF projection, SHACL shapes for the RDF
-  projection;
+- a projection's output passes the *target's own* validator — the
+  official OMG ReqIF XSD for the ReqIF projection (● xmllint-clean on
+  the R 60 export), SHACL shapes for the RDF projection (● the repo
+  evaluator and pyshacl both `Conforms: True`);
 - no import path: the kernel accepts no artifact generated from a
   projection; provenance of every kernel element traces to a `.prd`
   fragment or an authored model file, never to an export;
-- every IRDI on an attribute definition resolves (existence) and agrees
-  with the definition on quantity kind and unit (coherence); a
-  placeholder IRDI is flagged, never silent;
+- every IRDI on an attribute definition passes R36 `irdi-resolve`
+  against the pinned snapshot — syntax, existence, status, unit-symbol
+  coherence, quantity-kind↔dimension coherence (●); a deliberate
+  divergence is an allowlist entry with reason and audit reference,
+  never silence; an invalid IRDI is removed, not carried;
 - the BCP 47 downgrade of spelling codes is declared in the RDF
   projection's `languages` clause — an undeclared silent mapping is an
   error.
@@ -228,14 +298,19 @@ attribute e_max {
   never authored, never re-imported — the kernel stays the source of
   truth.
 - ReqIF (DIN DKE SPEC 99200): provisions + modality + hierarchy survive;
-  bindings, processes, quantities, verdicts are lost; the value is the
-  RM-tool ecosystem manufacturers and labs already run.
+  bindings, processes, quantities, verdicts are lost — ● shipped: R 60
+  exports to 180 requirements + 62 tests + 128 relations, 0 dropped,
+  XSD-valid.
 - RDF/OWL (IEC-ISO Core Ontology): the Provision taxonomy, supplements,
   clause tree and edition relations survive; the same executable content
-  is lost — by the ontology's own scope; SHACL gates the output, and
-  spelling codes downgrade to BCP 47, declared.
-- OpenCDD runs the other way: attribute definitions carry IEC CDD
-  IRDIs, validated for existence and quantity-kind/unit coherence —
+  is lost — by the ontology's own scope — ● shipped: 4,252 triples,
+  SHACL-clean under two evaluators (pyshacl `Conforms: True`), five
+  competency questions answered; spelling codes downgrade to BCP 47,
+  declared.
+- OpenCDD runs the other way — ● shipped: attribute definitions carry
+  IEC CDD IRDIs validated by linker rule R36 against the pinned
+  `data/opencdd/` snapshot (8 genuine annotations, 5 allowlisted
+  symbol-spelling divergences, the invalid ABA000 citation removed) —
   defined once, citable everywhere.
 
 *Next: [Chapter 13 — Model diff and lifecycle](13-diff-and-lifecycle.md):

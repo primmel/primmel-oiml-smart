@@ -362,8 +362,8 @@ promises-as-verified. ◐ (today only parameter-valued claims)
 
 **provenance (clause / fragment)** — the pedigree of an element: clause
 level (`source: { doc, clause }` URNs, ●) and fragment level (binding to
-addressable fragments of a `.prd` extract, ○), the latter enabling
-document reconstruction with a congruence check.
+addressable fragments of a `.prd` extract, ●), the latter enabling
+document reconstruction with a congruence check (● — gated per build).
 
 **provision** — a statement of a standard carrying *modality* and a
 normative/informative mark; in Primmel a provision becomes a typed

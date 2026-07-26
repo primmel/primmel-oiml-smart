@@ -12,7 +12,7 @@
 
 R 60 arrives as three source documents — R 60-1 (requirements),
 R 60-2 (test procedures), R 60-3 (test report format), 2021 editions —
-and leaves as a package: 107 YAML files under `data/r60/`, 40
+and leaves as a package: 107 YAML files under `data/r60/`, 44
 attributes, 60 requirements, 62 conformance tests, 38 symbols,
 17 calculations, 13 seeded evaluation flows, zero validation errors.
 The mapping from documents to layers is the methodology's own:
@@ -91,7 +91,7 @@ merit walk (smallest E_max per group, 5–10× steps) is data in
 
 ## 8.4 The attribute register: three decisions
 
-The 40-entry register (`data/r60/model/attributes.yaml`) is the INV-2
+The 44-entry register (`data/r60/model/attributes.yaml`) is the INV-2
 schema layer: each attribute defined once — snake_case id, print
 `symbol`, definition, clause source, quantity kind, unit, `origin`,
 `scope`, `category` — then *valued* per chain level. Three entries
@@ -322,7 +322,9 @@ quarterly creep re-derivation is §8.6's characteristic computed over a
 streamed series instead of a lab run; and the freshness rule (stale ⇒
 `indeterminate`, never a silent pass) guards every served value. The
 package authored once judges the Tuesday in the lab — and every day
-after it. (Endpoint, monitor and engine are ○ in v3; the model they
+after it. (The endpoint declaration ships in this package —
+`model/twin.prl`, task 49 — and the monitor + gateway runtimes are
+live, tasks 33/34; the model they
 consume is the one this chapter just walked.)
 
 ## 8.10 Grammar sketch *(illustrative v3 syntax)*

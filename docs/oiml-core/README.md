@@ -9,7 +9,7 @@ primitives.
 
 The metamodel is one file: `oiml-core-ontology.yaml`
 (`ontology-remix/OIML Core Models/Ontology/`, id `urn:ontology:mi:upper`,
-v0.5.0). Its header states the contract: *schema only* — classes,
+v0.6.1). Its header states the contract: *schema only* — classes,
 enumerations, invariants, dependency rules — containing **no
 instrument-kind-specific terms** (no load cells, no R 60 symbols). Every
 Recommendation instantiates it through a **domain profile** that is data,
@@ -19,7 +19,8 @@ changes" (`oiml-r60-loadcell-profile.yaml` — profile note).
 The runtime endgame is the served instance: the instrument as a **live
 twin**, its model and state queryable over a declared endpoint and judged
 continuously by the same OCL (Volume I, [Chapter
-14](../primmel/14-live-twins.md) ○).
+14](../primmel/14-live-twins.md) ● — the twin console, the monitor
+runtime and the live pilot all shipped).
 
 ## The 4-layer architecture
 
@@ -64,11 +65,21 @@ and its values (A, B, C); three describe conformity (D1, D2, D3).
 | Module | Name | Contents | Depends on |
 |---|---|---|---|
 | **A** | measurement-vocabulary | QuantityKind, Unit, QuantityValue, uncertainty, Measurand, InfluenceQuantity, Conditions, MeasurementResult, TraceabilityChain | nothing |
-| **B** | identity-provenance | Manufacturer, SoftwareComponent, Marking, Sealing, CalibrationRecord, Certificate | A, C |
-| **C** | instrument-description | the subject chain Family → Model → Sample; Classification, Capability, Behavior, OperatingConditionSet, AttributeDefinition, Parameter, Formula, Constraint | A, B.Manufacturer only |
-| **D1** | conformity-specification | Recommendation, Requirement, ReferenceMaterial, ConformanceTest, TestMethod, TestStep | A, C — binds, never restates |
+| **B** | identity-provenance | Manufacturer, SoftwareComponent, Marking, Sealing, CalibrationRecord, Certificate, **VerificationMark** (v0.6.1) | A, C |
+| **C** | instrument-description | the subject chain Family → Model → Sample; Classification (incl. **set-valued dimensions**), Capability, Behavior, OperatingConditionSet, AttributeDefinition, Parameter, Formula, Constraint; **Structure, Characteristic, Promise, ArtifactDefinition, OperationalStateMachine, Dual** (v0.6) | A, B.Manufacturer only |
+| **D1** | conformity-specification | Recommendation, Requirement, ReferenceMaterial, ConformanceTest, TestMethod, TestStep, **VerificationProcess** (v0.6.1) | A, C — binds, never restates |
 | **D2** | test-execution | TestRun, EvidenceRecord, TestRunResult, ConstraintCheck, TestCaseResult, TestReport | D1, C, A — facts only |
-| **D3** | evaluation | SampleEvaluation, Verdict, TypeEvaluation, EvaluationReport, TypeApprovalDecision | D1, D2 — touches nothing physical |
+| **D3** | evaluation | SampleEvaluation, Verdict, TypeEvaluation, EvaluationReport, TypeApprovalDecision, **Verification** (v0.6.1) | D1, D2 — touches nothing physical |
+
+The version line is additive-only — a profile authored against any
+earlier version validates unchanged against every later one. **v0.6**
+(task 12) adopted the v3 kernel primitives as first-class metamodel
+classes (the C-module additions above) and completed the invariant set
+to INV-1..14; **v0.6.1** (task 21) modelled metrological control beyond
+type evaluation: the `VerificationProcess` definition (OIML V 1:2022,
+2.09 — initial, subsequent, periodic and in-service kinds per 2.12–2.14,
+with validity windows and re-verification triggers), the `Verification`
+event on one Sample, and the `VerificationMark` it applies (3.04).
 
 Three rules do the work:
 
@@ -110,8 +121,8 @@ Chapters 1–4 of this volume cover A, C and B — the subject half. Chapters
    TypeEvaluation, EvaluationReport, TypeApprovalDecision.
 8. [Parties and workflow](08-parties-and-workflow.md) — parties, roles,
    the certification workflow entities, lifecycle state machines.
-9. [Invariants](09-invariants.md) — INV-1..10 and beyond: the metamodel's
-   laws, each with rationale and checks.
+9. [Invariants](09-invariants.md) — INV-1..14: the metamodel's laws, each
+   with rationale, checks, and the shipped registry's crosswalk.
 10. [Shared modules](10-shared-modules.md) — emc-disturbances,
     env-iec60068, software-d31, reference-materials, specimen-governance,
     report-headers, examination-docs.

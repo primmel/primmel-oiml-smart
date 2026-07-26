@@ -66,7 +66,7 @@ against 6.12/6.13 — category subsumption the linker checks for acyclicity
 **Primitive added.** `implies:` on dimension values (● landed); and the
 multi-membership NOTE proves single-valued classification insufficient
 even inside one Recommendation — set-valued dimension membership
-(○, gap G9's R 91-internal instance, finding R15).
+(●, gap G9's R 91-internal instance, finding R15).
 
 ### 9.2.2 Composite and distributed instruments — the structure aspect
 
@@ -229,12 +229,17 @@ it with (F3). The shipped samples passed *by accident* (both guards
 fired on a `[co, no]` classification): every gate green, the data
 wrong.
 
-**Primitive added (◐).** The set-dimension semantics package:
-set-valued membership, collection ops (`includes`/`includesAll`/
-`excludes`), declared applicability matching for set keys, per-channel
-evidence (`Verdict.channel_values` is now wired from the forms'
-`component_under_test`), and a certificate label join strategy
-(`co,no` needs a declared separator, not JS `toString` luck).
+**Primitive added (●).** The set-dimension semantics package:
+set-valued membership (`cardinality: set`), collection ops
+(`includes`/`includesAll`/`excludes` — executed in the engine, the F3
+lesson), declared applicability matching for set keys with the
+per-condition rule `match: any|all|exact` (any: intersection non-empty —
+the default; all: every selected value listed; exact: mutual coverage),
+per-channel evidence (`Verdict.channel_values` wired from the forms'
+`component_under_test`, the F7 lesson), and a certificate label join
+strategy (`co,no` needs a declared separator, not JS `toString` luck).
+The burn-down (smart 21209b8) resolved every set finding — F1's swapped
+guards, F3, F7, F8's missing-value policy, F10 — to an empty allowlist.
 
 ### 9.3.2 Structured interferents
 
@@ -324,7 +329,7 @@ Each stress case left a primitive behind. The complete ledger:
 | Composite/distributed subjects (ego meter, detection fields) | structure aspect realized | `relationship` block, partOf propagation | ○ G3 (◐ test_subject) |
 | Field/simulation/software tests (R 91-2) | kind enum + per-kind metadata | test kinds + obligation | ◐ G4, ○ G5 |
 | Statistical test design (R 91-2 4.4/4.7) | counts + statistics blocks | `design.counts` + `acceptance.statistics` | ● G6 |
-| Set-valued membership (R 144 sets, R 91 dual-mode) | cardinality: set + collection ops | set-dimension package | ◐ G9 |
+| Set-valued membership (R 144 sets, R 91 dual-mode) | cardinality: set + collection ops + `match:` rule | set-dimension package | ● G9 |
 | Structured interferents (R 144 4.5.2) | (component, limit) pairs | pair-list value type | ○ G10 |
 | Behavior-gating requirements (R 91 qualitative mandates) | bind to a behavior id | `verification: behavior-check` | ○ G11 |
 | Mixed absolute/relative MPEs (R 91) | tier `mode` | `mode: absolute \| relative` | ● G12 |
@@ -380,7 +385,7 @@ table mpe_moving { tiers { [A, 0, 100] limit 3    absolute             # G12 ●
 process initial_verification { kind verification_process               # G1 ○, VIML 2.12
                                recurrence timer (tyre_change on ego) } # 6.15.3 Note 2
 
-dimension measurand_components { cardinality set                       # G9 ◐
+dimension measurand_components { cardinality set                       # G9 ●
                                  values { co, no, no2, nox } }         # nox derived = no + no2
 ```
 

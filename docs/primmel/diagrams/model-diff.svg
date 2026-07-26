@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" font-family="ui-sans-serif, system-ui, sans-serif">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow-violet" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L7,4 L0,8 Z" fill="#9333ea"/>
+    </marker>
+    <marker id="arrow-slate" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L7,4 L0,8 Z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The model diff — id-keyed, tier-annotated</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Two package versions in; a classified change report out — elements, mappings, clause drift. Two consumers keep it honest.</text>
+
+  <!-- input: the 2017 fixture -->
+  <rect x="60" y="92" width="264" height="102" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <rect x="60" y="92" width="264" height="28" rx="12" fill="#475569"/>
+  <text x="192" y="110" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">oiml-r60 @ 2017</text>
+  <g font-size="10.5" fill="#334155">
+    <text x="76" y="140">the acceptance fixture —</text>
+    <text x="76" y="157">data/r60/editions/2017/</text>
+    <text x="76" y="174">not lint-clean, by design</text>
+  </g>
+
+  <!-- input: the 2021 package -->
+  <rect x="60" y="234" width="264" height="102" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+  <rect x="60" y="234" width="264" height="28" rx="12" fill="#4f46e5"/>
+  <text x="192" y="252" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">oiml-r60 @ 2021</text>
+  <g font-size="10.5" fill="#3730a3">
+    <text x="76" y="282">the shipped package —</text>
+    <text x="76" y="299">primmel-packages/oiml-r60</text>
+    <text x="76" y="316">the single source of truth</text>
+  </g>
+
+  <!-- arrows into the engine -->
+  <g stroke="#9333ea" stroke-width="2" fill="none">
+    <line x1="324" y1="143" x2="372" y2="176" marker-end="url(#arrow-violet)"/>
+    <line x1="324" y1="285" x2="372" y2="252" marker-end="url(#arrow-violet)"/>
+  </g>
+
+  <!-- the engine -->
+  <rect x="376" y="156" width="204" height="116" rx="12" fill="#faf5ff" stroke="#9333ea" stroke-width="1.8"/>
+  <rect x="376" y="156" width="204" height="30" rx="12" fill="#9333ea"/>
+  <text x="478" y="175" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">primmel diff</text>
+  <g font-size="10.5" fill="#6b21a8">
+    <text x="392" y="206">normalized comparison</text>
+    <text x="392" y="224">identity = kind : id — never</text>
+    <text x="392" y="242">file name or list position</text>
+    <text x="392" y="260">--json · --exit-code · texts</text>
+  </g>
+
+  <!-- engine to report -->
+  <line x1="580" y1="214" x2="616" y2="214" stroke="#9333ea" stroke-width="2" marker-end="url(#arrow-violet)"/>
+
+  <!-- the classified report -->
+  <rect x="620" y="84" width="280" height="314" rx="12" fill="#ffffff" stroke="#4f46e5" stroke-width="1.8"/>
+  <rect x="620" y="84" width="280" height="30" rx="12" fill="#4f46e5"/>
+  <text x="760" y="103" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">The classified report</text>
+
+  <rect x="636" y="126" width="248" height="30" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="650" y="145" font-size="11" font-weight="600" fill="#166534">added — ids only in the new version</text>
+
+  <rect x="636" y="164" width="248" height="30" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="650" y="183" font-size="11" font-weight="600" fill="#991b1b">removed — ids only in the old</text>
+
+  <rect x="636" y="202" width="248" height="42" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.2"/>
+  <text x="650" y="219" font-size="11" font-weight="600" fill="#92400e">changed — same id, classified aspects:</text>
+  <text x="650" y="235" font-size="10.5" fill="#92400e">statement · binding · limit · structure</text>
+
+  <rect x="636" y="252" width="248" height="30" rx="8" fill="#f8fafc" stroke="#475569" stroke-width="1.2"/>
+  <text x="650" y="271" font-size="11" font-weight="600" fill="#334155">moved — re-anchored, same id</text>
+
+  <g font-size="10.5" fill="#3730a3">
+    <text x="636" y="308">+ mapping diff — pairs ± ; the coverage</text>
+    <text x="648" y="324">delta is computed, never authored</text>
+    <text x="636" y="348">+ clause-drift table — renumbered,</text>
+    <text x="648" y="364">reworded, with citing elements</text>
+  </g>
+  <text x="636" y="380" font-size="9.5" font-style="italic" fill="#64748b">tallied per tier: foundations · primary ·</text>
+  <text x="636" y="392" font-size="9.5" font-style="italic" fill="#64748b">secondary · tertiary · cross-cutting</text>
+
+  <!-- arrows to consumers -->
+  <g stroke="#94a3b8" stroke-width="1.6" fill="none">
+    <line x1="700" y1="398" x2="210" y2="446" marker-end="url(#arrow-slate)"/>
+    <line x1="745" y1="398" x2="480" y2="446" marker-end="url(#arrow-slate)"/>
+    <line x1="800" y1="398" x2="750" y2="446" marker-end="url(#arrow-slate)"/>
+  </g>
+
+  <!-- consumers -->
+  <rect x="60" y="450" width="260" height="108" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <rect x="60" y="450" width="260" height="28" rx="12" fill="#475569"/>
+  <text x="190" y="468" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">Edition comparison</text>
+  <g font-size="10.5" fill="#334155">
+    <text x="76" y="498">what changed 2017→2021 —</text>
+    <text x="76" y="516">in model terms: requirements,</text>
+    <text x="76" y="534">limits, dimensions; not a red-lined PDF</text>
+  </g>
+
+  <rect x="340" y="450" width="260" height="108" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <rect x="340" y="450" width="260" height="28" rx="12" fill="#475569"/>
+  <text x="470" y="468" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">Change audit</text>
+  <g font-size="10.5" fill="#334155">
+    <text x="356" y="498">--exit-code in CI; the acceptance</text>
+    <text x="356" y="516">corpus pins every known renumbering</text>
+    <text x="356" y="534">and the no-op diff stays empty</text>
+  </g>
+
+  <rect x="620" y="450" width="260" height="108" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <rect x="620" y="450" width="260" height="28" rx="12" fill="#475569"/>
+  <text x="750" y="468" font-size="12.5" font-weight="700" fill="#ffffff" text-anchor="middle">The v3 changelog</text>
+  <g font-size="10.5" fill="#334155">
+    <text x="636" y="498">docs/releases/v3-changelog.md —</text>
+    <text x="636" y="516">regenerated from the pinned</text>
+    <text x="636" y="534">YAML-era baseline, never hand-written</text>
+  </g>
+
+  <!-- bottom rule bar -->
+  <rect x="60" y="594" width="780" height="58" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1"/>
+  <text x="80" y="618" font-size="11.5" font-weight="600" fill="#0f172a">Computed truth + authored meaning:</text>
+  <text x="80" y="636" font-size="11" fill="#475569">the curated diff-record (adopted, ○) authors per-entry rationale — its summary counts must verify against this report, or the check fails.</text>
+</svg>

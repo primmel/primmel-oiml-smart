@@ -156,32 +156,36 @@ Six mechanisms were taken, each re-homed onto the executable frame:
    into addressable fragments; model elements bind fragment addresses;
    the model emits an ordered fragment stream and a congruence check
    (coverage + order + text identity) compares it against the
-   authoritative source. Clause-level provenance exists today (●
-   `source: { doc, clause }`); fragment level is ○.
+   authoritative source. Clause-level and fragment-level provenance both
+   shipped (● — task 24, smart 83be1e6; the gate's census in Volume I,
+   chapter 9).
 2. **Multilinguality via ISO 24229 spelling codes, not BCP 47** —
    adopted against both: DIN's tri-lingual `bib.*` is document-metadata
    only, and the ontology inherits BCP 47 from RDF. The frame extends
    the vocabulary registers' existing `spelling:` practice to *all*
    prose: one content set, per-string spelling codes composed from
-   ISO 639 + ISO 15924. ○
+   ISO 639 + ISO 15924. ◐ in progress (task 25, un-deferred 2026-07-26 —
+   machinery landing, translations explicitly out of scope).
 3. **Interop projections** — ReqIF export for RM-tool ecosystems (where
    manufacturers and labs already work) and an RDF/OWL + SHACL
    projection onto the Core Ontology vocabulary for linked-data
-   consumers; plus OpenCDD IRDI resolution on attribute definitions. ○
+   consumers; plus OpenCDD IRDI resolution on attribute definitions. ●
+   (task 27, 2026-07-26 — all three surfaces; Volume I, chapter 12).
 4. **The normative-text coverage metric** — the audit's answer to "is
    the model complete against the text?": every normative sentence maps
    to at least one model element (target 100%), no two elements are
    semantic duplicates (target 0), reported per package by
-   `primmel check`. ○
+   `primmel check`. ● (task 26 — R 60 at 100 % / 0 unresolved).
 5. **Typed supplements + normativity marking** (the ProvisionSupplement
    taxonomy + DIN's normativity flag) — every content element marked
    normative or informative; supplements typed (note / example / figure
-   / commentary). ○
+   / commentary). ● (notes registries + the `.prd` fragments'
+   normativity marks — Volume I, chapter 9).
 6. **Model diff** — structural diff between package versions (elements
    added/removed/changed, including mapping diff), powering edition
    comparison, change audit and clause-drift detection; 'edition'
    packages are lifecycle packagings built on top of it, not core
-   features. ○
+   features. ● (task 28 — `primmel diff`; Volume I, chapter 13).
 
 ## 6. What was deliberately rejected
 
