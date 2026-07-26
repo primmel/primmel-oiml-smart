@@ -21,7 +21,8 @@ In kernel terms, Module B realizes the IS **provenance** aspect — the
 pedigree of the subject: manufacturer, source clauses, supersedes chains,
 legally-relevant software identity — plus the legally-relevant identity
 artifacts (markings, seals) and the conformity artifact (the
-certificate). Six classes, all ● in the metamodel v0.5.0:
+certificate). Seven classes, all ● in the metamodel (v0.6.1 — the
+v0.6.1 line added `VerificationMark`):
 
 | Class | What it names | Anchors to |
 |---|---|---|
@@ -31,6 +32,7 @@ certificate). Six classes, all ● in the metamodel v0.5.0:
 | Sealing | protection against unauthorized modification | C (Model), D1 (Recommendation) |
 | CalibrationRecord | one calibration event | C (Sample), A (TraceabilityChain) |
 | Certificate | the conformity artifact | C (Model/Sample), D1, D3 |
+| VerificationMark | the mark applied to a Sample after a passed verification (OIML V 1:2022, 3.04) | C (Sample), D3 (Verification) |
 
 ## 4.2 The dependency rule and the sanctioned cycle
 

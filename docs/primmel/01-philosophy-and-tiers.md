@@ -182,7 +182,7 @@ it speaks for*:
 - **Reference model** — the semantic content of a standard document,
   published by the standards body. Faithful, machine-applicable,
   machine-readable, transferable. Speaks for the standard.
-- **Product reference model** ○ *(planned v3)* — a manufacturer's model
+- **Product reference model** ● — a manufacturer's model
   of their own product: what it is and claims, mapped aspect-by-aspect
   to the standards-reference model. Speaks for the product. The
   instrument user consumes it in two modes — abstract import (static,

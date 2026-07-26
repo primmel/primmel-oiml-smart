@@ -210,11 +210,12 @@ usable? does the sample satisfy each requirement? does the type conform
 across specimens? does the application succeed?* — and the architecture
 refuses to let one level answer another's question.
 
-## 7.8 Continuous verdicts — the same judgment, on a new rhythm ○
+## 7.8 Continuous verdicts — the same judgment, on a new rhythm ●
 
 Nothing in this chapter changes when the evidence arrives continuously. A
 verdict was never an event; it is a function (§7.1), and the twin
-direction (Volume I, Chapter 14 ○) only calls that function on a new
+direction (Volume I, Chapter 14 ● — monitor and gateway shipped, tasks
+33/34) only calls that function on a new
 rhythm: monitors evaluate the same requirement OCL over served live
 evidence, and each outcome is a Verdict in exactly this chapter's sense —
 one requirement × one subject, fact under judgment, limit snapshot, four

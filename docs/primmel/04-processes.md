@@ -271,10 +271,11 @@ Two parameterizations keep one process definition serving many runs:
   a tyre change on an ego meter re-triggers out of cycle via a signal
   event).
 
-**The continuous limit case: the monitor ○.** Recurrence taken to its
+**The continuous limit case: the monitor ●.** Recurrence taken to its
 limit is a process that never ends: the **monitor** — triggered by
 schedule, signal, or a watched value's change, looping fetch → freshness
-→ evaluate → verdict → evidence (the loop is chapter 14, §14.5).
+→ evaluate → verdict → evidence (the loop is chapter 14, §14.5; the
+runtime shipped, task 34).
 Monitors evaluate against *served* instances, and the same endpoint
 machinery makes a subject's own processes remotely callable: an `invoke`
 operation triggers a behavior over the wire (chapter 14, §14.4).

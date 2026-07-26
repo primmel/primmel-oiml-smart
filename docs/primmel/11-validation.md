@@ -65,17 +65,22 @@ applicability keys, symbol→calculation/formula→profile links, and form
 | `instance-coverage` (R40) | a test's `instances:` map that leaves an applicable dimension value unkeyed — an undispatchable sample for the scheduler (Volume III, §4.11) |
 | `formulas-used-resolve` (R41) | a `formulas_used` entry binding an undeclared test, duplicated per test, or naming a formula outside the calculations ∪ formulas registries (Volume III, §4.12) |
 | `state-machine-integrity` (R42) | a lifecycle machine resolving to no entity class, states outside the entity's `status` enum, `initial` or endpoints outside the state set, a guard outside the closed vocabulary (Volume II, §8.5.2) |
-| `serve-targets-resolve` (○) | a `serve` binding naming an undeclared aspect or endpoint operation (chapter 14) |
-| `payload-schema-quantity` (○) | an endpoint operation whose payload is not a QuantityValue with unit and timestamp (chapter 14) |
-| `freshness-required` (○) | a live binding without `fresh_within` — no stale semantics, no live binding (chapter 14) |
-| `access-scope-covers-serves` (○) | an endpoint operation with no access scope, or a scope that does not cover the consumers of its `serve` bindings (chapter 14) |
-| `monitor-refs-resolve` (○) | a monitor's `evaluate` referencing requirements or promises not applicable to the monitored subjects (chapter 14) |
-| `product-maps-resolves`, `unmapped-promises` (○) | a `product_reference` mapping target dangling into the Recommendation; an unmapped IS promise flagged at authoring (chapter 15) |
-| `abstract-import-pinned` (○) | an abstract import of a product model without a version pin (chapter 15) |
+| `serve-targets-resolve` (● C60) | a `serve` binding naming an undeclared aspect or endpoint operation (chapter 14) |
+| `payload-schema-quantity` (● C61) | an endpoint operation whose payload is not a QuantityValue with unit and timestamp (chapter 14) |
+| `freshness-required` (● C63) | a live binding without `fresh_within` — no stale semantics, no live binding (chapter 14) |
+| `access-scope-covers-serves` (● C62) | an endpoint operation with no access scope, or a scope that does not cover the consumers of its `serve` bindings (chapter 14) |
+| `monitor-refs-resolve` (● C65–C70) | a monitor's `evaluate` referencing requirements or promises not applicable to the monitored subjects — with the trigger, escalation and emit-sink legs (chapter 14) |
+| `product-maps-resolves`, `unmapped-promises` (● C81/C82) | a `product_reference` mapping target dangling into the Recommendation; an unmapped IS promise flagged at authoring (chapter 15) |
+| `abstract-import-pinned` (● C83) | an abstract import of a product model without a version pin (chapter 15) |
 
-The ○ rows are the twin-era rules — chapters 14 (§14.12) and 15 (§15.9)
-are their authority; they join the catalog with the v3 primitives they
-guard. The R36–R42 rows are the phase-9 and interop increments — each
+The twin-era rules shipped with their owning features — C60–C64 with
+the twin interface primitives (task 32), C65–C70 with the monitor
+runtime (task 34), C81–C83 with the product reference packages
+(task 36); chapters 14 (§14.12) and 15 (§15.9) are their doctrine. The
+smart-side halves ride `npm run validate`: the gateway and monitor
+binding validators (`src/gateway/binding.ts`, `src/monitor/binding.ts`)
+enforce the same laws on the YAML faces. The R36–R42 rows are the
+phase-9 and interop increments — each
 shipped with its owning feature (R36 with OpenCDD resolution, R37–R42
 with the R 60 SSOT review's phase-9/9.5 tasks).
 

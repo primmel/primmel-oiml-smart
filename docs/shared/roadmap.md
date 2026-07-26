@@ -28,7 +28,7 @@ running system disagree, the running system is right — fix this page.
 ## 2. What exists today (●)
 
 **The running packages.** Four Recommendations run in the new
-`data/<id>/` layout: **R 60** (the reference depth: subject model, 40
+`data/<id>/` layout: **R 60** (the reference depth: subject model, 44
 attribute definitions, requirements, conformance tests, R 60-3 forms
 with 164 `bind:` paths, the full certification workflow, 13 seeded
 real-certificate flows), **R 91** and **R 144** (new-layout trees with
@@ -163,8 +163,9 @@ content is re-authored:
 
 Depends on phase 1 (the core is re-expressed *in* the new kernel):
 
-- re-express the metamodel (`oiml-core-ontology.yaml` v0.5.0) as the
-  OIML Core package on the v3 kernel, keeping INV-1..10 as its laws;
+- re-express the metamodel (`oiml-core-ontology.yaml`) as the
+  OIML Core package on the v3 kernel — landed at **v0.6.1** with
+  INV-1..14 as its laws (tasks 12/21);
 - ● (phase 7) — publish **the OIML-CS as its own reference package**:
   the scheme content out of the rec packages — the B 18:2025 framework
   model, the twelve-document corpus, PD-05's 34 provisions — composed

@@ -11,7 +11,7 @@
 
   <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">Interop projections &#8212; lossy but useful, never the kernel</text>
   <text x="60" y="54" font-size="12.5" fill="#475569">A projection is generated and regenerated, never patched by hand and never re-imported. The kernel remains the source of truth.</text>
-  <text x="840" y="34" font-size="10" fill="#64748b" text-anchor="end">status: &#9675; projections &#183; &#9684; IRDI slot</text>
+  <text x="840" y="34" font-size="10" fill="#64748b" text-anchor="end">status: &#9679; shipped (task 27, 2026-07-26)</text>
 
   <!-- Primmel package (the kernel) -->
   <rect x="60" y="180" width="260" height="220" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
@@ -61,7 +61,7 @@
 
   <!-- IRDI back-reference (violet, into the kernel) -->
   <line x1="560" y1="468" x2="326" y2="372" stroke="#9333ea" stroke-width="1.8" fill="none" marker-end="url(#arrv)"/>
-  <text x="440" y="432" font-size="9.5" fill="#9333ea" text-anchor="middle">IRDI back-reference (&#9684;)</text>
+  <text x="440" y="432" font-size="9.5" fill="#9333ea" text-anchor="middle">IRDI back-reference (&#9679;)</text>
   <text x="440" y="445" font-size="9" fill="#9333ea" text-anchor="middle">defined once, citable everywhere</text>
 
   <!-- bottom bar -->
