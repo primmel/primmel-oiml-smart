@@ -30,9 +30,12 @@ is not the rec's law). The seven shared modules are the missing mechanism:
 **layer 2b** in the language stack — parameterized packages that freeze a
 skeleton and let each Recommendation bind its own content.
 
-Status honesty: the patterns run today, inline in the rec packages (●); the
-packaged modules and the `uses:` composition are ○ v3. Each module entry below
-marks both.
+Status honesty: the patterns run inline in the rec packages (●), and the
+packaged modules with the `uses:` composition are **shipped** (● smart
+e80b349, tasks 14/17) — all seven carry `kind module` as
+`oiml-smart-module-*` packages, with R 60, R 144 and R 129 as the proving
+consumers. Each module entry below marks both the inline pattern and the
+packaged consumption.
 
 ## 10.2 The module contract
 
@@ -56,11 +59,18 @@ The per-rec delta mechanism has exactly four binding slots:
    requirement ids and verdict quantities;
 4. **clause URNs** — provenance into the rec's own edition.
 
-The parameterization machinery exists in embryo: conformance tests declare
-`variables[]` with `source: declared | measured | derived | computed`; forms
-declare `bind:` paths and `conformance_test:` links. A module freezes the
-skeleton; the rec's overlay binds the slots — it *references* module ids, never
-*redefines* them.
+The parameterization machinery is **shipped** (●): a module's `skeletons/`
+templates carry `${{ slot }}` placeholders; a slot in the manifest's
+`with_slots` materializes at its target path when the rec binds it
+(`uses: [{ module: module-<name>, with: { <slot>: <value> } }]`), and a
+slot declared **`each: true`** binds a *list* of binding maps so a whole
+test family instantiates from one with-map. The skeleton owns the pattern
+interface (field names, types, measurement methods, derivations, verdict
+rules); the rec's overlay at the target path binds units, calculation
+ids, clause URNs, enum values and flavored labels — it *references*
+module ids, never *redefines* them, and a multilingual-array key is owned
+by exactly one side per field (composition unions such arrays; restating
+one duplicates entries and fails the uses-no-redefine check).
 
 ## 10.3 M1 — emc-disturbances
 
@@ -86,12 +96,18 @@ form skeleton: header ref → disturbance parameters (severity, network,
 `power-voltage-variation`, `short-time-power-reduction`, `low-battery`;
 parameterized form skeletons; the verdict variants. **requires:** core
 entities; the rec's observable attributes; the electronic capability flags.
+**package ●** `oiml-smart-module-emc-disturbances` (provides
+`disturbance-test-skeletons`, `disturbance-form-skeletons`,
+`disturbance-verdict-variants`).
 **consumers:** R 60 ● (`specification/conformance/electronic.yaml` — `esd` at R
 60-2 §2.10.7.8: record reference indication → apply contact discharge → record
 → apply air discharge → record → check significant fault → determine
 pass/fail), R 144 ● (per-part tests, verdict `within_limits_or_detected`), R 91
-◐ (stubs — its audit condenses 33 normative rows to 11 stubs), R 129 legacy
-(future; its forms map 1:1 onto the module). **deltas:** observable names and
+◐ (stubs — its audit condenses 33 normative rows to 11 stubs) — all inline;
+**R 129 ● packaged** (task 22 — the `each:` proving consumer: the
+8-disturbance-form family instantiates from one with-map, thin overlays at
+`execution/forms/emc/<form_id>.yaml` binding severities, clause URNs, labels
+and enum values). **deltas:** observable names and
 units, severities, acceptance quantity, clause URNs, form ids.
 
 ## 10.4 M2 — env-iec60068
@@ -106,12 +122,18 @@ limit).
 
 **provides:** dry-heat, cold, damp-heat (cyclic | steady), vibration, shock,
 ambient-pressure method skeletons + form skeletons. **requires:** core;
-reference-materials (the test-point subform). **consumers:** R 144 ● (dry heat
+reference-materials (the test-point subform). **package ●**
+`oiml-smart-module-env-iec60068` (provides `env-method-skeletons`,
+`env-form-skeletons`).
+**consumers:** R 144 ● (dry heat
 at 40 °C, cold at 5 °C, damp heat 30 °C / 85 % RH for 2 days, vibration, shock
 as a 25 mm edge drop), R 60 ● — consumes the *method skeleton* and keeps its
 own acceptance quantities (the temperature effect on MDLO; the humidity limits,
-themselves carrying a source discrepancy the census records), R 91 ◐ (stubs), R
-129 legacy (future). **deltas:** severities, stabilization rates, the
+themselves carrying a source discrepancy the census records), R 91 ◐ (stubs) —
+all inline; **R 129 ● packaged** (the environmental forms instantiate through
+the same `each:` with-map mechanism at `execution/forms/env/<form_id>.yaml`;
+its `execution/subforms/dimension-measurement.yaml` is the bound
+measurement-row shape). **deltas:** severities, stabilization rates, the
 acceptance limit (MPE vs a rec-specific influence limit), condition-tier
 bindings.
 
@@ -122,10 +144,13 @@ identification, sealing/protection, documentation, maintenance interfaces.
 
 **provides:** the examination checklist skeleton + form. **requires:** core;
 the rec's software identity attributes (legally relevant software, Module B).
+**package ●** `oiml-smart-module-software-d31` (provides
+`software-examination-skeleton`); no packaged consumer yet — the recs run the
+pattern inline.
 **consumers:** R 60 ● (test `software`, R 60-2 §2.6, with the 10-field
 `software-examination` form), R 91 ◐ (stub today; R 91-2 §8 requires the real
 evaluation), R 144 ◐ (lightweight variant — software appears as
-documentation-examination items), R 129 legacy (future). **deltas:** the
+documentation-examination items). **deltas:** the
 checklist items, bound to the rec's documentation requirements and software
 attributes.
 
@@ -140,7 +165,11 @@ skeleton (the CGM-point shape); the uncertainty-budget validity hook (the
 census' language gap L7). **requires:** core — Module D1 `ReferenceMaterial` ●
 already carries the shape: identity fields plus OCL constraints bound to
 evidence fields via `evidence:` maps, with `on_violation: invalidate` voiding
-the run. **consumers:** R 144 ● — the most complete instantiation:
+the run. **package ●** `oiml-smart-module-reference-materials` (provides
+`reference-material-pattern`, `test-point-subform`, `umpe-validity-hook`).
+**consumers:** R 144 ● — the most complete instantiation,
+**packaged** (the proving `with:` consumer: `with: { subform: cgm-point }` —
+its `execution/subforms/cgm-point.yaml` a thin overlay):
 `specification/reference-materials.yaml` declares the certified gas mixture
 with identity fields (composition, certified value, expanded uncertainty k=2,
 certification authority, certificate id, expiry, traceability) and constraints
@@ -163,12 +192,15 @@ applicability / selector / test_kind — the IA auto-select walks these) and the
 EUT-continuity contract (the `design.specimens` block: `count`,
 `max_additional`, `continuity`, `rules`). **requires:** core — the TestRun →
 sample linkage is the run-level face; the test-report checklist's
-sample-selection row is the checklist face. **consumers:** R 60 ● (R 60-2 §2.4 + Annex D:
+sample-selection row is the checklist face. **package ●**
+`oiml-smart-module-specimen-governance` (provides `sample-selection-rules`,
+`eut-continuity-contract`, `test-execution-entities`).
+**consumers:** R 60 ● **packaged** (R 60-2 §2.4 + Annex D:
 smallest `e_max` per group; the merit walk class → n_lc → v_min in
 5–10× steps; same-capacity de-duplication; partial-evaluation flags), R 144 ●
-(R 144-1 §7.1.2, definitive-type-per-model), R 91 ○ (when its evaluation layer
-lands). **deltas:** the normative rules themselves — selection law is rec
-content; the schema and consumption path are shared.
+**packaged** (R 144-1 §7.1.2, definitive-type-per-model), R 91 ○ (when its
+evaluation layer lands). **deltas:** the normative rules themselves — selection
+law is rec content; the schema and consumption path are shared.
 
 ## 10.8 M6 — report-headers
 
@@ -180,10 +212,13 @@ checklist.
 chain (`family.*`, `model.*`, `sample.*`) plus a test-conditions block — and
 the 18-element checklist binding rules (PD-05 §4.4.3, elements a–r, each with a
 `source` binding and a validation). **requires:** core (subject-chain and
-workflow entities). **consumers:** R 60 ● (five headers: `header-a`,
+workflow entities). **package ●** `oiml-smart-module-report-headers` (provides
+`report-header-skeletons`, `checklist-binding-rules`); no packaged consumer
+yet — the recs bind their headers inline.
+**consumers:** R 60 ● (five headers: `header-a`,
 `header-b`, `header-c`, `conditions`, `sh-humidity-header`), R 144 ● (three:
-`header-a`, `header-b`, `conditions`), R 91 ○ (when its forms land), R 129
-legacy (future). **deltas:** exactly the bound attributes and dimensions —
+`header-a`, `header-b`, `conditions`), R 91 ○ (when its forms land).
+**deltas:** exactly the bound attributes and dimensions —
 `model.parameters.e_max` in R 60's `header-a` vs
 `model.classification.measurand_components` in R 144's. The two files are 57 %
 structurally similar, and the difference *is* the binding set. R 60's
@@ -199,7 +234,10 @@ targets.
 **provides:** the examination checklist skeleton; the verdict is the
 conjunction of item booleans (`ocl{a and b and …}` — visible in both R 60 and R
 144 forms). **requires:** core; the rec's documentation and marking
-requirements. **consumers:** R 60 ● (`documentation`, `inscriptions`,
+requirements. **package ●** `oiml-smart-module-examination-docs` (provides
+`examination-docs-skeleton`); no packaged consumer yet — the recs run the
+checklists inline.
+**consumers:** R 60 ● (`documentation`, `inscriptions`,
 `suitability`, `software`), R 144 ● (`documentation`, `visual-examination`), R
 91 ◐ (`documentation-inspection`, `vehicle-identification` stubs). **deltas:**
 the item lists and their requirement targets; marking content is rec law and
@@ -214,59 +252,52 @@ file (R 60's 20 ± 2 °C reference tier where R 91 requires 23 ± 5 °C) is the
 standing proof: anything allowed to drift via copies eventually does. Modules
 take the skeletons; the rec keeps the law.
 
-## 10.11 Grammar sketch *(illustrative v3 syntax)*
+## 10.11 Grammar sketch *(shipped v3 forms)*
 
 ```prl
-package emc-disturbances {
-  kind: module
-  provides {
-    test_patterns: [esd, bursts, surge, rf-emf, conducted-rf,
-                    power-voltage-variation, short-time-power-reduction,
-                    low-battery]
-    form_skeletons: [disturbance-test-form, influence-test-form]
-  }
-  requires {
-    core: [entities/instrument, entities/test-execution]
-    attributes: []        # the consuming rec declares the ids it binds
-    dimensions: []
-  }
-
-  test_pattern esd {
-    kind: disturbance
-    steps: record_baseline -> apply_disturbance(severity)
-         -> record_under_disturbance
-    verdict_variants: [no_significant_fault, within_limits_or_detected]
-  }
+# ── the module package manifest (verbatim shape) ───────────
+package {
+  id oiml-smart-module-emc-disturbances
+  kind module
+  uses { oiml-smart-core }
+  requires { oiml-smart-core }
+  provides { disturbance-test-skeletons disturbance-form-skeletons
+             disturbance-verdict-variants }
 }
+```
 
-# the rec package binds the slots — reference, never redefine:
-package oiml-r144 {
-  uses: [core, emc-disturbances, env-iec60068, reference-materials,
-         report-headers, examination-docs]
-
-  overlay emc-disturbances.esd {
-    observables: [e_x]                       # R 144 binds its observable
-    acceptance:  ocl{abs(e_x) <= abs(mpe_v) or fault_detected}  # R 144-1, 4.5.4
-    source:      "urn:oiml:pub:r:144-2:2013" # the rec's own edition
-  }
-}
+```yaml
+# ── the rec binds the slots — reference, never redefine ────
+# (layer-manifest form; an each: slot instantiates per entry)
+uses:
+  - module: module-emc-disturbances
+    with:
+      forms:                            # each: true — one with-map,
+        - test_id: /conf/disturbance-tests/esd    # eight R 129 forms
+          form_id: esd
+          form_identifier: r129-3/sec-2.10
+          requirement_clause: urn:oiml:pub:r:129-1:2020#clause-4.3.1
+          verdict_variant: "ocl{measurements->forAll(m | m.pass_fail)}"
 ```
 
 ## 10.12 Validation rules
 
-Composition-time checks (the model linker extended across `uses:` boundaries):
+Composition-time checks (the model linker and the registry extended across
+`uses:` boundaries — all live, ●):
 
 - every module `requires` is satisfied by core, by previously composed modules,
-  or by the rec itself;
+  or by the rec itself — an unmet capability token fails the composition;
 - no id is defined twice across layers — an overlay references module and core
-  ids, never redefines them;
+  ids, never redefines them (uses-no-redefine, incl. the multilingual-array
+  single-owner law);
 - every module `provides` is consumed by the rec or explicitly waived — partial
-  consumers (R 91 today) are legal, silent omission is not;
+  consumers are legal, silent omission is not;
 - overlay bindings type-check against the frozen skeleton: bound attribute ids
   exist in the rec's register, severities are QuantityValues (INV-1),
   acceptance OCL resolves (INV-3, INV-9), clause URNs match the rec's declared
-  edition;
-- module packages carry `kind: module` (and core `kind: core`), so registries,
+  edition; `with:` slot bindings are validated (an unknown slot or a missing
+  required binding fails);
+- module packages carry `kind module` (and core `kind core`), so registries,
   navigation, and search never list them as publishable Recommendations.
 
 ## 10.13 Summary
@@ -277,8 +308,11 @@ Composition-time checks (the model linker extended across `uses:` boundaries):
 - Each module freezes skeletons and declares provides / requires / consumers;
   each rec binds exactly four slots: attribute ids, severities, acceptance
   expressions, clause URNs.
-- The patterns run today inline in the recs (●); the packaged modules and
-  `uses:` composition are ○ v3.
+- The patterns run inline in the recs (●), and the packaged modules ship (●) —
+  all seven `oiml-smart-module-*` packages with `kind module`; R 60 and R 144
+  consume specimen-governance (R 144 adds reference-materials via `with:`), R
+  129 consumes emc-disturbances and env-iec60068 via the `each:`
+  family-instantiation slot.
 - Normative content — requirements, tables, acceptance quantities, terminology
   — never enters a module; R 91's copied conditions are the standing proof of
   why.
