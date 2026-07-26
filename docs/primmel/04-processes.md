@@ -3,7 +3,8 @@
 > *In this chapter:* the process model — the DOES of every subject.
 > Abstract and executable forms, the classification facets
 > (`activity_kind`, `segregation:`), the step vocabulary, executors,
-> state, and how process I/O becomes evidence.
+> state, the typed transition boundaries that make an executable anatomy
+> sound (C74–C76), and how process I/O becomes evidence.
 
 ---
 
@@ -185,7 +186,66 @@ precondition voids the run *as a run* (its verdicts become `invalid`,
 never `fail`) — the state gate that keeps an unwarmed instrument from
 producing misleading evidence.
 
-## 4.7 Process I/O = evidence
+## 4.7 Composition signature checks — typed transition boundaries (task 38) ●
+
+An executable process composes steps over typed registers: one step
+writes, the next reads, a `calls` step binds a sub-process's signature.
+That composition is sound only if every **transition boundary**
+type-checks — and "sound" is a computed fact, not a review opinion.
+Three kernel checks (● primmel-ts, TODO.roadmap/38; chapter 11's
+C-catalog) police the boundaries over the composed package post-merge:
+
+![The composition signature checks](diagrams/signature-checks.svg)
+
+- **C74 process-io-type-coherence — one name, one type.** A name
+  declared at several sites (signature parameters, registers, step I/O)
+  carries ONE type across all of them; `raw_signal : voltage` in the
+  registers and `raw_signal : count` at a step boundary is an
+  incoherent declaration, not a style deviation.
+- **C75 process-flow-io-cover — every read has a writer.** The
+  step-chain dataflow covers every read: a step may read only what some
+  incoming path writes. A read with no upstream producer is a gap in
+  the chain — the step would execute against nothing.
+- **C76 subprocess-signature-bound — every call bound.** A `calls`
+  step binds the sub-process's signature **completely** and
+  **kind-compatibly** (`with { in … out … }`): every IN parameter fed,
+  every OUT parameter landed, and the bound types compatible — a
+  unit mismatch at the call boundary is an error at the boundary, not a
+  surprise inside the callee.
+
+The checks are **surgical**: each seeded boundary violation (one name
+with two kind-incompatible declaration sites; a read no path writes; a
+unit-mismatched call binding) trips exactly its own check with no
+collateral findings — pinned in `prl-check-all.test.ts` over the
+shipped packages.
+
+**The first real consumer is R 60's `load_weight`** (task 50 — the
+executable anatomy of the behavior with the same id, R30's id-equality
+link). The instrument's own signal chain, calibrated against R 60-1, 4
+Figure 2: `transduce → linearize → amplify → digitize → filter →
+scale`, then the `overload_check` gateway against `e_lim` (R 60-1,
+3.5.16) — `executor machine` throughout: the instrument runs its own
+measurement, the first machine-executed process in the packages
+(distinct from the actor-typed workflow processes of chapter 8 in
+Volume II). Its signature (`in { applied_load : mass, e_lim : mass }`,
+`out { indication, last_indication : mass, load_count : count }`),
+registers with honest initials (`raw_signal : voltage = 0 V` — the
+ENGINEERING-DEFAULT pattern where the Recommendation gives no value),
+and the `scale` step's `calls scale_indication { with { in {
+filtered_counts … } out { indication … overload_flag … } } }` binding
+the abstract, signature-only scaling stage — C76's live case. Type
+tokens come from the package's quantity register (mass / voltage /
+count / dimensionless), so INV-1 holds across the chain: no bare
+numbers at any boundary.
+
+The authoring consequence: refining an abstract process to executable
+(§4.2) now has a *checkable* definition of done — the steps realize the
+signature (C13), the boundaries cohere (C74), the dataflow covers
+(C75), and every call is bound (C76). An anatomy that passes is one a
+simulator can execute as-is (the platform annex's simulated instruments
+interpret exactly this anatomy).
+
+## 4.8 Process I/O = evidence
 
 Steps consume and produce **records in registries** (chapter 6): a test
 step reads the subject's parameters, enforces conditions, and writes
@@ -198,7 +258,7 @@ Evidence model stores, and it lives in the workspace (`.pws/`): one
 record per filled slot, typed by the process output it satisfies. Facts
 only: no verdicts in a trace (the firewall, chapter 1).
 
-## 4.8 Repetition and instances
+## 4.9 Repetition and instances
 
 Two parameterizations keep one process definition serving many runs:
 
@@ -219,7 +279,7 @@ Monitors evaluate against *served* instances, and the same endpoint
 machinery makes a subject's own processes remotely callable: an `invoke`
 operation triggers a behavior over the wire (chapter 14, §14.4).
 
-## 4.9 Processes across model kinds
+## 4.10 Processes across model kinds
 
 The same process concept, three voices:
 
@@ -231,7 +291,7 @@ The same process concept, three voices:
   workflow — mapped to the reference process (chapter 5);
 - in the **workspace**: "this is what happened" — the execution traces.
 
-## 4.10 Grammar sketch *(illustrative v3 syntax)*
+## 4.11 Grammar sketch *(illustrative v3 syntax)*
 
 ```prl
 process creep_test {
@@ -269,7 +329,7 @@ process review {
 }
 ```
 
-## 4.11 Validation rules
+## 4.12 Validation rules
 
 - exactly one start event per process; end events on every terminal path
   (mandatory on empty gateway branches);
@@ -279,6 +339,10 @@ process review {
 - every precondition is an OCL Boolean over signature and state;
 - an executable process's steps realize its own signature (the OUT
   parameters are written; the IN parameters are read);
+- the transition boundaries compose: one name carries one type across
+  signature/register/step-I/O sites (C74), every step read is covered by
+  an upstream write (C75), and every `calls` binding is complete and
+  kind-compatible (C76);
 - a timer event's period is a time primitive; a self-loop contains a
   timer (no unguarded infinite loops);
 - every `activity_kind` id resolves against an activity-archetype
@@ -293,7 +357,7 @@ process review {
 - every `source` block names doc + clause; repeated blocks collect into
   `sourceRefs`, the scalar `source` holding the first.
 
-## 4.12 Summary
+## 4.13 Summary
 
 - A process is a subject: IS the signature, HAS the state and registers,
   DOES the steps.
@@ -304,6 +368,10 @@ process review {
   over personnel sets — both classification, never inheritance; `source`
   carries requirement-shape clause provenance.
 - Eight step kinds, three connection rules, two executor kinds.
+- The composition signature checks (● task 38) make an executable
+  anatomy's soundness computed: C74 one-name-one-type, C75
+  every-read-covered, C76 every-call-bound — the R 60 `load_weight`
+  signal chain is their first consumer.
 - Registers may declare initial values — a registers-only literal
   contract; signature parameters and call bindings reject `=` outright.
 - Preconditions void runs, never instruments; traces are facts, never
