@@ -16,8 +16,8 @@ assuming the one below:
 | Layer | What it proves | Status |
 |---|---|---|
 | 1. JSON Schema | each file is well-formed for its kind | ● `data/schemas/` |
-| 2. Model linker | every cross-reference resolves | ● `browser/build/model-linker.ts` (R1–R42) |
-| 3. `primmel check` | cross-layer invariants hold | ● C1–C88 (`@primmel/primmel` `src/check-rules.ts`, 0 errors on the shipped packages) |
+| 2. Model linker | every cross-reference resolves | ● `browser/build/model-linker.ts` (R1–R43) |
+| 3. `primmel check` | cross-layer invariants hold | ● C1–C89 (`@primmel/primmel` `src/check-rules.ts`, 0 errors on the shipped packages) |
 | 4. Coverage audits | the aspect↔requirement↔test↔form closure is complete | ◐ structural today, explicit in v3 |
 | 5. Text-coverage metric | every normative sentence is modelled, none duplicated | ● `src/text-coverage.ts` (C71–C73 + `--coverage`), R 60 at 100 % / 0 unresolved |
 
@@ -65,6 +65,7 @@ applicability keys, symbol→calculation/formula→profile links, and form
 | `instance-coverage` (R40) | a test's `instances:` map that leaves an applicable dimension value unkeyed — an undispatchable sample for the scheduler (Volume III, §4.11) |
 | `formulas-used-resolve` (R41) | a `formulas_used` entry binding an undeclared test, duplicated per test, or naming a formula outside the calculations ∪ formulas registries (Volume III, §4.12) |
 | `state-machine-integrity` (R42) | a lifecycle machine resolving to no entity class, states outside the entity's `status` enum, `initial` or endpoints outside the state set, a guard outside the closed vocabulary (Volume II, §8.5.2) |
+| `spelling-code-resolve` (R43) | a `spelling:` code that fails compositional resolution against the vendored ISO 24229 snapshot (language / script / country segment not in the pinned lists), a duplicate code within one content set (keyed `setPath + code`), or a `via` conversion code that misses the register (case-insensitive, punctuation-exact; `zz-` user-assigned warns) — snapshot absent ⇒ one stub warning, never a failure (chapter 10) |
 | `serve-targets-resolve` (● C60) | a `serve` binding naming an undeclared aspect or endpoint operation (chapter 14) |
 | `payload-schema-quantity` (● C61) | an endpoint operation whose payload is not a QuantityValue with unit and timestamp (chapter 14) |
 | `freshness-required` (● C63) | a live binding without `fresh_within` — no stale semantics, no live binding (chapter 14) |
@@ -79,10 +80,12 @@ runtime (task 34), C81–C83 with the product reference packages
 (task 36); chapters 14 (§14.12) and 15 (§15.9) are their doctrine. The
 smart-side halves ride `npm run validate`: the gateway and monitor
 binding validators (`src/gateway/binding.ts`, `src/monitor/binding.ts`)
-enforce the same laws on the YAML faces. The R36–R42 rows are the
-phase-9 and interop increments — each
+enforce the same laws on the YAML faces. The R36–R43 rows are the
+phase-9, interop and multilingual increments — each
 shipped with its owning feature (R36 with OpenCDD resolution, R37–R42
-with the R 60 SSOT review's phase-9/9.5 tasks).
+with the R 60 SSOT review's phase-9/9.5 tasks, R43 with ISO 24229
+multilinguality, task 25 — the R42/R43 numbering is the merge-collision
+record of chapter 10, §10.5).
 
 ### The allowlist discipline
 
@@ -108,13 +111,13 @@ a safety valve.
 Above reference resolution sits the tier law itself. `primmel check`
 evaluates the invariants that span layers, the checks that made chapter
 1's dependency law and chapter 2's anatomy enforceable. The catalog is
-**88 rules** (`@primmel/primmel` `src/check-rules.ts`, test-pinned; 0
+**89 rules** (`@primmel/primmel` `src/check-rules.ts`, test-pinned; 0
 errors on the shipped packages), organized by family — the five original
 base checks below are its root, not its extent:
 
 | Family | Rules | Provenance |
 |---|---|---|
-| base | C1–C5 (+ C56/C57 allowlist self-checks) | the v2 linter (W8) |
+| base | C1–C5 (+ C56/C57 allowlist self-checks), C89 spelling-code-wellformed | the v2 linter (W8), roadmap/25 |
 | anatomy (subject is/has/does) | C6–C9, C84 constraint-shape | roadmap/01, /51 |
 | process | C10–C16, C58/C59 (activity-kind, segregation), C74–C76 signature boundaries | roadmap/02, /08, /38 |
 | instantiation | C17–C20 | roadmap/03 |
@@ -321,8 +324,8 @@ The checker's own inputs are models too, and get checked:
 
 ## 11.10 Summary
 
-- Validation is a five-layer stack: schema (●), linker (●, R1–R42),
-  cross-layer invariants (● C1–C88), coverage audits (◐),
+- Validation is a five-layer stack: schema (●), linker (●, R1–R43),
+  cross-layer invariants (● C1–C89), coverage audits (◐),
   text coverage (●). Each layer assumes the one below.
 - The linker resolves every cross-file reference; the allowlist
   discipline (KNOWN prints, STALE must die) keeps inherited debt honest

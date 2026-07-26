@@ -81,10 +81,12 @@ and audited end to end — Volume IV is the full treatment:
   (oiml-r91 and oiml-r144 packages exist alongside it);
 - W8 `primmel check` — the C1–C5 cross-layer linter, 0 errors on R 60.
 
-**The platform.** All command gates green as of merge 6a9484b
-(2026-07-26: vue-tsc 0 errors; astro check 0 errors; vitest 3514/3514;
+**The platform.** All command gates green as of merges `8de8f4d` +
+`8ef2752` (2026-07-26/27: vue-tsc 0 errors; astro check 0 errors;
+vitest 3556/3556;
 production build; validate 0 errors / 435 warnings — the +10 R42 honest
-non-consumer warnings on r91/r129; e2e 54/54; ssot byte-clean — and the
+non-consumer warnings on r91/r129; e2e 55/55 — the ISO 24229
+render-baseline leg (task 25) is the 55th; ssot byte-clean — and the
 from-packages proof: the same gates run
 from the committed Primmel packages only, task 31). Feature-level ●
 includes: the ONE applicability engine (dimension conditions,
@@ -362,7 +364,7 @@ test-side, never process-side):
 |---|---|---|
 | R 60 / R 91 / R 144 / R 129 packages (new layout) | ● | running, gates green |
 | Primmel v2 toolchain (W1–W8) | ● | parser, packages, round-trip, plug, linter |
-| App command gates | ● | vitest 3514/3514, validate 0 errors/435 warnings, e2e 54/54, ssot byte-clean (merge 6a9484b, 2026-07-26) |
+| App command gates | ● | vitest 3556/3556, validate 0 errors/435 warnings, e2e 55/55, ssot byte-clean (merges 8de8f4d + 8ef2752, 2026-07-26/27) |
 | Applicability / verdict / form / state / dispatch engines | ● | `browser/src/data`, `browser/src/services` |
 | CASCO foundation packages + facet trio | ● | phase 7, tasks 39a–d — Volume IV, ch. 2 |
 | OIML-CS reference package (framework + corpus + PD-05) | ● | phase 7, tasks 40–43 — Volume IV, ch. 1/3/4 |
@@ -373,7 +375,7 @@ test-side, never process-side):
 | OIML Core re-home (metamodel as a v3 package) | ● | phase 2, tasks 12–16; the OIML-CS half landed as phase 7 |
 | Rec re-expression (R 60 native; R 91/R 144 stress; R 129 migration) | ● | phase 3, tasks 18–22 |
 | Fragment provenance, text coverage, model diff | ● | phase 4, tasks 24, 26, 28 |
-| ISO 24229 multilinguality | ◐ in progress | task 25 — un-deferred per user direction (2026-07-26): schema, codegen, register validation, R 60 migration in flight; translations out |
+| ISO 24229 multilinguality | ● | task 25 (2026-07-26, smart 8de8f4d + 8ef2752, kernel 14cf10d) — the `text` construct + C89, the vendored register snapshot + R43, the English-first migration of every tree (19 manifests, 978 legacy sites recoded), per-string selection; the acceptance: 44/44 pages byte-identical English on two servers, certificates byte-equal 5/5; translations out — Volume I, ch 10 |
 | Interop projections (ReqIF, RDF/OWL + SHACL, OpenCDD IRDI) | ● | task 27 (2026-07-26): 27a R36 + the pinned snapshot, 27b 180 requirements/62 tests/128 relations/0 dropped, 27c 4,252 triples SHACL-clean + C85 |
 | Platform runtime v3, gates & release | ● | tasks 29, 31 — the from-packages proof green (2026-07-24) |
 | Documentation site | ◐ | task 30 — site launched (tagged `docs-v0.1.0`, 2026-07-26); content patch cycles follow the audit |
@@ -392,8 +394,8 @@ test-side, never process-side):
   runtimes, the unified coverage report), all gates green.
 - The v3 program's phases 1–4 have landed (kernel, core re-home, rec
   re-expression, and interop — fragment provenance, text coverage,
-  model diff, and the ReqIF / RDF-OWL / OpenCDD projections with task
-  27; ISO 24229 ◐ in progress per user direction), and phase 5's
+  model diff, the ReqIF / RDF-OWL / OpenCDD projections with task
+  27, and ISO 24229 multilinguality with task 25), and phase 5's
   platform runtime + release gates are ●:
   the from-packages proof builds the whole system from the committed
   Primmel packages with every gate green (task 31). The SSOT flip
