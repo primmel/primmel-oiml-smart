@@ -4,7 +4,10 @@
 > with its anatomy: targeted requirements, sourced variables, method
 > steps, enforced conditions and run-validity preconditions, composite
 > acceptance criteria, class inheritance, and the kinds/obligation/
-> statistics axes v3 adds.
+> statistics axes v3 adds. Then the phase-9 layer the R 60 SSOT review
+> bought: behavior coverage (R37), test sequences with the admissibility
+> gate (R39), structured runs-per-class with prose congruence (R40), the
+> evaluation-formula trace (R41), and the required-competence facet (R29).
 
 ---
 
@@ -156,7 +159,9 @@ one test definition serves all four classes and the class A/B forms
 materialize five run rows while C/D materialize three. The same numbers
 exist once more as the `test_runs` profile in `tables.yaml` — mirrored,
 not duplicated: the profile serves expression lookup, the `instances:`
-block serves runtime expansion.
+block serves runtime expansion. The structured map is scheduler-facing
+data, and it is now checked both ways — §4.11's R40 coverage rule and
+the prose≡data congruence leg.
 
 ## 4.5 Conditions, preconditions, and equipment
 
@@ -289,7 +294,140 @@ Three axes complete the test model; mark them honestly:
   Recommendations that accept statistical evidence declare it as data on
   the test, not as prose.
 
-## 4.9 Grammar sketch *(illustrative v3 syntax)*
+## 4.9 Behavior coverage — every stimulus-response test verifies a behavior ●
+
+The methodology rule of §2.9 — *tests observe behaviors; a behavior joins
+the coverage chain through `verified_by`* — was honestly unanchored on
+the electronic side: the R 60-2 disturbance and influence tests
+(2.10.5–2.10.7) probed the instrument's response to humidity, warm-up,
+and electromagnetic events, but no model-side behavior declared what
+they probe. Phase 9 closed that (task 56, ● smart f51c5a9):
+`model/behaviors.prl` now carries **21 behaviors**, the phase-9 set
+adding `dead-load-output-return` plus the nine electronic/influence
+responses — `warm-up-drift`, `humidity-cyclic-response`,
+`humidity-steady-response`, and the six `response-to-*` disturbance
+responses (bursts, surges, ESD, RF EM fields, power-voltage variation,
+short-time power reduction). Each is clause-anchored (R 60-2
+2.10.7.4–2.10.7.9 with its applied IEC 61000-4-x / IEC 60068 method
+standard) and links `verified_by` to its electronic test — the behavior
+declares the stimulus–response law; the test verifies it.
+
+Linker rule **R37 behavior-coverage** makes the expectation structural:
+every **stimulus-response** conformance test — the five metamodel
+`ConformanceTestKind` kinds (`performance`, `influence`, `disturbance`,
+`durability`, `span-stability`) with `type: Testing` — must be the
+`verified_by` target of ≥1 declared behavior. The scope is deliberate:
+
+- **Examinations stay out by *type*** (`Inspection`), not by kind — the
+  R 60 examination tests declare `kind: performance`, so `kind` is not
+  the discriminator.
+- **The extension kinds stay out** — `field`/`simulation` (R 91-2's
+  in-situ and simulated regimes) and `software-examination` (D 31) are
+  not stimulus-response probes.
+- **Coverage inherits over `inherits_from`** — a class specialization
+  shares its base test's anchor.
+- A violation is a **warning** — a designed delta is
+  allowlist-documented (the R34 discipline), and the rule is silent when
+  the standard declares no behavior registry at all.
+
+## 4.10 Test sequences and the admissibility gate ●
+
+R 60-2 implies a required ordering on the same sample: the
+increasing/decreasing-load, creep, repeatability and DR tests are
+conducted per temperature (2.10), the per-temperature sequence of
+figures 2/3 is *recommended* (2.11.1/2.11.2), and the DR measurement is
+physically chained to the creep loading — DR is defined against the
+D_min reading taken *after* the D_max application (2.9.2). Until phase
+9 that ordering lived nowhere as data (task 60, ● smart a98039e);
+`specification/test-sequences.yaml` declares it:
+
+![The test-sequence gate](diagrams/test-sequence-gate.svg)
+
+A sequence is an ordered step list; each step carries **`test` XOR
+`phase`**. Test steps reference a declared conformance test and may
+carry `role: baseline | follow_up` and `depends_on: <order of an earlier
+step>`. Phase steps name an environment-program phase — legal only in
+programs like temperature cycling. The two R 60 pilots:
+
+- **`mdlo-creep-dr`** — the MDLO test (measurement error, repeatability)
+  as `baseline`, creep `follow_up` on it, DR `follow_up` on creep
+  (`sample_applicability: all`). Running creep before MDLO contaminates
+  the baseline — the order is physics, not bureaucracy.
+- **`temperature-cycling`** — the environment program of the MDLO test
+  (20 °C reference → T_high → T_low → 20 °C return, R 60-2 2.10.1.13).
+  Phase-shaped steps carry no test ref; the program *orders the
+  environment* and gates no run by itself.
+
+Two honest scopings (Response 3 §60). The declaration is checked by
+linker rule **R39 test-sequence-integrity**: unique step orders, test
+XOR phase, test refs resolve, `depends_on` references an *earlier* order
+and the graph is acyclic, `role` in vocabulary. And runtime enforcement
+rides the existing **admissibility path** of the test-run service: a run
+scheduled out of order computes INADMISSIBLE → **INVALIDATED — never a
+fail**. This is §4.5's precondition doctrine one level up: an
+out-of-order run says the *program* was wrong, not the instrument — the
+instrument's goodness was never on trial, so no verdict path fires.
+(Authoring note: there is no PRL `test_sequence` construct yet — the
+file is hand-authored app config outside the generated set, riding the
+supplemental list so the from-packages build composes it identically;
+the kernel construct is a kernel-lane follow-up.)
+
+## 4.11 Runs per class — structured and congruent ●
+
+§4.4's `instances:` declaration is the structured, scheduler-consumable
+form of the per-class run counts — and phase 9.5 (Response 4 item 3, ●
+smart 4a9b5db) pinned it from both sides:
+
+- **R40 instance-coverage** — for any test declaring `instances { by D,
+  values }`, every declared value of `D` the test is *applicable to*
+  must be a key of `values`. The workflow scheduler dispatches a
+  sample's run count by its dimension value; a missing key is an
+  undispatchable sample. Applicability scopes the demand: span-stability
+  applies to classes B/C/D and keys exactly those — class A is never
+  dispatched to it, so it needs no key. (The by-dimension reference and
+  the key set ⊆ declared values are R7's legs; R40 is silent for tests
+  without `instances`.)
+- **The prose≡data congruence test** — the repetition counts also live
+  in the test's `method:` prose ("Classes C/D: 3 identical load
+  applications. Classes A/B: 5 …", R 60-2 2.10.1.3), and the prose
+  *stays* the normative text. A data-level leg
+  (`src/__tests__/runs-per-accuracy-class.test.ts`) pins 5/5/3/3 both
+  ways, so the structured map and the normative sentence cannot drift —
+  drift being exactly what the structured form exists to prevent.
+
+## 4.12 The evaluation-formula trace: `formulas_used` ●
+
+Which registry formulas does a test's evaluation invoke? The answer was
+implicit in the variables' derivations; phase 9.5 made it a first-class
+trace (Response 4 item 4, ● smart 4a9b5db):
+`specification/formulas-used.yaml` records per test the calculation and
+formula ids its evaluation consumes — for the MDLO test,
+`conversion_factor_f`, `e_l`, `e_r`, `c_m` (R 60-3, 2.1).
+
+The placement is the semantic point: these are **evaluation-level**
+quantities — computed *from* the indication output, never *by* the
+instrument's signal chain. `load_weight` (the MDLO test's `method_ref`)
+is the instrument's signal-level anatomy (R 60-1, 4 Figure 2); putting
+evaluation formulas on it would falsely claim the instrument computes
+them. The trace therefore hangs on the **test**, and it discharges part
+of the R34 designed delta's documentation: the delta — the process's
+signature covers the instrument vocabulary, the test's variables are the
+derived error quantities — stops being allowlist prose and becomes
+resolvable data. Linker rule **R41 formulas-used-resolve** binds every
+entry to a declared test (one trace per test) and resolves every formula
+id against the union of the calculations and formulas registries (entry
+name or output name). Traceability is the payoff: a formula change now
+propagates visibly to every test that uses it.
+
+One entry closed honestly: `c_m` was a declared test variable with **no
+named registry entry** — the task added the `mdloStepChange` calculation
+(R 60-3, 2.1.4: the raw per-step temperature effect `C_M = (I_2 − I_1) /
+f`, before the normalization that lives exactly once in the
+`mdlo_normalized` VerdictQuantity) rather than letting the trace dangle
+or documenting around it. (Same authoring posture as test sequences:
+hand-authored app config pending a kernel `formulas_used` facet.)
+
+## 4.13 Grammar sketch *(illustrative v3 syntax)*
 
 ```prl
 conformance_test /conf/metrological-tests/creep {
@@ -346,19 +484,29 @@ conformance_test /conf/class-a/measurement-error {
 }
 ```
 
-## 4.10 Validation rules
+## 4.14 Validation rules
 
 - every `targets` entry resolves to a declared requirement, and every
   acceptance item's `target` is among them; every requirement with
   `verification.method: testing` is targeted by at least one test
   (coverage); every `binds_to` entry resolves against the subject's HAS
   inventory, and every test binds ≥1 such home (R28);
+- every stimulus-response test (the five metamodel kinds, `type:
+  Testing`) is the `verified_by` target of ≥1 declared behavior (R37);
+- every sequence step carries `test` XOR `phase`; test refs resolve to
+  declared tests; `depends_on` references an earlier order, acyclically;
+  `role ∈ {baseline, follow_up}` when present (R39); an out-of-order run
+  computes INVALIDATED, never a fail;
+- every `instances.by` names a declared dimension, `instances.values`
+  keys every dimension value the test is applicable to (R40), and the
+  counts stay congruent with the method prose;
+- every `formulas_used` entry binds a declared test (one trace per
+  test); every formula id resolves against the calculations ∪ formulas
+  registries (R41);
 - every variable declares a `source`; `derived`/`computed` variables
   carry OCL `derivation` reading only declared variables, bound paths,
   and resolvable lookups; step `input_variables`/`output_variables` name
   declared variables, produced before consumed;
-- `instances.by` names a declared dimension and `instances.values` its
-  declared enum values;
 - precondition `check` expressions read bound paths and declared
   variables; their violation yields `invalid`, never a verdict outcome;
 - `inherits_from` resolves to a declared test; the child restates deltas
@@ -373,7 +521,7 @@ conformance_test /conf/class-a/measurement-error {
 - quantities shared with a VerdictQuantity are referenced, not
   re-derived (`verdict-no-shadow`, `verdict-restatement`).
 
-## 4.11 Summary
+## 4.15 Summary
 
 - A conformance test is an operation on the subject: it constrains
   inputs, environmental context, and state, then observes outcomes as
@@ -394,6 +542,14 @@ conformance_test /conf/class-a/measurement-error {
   field/simulation kinds, software-examination pending), obligation
   levels (○), and statistics blocks (●, landed from the R 91 gap)
   complete the model.
+- The phase-9 layer (●, the R 60 SSOT review): every stimulus-response
+  test is a behavior's `verified_by` target (R37); required orderings
+  are declared test sequences (R39) enforced through the admissibility
+  path — out-of-order ⇒ INVALIDATED, never fail; runs-per-class is
+  structured data keyed for every applicable class (R40) and pinned
+  congruent with the normative prose; and each test traces the registry
+  formulas its evaluation consumes (R41) — evaluation-level quantities
+  on the test, never on the instrument's process.
 
 *Next: [Chapter 5 — Forms and Reports](05-forms-and-reports.md): the
 evidence views — bind paths, measurement methods, pass/fail blocks, the

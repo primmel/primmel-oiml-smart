@@ -152,13 +152,21 @@ representative shapes:
   COMPLETED` (plus `REJECTED_BY_LAB`, `WITHDRAWN`).
 - **certificate**: `DRAFT → PENDING_REGISTRATION → ACTIVE`, then the
   post-issue life: `EXPIRED`, `SUSPENDED ⇄ ACTIVE`, `UNDER_INVESTIGATION`,
-  `WITHDRAWN` from three sources.
+  `WITHDRAWN` from three sources — plus the PD-05 re-registration edges
+  (`renew` / `revise` / `transfer_ownership` from `[ACTIVE, EXPIRED]`).
+
+![The seven lifecycle machines](diagrams/lifecycle-machines.svg)
 
 Three mechanics make the machines executable rather than decorative:
 
 1. **Guarded transitions.** Each transition is a triple `{ from, to,
    action }`; only the declared action fires it, and only the role the
-   action names may fire it.
+   action names may fire it. A transition may also name a **guard** from
+   the closed vocabulary — today exactly one: `admissible`, the test-run
+   service's computed admissibility, required by the test_run machine's
+   `complete` transition. A guard names a caller-supplied computed input
+   the walker *requires* at walk time; the machine never re-derives it
+   (the R 144 `state: ready` gate precedent).
 2. **Cascades.** A transition may declare side effects on other entities:
    `set` (field writes, `'now'` timestamps), `where` (a filter selecting
    the affected rows), `create` (new records — e.g. the audit event on
@@ -190,6 +198,51 @@ Three mechanics make the machines executable rather than decorative:
    (`[APPROVED, REJECTED, CONDITIONALLY_APPROVED] → IN_REVIEW`). The
    machine states the real policy — "withdrawable until decision" — as
    one transition, not five.
+
+### 8.5.1 All mutation is machine-routed (task 61) ●
+
+The machines above are not documentation of what the services do — they
+*are* what the services do. Phase 9 (task 61, ● smart 6a9484b) completed
+the machine-routing: the state walker (`browser/src/data/state-walk.ts`)
+exports `walkTransition` — validate the edge, enforce the declared
+guard, apply the status, run the declared cascades — and **every
+mutation site delegates to it**: all ten `test-run.service` status
+writes, `useTestAssignment.setStatus`, `useApplication.updateStatus`,
+`useTestReport.submit`, and all eleven `useCertificate` lifecycle
+methods. The delegation is behavior-preserving by construction: zero
+assertion changes in the test suite, and a pinned grep leg
+(`lifecycle-machines.test.ts`) proves no `.status =` write survives in
+the seven-entity surface outside the walker.
+
+The task also closed the declaration gaps it found. Six of the seven
+machines were already declared; the task **added TestAssignment** (with
+date-stamp self-cascades) and **TestRun** — the run-family cascades now
+declared, not coded: `COMPLETED` ⇒ the form goes SUBMITTED and the
+assignment COMPLETED; `INVALIDATED` ⇒ the assignment FAILED; `redo` ⇒
+the assignment back to IN_PROGRESS and the form to DRAFT. FormInstance
+gained the service-tested `DRAFT → SUBMITTED` hop and the redo bridge;
+Certificate gained the re-registration edges named above. One premise
+the task corrected honestly: twelve viewer-table/service discrepancies
+surfaced in the merge, and the *tested* service won every one — the
+machines were authored from observed behavior, and where the two
+disagreed the disagreement is recorded (e.g. EvaluationReport carries
+no `status` field; its machine is declared data riding
+`overall_decision`).
+
+### 8.5.2 R42 — the machines' own integrity ●
+
+The machines are data, so they are checked like data. Linker rule **R42
+state-machine-integrity** resolves every machine to its declared entity
+class, requires its states to be values of the entity's `status` enum
+(`initial ∈ states`, every transition endpoint ∈ states), and resolves
+every declared guard against the closed vocabulary. Two **documented
+warning legs** stay visible rather than silent: `evaluation_report`
+(its entity declares no status enum — the lifecycle rides
+`overall_decision`) and `sample_verification` (a projection machine
+riding `MeasuringInstrumentSample.verification_state` — its states
+cannot be enum-checked, and R42 says so). The discipline is §9's
+crosswalk applied to workflow: a machine that cannot be checked against
+its carrier is a finding, never an assumption.
 
 ## 8.6 Workflow DOES: gateways
 
@@ -282,6 +335,12 @@ workflow oiml_type_evaluation {           # implementation model of OIML-CS PD-0
 - every state machine has exactly one `initial` state; every transition's
   `from`/`to` states are declared and every `action` unique; every cascade
   `entity`/`where`/`create` references declared entities and fields;
+- every state machine resolves to its declared entity class, its states
+  are values of the entity's `status` enum, and every declared guard is in
+  the closed vocabulary (R42 state-machine-integrity); every status
+  mutation at runtime routes through the walker — a `.status =` write
+  outside `walkTransition` in the seven-entity surface is a pinned test
+  failure;
 - every role referenced by a transition, approval, or console is one of
   the eleven declared roles;
 - every gateway has a `default` edge; every edge condition's identifiers
@@ -308,6 +367,11 @@ workflow oiml_type_evaluation {           # implementation model of OIML-CS PD-0
 - Lifecycle state machines carry guarded transitions, `set`/`where`/
   `create` cascades, and multi-source `from` lists; lifecycle state is the
   state of process artifacts, never the subject's operational state.
+  Since task 61 the machines are not descriptive but *operative*: every
+  service mutation routes through the walker (`walkTransition` — validate
+  edge, enforce guard, apply status, run cascades), behavior-preserving
+  and grep-pinned; R42 keeps the declarations honest against their entity
+  classes.
 - Gateways branch on classification (static) or on results (runtime);
   approvals are recorded acts by declared signatories, each mapped to its
   PD-05 clause.

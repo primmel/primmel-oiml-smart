@@ -81,9 +81,11 @@ and audited end to end — Volume IV is the full treatment:
   (oiml-r91 and oiml-r144 packages exist alongside it);
 - W8 `primmel check` — the C1–C5 cross-layer linter, 0 errors on R 60.
 
-**The platform.** All command gates green as of 2026-07-24 (vue-tsc 0
-errors; astro check 0 errors; vitest 3126 tests; production build;
-validate; e2e 48/48 — and the from-packages proof: the same gates run
+**The platform.** All command gates green as of merge 6a9484b
+(2026-07-26: vue-tsc 0 errors; astro check 0 errors; vitest 3514/3514;
+production build; validate 0 errors / 435 warnings — the +10 R42 honest
+non-consumer warnings on r91/r129; e2e 54/54; ssot byte-clean — and the
+from-packages proof: the same gates run
 from the committed Primmel packages only, task 31). Feature-level ●
 includes: the ONE applicability engine (dimension conditions,
 `implies:`, `instances:`); the VerdictQuantity registry with
@@ -294,30 +296,92 @@ executable semantics across kernel, core, and scheme layers:
   calibration records with lifecycle machines, the method facet, and
   single-home result shapes.
 
+### Phase 9 — the R 60 SSOT viewer correspondence (landed 2026-07-26)
+
+The driver is the educational viewer consuming the R 60 SSOT: its team
+proposed seven content items it was maintaining as overlays
+(`PROPOSAL.R60-SSOT-Phase9.md`), the model authors answered claim by
+claim (`analysis/response-3-r60-ssot-phase9.md` — 4 adopted as
+proposed, 2 adopted with corrected premises, 1 answered, no work
+needed), and the follow-up round
+(`PROPOSAL.R60-SSOT-Phase9.5.md` → `analysis/response-4-r60-ssot-phase9-5.md`)
+added four more. Proposal → response → shipped, in one day:
+
+- **electronic behaviors + R37** (task 56, ● f51c5a9) — `behaviors.prl`
+  grows to 21: `dead-load-output-return` plus the nine
+  electronic/influence responses (warm-up, humidity cyclic/steady, and
+  the six `response-to-*` disturbance responses), each clause-anchored
+  with `verified_by`; R37 `behavior-coverage` pins every
+  stimulus-response test to ≥1 behavior (Volume III, §4.9);
+- **the INV registry + R38** (task 57, ● same merge) — INV-1..10 as
+  first-class typed data (`oiml-smart-core/specification/
+  invariants.prl`, the note-family construct) with the enforcement
+  crosswalk; R38 `invariant-crosswalk` proves every claim names real
+  machinery — or the invariant declares itself aspirational (Volume II,
+  §9.12);
+- **test sequences + R39** (task 60, ● a98039e) — required orderings as
+  data (`mdlo-creep-dr`, `temperature-cycling`), runtime enforcement
+  through the admissibility path: out-of-order ⇒ INVALIDATED, never a
+  fail (Volume III, §4.10);
+- **the 7 workflow lifecycle machines + R42** (task 61, ● 6a9484b) —
+  declarative, machine-routed: every service mutation delegates to the
+  walker, behavior preserved (zero assertion changes); R42
+  `state-machine-integrity` checks the declarations against their
+  entity classes (Volume II, §8.5);
+- **item 3 (mappings)** — folded into task 35: the R 60 → DPP mapping
+  rides the existing `.prm` primitive (`r60-to-dpp.prm` + the coverage
+  gate, §14.6);
+- **item 4 (curated model-diff records)** — adopted shape recorded
+  (machine-verified summary counts + authored rationale on the existing
+  `primmel diff` primitive); ○ not yet landed;
+- **item 7 (capability decomposition)** — answered: already decomposed
+  upstream with `requires`/`satisfies` obligations; the viewer deleted
+  its overlay (Volume III, §2.8).
+
+Phase 9.5 (the viewer's four contributions, accepted with one
+duplicate declined and one semantic correction — formulas are
+test-side, never process-side):
+
+- **capability construction parameters** (9.5-a, ● 4a9b5db) —
+  `gauge_type`/`bridge_type` on `strain-gauge`, `signal_bandwidth` on
+  the two concrete electronics capabilities; engineering vocabulary
+  honestly marked, `excitation_voltage` declined as a duplicate of
+  `recommended_excitation` (Volume III, §2.8);
+- **structured runs-per-class + R40** (9.5-b, ● same merge) — the
+  `instances:` map keyed for every applicable class (R40
+  `instance-coverage`) and pinned congruent with the normative method
+  prose (Volume III, §4.11);
+- **`formulas_used` + R41** (9.5-c, ● same merge) — the per-test
+  evaluation-formula trace, `c_m` honestly closed by the new
+  `mdloStepChange` calculation (Volume III, §4.12).
+
 ## 5. The consolidated status table
 
 | Area | Marker | Where it stands |
 |---|---|---|
 | R 60 / R 91 / R 144 / R 129 packages (new layout) | ● | running, gates green |
 | Primmel v2 toolchain (W1–W8) | ● | parser, packages, round-trip, plug, linter |
-| App command gates | ● | 0/0 errors, 3151 tests, 48/48 e2e (2026-07-24) |
+| App command gates | ● | vitest 3514/3514, validate 0 errors/435 warnings, e2e 54/54, ssot byte-clean (merge 6a9484b, 2026-07-26) |
 | Applicability / verdict / form / state / dispatch engines | ● | `browser/src/data`, `browser/src/services` |
 | CASCO foundation packages + facet trio | ● | phase 7, tasks 39a–d — Volume IV, ch. 2 |
 | OIML-CS reference package (framework + corpus + PD-05) | ● | phase 7, tasks 40–43 — Volume IV, ch. 1/3/4 |
 | Participant + operations runtimes, unified coverage | ● | phase 7, tasks 44–45 — Volume IV, ch. 5–7 |
+| Clause-number reconciliation (official-PDF numbering) | ● | task 46 (c1e14ac, 2026-07-25) — every clause cite in the swept surfaces verified against the 11 official PDFs |
 | Promises, characteristics | ● | tasks 08, 10 (C42–C44, C48–C50) — §3 |
 | Kernel primitives (structure, artifacts, state, duality, set-dimensions, process extensions, mapping calculus, uses) | ● | phase 1, tasks 01–11 (+ 38) |
 | OIML Core re-home (metamodel as a v3 package) | ● | phase 2, tasks 12–16; the OIML-CS half landed as phase 7 |
 | Rec re-expression (R 60 native; R 91/R 144 stress; R 129 migration) | ● | phase 3, tasks 18–22 |
 | Fragment provenance, text coverage, model diff | ● | phase 4, tasks 24, 26, 28 |
-| ISO 24229 multilinguality, interop projections | ○ DEFERRED | per user direction (2026-07-23), tasks 25, 27 |
+| ISO 24229 multilinguality | ◐ in progress | task 25 — un-deferred per user direction (2026-07-26): schema, codegen, register validation, R 60 migration in flight; translations out |
+| Interop projections (ReqIF, RDF/OWL + SHACL, OpenCDD IRDI) | ● | task 27 (2026-07-26): 27a R36 + the pinned snapshot, 27b 180 requirements/62 tests/128 relations/0 dropped, 27c 4,252 triples SHACL-clean + C85 |
 | Platform runtime v3, gates & release | ● | tasks 29, 31 — the from-packages proof green (2026-07-24) |
-| Documentation site | ◐ | task 30 — site built + navigable; launch tag `docs-v0.1.0` pending the release |
+| Documentation site | ◐ | task 30 — site launched (tagged `docs-v0.1.0`, 2026-07-26); content patch cycles follow the audit |
 | Twin interface primitives (endpoint, serve, connector profiles, freshness) | ● | phase 6, task 32 (Volume I, ch 14 §14.4) |
 | API gateway + Compliance Engine monitor runtime | ● | phase 6, tasks 33–34 (ch 14 §14.5/§14.7) |
-| Passport (DPP) projection | ○ DEFERRED | per user direction, phase 6 task 35 (ch 14 §14.6) |
+| Passport (DPP) projection | ● | phase 6, task 35 (2026-07-26) — kernel `passport` construct + projection engine with fail-closed access classes, C86–C88, `r60-to-dpp.prm` + coverage gate, the JTC24 alignment record (ch 14 §14.6, ch 12 §12.5) |
 | Product reference packages, live-twin pilot | ● | phase 6, tasks 36–37 — ACME LC-500 → quarry, six pilot steps asserted (ch 15) |
 | Phase-8 executable-semantics program | ● | tasks 48–55 merged at review-SHIP — driver `BUG.R60-SSOT.md` |
+| Phase-9/9.5 SSOT-correspondence program | ● | tasks 56–61 + 9.5-a/b/c (2026-07-26) — electronic behaviors + R37, INV registry + R38, test sequences + R39, lifecycle machines + R42, capability parameters, R40/R41 — driver `PROPOSAL.R60-SSOT-Phase9(.5)` → Response 3/4 |
 
 ## 6. Summary
 
@@ -326,9 +390,10 @@ executable semantics across kernel, core, and scheme layers:
   7: CASCO foundation, B 18 framework, the documents corpus, both
   runtimes, the unified coverage report), all gates green.
 - The v3 program's phases 1–4 have landed (kernel, core re-home, rec
-  re-expression, and interop's fragment-provenance / text-coverage /
-  model-diff trio; ISO 24229 and the projections deferred per user
-  direction), and phase 5's platform runtime + release gates are ●:
+  re-expression, and interop — fragment provenance, text coverage,
+  model diff, and the ReqIF / RDF-OWL / OpenCDD projections with task
+  27; ISO 24229 ◐ in progress per user direction), and phase 5's
+  platform runtime + release gates are ●:
   the from-packages proof builds the whole system from the committed
   Primmel packages with every gate green (task 31). The SSOT flip
   landed on top of it (task 31b): the packages are now THE source of
@@ -345,10 +410,13 @@ executable semantics across kernel, core, and scheme layers:
   then Recommendation re-expression, then interop; the platform release
   (phase 5) ships it, and the twin program (phase 6 — endpoint / serve /
   freshness, the gateway, the monitor runtime, the product reference
-  packages, and the LC-500 → quarry pilot all ●; only the passport
-  projection deferred) takes the standard to the product, continuously.
-  Phase 8's executable-semantics enhancements (tasks 48–55, driven by
-  the external SSOT review) have landed on top.
+  packages, and the LC-500 → quarry pilot all ●; the passport
+  projection landed 2026-07-26 with task 35) takes the standard to the
+  product, continuously. Phase 8's executable-semantics enhancements
+  (tasks 48–55, driven by the external SSOT review) have landed on top,
+  and phase 9/9.5 (tasks 56–61 + 9.5-a/b/c — the viewer correspondence:
+  proposal → Response 3/4 → shipped, one day) closed the review's last
+  content items with linker rules R37–R42.
 - Every ○ item traces to the concept frame's Appendix B or to the twin
   chapters (Volume I, 14–15); every ● item traces to a gate. Nothing
   here is aspiration without an address.

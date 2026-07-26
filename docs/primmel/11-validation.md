@@ -16,8 +16,8 @@ assuming the one below:
 | Layer | What it proves | Status |
 |---|---|---|
 | 1. JSON Schema | each file is well-formed for its kind | ● `data/schemas/` |
-| 2. Model linker | every cross-reference resolves | ● `browser/build/model-linker.ts` |
-| 3. `primmel check` | cross-layer invariants hold | ◐ (C1–C5 in `@primmel/primmel` `src/check.ts`, 0 errors on R 60) |
+| 2. Model linker | every cross-reference resolves | ● `browser/build/model-linker.ts` (R1–R42) |
+| 3. `primmel check` | cross-layer invariants hold | ● C1–C88 (`@primmel/primmel` `src/check-rules.ts`, 0 errors on the shipped packages) |
 | 4. Coverage audits | the aspect↔requirement↔test↔form closure is complete | ◐ structural today, explicit in v3 |
 | 5. Text-coverage metric | every normative sentence is modelled, none duplicated | ● `src/text-coverage.ts` (C71–C73 + `--coverage`), R 60 at 100 % / 0 unresolved |
 
@@ -58,6 +58,13 @@ applicability keys, symbol→calculation/formula→profile links, and form
 | `verdict-inputs-resolve`, `verdict-no-shadow`, `verdict-restatement` | the VerdictQuantity discipline — derivations defined once, referenced, never restated inline |
 | `source-discrepancy` | a discrepancy record whose citations do not resolve (chapter 9) |
 | `test-design` | test-design metadata referencing undeclared rules |
+| `irdi-resolve` (R36) | an attribute `irdi` annotation that fails the pinned OpenCDD snapshot — ISO/IEC 11179-6 full-IRDI syntax, entry existence, status level, unit symbol (Unicode-exact), quantity-kind↔dimension coherence; snapshot absent ⇒ one stub note, never a failure (§12.4) |
+| `behavior-coverage` (R37) | a stimulus-response conformance test (the five metamodel kinds, `type: Testing`) that is no behavior's `verified_by` target — a warning; a designed delta is allowlist-documented (Volume III, §4.9) |
+| `invariant-crosswalk` (R38) | an INV-registry entry lacking name/statement/severity, silently unenforced (no claim, no `aspirational` marker), or claiming enforcement machinery that does not exist — kernel C-checks, linker rules, or platform gates with evidence paths (Volume II, §9.12) |
+| `test-sequence-integrity` (R39) | a sequence step without `test` XOR `phase`, a dangling test ref, a `depends_on` that is not earlier and acyclic, an out-of-vocabulary `role` (Volume III, §4.10) |
+| `instance-coverage` (R40) | a test's `instances:` map that leaves an applicable dimension value unkeyed — an undispatchable sample for the scheduler (Volume III, §4.11) |
+| `formulas-used-resolve` (R41) | a `formulas_used` entry binding an undeclared test, duplicated per test, or naming a formula outside the calculations ∪ formulas registries (Volume III, §4.12) |
+| `state-machine-integrity` (R42) | a lifecycle machine resolving to no entity class, states outside the entity's `status` enum, `initial` or endpoints outside the state set, a guard outside the closed vocabulary (Volume II, §8.5.2) |
 | `serve-targets-resolve` (○) | a `serve` binding naming an undeclared aspect or endpoint operation (chapter 14) |
 | `payload-schema-quantity` (○) | an endpoint operation whose payload is not a QuantityValue with unit and timestamp (chapter 14) |
 | `freshness-required` (○) | a live binding without `fresh_within` — no stale semantics, no live binding (chapter 14) |
@@ -68,7 +75,9 @@ applicability keys, symbol→calculation/formula→profile links, and form
 
 The ○ rows are the twin-era rules — chapters 14 (§14.12) and 15 (§15.9)
 are their authority; they join the catalog with the v3 primitives they
-guard.
+guard. The R36–R42 rows are the phase-9 and interop increments — each
+shipped with its owning feature (R36 with OpenCDD resolution, R37–R42
+with the R 60 SSOT review's phase-9/9.5 tasks).
 
 ### The allowlist discipline
 
@@ -89,49 +98,69 @@ The standing burn-down plan (the repo's tasks 12–14) takes every list to
 empty; an allowlist that only grows is a failed validation strategy, not
 a safety valve.
 
-## 11.4 Layer 3 — `primmel check`: cross-layer invariants (◐)
+## 11.4 Layer 3 — `primmel check`: cross-layer invariants (●)
 
 Above reference resolution sits the tier law itself. `primmel check`
 evaluates the invariants that span layers, the checks that made chapter
-1's dependency law and chapter 2's anatomy enforceable. The five below
-are the C1–C5 set, implemented in `@primmel/primmel` `src/check.ts`
-(0 errors on the R 60 package):
+1's dependency law and chapter 2's anatomy enforceable. The catalog is
+**88 rules** (`@primmel/primmel` `src/check-rules.ts`, test-pinned; 0
+errors on the shipped packages), organized by family — the five original
+base checks below are its root, not its extent:
 
-- **anchor paths vs attribute scopes** — a `binds_to` or `bind:` path
-  must exist *and* be read at a legal scope: no sample-scope attribute
-  resolved by inheritance, no model-scope value stated per sample
-  (the scope discipline of chapter 3);
-- **reference targets** — every `reference(Class)` field points at an
-  existing record; `on_delete` semantics are declared (INV: closed
-  under reference, applied to the entity graph);
-- **dimension enums** — every classification value (`accuracy_class ∈
-  {A,B,C,D}`, humidity class `CH`/`NH`) comes from the dimension
-  registry, and applicability keys come from the same enum;
-- **req↔test↔form refs** — a conformance test's acceptance targets its
-  requirement; a form's program binds the tests it evidences;
-- **store uniqueness** — each registry compiles to exactly one store;
-  no two entity classes claim the same store name or index.
+| Family | Rules | Provenance |
+|---|---|---|
+| base | C1–C5 (+ C56/C57 allowlist self-checks) | the v2 linter (W8) |
+| anatomy (subject is/has/does) | C6–C9, C84 constraint-shape | roadmap/01, /51 |
+| process | C10–C16, C58/C59 (activity-kind, segregation), C74–C76 signature boundaries | roadmap/02, /08, /38 |
+| instantiation | C17–C20 | roadmap/03 |
+| mapping | C21–C26 | roadmap/04 |
+| composition (`uses`) | C27–C31 | roadmap/05 |
+| quantities + duality | C32–C36 | roadmap/06 |
+| state machines | C37–C41 (incl. C38 state-family-separation) | roadmap/07 |
+| promises | C42–C44 | roadmap/08 |
+| artifacts | C45–C47 | roadmap/09 |
+| characteristics | C48–C50 | roadmap/10 |
+| coverage | C51–C55, C71–C73 (text coverage, §11.6) | roadmap/17, /26 |
+| twins | C60–C70 (endpoint/serve/freshness/monitors) | roadmap/32–34 |
+| edition lifecycle | C77–C80, C85 baseurn-wellformed | roadmap/28, /27c |
+| supply chain | C81–C83, C86–C88 passport | roadmap/36, /35 |
 
 A violation here is not a style complaint: it means the model would
 mis-execute — a verdict computed against the wrong scope, a form
 prefilling from a path that does not exist.
 
-The catalog has grown past the original five (C71–C73 at layer 5; the
-twin-era and supply-chain rules of chapters 14–15). The newest member
-is **C84 constraint-shape** (● primmel-ts 490bacc) — the declaration
-shape of the subject-intrinsic constraint (the «inv» entity of
-chapter 2, smart-repo task 51), five error legs mirroring the smart-side
-schema: the stereotype is always `inv` (requirements are the «req»
-counterpart); the check is a *single* `ocl{…}` boolean over the
-subject's declared anatomy; `violation_meaning` is non-empty — the
-invalidated judgment records what a violation means, never a bare id;
-`on_violation` ∈ {`invalid`, `indeterminate`} — a constraint voids the
-measurement or withholds judgment, it never *fails* the instrument; and
-a declared `source` names both doc and clause (clause-URN provenance,
-chapter 9). Duplicate constraint ids are the parse-time duplicate-id
-rule, and the resolution legs stay smart-side (linker rule R32) — C84
-polices shape only, which is why all 19 shipped packages pass with zero
-hits.
+The base set, for the record: **anchor paths vs attribute scopes** — a
+`binds_to` or `bind:` path must exist *and* be read at a legal scope:
+no sample-scope attribute resolved by inheritance, no model-scope value
+stated per sample (C1, the scope discipline of chapter 3); **reference
+targets** — every `reference(Class)` field points at an existing record,
+`on_delete` semantics declared (C2); **dimension enums** — every
+classification value comes from the dimension registry (C3); **store
+uniqueness** — each registry compiles to exactly one store (C4);
+**req↔test coverage** — a conformance test's acceptance targets its
+requirement, a form's program binds the tests it evidences (C5).
+
+Two recent members deserve note. **C84 constraint-shape** (● primmel-ts
+490bacc, roadmap/51) — the declaration shape of the subject-intrinsic
+constraint (the «inv» entity of chapter 2, smart-repo task 51), five
+error legs mirroring the smart-side schema: the stereotype is always
+`inv` (requirements are the «req» counterpart); the check is a *single*
+`ocl{…}` boolean over the subject's declared anatomy;
+`violation_meaning` is non-empty — the invalidated judgment records what
+a violation means, never a bare id; `on_violation` ∈ {`invalid`,
+`indeterminate`} — a constraint voids the measurement or withholds
+judgment, it never *fails* the instrument; and a declared `source`
+names both doc and clause (clause-URN provenance, chapter 9). Duplicate
+constraint ids are the parse-time duplicate-id rule, and the resolution
+legs stay smart-side (linker rule R32) — C84 polices shape only, which
+is why all shipped packages pass with zero hits. And the **passport
+trio C86–C88** (● primmel-ts da30b21, roadmap/35): C86
+passport-content-resolves (every content entry of a `passport`
+declaration resolves against the product model), C87 passport-access-leak
+(nothing marked `restricted`/`authority` appears in a less-privileged
+class — fail-closed), C88 passport-upi-scheme (the UPI pattern and level
+— ESPR model/batch/item — are well-formed). §12.5 and §14.6 are their
+doctrine.
 
 ## 11.5 Layer 4 — coverage audits (◐)
 
@@ -287,14 +316,16 @@ The checker's own inputs are models too, and get checked:
 
 ## 11.10 Summary
 
-- Validation is a five-layer stack: schema (●), linker (●),
-  cross-layer invariants (◐ C1–C5), coverage audits (◐),
+- Validation is a five-layer stack: schema (●), linker (●, R1–R42),
+  cross-layer invariants (● C1–C88), coverage audits (◐),
   text coverage (●). Each layer assumes the one below.
 - The linker resolves every cross-file reference; the allowlist
   discipline (KNOWN prints, STALE must die) keeps inherited debt honest
   and finite.
-- `primmel check` enforces the tier law: anchor scopes, reference
-  targets, dimension enums, req↔test↔form refs, store uniqueness.
+- `primmel check` enforces the tier law across fifteen families — base,
+  anatomy, process, instantiation, mapping, composition, quantities,
+  state, promises, artifacts, characteristics, coverage, twins, edition,
+  supply chain.
 - Coverage is computed, not opined: aspect↔requirement↔test↔form
   closure plus mapping coverage; deliberate exclusions are records.
 - The pitfalls catalog (clause drift, scope confusion, snake_case,
