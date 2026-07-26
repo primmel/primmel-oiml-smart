@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" font-family="ui-sans-serif, system-ui, sans-serif">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="arrSp" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="arrSpI" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4f46e5"/>
+    </marker>
+  </defs>
+
+  <text x="50" y="34" font-size="18" font-weight="700" fill="#0f172a">One logical string, a code-tagged set</text>
+  <text x="50" y="54" font-size="12.5" fill="#475569">the element is edited once and every spelling moves with it · selection is per string · the vendored register validates every code.</text>
+
+  <!-- prose element -->
+  <rect x="50" y="95" width="340" height="310" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="220" y="121" font-size="13" font-weight="700" fill="#3730a3" text-anchor="middle">PROSE ELEMENT</text>
+  <text x="220" y="139" font-size="10" fill="#4f46e5" text-anchor="middle">/req/metrological/measuring-range-max</text>
+  <text x="220" y="153" font-size="10" fill="#4f46e5" text-anchor="middle">field: statement — one string, three spellings</text>
+
+  <rect x="66" y="168" width="308" height="62" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.4"/>
+  <text x="80" y="188" font-size="10.5" font-weight="700" fill="#166534">spelling: eng-Latn — the DEFAULT</text>
+  <text x="80" y="204" font-size="9.5" fill="#14532d">stays inline on the element (statement "…"),</text>
+  <text x="80" y="218" font-size="9.5" fill="#14532d">always first in the projected set</text>
+
+  <rect x="66" y="240" width="308" height="62" rx="8" fill="#fffbeb" stroke="#d97706" stroke-width="1.4"/>
+  <text x="80" y="260" font-size="10.5" font-weight="700" fill="#92400e">spelling: fra-Latn — an alternate</text>
+  <text x="80" y="276" font-size="9.5" fill="#78350f">added by a text block (l10n/fra-Latn.prl),</text>
+  <text x="80" y="290" font-size="9.5" fill="#78350f">never replacing the inline default</text>
+
+  <rect x="66" y="312" width="308" height="62" rx="8" fill="#faf5ff" stroke="#9333ea" stroke-width="1.4"/>
+  <text x="80" y="332" font-size="10.5" font-weight="700" fill="#6b21a8">spelling: zho-Latn — derived</text>
+  <text x="80" y="348" font-size="9.5" fill="#7e22ce">via bgnpcgn:zho-Hani:Latn:1979 — the system</text>
+  <text x="80" y="362" font-size="9.5" fill="#7e22ce">whose rules produced the form is cited</text>
+
+  <text x="220" y="394" font-size="9.5" font-style="italic" fill="#4f46e5" text-anchor="middle">edited once — every spelling moves with it (OCP)</text>
+
+  <!-- validation arrow between the cards -->
+  <line x1="394" y1="180" x2="562" y2="180" stroke="#475569" stroke-width="1.8" marker-start="url(#arrSp)" marker-end="url(#arrSp)"/>
+  <text x="478" y="166" font-size="9.5" fill="#475569" text-anchor="middle">every code resolved —</text>
+  <text x="478" y="205" font-size="9.5" fill="#475569" text-anchor="middle">C89 in packages</text>
+  <text x="478" y="219" font-size="9.5" fill="#475569" text-anchor="middle">R43 in the data trees</text>
+
+  <!-- register -->
+  <rect x="570" y="95" width="340" height="310" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+  <text x="740" y="121" font-size="13" font-weight="700" fill="#334155" text-anchor="middle">ISO 24229 REGISTER</text>
+  <text x="740" y="139" font-size="10" fill="#475569" text-anchor="middle">vendored snapshot — data/iso24229/register.snapshot.json</text>
+  <text x="740" y="153" font-size="10" fill="#475569" text-anchor="middle">pin e9f612a · 2026-07-13</text>
+
+  <rect x="586" y="168" width="308" height="44" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.2"/>
+  <text x="740" y="186" font-size="10" font-weight="700" fill="#3730a3" text-anchor="middle">8 159 languages · 226 scripts · 246 countries</text>
+  <text x="740" y="201" font-size="10" fill="#4f46e5" text-anchor="middle">156 spelling systems · 487 conversion codes</text>
+
+  <text x="586" y="238" font-size="10" font-weight="700" fill="#1e293b">resolution is COMPOSITIONAL — never membership:</text>
+  <text x="586" y="254" font-size="9.5" fill="#475569">language + script (mandatory) + country checked per</text>
+  <text x="586" y="268" font-size="9.5" fill="#475569">segment; eng-Latn itself is not one of the 156</text>
+
+  <text x="586" y="296" font-size="9.5" fill="#475569">unknown code ⇒ <tspan font-weight="700" fill="#b91c1c">FAIL</tspan> · duplicate per set ⇒ <tspan font-weight="700" fill="#b91c1c">error</tspan></text>
+  <text x="586" y="312" font-size="9.5" fill="#475569">via register-exact — case-insensitive,</text>
+  <text x="586" y="326" font-size="9.5" fill="#475569">punctuation-strict (bgnpcgn:…, never BGN-PCGN:…)</text>
+  <text x="586" y="348" font-size="9.5" fill="#475569">zz- user-assigned ⇒ <tspan font-weight="700" fill="#b45309">warn</tspan> (not portable)</text>
+  <text x="586" y="364" font-size="9.5" fill="#475569">snapshot absent ⇒ stub: one warning, checks nothing</text>
+
+  <text x="740" y="394" font-size="9.5" font-style="italic" fill="#64748b" text-anchor="middle">written only by the fetch script; refresh is a manual pin</text>
+
+  <!-- selection arrow -->
+  <line x1="300" y1="409" x2="360" y2="448" stroke="#4f46e5" stroke-width="1.8" marker-end="url(#arrSpI)"/>
+  <text x="272" y="436" font-size="9.5" fill="#4f46e5" text-anchor="middle">selects ONE value</text>
+
+  <!-- rendering selection -->
+  <rect x="140" y="452" width="680" height="92" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <text x="480" y="476" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle">RENDERING — per-string selection (src/data/prose.ts), never per document</text>
+
+  <rect x="156" y="488" width="200" height="40" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.2"/>
+  <text x="256" y="505" font-size="10" font-weight="700" fill="#3730a3" text-anchor="middle">1 · exact code match</text>
+  <text x="256" y="519" font-size="9" fill="#4f46e5" text-anchor="middle">the requested spelling wins</text>
+
+  <rect x="380" y="488" width="200" height="40" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.2"/>
+  <text x="480" y="505" font-size="10" font-weight="700" fill="#3730a3" text-anchor="middle">2 · language siblings</text>
+  <text x="480" y="519" font-size="9" fill="#4f46e5" text-anchor="middle">shortest code, stable tie-break</text>
+
+  <rect x="604" y="488" width="200" height="40" rx="8" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.2"/>
+  <text x="704" y="505" font-size="10" font-weight="700" fill="#3730a3" text-anchor="middle">3 · first entry</text>
+  <text x="704" y="519" font-size="9" fill="#4f46e5" text-anchor="middle">the default (projection order)</text>
+
+  <!-- law bar -->
+  <rect x="50" y="560" width="860" height="46" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="70" y="580" font-size="11.5" font-weight="600" fill="#0f172a">No computed transliteration: a via spelling is authored content with cited rules — never runtime-derived.</text>
+  <text x="70" y="596" font-size="10.5" fill="#475569">Machine content (identifiers, bind paths, OCL, snake_case keys) is never spelling-coded — it is single-form by construction.</text>
+</svg>
