@@ -96,6 +96,15 @@ cannot yet hold (it needs an expert case kind), asserted as gaps with
 the closure path in the reason, and pinned by a unit test so the
 honesty itself cannot silently regress.
 
+The same `npm run validate` section (1f) prints the corpus's
+**source-discrepancy records** (● smart 8651182 — task 54; the
+construct is Volume I, chapter 9's `discrepancy_record`, the three live
+records chapter 3, §3.7). A resolved record prints as DOCUMENTED — a
+recorded conflict is known, never a new finding; an `open` record would
+print at audit level, so an undispositioned conflict cannot hide. The
+report treats the records as the corpus's errata memory: coverage never
+re-litigates a settled disagreement.
+
 ![The coverage machinery](diagrams/coverage-machinery.svg)
 
 ## 7.4 The named-gap doctrine
@@ -112,7 +121,15 @@ takes in a coverage calculus. Four rules govern it:
   documentation, or a gap with a reason; silence fails;
 - **the pair is the documentation** — dropping a pair fails even when
   inheritance would keep the computed cover full: an undocumented
-  fulfilment is an assertion, not evidence.
+  fulfilment is an assertion, not evidence;
+- **a source conflict names its record** — a named gap whose root cause
+  is a documented source-vs-source discrepancy carries `discrepancy:
+  <record-id>` (the structured successor of a free-text reason, ● smart
+  8651182) instead of re-arguing the conflict in the reason string. The
+  reference resolves against the corpus's discrepancy-record registry on
+  all four coverage gates and the dangling-ref gate: a dangling record
+  reference *fails* the gate; a defined one prints DOCUMENTED through
+  the record.
 
 The doctrine is what lets the report serve two audiences at once: the
 operator reads "what must we build?" (the gaps with their closures);
@@ -183,6 +200,9 @@ exactly the set of mutations it is *proven* to detect.
   against the register, and the reason must invoke the classification;
 - the maps' sources are restricted to declared elements of their
   corpora — computed vocabularies, never hand-listed;
+- a named gap's `discrepancy:` reference resolves to a declared
+  discrepancy record — dangling fails; an open record prints at audit
+  level, a resolved one DOCUMENTED;
 - the mutation suites stay green — a gate regression is a test failure,
   not a documentation drift.
 
@@ -196,7 +216,9 @@ exactly the set of mutations it is *proven* to detect.
   with 48 justified gaps and zero errors.
 - Named gaps are the calculus's honesty form: reasoned, closed-world,
   stale-proof; the zeros (pd-04/08/09, cid-01) and the honest zero
-  (pd-02) both say something true.
+  (pd-02) both say something true. A gap rooted in a source conflict
+  names its `discrepancy_record` — the corpus's errata memory, printed
+  DOCUMENTED by validate section 1f.
 - The type-1a classification discharges the surveillance and
   mark-ownership items — re-checked mechanically against the register,
   counterfactual-proven.

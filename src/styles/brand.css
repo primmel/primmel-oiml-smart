@@ -1605,3 +1605,278 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   margin: 1.75rem 0; padding: 1rem 1.5rem; background: var(--color-paper-tint);
   border-radius: var(--radius-card); border: 1px solid var(--color-rule-soft); overflow-x: auto;
 }
+
+/* =============================================================================
+ * DESIGN ROUND 4 — diagrams, print, mobile, content density
+ * ========================================================================== */
+
+/* --- Diagram / figure presentation ---
+   The 58+ hand-authored SVGs throughout the docs need consistent framing:
+   paper-soft background, rounded border, shadow, responsive max-width,
+   and optional caption from the alt text. --- */
+
+.sl-markdown-content p > img:only-child,
+.sl-markdown-content img[src*='diagrams/'] {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  margin: 2rem auto;
+  background: var(--color-paper-soft);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-card);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+}
+
+/* Captions: when an image is followed by an <em> paragraph, treat it as caption */
+.sl-markdown-content p > img:only-child + p > em:only-child,
+.sl-markdown-content img[src*='diagrams/'] + p > em:only-child {
+  display: block;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--color-ink-muted);
+  font-style: italic;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* SVG inside img: inherit the container sizing */
+.sl-markdown-content img[src$='.svg'] {
+  object-fit: contain;
+}
+
+/* Diagrams in blockquotes/callouts: tighter margins */
+.sl-markdown-content aside img[src*='diagrams/'],
+.sl-markdown-content .starlight-aside img {
+  margin: 0.5rem auto;
+  max-width: 100%;
+}
+
+/* --- Content density and reading rhythm --- */
+
+/* Tighter heading margins for a more compact, professional feel */
+.sl-markdown-content h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.sl-markdown-content h3 {
+  margin-top: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Better list styling */
+.sl-markdown-content ul,
+.sl-markdown-content ol {
+  margin: 1rem 0;
+  padding-left: 1.4rem;
+}
+
+.sl-markdown-content li {
+  margin: 0.4rem 0;
+}
+
+/* Better table presentation — responsive scroll on mobile */
+.sl-markdown-content .table-scroll,
+.sl-markdown-content div > table {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Definition lists (if used) */
+.sl-markdown-content dt {
+  font-weight: 600;
+  font-family: var(--font-display);
+  margin-top: 1rem;
+  font-variation-settings: 'opsz' 36, 'SOFT' var(--display-soft);
+}
+
+.sl-markdown-content dd {
+  margin-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-ink-soft);
+}
+
+/* --- Better content area max-width for reading --- */
+
+/* The main content column should be comfortable for prose reading */
+@media (min-width: 80rem) {
+  .sl-markdown-content {
+    max-width: 46rem;
+  }
+}
+
+/* --- Mobile responsive improvements --- */
+
+@media (max-width: 760px) {
+  /* Tighter padding on mobile */
+  .main-frame {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Smaller hero on mobile */
+  .cover-hero {
+    padding: 3rem 1rem 2rem;
+  }
+
+  .cover-hero__title {
+    font-size: clamp(1.8rem, 7vw, 2.6rem);
+  }
+
+  .cover-hero__lede {
+    font-size: 1.05rem;
+  }
+
+  /* Volume grid: single column on small screens */
+  .volume-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reading tracks: single column */
+  .reading-tracks {
+    grid-template-columns: 1fr;
+  }
+
+  /* Tables: horizontal scroll wrapper */
+  .sl-markdown-content table {
+    font-size: 0.85rem;
+  }
+
+  /* Blockquotes: smaller padding */
+  .sl-markdown-content blockquote {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  /* Code blocks: smaller text */
+  pre {
+    font-size: 0.78rem;
+    padding: 0.8rem 1rem;
+  }
+
+  /* Code block header: compact */
+  .code-block-header {
+    padding: 0.25rem 0.7rem;
+    font-size: 0.65rem;
+  }
+
+  /* Drop cap: smaller on mobile */
+  .sl-markdown-content > h1 + p::first-letter {
+    font-size: 2.5em;
+  }
+
+  /* Back to top: smaller, closer to edge */
+  .back-to-top {
+    bottom: 1rem;
+    right: 1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+}
+
+/* --- Print stylesheet --- */
+
+@media print {
+  /* Hide everything that's not content */
+  .header,
+  .sidebar,
+  .right-sidebar-container,
+  .site-footer,
+  .back-to-top,
+  #reading-progress,
+  .mobile-toc-aside,
+  #starlight__mobile-toc,
+  .pagination-links,
+  .code-block-copy,
+  .code-block-header {
+    display: none !important;
+  }
+
+  /* Full-width content */
+  .main-frame {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .page {
+    display: block !important;
+  }
+
+  /* White background, black text */
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  /* Headings: black, serif */
+  h1, h2, h3, h4, h5, h6 {
+    color: #000000 !important;
+    page-break-after: avoid;
+  }
+
+  h2 {
+    page-break-before: auto;
+    border-bottom: 1px solid #999 !important;
+  }
+
+  /* Links: show URL in parentheses */
+  a::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.85em;
+    color: #666;
+  }
+
+  a[href^='#']::after,
+  a[href^='javascript']::after {
+    content: '';
+  }
+
+  /* Code blocks: border, no background */
+  pre {
+    background: #f5f5f5 !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    font-size: 9pt;
+  }
+
+  code {
+    background: transparent !important;
+    color: #000 !important;
+  }
+
+  /* Blockquotes: simple border */
+  blockquote {
+    background: transparent !important;
+    border-left: 3px solid #999 !important;
+    color: #333 !important;
+  }
+
+  /* Tables: borders, no shadows */
+  table {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    font-size: 9pt;
+  }
+
+  /* Images: no shadows or borders */
+  img {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    page-break-inside: avoid;
+  }
+
+  /* KaTeX: keep visible */
+  .katex-display {
+    background: #f5f5f5 !important;
+    border: 1px solid #ccc !important;
+  }
+}

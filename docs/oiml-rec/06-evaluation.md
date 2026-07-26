@@ -122,8 +122,18 @@ A Verdict captures the full audit trail of one judgment:
   recorded manual intervention allowed), `D/NSFd` (no significant fault
   *during*), `n/a` (observational).
 - **Overrides are recorded, never silent.** `overridden: boolean`,
-  `override_note` (mandatory justification), `override_by`. An evaluator
-  may disagree with the computed outcome; the record keeps both.
+  `override_note` (mandatory justification), `override_by` — and, since
+  task 55 (● smart ce10a43), `override_at`. An evaluator may disagree
+  with the computed outcome; the record keeps both. The event side is
+  now complete too: every verdict write path emits an AuditEvent —
+  `override_verdict` when a human override lands, `recompute_verdicts`
+  when the engine re-executes — carrying the actor, a before/after
+  outcome diff per verdict, and a first-class `basis`; a no-op write
+  stays silent. Workflow transitions ride the same discipline (manual
+  `logStatusChange` in the composables plus the task-52 `record
+  audit_event` cascade), and `audit-completeness.test.ts` pins all four
+  carrier kinds — a silent judgment path is a test failure, not a
+  possibility.
 
 Two further fields keep the verdict honest in harder Recommendations:
 `verdict_id` keys the judgment to the canonical VerdictQuantity registry

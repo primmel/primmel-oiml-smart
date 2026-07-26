@@ -172,6 +172,22 @@ projection, and it too serves both modes:
    promise → last quarter's verdict history → this morning's batch
    records. No emails.
 
+**Made real (TODO.roadmap/37).** Every step of this example runs in the
+smart repo: the packages are `primmel-packages/acme-lc500` (steps 1–2 —
+the pilot EXECUTES the type evaluation against the real R 60 program:
+three samples, verdicts computed, the certificate issued through the
+signing gate with promises-as-verified derived from the executed
+record) and `primmel-packages/quarry-belt-scale` (step 3 — the abstract
+import validated at design time by the chain-rule gate; step 4 — one
+simulated twin served by a demo provider, the hourly monitor accruing a
+quarter of verdict history, the batch gate tripping on the pushed
+`fault`); step 5 is the scripted audit-chain assertion (clause `5.3.2`
+→ `mpe_within` → the quarter's `batch_watch` verdicts → the morning's
+three batch records, referenced from the fact stream). One command:
+`cd browser && npm run pilot`; the passport resolves at
+`/passport/upi:acme:lc500.json`. The authoring path is Volume II,
+[chapter 12](../oiml-rec/12-modelling-your-product.md).
+
 ## 15.8 Grammar sketch *(illustrative v3 syntax)*
 
 ```prl

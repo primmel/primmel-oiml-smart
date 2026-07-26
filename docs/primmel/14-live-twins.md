@@ -115,6 +115,16 @@ serve sample.test_context.d_min via get_indication { fresh_within 5s }
 Freshness is part of the binding: the engine must know how old a value
 may be before it stops meaning anything.
 
+**Declaration vs binding.** A Recommendation ships the twin
+DECLARATION — the endpoint, the served aspects, the operational state
+machine, and the serve capabilities with their `fresh_within` windows
+(what CAN be served and how fresh it must be; R 60 does,
+`model/twin.prl`). The live BINDING — the gateway integration that
+actually serves values — is deployment content (`model/gateway.yaml` in
+the consuming package). A declared-but-unbound serve gates nothing: an
+offered capability is not an outage, verdicts stay untouched until a
+deployment binds the operation (AGENTS.d/12, TODO.roadmap/49).
+
 **Connector profiles** — protocol bindings declared per endpoint:
 `rest_json`, `mqtt`, `opc_ua`, `file_drop` (for batch/plugin sources).
 The model is protocol-neutral; profiles bind protocols. This is what
@@ -240,6 +250,24 @@ runs an hourly monitor:
   over streamed indication series — the same OCL as the type test —
   and the drift verdict history is the audit's answer to "show me the
   fleet."
+
+**Made real (TODO.roadmap/37).** This worked example runs in the smart
+repo as the live-twin pilot: `primmel-packages/acme-lc500` (the product
+reference model with the declared `lc500_api` endpoint and the aspect-
+by-aspect R 60 mapping) and `primmel-packages/quarry-belt-scale` (the
+quarry's implementation package, consuming in both modes) are the
+shipped packages; the pilot executes the type evaluation against the
+R 60 program for real (three samples, the certificate issued with
+promises-as-verified), serves ONE simulated twin from a demo provider,
+runs the hourly + `on change state` monitor loop over a simulated
+quarter (an injected drift ⇒ `fail` + the certificate flag, a feed
+outage ⇒ `indeterminate`, a `fault` push ⇒ the service case), serves
+the passport (§14.6's minimal view) at `/passport/upi:acme:lc500` with
+the QR payload resolving to its JSON, and answers the audit-chain query
+clause → promise → verdict history → batch records. One command:
+`cd browser && npm run pilot`; the six step assertions live in
+`browser/e2e/pilot.e2e.ts` (service-level, the twin machinery's own
+acceptance precedent).
 
 ## 14.10 Worked example B — a fridge under ESPR
 

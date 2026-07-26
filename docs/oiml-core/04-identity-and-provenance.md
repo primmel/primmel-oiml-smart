@@ -161,6 +161,27 @@ happens to *units*, so the anchor is the Sample, not the Model. The
 the calendar — calibration is recurrent, and the record carries the
 validity window that subsequent verification will check.
 
+**The entity home in the running system** (● smart ce10a43 — task 55):
+Marking, Sealing and CalibrationRecord are stored Core entities
+(`data/core/entities/module-b.yaml`, authored as
+`primmel-packages/oiml-smart-core/entities/module-b.prl`; workspace
+stores land by migration v22), each with its lifecycle machine in
+`data/core/evaluation/state-machines.yaml`:
+
+```text
+DRAFT → AFFIXED → INSPECTED → SUPERSEDED
+```
+
+SUPERSEDED is reachable from every state, and the `superseded_by`
+reference chains the replacement — the VerificationRecord supersede
+discipline applied to the identity artifacts; history is kept,
+superseded records stop participating. The R 60 pilot seeds the
+certified HLCi flow (`data/r60/sample-data.yaml`) with anchors verified
+against R 60-1: the mandatory marking set (6.2.1 — a laser-engraved
+data plate, non-removable without damage), the class and load-type
+designations (6.2.4), and the firmware sealing (6.1) — each carried to
+INSPECTED with affixed-by/at and inspected-by/at provenance on record.
+
 ## 4.8 Certificate — the conformity artifact
 
 ```yaml
@@ -273,7 +294,9 @@ certificate DE_26_041 {
 
 - Module B names what the chain cannot: manufacturer, legally-relevant
   software, markings, seals, calibrations, certificates — the IS
-  provenance aspect, realized.
+  provenance aspect, realized. Marking, Sealing and CalibrationRecord
+  are stored entities with DRAFT→AFFIXED→INSPECTED→SUPERSEDED lifecycle
+  machines (● task 55), piloted in R 60 against R 60-1 6.1/6.2.1/6.2.4.
 - B depends on A and C because its artifacts name subjects; the C→B
   manufacturer back-edge is the metamodel's only sanctioned cycle.
 - Sealing answers a D1 requirement (VIML 2.20); marking carries content

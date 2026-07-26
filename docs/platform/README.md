@@ -1,12 +1,12 @@
 # Annex B — The SMART Platform Runtime
 
 > *In this annex:* the platform as the engine that executes the models —
-> YAML/Primmel packages as the single source of truth with generated
-> code, the build pipeline, the IndexedDB stores compiled from the store
-> manifest, the engines (applicability, verdict, form-context,
-> state-walk, dispatch), the role consoles and public register, the
-> hybrid server-rendered shell, and the command gates that keep every
-> claim in this tree honest.
+> the Primmel packages as the single source of truth with the YAML trees
+> and generated code derived from them, the build pipeline, the IndexedDB
+> stores compiled from the store manifest, the engines (applicability,
+> verdict, form-context, state-walk, dispatch), the role consoles and
+> public register, the hybrid server-rendered shell, and the command
+> gates that keep every claim in this tree honest.
 
 Status markers: ● exists in the running system · ◐ partial · ○ planned
 for v3. Paths are relative to the `oimlsmart/smart` repository.

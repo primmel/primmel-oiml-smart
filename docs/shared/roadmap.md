@@ -33,8 +33,9 @@ attribute definitions, requirements, conformance tests, R 60-3 forms
 with 164 `bind:` paths, the full certification workflow, 13 seeded
 real-certificate flows), **R 91** and **R 144** (new-layout trees with
 model/entities/specification/execution/evaluation), and **R 129**
-(migrated off the legacy tree). The legacy `data/oiml-r144/` tree
-remains unmigrated.
+(migrated off the legacy tree). The legacy `data/oiml-r144/` tree is
+archived read-only alongside `data/oiml-r129.legacy/` — both are
+shadowed in discovery (never loaded), retained for provenance.
 
 **The OIML-CS full implementation (phase 7, tasks 39–45,
 2026-07-22/23).** The certification system is now modelled, executed
@@ -80,20 +81,22 @@ and audited end to end — Volume IV is the full treatment:
   (oiml-r91 and oiml-r144 packages exist alongside it);
 - W8 `primmel check` — the C1–C5 cross-layer linter, 0 errors on R 60.
 
-**The platform.** All command gates green as of 2026-07-23 (vue-tsc 0
-errors; astro check 0 errors; vitest 2788 tests; production build;
-validate; e2e 39/39). Feature-level ● includes: the ONE applicability
-engine (dimension conditions, `implies:`, `instances:`); the
-VerdictQuantity registry with per-requirement verdict re-execution;
-preconditions (invalid ≠ fail), modality (observation ≠ blocker) and the
-acceptance decision rule; the form-context binding engine; state
-machines with declarative cascades; dispatch derivation and
-capability-based lab selection; the TestRun/EvidenceRecord runtime with
-custody; machine-checked reference materials (R 144 CGMs); the
-certificate template and the PD-05 18-element checklist; the model
-linker with clause-referenced allowlists; the BIML registration record
-and the public register at `/app/register`; **the participant registry + approval
-pipeline + the fail-closed issuance gate** (`/app/cs`); and
+**The platform.** All command gates green as of 2026-07-24 (vue-tsc 0
+errors; astro check 0 errors; vitest 3126 tests; production build;
+validate; e2e 48/48 — and the from-packages proof: the same gates run
+from the committed Primmel packages only, task 31). Feature-level ●
+includes: the ONE applicability engine (dimension conditions,
+`implies:`, `instances:`); the VerdictQuantity registry with
+per-requirement verdict re-execution; preconditions (invalid ≠ fail),
+modality (observation ≠ blocker) and the acceptance decision rule; the
+form-context binding engine; state machines with declarative cascades;
+dispatch derivation and capability-based lab selection; the
+TestRun/EvidenceRecord runtime with custody; machine-checked reference
+materials (R 144 CGMs); the certificate template and the PD-05
+18-element checklist; the model linker with clause-referenced
+allowlists; the BIML registration record and the public register at
+`/app/register`; **the participant registry + approval pipeline + the
+fail-closed issuance gate** (`/app/cs`); and
 **the CS operations runtime** (utilization, appeals, post-issuance,
 the register as the §15.8 validity source).
 
@@ -101,12 +104,19 @@ the register as the §15.8 validity source).
 
 | Concept | State today | The gap |
 |---|---|---|
-| **Promises** | parameter-valued claims only (`origin: declared`, the application matrix) | claims on *characteristics and behavior* — envelope-shaped, conditional, verified at evaluation and printed on the certificate — do not exist yet (G11) |
-| **Characteristics** | defined specification-side as observables / VerdictQuantities | definitions must hoist into the primary model (symbol + derivation from behavior I/O), with the specification *referencing* them (INV-3 completeness) |
-| **Designed/exhibited value duality** | `ConditionRole: [reference, rated, limiting, actual]` encodes it for conditions | the general duality (one value structure, two aspect roles) is not yet a kernel relation (as-found verification is the driver) |
 | **BIML registration** | record builder + idempotent register action + public register | true OIML-CS API integration (export feed) |
-| **Quantity vocabulary** | QuantityValue everywhere (INV-1); unit registry | quantity kinds are string ids at the domain layer; no first-class QuantityKind/Unit instance registry (dimension vectors, SI conversion) |
-| **Provenance** | clause level everywhere (`source: { doc, clause }`) | fragment level (`.prd` bindings) is ○ (§4, phase 4) |
+
+Former partials, closed since (the markers flipped when the gates went
+green): **promises** (envelope-shaped claims on characteristics and
+behavior with `verified_by` + the certificate print projection — task
+08, C42–C44), **characteristics** (hoisted to the primary model with
+symbol + derivation from behavior I/O, the specification referencing
+them — task 10, C48–C50), **the designed/exhibited value duality** (the
+`dual` kernel construct — task 06), **the quantity vocabulary**
+(first-class `quantity_register` with unit kinds, SI factor/offset and
+dimension vectors — task 06, C32–C34), **fragment provenance** (`.prd`
+fragment-address bindings + the reconstruction congruence gate —
+task 24).
 
 ## 4. The v3 program, in phases
 
@@ -246,26 +256,68 @@ parallel with phases 2–4 once it lands:
   into the quarry's belt scale, end to end (chapter 15, §15.7): author,
   map, certify, import, go live, audit.
 
+### Phase 7 — the OIML-CS scheme (landed out of order)
+
+The OIML-CS half of the core re-home arrived ahead of phases 3–6 as
+its own program (tasks 39–45): the CASCO foundation packages, the
+B 18:2025 framework, the documents corpus, the participant and
+operations runtimes, and the unified coverage machinery — all told in
+Volume IV.
+
+### Phase 8 — executable-semantics enhancements
+
+Driven by an external review of the R 60 SSOT pipeline (recorded as
+`BUG.R60-SSOT.md` in the platform repo), phase 8 deepens the
+executable semantics across kernel, core, and scheme layers:
+
+- **testing-competence declarations** (task 48) — labs declare the
+  competence kinds their test runs exercise, resolved against the
+  competence-kind registry (linker rule R29);
+- **the rec twin interface** (task 49) — conformance tests exposed as
+  `endpoint`/`serve` bindings keyed endpoint::operation (D26), so a
+  live instrument twin is probed straight from the rec model;
+- **executable behavior anatomy** (task 50) — behaviors decompose into
+  typed steps over registers with invariants (R30, D27); the R 60
+  load-weight signal chain is calibrated against R 60-1's signal-path
+  figure;
+- **condition tiers** (task 53) — applicability conditions bind to
+  tiered evaluation channels (R31); a skipped tier yields an
+  indeterminate verdict, never a silent pass;
+- **constraint entities** (task 51) — subject-intrinsic `inv` rules as
+  first-class registered entities (R32, D28);
+- **cascade transitions** (task 52) — declared workflow side-effects:
+  a transition may emit follow-on transitions on other entities'
+  state machines, with audit events (D29);
+- **discrepancy records** (task 54) — recorded conflicts between
+  corpus documents become first-class, coverage-visible objects;
+- **the test hierarchy** (task 55) — Module-B marking / sealing /
+  calibration records with lifecycle machines, the method facet, and
+  single-home result shapes.
+
 ## 5. The consolidated status table
 
 | Area | Marker | Where it stands |
 |---|---|---|
 | R 60 / R 91 / R 144 / R 129 packages (new layout) | ● | running, gates green |
 | Primmel v2 toolchain (W1–W8) | ● | parser, packages, round-trip, plug, linter |
-| App command gates | ● | 0/0 errors, 2788 tests, 39/39 e2e (2026-07-23) |
+| App command gates | ● | 0/0 errors, 3151 tests, 48/48 e2e (2026-07-24) |
 | Applicability / verdict / form / state / dispatch engines | ● | `browser/src/data`, `browser/src/services` |
 | CASCO foundation packages + facet trio | ● | phase 7, tasks 39a–d — Volume IV, ch. 2 |
 | OIML-CS reference package (framework + corpus + PD-05) | ● | phase 7, tasks 40–43 — Volume IV, ch. 1/3/4 |
 | Participant + operations runtimes, unified coverage | ● | phase 7, tasks 44–45 — Volume IV, ch. 5–7 |
-| Promises, characteristics | ◐ | §3 — closed in phases 1–2 |
-| Kernel primitives (structure, artifacts, state, duality, set-dimensions, process extensions, mapping calculus, uses) | ○ | phase 1 |
-| OIML Core re-home (metamodel as a v3 package) | ○ | phase 2 |
-| Rec re-expression (R 60 native; R 91/R 144 stress) | ○ | phase 3 (R 129 migration ●) |
-| Fragment provenance, ISO 24229, text coverage, projections, model diff | ○ | phase 4 |
-| Platform runtime v3, documentation site, gates & release | ○ | phase 5, tasks 29–31 |
-| Twin interface primitives (endpoint, serve, connector profiles, freshness) | ○ | phase 6, task 32 (Volume I, ch 14 §14.4) |
-| API gateway + Compliance Engine monitor runtime | ○ | phase 6, tasks 33–34 (ch 14 §14.5/§14.7) |
-| Passport projection, product reference packages, live-twin pilot | ○ | phase 6, tasks 35–37 (ch 14 §14.6, ch 15) |
+| Promises, characteristics | ● | tasks 08, 10 (C42–C44, C48–C50) — §3 |
+| Kernel primitives (structure, artifacts, state, duality, set-dimensions, process extensions, mapping calculus, uses) | ● | phase 1, tasks 01–11 (+ 38) |
+| OIML Core re-home (metamodel as a v3 package) | ● | phase 2, tasks 12–16; the OIML-CS half landed as phase 7 |
+| Rec re-expression (R 60 native; R 91/R 144 stress; R 129 migration) | ● | phase 3, tasks 18–22 |
+| Fragment provenance, text coverage, model diff | ● | phase 4, tasks 24, 26, 28 |
+| ISO 24229 multilinguality, interop projections | ○ DEFERRED | per user direction (2026-07-23), tasks 25, 27 |
+| Platform runtime v3, gates & release | ● | tasks 29, 31 — the from-packages proof green (2026-07-24) |
+| Documentation site | ◐ | task 30 — site built + navigable; launch tag `docs-v0.1.0` pending the release |
+| Twin interface primitives (endpoint, serve, connector profiles, freshness) | ● | phase 6, task 32 (Volume I, ch 14 §14.4) |
+| API gateway + Compliance Engine monitor runtime | ● | phase 6, tasks 33–34 (ch 14 §14.5/§14.7) |
+| Passport (DPP) projection | ○ DEFERRED | per user direction, phase 6 task 35 (ch 14 §14.6) |
+| Product reference packages, live-twin pilot | ● | phase 6, tasks 36–37 — ACME LC-500 → quarry, six pilot steps asserted (ch 15) |
+| Phase-8 executable-semantics program | ● | tasks 48–55 merged at review-SHIP — driver `BUG.R60-SSOT.md` |
 
 ## 6. Summary
 
@@ -273,17 +325,30 @@ parallel with phases 2–4 once it lands:
   v2 toolchain complete (W1–W8), the OIML-CS fully implemented (phase
   7: CASCO foundation, B 18 framework, the documents corpus, both
   runtimes, the unified coverage report), all gates green.
-- The honest partials are two: promises declared-only, characteristics
-  specification-side. (The third former partial — the workflow as an
-  unnamed implementation model — closed in phase 7: the OIML-CS is its
-  own reference package, the concrete processes map to it by `.prm`.)
+- The v3 program's phases 1–4 have landed (kernel, core re-home, rec
+  re-expression, and interop's fragment-provenance / text-coverage /
+  model-diff trio; ISO 24229 and the projections deferred per user
+  direction), and phase 5's platform runtime + release gates are ●:
+  the from-packages proof builds the whole system from the committed
+  Primmel packages with every gate green (task 31). The SSOT flip
+  landed on top of it (task 31b): the packages are now THE source of
+  truth — the `data/<rec>/` YAML trees regenerate from them
+  (`npm run gen:data`), authoring is Primmel-native with the YAML-draft
+  aid for migration, and the drift guard (`npm run test:ssot`) holds
+  both directions byte-clean. The one honest
+  partial left: the BIML registration's true OIML-CS API integration
+  (export feed). (Two earlier partials — the workflow as an unnamed
+  implementation model, and promises/characteristics — closed in
+  phase 7 and in tasks 08/10.)
 - The v3 program is phased by dependency: kernel primitives first, then
   the OIML Core re-home (whose OIML-CS half landed early, as phase 7),
   then Recommendation re-expression, then interop; the platform release
   (phase 5) ships it, and the twin program (phase 6 — endpoint / serve /
-  freshness, the gateway, the monitor runtime, the passport projection,
-  product reference packages, the LC-500 → quarry pilot, all ○) takes
-  the standard to the product, continuously.
+  freshness, the gateway, the monitor runtime, the product reference
+  packages, and the LC-500 → quarry pilot all ●; only the passport
+  projection deferred) takes the standard to the product, continuously.
+  Phase 8's executable-semantics enhancements (tasks 48–55, driven by
+  the external SSOT review) have landed on top.
 - Every ○ item traces to the concept frame's Appendix B or to the twin
   chapters (Volume I, 14–15); every ● item traces to a gate. Nothing
   here is aspiration without an address.
