@@ -18,11 +18,14 @@ for v3. Paths are relative to the `oimlsmart/smart` repository.
 The platform's founding rule is design principle 1 of the language:
 **the model is the source of truth; tooling is a pure engine.** All
 Recommendation content — subject model, requirements, conformance tests,
-forms, workflow, state machines — lives in data (`data/r60/` today,
-`primmel-packages/` natively). Services and composables contain no
-domain content: adding a requirement, attribute, form, or state
-transition is a model edit, never a code edit, and adding a new
-Recommendation means a new data tree with zero schema changes
+forms, workflow, state machines — lives in the Primmel packages
+(`primmel-packages/`, the single source of truth since the task-31b
+flip, ● smart a549dab); the `data/<rec>/` YAML trees are downstream
+generated artifacts, regenerated from the packages and proven byte-clean
+in both directions by `npm run test:ssot`. Services and composables
+contain no domain content: adding a requirement, attribute, form, or
+state transition is a model edit, never a code edit, and adding a new
+Recommendation means a new package with zero schema changes
 (`docs/architecture.md` §4).
 
 The browser app (`browser/`, a typed component-based rendering layer)
@@ -35,7 +38,7 @@ built.
 
 ```text
 Layer 0  Vocabularies   ../vocab/datasets/{viml-2022, vim-2012}  (glossarist registers)
-Layer 1  Metamodel      ontology-remix/OIML Core Models/Ontology/oiml-core-ontology.yaml (v0.5.0)
+Layer 1  Metamodel      ontology-remix/OIML Core Models/Ontology/oiml-core-ontology.yaml (v0.6.1)
                         + R 60 domain profile (ontology-remix/OIML Recommendation Models/)
 Layer 2  Domain data    data/r60/ — model/ entities/ specification/ execution/ evaluation/
 Layer 3  App instances  IndexedDB entities, seeded from data/r60/sample-data.yaml
@@ -140,24 +143,53 @@ Five engines evaluate the models; all are data-driven.
   `evaluation/lab-selection-criteria.yaml` — a generic evaluator reading
   `TestLaboratory.capabilities`). ●
 
-### B.5.1 v3: the monitor runtime and the API gateway (○)
+### B.5.1 The monitor runtime and the API gateway (● — shipped, tasks 33/34)
 
-Two more components join this list when the twin direction lands
-(Volume I, chapter 14). Both are reuse, not new science:
+The twin direction's two engine components are shipped and gated (●
+smart 2ef8f4b + 90ff7c8; Volume I, chapter 14 is their doctrine). Both
+are reuse, not new science — the verdict engine is the same one (INV-9:
+never a second dialect):
 
-- **The monitor runtime** (○) — a scheduler and trigger bus (schedule /
-  signal / change) driving the *same* verdict service over values
-  fetched from subject endpoints: fetch → freshness check (stale ⇒
-  `indeterminate`, never a silent pass) → the requirement's own OCL →
-  verdict → time-stamped evidence appended to the workspace → escalate
-  on fail/invalid. Preconditions, modality and the VerdictQuantity
-  registry keep their single homes.
-- **The API gateway** (○) — the connector layer: external sources
-  (domain models like IFC, APIs, file drops, streams) bind to model
-  registers through declared connector profiles (`rest_json`, `mqtt`,
-  `opc_ua`, `file_drop`), with role-based access and a freshness window
-  on every binding — the 2021 PAS 2060 plugin pattern generalized
-  (chapter 14, §14.7).
+- **The API gateway** (● task 33) — the connector layer. A deployment
+  declares `integrations:` in `model/gateway.yaml` (consumer-side
+  runtime configuration, deliberately outside the PRL codec): register
+  bindings from external sources to model registers, validated on
+  declaration — the endpoint resolves against the package's twin
+  declaration, the operation is a declared query/subscribe operation,
+  the credential scope covers the operation's access scope, a serve
+  with `fresh_within` covers every bound pair, and **no secrets in
+  models** (credentials are `{ env: VAR_NAME }` references, resolved at
+  runtime). Connectors are a registry (`registerConnector`): shipped
+  built-ins are `rest_json` (poll + webhook ingest, Bearer-only — any
+  other credential material fails closed), `mqtt` (subscribe; the
+  broker client injected, no mqtt dependency in the browser runtime),
+  `file_drop` (batch ingestion, the 2021 plugin pattern), and `opc_ua`
+  as a declared stub. Failure semantics are the honesty core: a fetch
+  failure degrades to `unavailable`, the register keeps its last-served
+  value and timestamp, the freshness gate owns the judging (stale ⇒
+  `indeterminate` — silence is not evidence), and the outage lands in
+  the health log — never an exception into evidence.
+- **The monitor runtime** (● task 34) — a scheduler over the *same*
+  verdict service. Declarations live in `model/monitors.yaml` (`over` /
+  `triggers` (exactly one of `every` | `on_signal` | `on_change`) /
+  `evaluate` / `emit` / `escalate`, with the INV-8 `version` pin). A
+  cycle is: trigger → gateway fetch → the freshness gate →
+  `computeVerdicts` per twin, applicability expanded per twin by the
+  engine → verdict records appended. Evidence streams are append-only,
+  window-queryable and version-pinned — the fact stream (every served
+  value that landed, `delivery: cycle | push`), the verdict stream
+  (full snapshots — the re-judgment basis), the escalation stream
+  (flag/case dedupe while open). **Re-judgment reads only stored
+  snapshots** (INV-5): `rejudgeWindow` re-runs a verdict-stream window
+  against new limits in the same OCL dialect with zero gateway calls,
+  appending marked re-judged verdicts — evidence accrues, never
+  rewrites.
+
+The twin console (`/app/twin`) wires the monitor surface, the
+escalation records and connector health against a demo deployment
+(honestly bannered; never the seeded flows), and the puppeteer suite
+drives pass ⇒ drift-fail + escalation ⇒ outage-indeterminate end to
+end.
 
 ## B.6 Consoles and the public register
 
@@ -171,8 +203,18 @@ scheme actor a console (`docs/architecture.md` §12–13):
   issue;
 - **TL workbench** (`vue-pages/lab/`) — inbox, assignments, the run
   view (`/app/lab/run/:assignmentId`), report composer;
+- **OIML-CS consoles** (`/app/cs/*`) — the scheme-side runtime:
+  participant registry, the issuance gate, operations (Volume IV);
+- **live-twin console** (`/app/twin`) — the monitor surface, escalation
+  records and connector health over the demo deployment (§B.5.1);
+- **simulated bench** (`/app/sim`) — the simulated-instrument embed
+  with guided practice flows (Annex: [Simulated
+  Instruments](02-simulated-instruments.md));
 - **public BIML register** (`/app/register`) — `auth="public"`,
-  whitelisted next to `/app/login` in the guard.
+  whitelisted next to `/app/login` in the guard;
+- **public product passport** (`/passport/:upi`) — no login: the
+  model-native passport page over the passport resolver (Volume I,
+  §12.5/§14.6).
 
 The sidebar splits the standard's *reference* content (requirements,
 conformance tests, terminology, symbols & formulae, forms) from the
@@ -216,44 +258,56 @@ gone. The load-bearing facts (`docs/architecture.md` §14):
 ## B.8 Command gates
 
 Every claim above is kept true by gates that must stay green
-(`docs/architecture.md` §15; status as of 2026-07-18: vue-tsc 0 errors,
-astro check 0 errors, vitest 1408 tests, e2e 19/19):
+(`docs/architecture.md` §15 and the repo's `AGENTS.md`; status as of
+merge `6a9484b`, 2026-07-26: vitest **3514/3514**, validate **0 errors
+/ 435 warnings**, e2e **54/54**, `test:ssot` **byte-clean**, pilot
+**6/6**):
 
 ```text
 cd browser && npx vue-tsc --noEmit     # type check (islands + vue-pages)
 cd browser && npx astro check          # .astro route shells + layouts
-cd browser && npx vitest run           # unit tests
-cd browser && npm run build            # production build (incl. all codegen)
-cd browser && npm run validate         # schema + semantic validation
+cd browser && npx vitest run           # unit tests (vitest.config.ts)
+cd browser && npm run build            # gen:data + astro production build (incl. codegen)
+cd browser && npm run validate         # gen:data + schema + semantic validation
+cd browser && npm run test:round-trip  # PRL build-equivalence + mutation gate
+cd browser && npm run test:ssot        # SSOT drift guard — packages ≡ data trees ≡ app-config projections
+cd browser && npm run test:from-packages  # the from-packages release proof
 cd browser && npm run test:e2e         # puppeteer suite against npm run dev
-bin/check                              # repo gate wrapper (vue-tsc + astro check)
+cd browser && npm run pilot            # the live-twin pilot: ACME LC-500 → quarry, six steps asserted
+bin/check                              # repo gate wrapper (vue-tsc + astro check + test:round-trip)
 ```
 
 `npm run validate` (`browser/scripts/validate.ts`) is the model gate:
 (1) YAML sources against the JSON Schemas in `data/schemas/`; (2)
-semantic rules — the model linker (`browser/build/model-linker.ts`)
-statically resolves every cross-reference in a package (OCL identifiers,
-bind roots, applicability keys, symbol links, gateway and checklist
-refs); known-bad sites live in `data/<id>/linker-allowlist.yaml` with
-clause-referenced reasons and go STALE when they stop matching; (3)
-compiled sample-data entities against the entity schemas. Proof smokes
-against a running server: `npx tsx scripts/astro-smoke.ts` (61 checks),
-`npx tsx scripts/astro-pwa-smoke.ts` (15 checks).
+semantic rules — the model linker (`browser/build/model-linker.ts`,
+rules R1–R42) statically resolves every cross-reference in a package
+(OCL identifiers, bind roots, applicability keys, symbol links, IRDI,
+gateway and checklist refs); known-bad sites live in
+`data/<id>/linker-allowlist.yaml` with clause-referenced reasons and go
+STALE when they stop matching; the reconstruction congruence gate
+(§1g — Volume I, chapter 9) proves coverage, order and text identity
+over the `.prd` extracts; (3) compiled sample-data entities against the
+entity schemas. Proof smokes against a running server: `npx tsx
+scripts/astro-smoke.ts` (61 checks), `npx tsx
+scripts/astro-pwa-smoke.ts` (15 checks).
 
-## B.9 Grammar sketch *(illustrative v3 syntax)*
+## B.9 Grammar sketch *(the shipped contract)*
 
 The platform consumes packages; it declares no language of its own. The
 one contract between package and runtime is the manifest and the
 runtime plug:
 
 ```prl
-package oiml-r60 {
-  id      "oiml-r60"
-  title   "OIML R 60 — Metrological regulation of load cells"
-  version "3.0.0"
-  uses    [oiml-core]                # the metamodel package (v2: extends)
-  source  "urn:oiml:pub:r:60-1:2021"
-  editions [ r60-1:2021, r60-2:2023, r60-3:2023 ]
+package {
+  id oiml-r60
+  kind rec
+  title "OIML R 60:2021 — R 60 package"
+  version "2021"
+  editions { 2021 2017 2000 1996 }
+  baseUrn "urn:oiml:pub:r:60:2021"
+  uses { iso-iec-17000 iso-iec-17065 iso-iec-17025 iso-iec-17067
+         oiml-cs oiml-smart-core oiml-smart-module-specimen-governance }
+  status current
 }
 ```
 
@@ -264,10 +318,15 @@ recommendations:
 ```
 
 The package compiles to the identical store manifest, generated types,
-and standard meta that `data/r60/` produces today — the runtime is
-unchanged whichever source is authoritative (phase A: YAML authoritative
-●; phase B: Primmel native authoritative ○; phase C: new
-Recommendations authored Primmel-native only ○).
+and standard meta that the `data/r60/` tree produces — the runtime is
+unchanged whichever source feeds it. The SSOT flip has **landed** (●
+task 31b, smart a549dab): the Primmel packages are the single source of
+truth, the YAML data trees are downstream generated artifacts
+(regenerated by `npm run gen:data`, never hand-edited), and
+`npm run test:ssot` proves both directions byte-clean — data trees ≡
+regeneration from the packages, packages ≡ rebuild from the app config.
+New Recommendations are authored Primmel-native from the start (the
+R 129 package is the first, task 22).
 
 ## B.10 Validation rules
 
@@ -290,24 +349,26 @@ Recommendations authored Primmel-native only ○).
 
 ## B.11 Summary
 
-- The platform is a pure engine: models in (YAML/Primmel packages),
+- The platform is a pure engine: models in (Primmel packages — the
+  single source of truth; the YAML trees generated from them),
   certification out (applications, reports, evaluations, certificates,
-  the register).
+  the register, passports).
 - One build pipeline compiles packages to generated types, the store
   manifest, vocabulary registers, and seed data; generated output is
   gitignored and never hand-edited.
 - IndexedDB stores are the manifest; the FK graph and the TS interfaces
   are two projections of the same entity declarations.
 - Five engines — applicability (the ONE engine), verdict, form-context,
-  state cascade/walk, dispatch — evaluate the models, all data-driven.
+  state cascade/walk, dispatch — evaluate the models, all data-driven;
+  the monitor runtime and the API gateway (● tasks 33/34) extend the
+  same verdict engine to live twins: connectors with fail-`unavailable`
+  semantics, freshness-gated cycles, append-only version-pinned
+  evidence streams, and re-judgment from stored snapshots (§B.5.1).
 - The shell is a server-rendered framework with selective client
   hydration, generated routes, a permanent router shim, and a
   client-side guard; the gates (vue-tsc, astro check, vitest, build,
-  validate, e2e) are the definition of done.
-- v3 adds two engine components (○): the monitor runtime — scheduled or
-  triggered continuous evaluation reusing the same verdict service —
-  and the API gateway, binding external sources to model registers with
-  freshness semantics (§B.5.1).
+  validate, round-trip, ssot, from-packages, e2e, pilot) are the
+  definition of done.
 
 *Next: [Simulated Instruments](02-simulated-instruments.md) — the
 wind tunnel: a physics-core load cell whose `/twin` channel lets the
