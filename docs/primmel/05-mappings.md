@@ -22,7 +22,7 @@ It is not a "special case" of the reference model. It is a different
 model, of a different thing (the organization, not the standard),
 authored by different people, evolving on a different clock.
 
-The twin direction adds a third speaker ○: the **product reference
+The twin direction adds a third speaker ● (task 36): the **product reference
 model** — a manufacturer's model of their own product, a reference model
 in kind but speaking for *the product*, not the standard. It stands to
 the standards-reference model in exactly this chapter's relation: mapped

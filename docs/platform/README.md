@@ -191,6 +191,8 @@ escalation records and connector health against a demo deployment
 drives pass ⇒ drift-fail + escalation ⇒ outage-indeterminate end to
 end.
 
+![The Annex-B runtime: connectors serve model registers, the monitor rides the same verdict engine, evidence streams accrue](diagrams/platform-runtime.svg)
+
 ## B.6 Consoles and the public register
 
 The role model (`browser/src/auth/roles.ts`, session via

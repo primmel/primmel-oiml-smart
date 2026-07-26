@@ -80,14 +80,22 @@ measuring system (VIML 0.12).
 
 **Answer.** The metamodel's `relationships` slot
 (`partOf`/`connectsTo`) existed but was unrealized in any rec
-(gap G3). The first realization step is in the model: the
-`ego-field-test` declares `test_subject: { component: ego_speed_meter }`
-— the first component-level test subject (deep-audit R14).
+(gap G3). The realization is in the model
+(`data/r91/model/instrument.yaml`, `structure:`): `struct-moving-ego`
+declares `consists_of` from MovingSpeedMeter to `ego_speed_meter` with
+typed propagation (the ego's measurement up, its disturbance reaction
+down — the whole's moving MPE explicitly NOT down, 6.15.3/6.18.1), and
+`struct-distributed-detection-fields` declares the distributed
+`detection_field` composition with its own propagation and an
+applicability pin to the fixed-distance/average-speed principles. The
+`ego-field-test` adds the component-level test subject
+(`test_subject: { component: ego_speed_meter }`, deep-audit R14).
 
-**Primitive added.** The **structure** IS aspect, realized:
+**Primitive added.** The **structure** IS aspect, realized (● — task
+01, the kernel primitive landed with propagation rules; R 91's two
+`consists_of` relations are the proving content, clause-anchored):
 `partOf`/`consists_of`/`connectsTo` with typed targets and
-behavior/parameter propagation rules (the ego meter's own MPE
-propagates to the composite's verdict set) — ○ v3, directly from G3.
+behavior/parameter propagation rules — directly from G3.
 
 ### 9.2.3 Verification beyond type evaluation
 
@@ -98,16 +106,33 @@ own marking and securing, and validity triggers (re-verification when
 tyre size changes on ego meters, 6.15.3 Note 2). R 144 has the same
 shape (§7.2/7.3).
 
-**Answer.** Today: none. The workflow entities are type-approval-only
-(Application → … → Certificate of type approval). This is gap G1,
-ranked high, unfilled.
+**Answer.** The type-approval workflow entities (Application → … →
+Certificate of type approval) are joined by a per-rec verification
+model (`data/r91/evaluation/verification.yaml`,
+`data/r144/evaluation/verification.yaml`; schema
+`data/schemas/verification.yaml`): per kind — initial (8.2), subsequent
+(8.3), in-service inspection (8.4) — a test set that SUBSETS the rec's
+conformance tests (the conformance machinery reused, never redefined),
+the assessment scope, `limits.mode` (`same-as-type-evaluation` unless
+the Recommendation names verification-specific limits), marking and
+securing, and the validity window with re-verification triggers (the
+timer = the window elapsed; the signal = an out-of-cycle event like the
+6.15.3 Note 2 tyre change). Events are `VerificationRecord`s; the
+sample carries `verification_state`, seals and signals; the R 91 pilot
+flow (`sample-r91-vfy` + `verification.test.ts`) proves initial
+verification with verdicts and marks, and the timer trigger firing on
+schedule. Linker rule R22 (`verification-references`) checks every
+reference.
 
-**Primitive added (○).** A `verification_process` model — VIML
-2.09/2.12–2.14 semantics (initial/subsequent/periodic), verification
-records and marks (VIML 3.02/3.04), lifecycle machines with validity
-windows, and timer-event recurrence for re-verification triggers. In
-the tier frame: tertiary workflow processes beyond the type-evaluation
-chain, declared in the package like everything else.
+**Primitive added (● — task 21, gap G1).** A `verification_process`
+model — VIML 2.09/2.12–2.14 semantics (initial/subsequent/periodic —
+the periodic case is the timer-triggered subsequent verification, not a
+fourth pathway), verification records and marks (VIML 3.02/3.04 —
+metamodel v0.6.1 D1 `VerificationProcess`, D3 `Verification`, B
+`VerificationMark`), lifecycle machines with validity windows, and
+timer-event recurrence for re-verification triggers. In the tier frame:
+tertiary workflow processes beyond the type-evaluation chain, declared
+in the package like everything else.
 
 ### 9.2.4 The evidence file — artifact definitions
 
@@ -119,26 +144,32 @@ image evidence. Clause 7.3 enumerates items a–l; the test interface
 (deep-audit R10) that are not lab-run records but a **required output
 contract of the subject**.
 
-**Answer.** A qualitative requirement today ("shall record …"), which
-cannot be machine-checked for completeness. The frame's answer is the
-IS/HAS pair already in the anatomy: **artifact definitions** (IS —
-content contract + produced-when rules) whose fulfillment is recorded
-as **artifact instances** (HAS — the produced file as evidence).
+**Answer.** The qualitative requirement became the IS/HAS pair of the
+anatomy, shipped in the model (`data/r91/model/artifacts.yaml`):
+**artifact definitions** (IS — content contract + produced-when rules)
+whose fulfillment is recorded as **artifact instances** (HAS — the
+produced file as evidence). The `enforcement-evidence-file` definition
+carries the 7.3 a–l items as a typed `content_contract` (timestamps,
+location, measurement id, measured speed, direction, …), the securing
+requirement of 7.3 rides with it, and the evidence-file form +
+the seeded flow record the produced instances.
 
-**Primitive added (○).** `artifact_definition` on the model layer +
-`artifact_instance` evidence in D2 (gap G2). R 91 is the driver; the
-concept was promoted into the v3 subject anatomy on the strength of
+**Primitive added (● — task 09, gap G2).** `artifact_definition` on the
+model layer + `artifact_instance` evidence in D2. R 91 was the driver;
+the concept was promoted into the v3 subject anatomy on the strength of
 this demand.
 
-**The twin angle (○).** An artifact *definition* also tells a live twin
+**The twin angle (◐).** An artifact *definition* also tells a live twin
 what to publish. On a served speed meter (Volume I, chapter 14) the
 evidence file is not seized on inspection day — it is *served*:
 produced per enforcement measurement, announced on the endpoint by
 subscription, fetched with timestamps. The monitor's signal trigger
-("an artifact arrived", §14.5) then evaluates the content contract on
+("an artifact arrived", §14.5 — the trigger kinds ship ●, task 34)
+then evaluates the content contract on
 arrival, and a missing or stale file is `indeterminate`, never a silent
 pass. The G2 contract authored once is both the lab's checklist and the
-twin's publication schedule.
+twin's publication schedule. (Artifact-bearing endpoints remain ○ — no
+shipped twin publishes an artifact yet.)
 
 ### 9.2.5 Test kinds: field, simulation, software
 
@@ -154,7 +185,9 @@ per-row verdict criteria (`I/MPE`, `D/NSFa`, `D/NSFd`, n/a).
 
 **Answer.** The kind enum extends: `field`, `simulation`,
 `software-examination` beside the R 60 five (performance, influence,
-disturbance, durability, span-stability) — gap G4/G5, ◐. The
+disturbance, durability, span-stability) — gap G4/G5, ● (three field,
+two simulation and one software-examination tests ship in
+`data/r91/specification/conformance/`). The
 stationary field test now exists as data (`/conf/field/stationary-field-test`,
 kind `field`): schedule constraints (4.1–4.3 site/traffic/distance),
 the reference-uncertainty (4.5) and count (4.4) **preconditions** (run
@@ -166,8 +199,9 @@ D/NSFa | D/NSFd | n/a`).
 
 **Primitive added.** Per-kind metadata blocks (field:
 site/traffic/reference; simulation: simulator spec; software: D 31
-level) and test-level obligation (○ — R 91-2's [mandatory]/[optional]
-marks still ride on prose).
+level) and test-level obligation (● — task 19: the `obligation` facet
+(`mandatory` / `optional` / `conditional` + `obligation_note`) carries
+R 91-2's [mandatory]/[optional] marks as data, no longer on prose).
 
 ### 9.2.6 Mixed absolute/relative MPE tiers — G12, resolved
 
@@ -247,14 +281,20 @@ guards, F3, F7, F8's missing-value policy, F10 — to an empty allowlist.
 **(component, max concentration) pairs**, and the cross-sensitivity
 test (R 144-2, 1.10) prescribes a three-gas sequence over them.
 
-**Answer.** A free-form string attribute today
-(`interfering_components`) — which also cannot drive the test sequence:
-the audit found the cross-sensitivity verdict comparing the measurand
-signal against its own interference limit, false-failing every perfect
-instrument (finding F2).
+**Answer.** A structured attribute now
+(`data/r144/model/attributes.yaml` — `interfering_components`):
+`value_type: pair-list` with a `pair_list:` block (`key: component`,
+`value: max_concentration`, `key_dimension: measurand_components`, plus
+the declared component vocabulary CO₂/H₂O/SO₂/CH₄/H₂…) — each pair's
+component id resolving to a measurand or a declared component (linker
+rule `pair-list-components`), the concentration a QuantityValue. The
+structure drives the cross-sensitivity test's gas selection (R 144-2,
+1.10). The audit found the free-form precursor false-failing every
+perfect instrument — the cross-sensitivity verdict comparing the
+measurand signal against its own interference limit (finding F2).
 
-**Primitive added (○).** A pair-list value type (or composite
-parameter `fields[]` as the convention) — gap G10. The F2 lesson
+**Primitive added (● — task 20, gap G10).** The pair-list value type:
+schema + linker rule (TODO.roadmap/20). The F2 lesson
 rides with it: when the structure is missing, the verdict math fills
 the hole with something wrong.
 
@@ -313,10 +353,12 @@ the `cgm-point` subform, now vector-shaped per channel so a
 three-component exposure (CO + NO + N₂, A.1.4 NOTE) is one comparable
 record instead of three serialized ones (finding F13).
 
-**Primitive added (◐).** The `reference-materials` module pattern:
+**Primitive added (●).** The `reference-materials` module pattern:
 certified value + uncertainty + traceability, with cross-entity
-constraints evaluated before the limit — registry landed; verdict-time
-evaluation of the ratio rule is the remaining engine work.
+constraints evaluated before the limit — registry landed, and the
+ratio rule evaluates at verdict time (`on_violation: invalidate`,
+`browser/src/data/reference-materials.ts` — a violated constraint
+voids the run, never fails the instrument).
 
 ## 9.4 What the stress cases forced into the frame
 
@@ -324,18 +366,18 @@ Each stress case left a primitive behind. The complete ledger:
 
 | Demand (driver) | Modelling answer | Primitive | Status |
 |---|---|---|---|
-| Verification beyond type approval (R 91 cl. 8, R 144 §7) | tertiary workflow processes | `verification_process` + timer recurrence | ○ G1 |
-| Required instrument outputs (R 91 evidence file) | IS contract + HAS instance | `artifact_definition` / `artifact_instance` | ○ G2 |
-| Composite/distributed subjects (ego meter, detection fields) | structure aspect realized | `relationship` block, partOf propagation | ○ G3 (◐ test_subject) |
-| Field/simulation/software tests (R 91-2) | kind enum + per-kind metadata | test kinds + obligation | ◐ G4, ○ G5 |
+| Verification beyond type approval (R 91 cl. 8, R 144 §7) | tertiary workflow processes | `verification_process` + timer recurrence | ● G1 (task 21) |
+| Required instrument outputs (R 91 evidence file) | IS contract + HAS instance | `artifact_definition` / `artifact_instance` | ● G2 (task 09) |
+| Composite/distributed subjects (ego meter, detection fields) | structure aspect realized | `structure` block, partOf propagation | ● G3 (task 01) |
+| Field/simulation/software tests (R 91-2) | kind enum + per-kind metadata | test kinds + obligation | ● G4/G5 (task 19) |
 | Statistical test design (R 91-2 4.4/4.7) | counts + statistics blocks | `design.counts` + `acceptance.statistics` | ● G6 |
 | Set-valued membership (R 144 sets, R 91 dual-mode) | cardinality: set + collection ops + `match:` rule | set-dimension package | ● G9 |
-| Structured interferents (R 144 4.5.2) | (component, limit) pairs | pair-list value type | ○ G10 |
-| Behavior-gating requirements (R 91 qualitative mandates) | bind to a behavior id | `verification: behavior-check` | ○ G11 |
+| Structured interferents (R 144 4.5.2) | (component, limit) pairs | pair-list value type | ● G10 (task 20) |
+| Behavior-gating requirements (R 91 qualitative mandates) | bind to a behavior id | `verification: behavior-check` | ◐ G11 — the tests→behaviors direction landed (behaviors carry `verified_by`, pinned by R37, task 56; an image-based gate instance shipped, task 13 R8); the first-class requirement-side `method: behavior-check` remains ○ |
 | Mixed absolute/relative MPEs (R 91) | tier `mode` | `mode: absolute \| relative` | ● G12 |
 | No family clause (R 144, R 91) | criteria from scope/units clauses | derive-and-annotate | ● |
 | Chain missing levels (R 144 no groups) | optional levels | delegation skips absent levels | ● |
-| Certified reference materials (R 144 CGMs) | registry + validity constraints | `reference-materials` module | ◐ |
+| Certified reference materials (R 144 CGMs) | registry + validity constraints | `reference-materials` module | ● |
 
 Two meta-lessons outweigh any row:
 
@@ -360,15 +402,15 @@ Two meta-lessons outweigh any row:
 
 ```prl
 subject SpeedMeter {
-  is { structure { ego_speed_meter partOf MovingSpeedMeter }          # 3.2.2/6.15.3 ○
+  is { structure { ego_speed_meter partOf MovingSpeedMeter }          # 3.2.2/6.15.3 ●
        artifacts  { evidence_file { produced_when enforcement_measurement
                                     contract { speed, ego_speed, direction,
-                                               timestamps, site, image } } } }  # 7.3 a–l ○
+                                               timestamps, site, image } } } }  # 7.3 a–l ●
   has { dimensions { working_principle : family ∈ { doppler-radar, range-finding,
                        fixed-distance, image-based, average-speed }
                      average-speed implies [fixed-distance]            # 6.13 subsumption ●
-                     mode_of_use : model ∈ { stationary, moving } }    # clause 5 NOTE ○
-        artifact_instances { evidence_file } }                         # produced, recorded ○
+                     mode_of_use : model ∈ { stationary, moving } }    # clause 5 NOTE ● (set-valued, G9)
+        artifact_instances { evidence_file } }                         # produced, recorded ●
 }
 
 conformance /conf/field/stationary-field-test {
@@ -382,7 +424,7 @@ conformance /conf/field/stationary-field-test {
 table mpe_moving { tiers { [A, 0, 100] limit 3    absolute             # G12 ●
                            [A, 100, ∞)  limit 0.03 relative } }
 
-process initial_verification { kind verification_process               # G1 ○, VIML 2.12
+process initial_verification { kind verification_process               # G1 ●, VIML 2.12
                                recurrence timer (tyre_change on ego) } # 6.15.3 Note 2
 
 dimension measurand_components { cardinality set                       # G9 ●
