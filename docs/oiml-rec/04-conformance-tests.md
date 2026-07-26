@@ -427,7 +427,57 @@ f`, before the normalization that lives exactly once in the
 or documenting around it. (Same authoring posture as test sequences:
 hand-authored app config pending a kernel `formulas_used` facet.)
 
-## 4.13 Grammar sketch *(illustrative v3 syntax)*
+## 4.13 The required-competence facet ●
+
+A test also declares **what executing it demands of the laboratory**
+(task 48, ● BUG.R60-SSOT gap 1; ISO/IEC 17025 §6.4/§6.6, OIML-CS PD-05
+§5.3). The `required_competence:` block lists abstract ability entries —
+`[{ kind, range?, method_standard?, resolution?, stability? }]` — never
+named equipment (labs declare capabilities, not equipment; §8.2 of
+Volume II). The MDLO test's declaration:
+
+```yaml
+      required_competence:
+      - kind: force_measurement
+        range: { max: e_max, unit: kg }      # subject-parameter bound
+        description: Force-generating system applying test loads over the
+          measuring range (R 60-2, 2.7.2), mass standards traceable per 2.7.3.2
+      - kind: temperature_control
+        range: { min: t_min, max: t_max, unit: degC }
+        stability: { value: 2, unit: degC }
+        description: Climatic chamber conditioning at 20 °C, T_high, T_low
+          and return (R 60-2, 2.10.1), stable within one fifth of the cell's
+          range, never more than 2 °C (R 60-2, 2.7.3.1)
+```
+
+Three declaration rules keep the facet honest:
+
+- **Bounds are numbers or subject-parameter ids** — `max: e_max` is
+  resolved against the dispatch context, not restated as a number.
+  Required force ranges are deliberately **one-sided** (`max` only):
+  capacity is the upper-bound question, and a `min: 0` requirement would
+  refuse real laboratory scopes whose ranges start above zero.
+- **Inheritance follows `inherits_from`** — a class-specific test keeps
+  its base test's entries, exactly like preconditions (§4.5). The R 60
+  pilot: all 62 tests declare, 19 directly and 43 through the chain.
+- **Kinds come from one registry** — the cross-Recommendation
+  `specification/competence-kinds.yaml` of the core package, nine kinds:
+  `force_measurement`, `temperature_control`, `humidity_testing`,
+  `pressure_control`, `emc_testing`, `power_supply_variation`,
+  `indication_readout`, `documentation_review`, `software_examination`.
+  ISO/IEC 17025 defines no taxonomy, so each kind anchors its §6.2/§6.4
+  clauses; `method_standard` ids (IEC 60068-2-30, IEC 61000-4-2…-4-11,
+  titled) resolve against the registry's `method_standards`.
+
+Linker rule **R29 competence-references** resolves kinds and standards,
+requires every test of a declaring standard to resolve a non-empty
+competence set, and checks every in-tree seeded dispatch assignment for
+cover with the model's parameters as context. What the declaration
+*buys* is the dispatch-side cover relation — the laboratory's
+`accreditation_scope`, the cover calculus, and the refusal discipline
+are chapter 10's subject (§10.8).
+
+## 4.14 Grammar sketch *(illustrative v3 syntax)*
 
 ```prl
 conformance_test /conf/metrological-tests/creep {
@@ -484,7 +534,7 @@ conformance_test /conf/class-a/measurement-error {
 }
 ```
 
-## 4.14 Validation rules
+## 4.15 Validation rules
 
 - every `targets` entry resolves to a declared requirement, and every
   acceptance item's `target` is among them; every requirement with
@@ -503,6 +553,9 @@ conformance_test /conf/class-a/measurement-error {
 - every `formulas_used` entry binds a declared test (one trace per
   test); every formula id resolves against the calculations ∪ formulas
   registries (R41);
+- every `required_competence` entry names a kind of the competence-kind
+  registry and resolvable method standards; every test resolves a
+  non-empty competence set (R29);
 - every variable declares a `source`; `derived`/`computed` variables
   carry OCL `derivation` reading only declared variables, bound paths,
   and resolvable lookups; step `input_variables`/`output_variables` name
@@ -521,7 +574,7 @@ conformance_test /conf/class-a/measurement-error {
 - quantities shared with a VerdictQuantity are referenced, not
   re-derived (`verdict-no-shadow`, `verdict-restatement`).
 
-## 4.15 Summary
+## 4.16 Summary
 
 - A conformance test is an operation on the subject: it constrains
   inputs, environmental context, and state, then observes outcomes as
@@ -550,6 +603,10 @@ conformance_test /conf/class-a/measurement-error {
   congruent with the normative prose; and each test traces the registry
   formulas its evaluation consumes (R41) — evaluation-level quantities
   on the test, never on the instrument's process.
+- Tests declare what they demand of the laboratory:
+  `required_competence` entries against the nine-kind registry (R29),
+  one-sided parameter-bound ranges, inherited down the class chain — the
+  dispatch-side cover relation of chapter 10 is their consumer.
 
 *Next: [Chapter 5 — Forms and Reports](05-forms-and-reports.md): the
 evidence views — bind paths, measurement methods, pass/fail blocks, the
