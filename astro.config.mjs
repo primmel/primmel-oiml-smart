@@ -123,6 +123,7 @@ export default defineConfig({
           label: 'Annexes',
           items: [
             { label: 'Platform', slug: 'platform' },
+            { label: 'Simulated Instruments', slug: 'platform/02-simulated-instruments' },
             { label: 'Glossary', slug: 'shared/glossary' },
             { label: 'Alternatives Audit', slug: 'shared/alternatives-audit' },
             { label: 'Roadmap', slug: 'shared/roadmap' },

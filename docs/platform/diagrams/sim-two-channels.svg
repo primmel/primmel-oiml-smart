@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" font-family="ui-sans-serif, system-ui, sans-serif">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="arrTw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4f46e5"/>
+    </marker>
+    <marker id="arrWo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The two channels — the epistemic wall, enforced by topology</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">Law 1: /twin answers only what a real instrument could legally answer · /world is the physical world · certification software is wired to /twin only.</text>
+
+  <!-- certification software -->
+  <rect x="60" y="100" width="240" height="128" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+  <text x="180" y="126" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle">certification software</text>
+  <text x="180" y="144" font-size="10" fill="#475569" text-anchor="middle">SMART — monitors, verdict chain,</text>
+  <text x="180" y="160" font-size="10" fill="#475569" text-anchor="middle">test-run service, practice flows</text>
+  <text x="180" y="186" font-size="10" font-weight="600" fill="#4f46e5" text-anchor="middle">query · subscribe · invoke</text>
+  <text x="180" y="204" font-size="9.5" fill="#64748b" text-anchor="middle">the same OCL as the lab (INV-9)</text>
+
+  <!-- sim process -->
+  <rect x="360" y="86" width="480" height="300" rx="14" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text x="600" y="108" font-size="11" font-weight="700" fill="#64748b" text-anchor="middle">the sim process — one process, two schemas (port 5290)</text>
+
+  <!-- /twin -->
+  <rect x="384" y="122" width="216" height="240" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="492" y="146" font-size="13" font-weight="700" fill="#3730a3" text-anchor="middle">/twin — the legal view</text>
+  <text x="492" y="164" font-size="9.5" fill="#4f46e5" text-anchor="middle">GENERATED from the Primmel package</text>
+  <text x="396" y="188" font-size="9.5" fill="#475569">Query indication : ServedQuantity!</text>
+  <text x="396" y="204" font-size="9.5" fill="#475569">{ value, unit, kind, servedAt }</text>
+  <text x="396" y="224" font-size="9.5" fill="#475569">watch serve ⇒ Query + Subscription</text>
+  <text x="396" y="240" font-size="9.5" fill="#475569">(SSE, deduped per clock tick)</text>
+  <text x="396" y="260" font-size="9.5" fill="#475569">Mutation runSelfTest</text>
+  <rect x="396" y="276" width="192" height="72" rx="8" fill="#ffffff" stroke="#a5b4fc" stroke-width="1.2"/>
+  <text x="408" y="294" font-size="9.5" font-weight="700" fill="#3730a3">startup conformance (law 2)</text>
+  <text x="408" y="310" font-size="9" fill="#475569">schema ≡ serves ≡ promises;</text>
+  <text x="408" y="324" font-size="9" fill="#475569">no undeclared twin fields —</text>
+  <text x="408" y="338" font-size="9" font-weight="600" fill="#991b1b">any diff ⇒ process exits</text>
+
+  <!-- wall -->
+  <rect x="612" y="122" width="16" height="240" rx="3" fill="#0f172a"/>
+  <text x="620" y="378" font-size="9" font-weight="700" fill="#0f172a" text-anchor="middle">the epistemic wall</text>
+
+  <!-- /world -->
+  <rect x="640" y="122" width="216" height="240" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <text x="748" y="146" font-size="13" font-weight="700" fill="#78350f" text-anchor="middle">/world — physical reality</text>
+  <text x="748" y="164" font-size="9.5" fill="#92600e" text-anchor="middle">simulated actions + ground truth</text>
+  <text x="652" y="188" font-size="9.5" fill="#475569">placeLoad · removeLoad</text>
+  <text x="652" y="204" font-size="9.5" fill="#475569">setEnvironment · playProfile (D 11)</text>
+  <text x="652" y="220" font-size="9.5" fill="#475569">advanceTime · setClockMode</text>
+  <text x="652" y="236" font-size="9.5" fill="#475569">scenario · setFidelity</text>
+  <text x="652" y="252" font-size="9.5" fill="#475569">setThermalHysteresis · reset</text>
+  <rect x="652" y="268" width="192" height="80" rx="8" fill="#ffffff" stroke="#fcd34d" stroke-width="1.2"/>
+  <text x="664" y="286" font-size="9.5" font-weight="700" fill="#78350f">groundTruth (world-side only)</text>
+  <text x="664" y="302" font-size="9" fill="#475569">appliedLoadKg · strainMm</text>
+  <text x="664" y="316" font-size="9" fill="#475569">spanDriftFraction</text>
+  <text x="664" y="330" font-size="9" fill="#475569">thermalOffsetMVperV · environment</text>
+
+  <!-- scenario operator -->
+  <rect x="60" y="286" width="240" height="100" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.8"/>
+  <text x="180" y="312" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle">scenario operator</text>
+  <text x="180" y="330" font-size="10" fill="#475569" text-anchor="middle">the console (sim&gt; / sim#),</text>
+  <text x="180" y="346" font-size="10" fill="#475569" text-anchor="middle">the bench, the practice runner</text>
+  <text x="180" y="370" font-size="10" font-weight="600" fill="#b45309" text-anchor="middle">world-side verbs — omnipotent by design</text>
+
+  <!-- wires -->
+  <line x1="300" y1="164" x2="380" y2="164" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrTw)"/>
+  <text x="340" y="154" font-size="9.5" font-weight="600" fill="#4f46e5" text-anchor="middle">only</text>
+  <path d="M 300 336 L 340 336 L 340 404 L 748 404 L 748 366" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrWo)"/>
+
+  <!-- the forbidden path: SMART x->/world -->
+  <path d="M 180 228 L 180 262" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>
+  <line x1="168" y1="250" x2="192" y2="274" stroke="#dc2626" stroke-width="3"/>
+  <line x1="192" y1="250" x2="168" y2="274" stroke="#dc2626" stroke-width="3"/>
+  <text x="204" y="248" font-size="9.5" font-weight="700" fill="#dc2626">never — certification software</text>
+  <text x="204" y="262" font-size="9.5" fill="#dc2626">never touches /world</text>
+  <text x="204" y="276" font-size="9" fill="#991b1b">(grep-enforced smart-side)</text>
+
+  <!-- fidelity note -->
+  <rect x="60" y="428" width="780" height="64" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.4"/>
+  <text x="76" y="449" font-size="11" font-weight="700" fill="#1e293b">Even the lying is law-abiding</text>
+  <text x="76" y="467" font-size="10" fill="#475569">the fidelity knobs (servedOffsetKg, servedLagS) inject at the served boundary only — indication() carries the offset,</text>
+  <text x="76" y="483" font-size="10" fill="#475569">servedAt() the lag; groundTruth() never sees them.</text>
+
+  <!-- bottom bar -->
+  <rect x="60" y="516" width="780" height="64" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="80" y="538" font-size="11.5" font-weight="600" fill="#0f172a">The epistemics of testing: compare indication (the twin channel) against reference (the world channel).</text>
+  <text x="80" y="556" font-size="11" fill="#475569">The comparison is the certifier's job — never the instrument's. Dependency rule: the sim never depends</text>
+  <text x="80" y="572" font-size="11" fill="#475569">on smart/browser; SMART reaches it over HTTP only.</text>
+
+  <!-- C6 note -->
+  <rect x="60" y="600" width="780" height="48" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.2"/>
+  <text x="80" y="620" font-size="10.5" fill="#3730a3">Shipped C1–C5a (2026-07-26) · C6 deferred: the SMART-side gateway connector, monitor accrual, the acceptance e2e.</text>
+  <text x="80" y="636" font-size="10" fill="#4f46e5">Until then the pilot's in-process provider is the fast path; the bench embed runs at /app/sim.</text>
+</svg>

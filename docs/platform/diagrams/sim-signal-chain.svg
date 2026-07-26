@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 660" font-family="ui-sans-serif, system-ui, sans-serif">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="arrSg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+    </marker>
+    <marker id="arrEnv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#16a34a"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The signal chain — constitutive laws, not geometry</text>
+  <text x="60" y="54" font-size="12.5" fill="#475569">mechanical → transduction → conditioning → indication · the D 11 environment enters every stage · the virtual clock drives all.</text>
+
+  <!-- environment band -->
+  <rect x="60" y="84" width="780" height="60" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.6"/>
+  <text x="76" y="106" font-size="11.5" font-weight="700" fill="#14532d">the D 11 environment — canonical data + time programs on the clock</text>
+  <text x="76" y="124" font-size="10" fill="#166534">temperature (dry-heat / cold) · humidity (damp-heat cyclic / steady) · barometric · supply variation · EMC events (severity-encoded, never transient-modelled)</text>
+  <text x="76" y="139" font-size="9" fill="#16a34a">slew-limited to the method's ≤ 1 °C/min — IEC 60068 severities, IEC 61000-4-x event kinds</text>
+
+  <!-- env arrows -->
+  <g stroke="#16a34a" stroke-width="1.4" fill="none">
+    <line x1="180" y1="144" x2="180" y2="182" marker-end="url(#arrEnv)"/>
+    <line x1="380" y1="144" x2="380" y2="182" marker-end="url(#arrEnv)"/>
+    <line x1="580" y1="144" x2="580" y2="182" marker-end="url(#arrEnv)"/>
+  </g>
+
+  <!-- stage 1 -->
+  <rect x="80" y="186" width="200" height="150" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <text x="180" y="210" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle">1 · mechanical</text>
+  <text x="180" y="228" font-size="9.5" fill="#64748b" text-anchor="middle">the elastic element</text>
+  <text x="94" y="252" font-size="10" fill="#475569">strain under load</text>
+  <text x="94" y="268" font-size="10" fill="#475569">branch memory (load/unload/idle)</text>
+  <text x="94" y="284" font-size="10" fill="#475569">creep: exponential toward</text>
+  <text x="94" y="300" font-size="10" fill="#475569">coefficient × elastic, τ = creepTauS</text>
+  <text x="94" y="322" font-size="9.5" font-weight="600" fill="#4f46e5">parameterized by CONSTRUCTION</text>
+
+  <!-- stage 2 -->
+  <rect x="330" y="186" width="200" height="150" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <text x="430" y="210" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle">2 · transduction</text>
+  <text x="430" y="228" font-size="9.5" fill="#64748b" text-anchor="middle">the strain-gauge bridge</text>
+  <text x="344" y="252" font-size="10" fill="#475569">gauge factor + excitation → mV/V</text>
+  <text x="344" y="268" font-size="10" fill="#475569">T_C0 / T_Cspan (linear, reversible)</text>
+  <text x="344" y="284" font-size="10" fill="#475569">barometric offset (R 60-1, 5.6.2)</text>
+  <text x="344" y="300" font-size="10" fill="#475569">thermal-hysteresis memory (slow-</text>
+  <text x="344" y="315" font-size="10" fill="#475569">relaxing post-cycle residual)</text>
+
+  <!-- stage 3 -->
+  <rect x="580" y="186" width="220" height="150" rx="12" fill="#f8fafc" stroke="#475569" stroke-width="1.6"/>
+  <text x="690" y="210" font-size="12.5" font-weight="700" fill="#1e293b" text-anchor="middle">3 · conditioning</text>
+  <text x="690" y="228" font-size="9.5" fill="#64748b" text-anchor="middle">per technology stack</text>
+  <text x="594" y="252" font-size="10" fill="#475569">analog-passive: raw bridge passthrough</text>
+  <text x="594" y="268" font-size="10" fill="#475569">analog-active: + amplifier noise</text>
+  <text x="594" y="284" font-size="10" fill="#475569">digital: + IIR filter, linearization,</text>
+  <text x="594" y="300" font-size="10" fill="#475569">compensation, ADC quantization</text>
+  <text x="594" y="322" font-size="9.5" font-weight="600" fill="#4f46e5">digital-processing: + self-diagnostics</text>
+
+  <!-- chain arrows -->
+  <g stroke="#475569" stroke-width="1.8" fill="none">
+    <line x1="280" y1="261" x2="326" y2="261" marker-end="url(#arrSg)"/>
+    <line x1="530" y1="261" x2="576" y2="261" marker-end="url(#arrSg)"/>
+  </g>
+  <text x="303" y="252" font-size="9" fill="#64748b" text-anchor="middle">strain</text>
+  <text x="553" y="252" font-size="9" fill="#64748b" text-anchor="middle">mV/V</text>
+
+  <!-- input -->
+  <rect x="80" y="380" width="200" height="52" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+  <text x="180" y="402" font-size="11" font-weight="700" fill="#3730a3" text-anchor="middle">applied load (kg)</text>
+  <text x="180" y="420" font-size="9.5" fill="#4f46e5" text-anchor="middle">a /world action — placeLoad</text>
+  <line x1="180" y1="380" x2="180" y2="340" stroke="#4f46e5" stroke-width="1.8" marker-end="url(#arrSg)"/>
+
+  <!-- output -->
+  <rect x="580" y="380" width="220" height="66" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="690" y="402" font-size="11.5" font-weight="700" fill="#3730a3" text-anchor="middle">4 · indication (+ operational state)</text>
+  <text x="690" y="420" font-size="9.5" fill="#4f46e5" text-anchor="middle">what /twin may serve — ServedQuantity</text>
+  <text x="690" y="436" font-size="9.5" fill="#4f46e5" text-anchor="middle">{ value, unit, kind, servedAt }</text>
+  <line x1="690" y1="380" x2="690" y2="340" stroke="#4f46e5" stroke-width="1.8" marker-end="url(#arrSg)"/>
+
+  <!-- composition note -->
+  <rect x="60" y="466" width="780" height="54" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="1.4"/>
+  <text x="76" y="487" font-size="11" font-weight="700" fill="#1e293b">Family composition = technology × construction, both as data</text>
+  <text x="76" y="505" font-size="10" fill="#475569">an InstrumentDefinition = a construction profile (stage 1) × a technology stack (stage 3) × parameters — the LC-500: digital × compression, class C6, 500 kg</text>
+
+  <!-- clock strip -->
+  <rect x="60" y="534" width="780" height="48" rx="10" fill="#fffbeb" stroke="#d97706" stroke-width="1.4"/>
+  <text x="76" y="554" font-size="11" font-weight="700" fill="#78350f">the virtual clock drives every time-shaped law — creep, warm-up, drift, thermal memory, profiles</text>
+  <text x="76" y="571" font-size="10" fill="#92600e">manual advance(dt) by default; wall-clock opt-in (rebased so servedAt compares against client clocks) · seeded RNG ⇒ golden trajectories are testable</text>
+
+  <!-- bottom bar -->
+  <rect x="60" y="598" width="780" height="48" rx="10" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="80" y="619" font-size="11.5" font-weight="600" fill="#0f172a">R 60's metrology is behavioral — it bounds phenomena, never geometry: no 3D model required.</text>
+  <text x="80" y="636" font-size="10.5" fill="#475569">Parameters from datasheets, literature, and the R 60 test envelopes; 3D is a rendering asset or offline FEA calibration — never a runtime dependency.</text>
+</svg>
