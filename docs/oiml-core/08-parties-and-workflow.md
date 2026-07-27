@@ -167,12 +167,20 @@ Three mechanics make the machines executable rather than decorative:
    `complete` transition. A guard names a caller-supplied computed input
    the walker *requires* at walk time; the machine never re-derives it
    (the R 144 `state: ready` gate precedent).
-2. **Cascades.** A transition may declare side effects on other entities:
-   `set` (field writes, `'now'` timestamps), `where` (a filter selecting
-   the affected rows), `create` (new records — e.g. the audit event on
-   issue). Completing a TestRequest timestamps it, submits its TestReport,
-   completes its assignments, and locks its FormInstances — one atomic
-   act:
+2. **Cascades.** A transition may declare side effects on other
+   entities: `set` (field writes, `'now'` timestamps), `where` (a filter
+   selecting the affected rows), `create` (new records — e.g. the audit
+   event on issue), and the semantic actions (`submit` / `lock`). A
+   status write on a machinated target is never a raw write: the step
+   declares `via <transition-action>` and the walker routes the hop
+   through the TARGET record's own machine (gap E12) — walked when the
+   record sits in the named edge's from-set (the payload rides along,
+   and the edge's own cascades fire under an activation stack that
+   throws on a cycle), skipped untouched when the record is already at
+   the target (no date re-stamping — that would falsify the audit
+   trail), refused loudly otherwise. Completing a TestRequest timestamps
+   it, submits its TestReport, and completes its assignments — one
+   atomic act:
 
    ```yaml
    - from: IN_PROGRESS
@@ -181,16 +189,25 @@ Three mechanics make the machines executable rather than decorative:
      cascade:
      - entity: test_request
        set: { status: 'COMPLETED', completed_date: 'now' }
-     - entity: test_report
+     - action: submit
+       target: test_report
        where: 'test_request_id = ${this.id}'
-       set: { status: 'SUBMITTED', submitted_date: 'now' }
+       via: lab_submits
      - entity: test_assignment
        where: 'test_request_id = ${this.id} AND status != OMITTED'
+       via: complete
        set: { status: 'COMPLETED', completed_date: 'now' }
-     - entity: form_instance
-       where: 'test_report_id = ${testReport.id} AND status != LOCKED'
-       set: { status: 'LOCKED', locked_at: 'now' }
    ```
+
+   The report's FormInstances lock as the NESTED cascade of the report's
+   own `lab_submits` hop — the composition is declared once, on the edge
+   that owns it. Self-targeting steps (`test_request` above) stay raw
+   writes: the walker already set the status, and the `set` block
+   carries the payload dates. The routing contract is checked twice:
+   kernel rule **C95 cascade-transition-resolve** over the packages,
+   mirrored by linker rule **R44 cascade-routing** over the composed
+   trees (via resolves, lands on the written status, unguarded, and
+   forbidden everywhere else).
 
 3. **Multi-source transitions.** `from` may be a list: the applicant
    withdraws from any of five pre-decision states; the IA reopens a
@@ -225,9 +242,12 @@ Certificate gained the re-registration edges named above. One premise
 the task corrected honestly: twelve viewer-table/service discrepancies
 surfaced in the merge, and the *tested* service won every one — the
 machines were authored from observed behavior, and where the two
-disagreed the disagreement is recorded (e.g. EvaluationReport carries
-no `status` field; its machine is declared data riding
-`overall_decision`).
+disagreed the disagreement is recorded. (One such record has since been
+resolved: EvaluationReport carried no `status` field at task-61 time,
+its machine declared data riding `overall_decision`; gap D8 separated
+the axes — the entity now carries a walker-owned `status`, the workflow
+position, DISTINCT from `overall_decision`, the JUDGMENT axis the
+terminal transitions set by declared cascade.)
 
 ### 8.5.2 R42 — the machines' own integrity ●
 
@@ -235,12 +255,13 @@ The machines are data, so they are checked like data. Linker rule **R42
 state-machine-integrity** resolves every machine to its declared entity
 class, requires its states to be values of the entity's `status` enum
 (`initial ∈ states`, every transition endpoint ∈ states), and resolves
-every declared guard against the closed vocabulary. Two **documented
-warning legs** stay visible rather than silent: `evaluation_report`
-(its entity declares no status enum — the lifecycle rides
-`overall_decision`) and `sample_verification` (a projection machine
-riding `MeasuringInstrumentSample.verification_state` — its states
-cannot be enum-checked, and R42 says so). The discipline is §9's
+every declared guard against the closed vocabulary. One **documented
+warning leg** stays visible rather than silent: `sample_verification`
+(a projection machine riding
+`MeasuringInstrumentSample.verification_state` — its states cannot be
+enum-checked, and R42 says so). The second historical leg closed with
+gap D8 — `evaluation_report`'s entity now declares a status enum, so
+its machine is checked like every other. The discipline is §9's
 crosswalk applied to workflow: a machine that cannot be checked against
 its carrier is a finding, never an assumption.
 
