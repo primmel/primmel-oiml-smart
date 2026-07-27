@@ -81,13 +81,11 @@ and audited end to end — Volume IV is the full treatment:
   (oiml-r91 and oiml-r144 packages exist alongside it);
 - W8 `primmel check` — the C1–C5 cross-layer linter, 0 errors on R 60.
 
-**The platform.** All command gates green as of merges `8de8f4d` +
-`8ef2752` (2026-07-26/27: vue-tsc 0 errors; astro check 0 errors;
-vitest 3556/3556;
-production build; validate 0 errors / 435 warnings — the +10 R42 honest
-non-consumer warnings on r91/r129; e2e 55/55 — the ISO 24229
-render-baseline leg (task 25) is the 55th; ssot byte-clean — and the
-from-packages proof: the same gates run
+**The platform.** All command gates green as of `v3.1.0` (2026-07-28,
+`3170207`: vue-tsc 0 errors; astro check 0 errors; vitest 3657/3657;
+production build; validate 0 errors / 431 warnings — D8's honest close
+removed the last R42 warning; e2e 55/55; ssot byte-clean — and the
+from-packages proof WITH e2e: the same gates run
 from the committed Primmel packages only, task 31). Feature-level ●
 includes: the ONE applicability engine (dimension conditions,
 `implies:`, `instances:`); the VerdictQuantity registry with
@@ -364,7 +362,7 @@ test-side, never process-side):
 |---|---|---|
 | R 60 / R 91 / R 144 / R 129 packages (new layout) | ● | running, gates green |
 | Primmel v2 toolchain (W1–W8) | ● | parser, packages, round-trip, plug, linter |
-| App command gates | ● | vitest 3556/3556, validate 0 errors/435 warnings, e2e 55/55, ssot byte-clean (merges 8de8f4d + 8ef2752, 2026-07-26/27) |
+| App command gates | ● | vitest 3657/3657, validate 0 errors/431 warnings, e2e 55/55, ssot byte-clean (v3.1.0 `3170207`, 2026-07-28) |
 | Applicability / verdict / form / state / dispatch engines | ● | `browser/src/data`, `browser/src/services` |
 | CASCO foundation packages + facet trio | ● | phase 7, tasks 39a–d — Volume IV, ch. 2 |
 | OIML-CS reference package (framework + corpus + PD-05) | ● | phase 7, tasks 40–43 — Volume IV, ch. 1/3/4 |
@@ -378,13 +376,14 @@ test-side, never process-side):
 | ISO 24229 multilinguality | ● | task 25 (2026-07-26, smart 8de8f4d + 8ef2752, kernel 14cf10d) — the `text` construct + C89, the vendored register snapshot + R43, the English-first migration of every tree (19 manifests, 978 legacy sites recoded), per-string selection; the acceptance: 44/44 pages byte-identical English on two servers, certificates byte-equal 5/5; translations out — Volume I, ch 10 |
 | Interop projections (ReqIF, RDF/OWL + SHACL, OpenCDD IRDI) | ● | task 27 (2026-07-26): 27a R36 + the pinned snapshot, 27b 180 requirements/62 tests/128 relations/0 dropped, 27c 4,252 triples SHACL-clean + C85 |
 | Platform runtime v3, gates & release | ● | tasks 29, 31 — the from-packages proof green (2026-07-24) |
-| Documentation site | ◐ | task 30 — site launched (tagged `docs-v0.1.0`, 2026-07-26); content patch cycles follow the audit |
+| Documentation site | ◐ | task 30 — site launched; tagged `docs-v0.2.0` (2026-07-27); content patch cycles follow the audit |
 | Twin interface primitives (endpoint, serve, connector profiles, freshness) | ● | phase 6, task 32 (Volume I, ch 14 §14.4) |
 | API gateway + Compliance Engine monitor runtime | ● | phase 6, tasks 33–34 (ch 14 §14.5/§14.7) |
 | Passport (DPP) projection | ● | phase 6, task 35 (2026-07-26) — kernel `passport` construct + projection engine with fail-closed access classes, C86–C88, `r60-to-dpp.prm` + coverage gate, the JTC24 alignment record (ch 14 §14.6, ch 12 §12.5) |
 | Product reference packages, live-twin pilot | ● | phase 6, tasks 36–37 — ACME LC-500 → quarry, six pilot steps asserted (ch 15) |
 | Phase-8 executable-semantics program | ● | tasks 48–55 merged at review-SHIP — driver `BUG.R60-SSOT.md` |
 | Phase-9/9.5 SSOT-correspondence program | ● | tasks 56–61 + 9.5-a/b/c (2026-07-26) — electronic behaviors + R37, INV registry + R38, test sequences + R39, lifecycle machines + R42, capability parameters, R40/R41 — driver `PROPOSAL.R60-SSOT-Phase9(.5)` → Response 3/4 |
+| The gap-close program (architecture-gaps-2026-07) | ● | 2026-07-27/28 — the construct quartet both legs (invariant C90/C91, test_sequence C92/C93, formulas_used C94, via cascades C95 + R44), D8 EvaluationReport honest close, G18 practice flows → real forms, B1/B2 twin freshness + fault leg, E13 nested text addressing, E14 PD-05 Ed-6 recodes, E15 INV-8 TestReport pin, C4 R 91 honest coverage (65.0%) — smart `v3.1.0` (`3170207`), kernel `bb1e13b` (C1–C96) |
 
 ## 6. Summary
 
