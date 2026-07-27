@@ -17,7 +17,7 @@ assuming the one below:
 |---|---|---|
 | 1. JSON Schema | each file is well-formed for its kind | ● `data/schemas/` |
 | 2. Model linker | every cross-reference resolves | ● `browser/build/model-linker.ts` (R1–R43) |
-| 3. `primmel check` | cross-layer invariants hold | ● C1–C89 (`@primmel/primmel` `src/check-rules.ts`, 0 errors on the shipped packages) |
+| 3. `primmel check` | cross-layer invariants hold | ● C1–C96 (`@primmel/primmel` `src/check-rules.ts`, 0 errors on the shipped packages) |
 | 4. Coverage audits | the aspect↔requirement↔test↔form closure is complete | ◐ structural today, explicit in v3 |
 | 5. Text-coverage metric | every normative sentence is modelled, none duplicated | ● `src/text-coverage.ts` (C71–C73 + `--coverage`), R 60 at 100 % / 0 unresolved |
 
@@ -117,14 +117,14 @@ base checks below are its root, not its extent:
 
 | Family | Rules | Provenance |
 |---|---|---|
-| base | C1–C5 (+ C56/C57 allowlist self-checks), C89 spelling-code-wellformed | the v2 linter (W8), roadmap/25 |
+| base | C1–C5 (+ C56/C57 allowlist self-checks), C89 spelling-code-wellformed, C90–C91 invariant, C92–C93 test-sequence, C94 formulas-used, C96 duplicate-id | the v2 linter (W8), roadmap/25, gap-close E9–E11, kernel hygiene |
 | anatomy (subject is/has/does) | C6–C9, C84 constraint-shape | roadmap/01, /51 |
 | process | C10–C16, C58/C59 (activity-kind, segregation), C74–C76 signature boundaries | roadmap/02, /08, /38 |
 | instantiation | C17–C20 | roadmap/03 |
 | mapping | C21–C26 | roadmap/04 |
 | composition (`uses`) | C27–C31 | roadmap/05 |
 | quantities + duality | C32–C36 | roadmap/06 |
-| state machines | C37–C41 (incl. C38 state-family-separation) | roadmap/07 |
+| state machines | C37–C41 (incl. C38 state-family-separation), C95 cascade-transition-resolve | roadmap/07, gap-close E12 |
 | promises | C42–C44 | roadmap/08 |
 | artifacts | C45–C47 | roadmap/09 |
 | characteristics | C48–C50 | roadmap/10 |
@@ -159,7 +159,8 @@ a violation means, never a bare id; `on_violation` ∈ {`invalid`,
 `indeterminate`} — a constraint voids the measurement or withholds
 judgment, it never *fails* the instrument; and a declared `source`
 names both doc and clause (clause-URN provenance, chapter 9). Duplicate
-constraint ids are the parse-time duplicate-id rule, and the resolution
+constraint ids are surfaced by C96 duplicate-id (the parse-time rule,
+now visible through `checkPackage`), and the resolution
 legs stay smart-side (linker rule R32) — C84 polices shape only, which
 is why all shipped packages pass with zero hits. And the **passport
 trio C86–C88** (● primmel-ts da30b21, roadmap/35): C86
@@ -325,7 +326,7 @@ The checker's own inputs are models too, and get checked:
 ## 11.10 Summary
 
 - Validation is a five-layer stack: schema (●), linker (●, R1–R43),
-  cross-layer invariants (● C1–C89), coverage audits (◐),
+  cross-layer invariants (● C1–C96), coverage audits (◐),
   text coverage (●). Each layer assumes the one below.
 - The linker resolves every cross-file reference; the allowlist
   discipline (KNOWN prints, STALE must die) keeps inherited debt honest
