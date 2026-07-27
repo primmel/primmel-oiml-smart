@@ -302,12 +302,26 @@ form machinery:
   hands-on.
 
 An `auto` mode drives `/world` on the learner's behalf for scripted
-exercises and tests. The remaining integration — the SMART-side
-GraphQL gateway connector, the monitor accruing verdicts against
-sim-served values, and the test-bench acceptance end-to-end (inject
-creep via `/world` ⇒ verdict `fail`; kill the feed ⇒ `indeterminate`;
-inject a fault ⇒ the service case) — is the deferred C6 stage; the
-pilot's in-process provider stays the fast path meanwhile.
+exercises and tests. The remaining integration is **shipped** (sim C6,
+smart `aafaf87` + `cdcdf98`): the gateway's GraphQL connector (query
+POST + GraphQL-over-SSE subscriptions; a stream that ends or breaks
+delivers `unavailable` — never a silent close; teardown abort is not
+an outage), the sim-twin deployment binding (poll `get_indication`,
+subscribe `watch_state`, the hourly monitor judging the ±1 kg service
+band), and **the test-bench acceptance end-to-end**: `pass × 2`
+accrued against the live good cell → `scenario creep-cell` via
+`/world` + a 900 s dwell ⇒ the served indication reads > 501 kg while
+ground truth stays exactly 500 kg ⇒ `fail` + the
+flag/open-case/notify escalations → kill the feed ⇒ `indeterminate`
+(freshness — never a fail) → restart ⇒ `pass`. The verdict stream
+`[pass, pass, fail, indeterminate, pass]` is test-pinned. The pilot's
+in-process provider stays the fast path for the demo deployment. Two
+honest notes from the acceptance review: the §11 fault leg is
+unreachable on the v1 digital stack (faults report only on
+digital-processing at >150 % overload — a sim fault knob is the named
+follow-up), and `servedAt` is instrument-clock seconds (the
+`timestamp_field` freshness-vs-servedAt extension is the named
+follow-up).
 
 ## 11. What the rig enables — Digital Twin certification (○)
 
