@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="ui-sans-serif, system-ui, sans-serif">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="arrc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9333ea"/>
+    </marker>
+    <marker id="arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <text x="50" y="34" font-size="18" font-weight="700" fill="#0f172a">The composition fold: two references over one implementation</text>
+  <text x="50" y="54" font-size="12.5" fill="#475569">N map_profiles validate independently; the fold reports shared, exclusive and uncovered — a pure fold, no new calculus.</text>
+
+  <!-- the implementation -->
+  <rect x="50" y="86" width="240" height="330" rx="12" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
+  <text x="170" y="112" font-size="13" font-weight="700" fill="#3730a3" text-anchor="middle">ims-demo</text>
+  <text x="170" y="128" font-size="10.5" fill="#4f46e5" text-anchor="middle">one implementation (fictional)</text>
+
+  <rect x="68" y="146" width="204" height="40" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-width="1.4"/>
+  <text x="170" y="163" font-size="10.5" fill="#3730a3" text-anchor="middle">PolicyAndObjectives</text>
+  <text x="170" y="179" font-size="9" fill="#64748b" text-anchor="middle">exclusive → qms-ref</text>
+
+  <rect x="68" y="196" width="204" height="44" rx="8" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+  <text x="170" y="213" font-size="10.5" font-weight="600" fill="#166534" text-anchor="middle">InternalAudit — SHARED</text>
+  <text x="170" y="229" font-size="9" fill="#16a34a" text-anchor="middle">write once, comply twice</text>
+
+  <rect x="68" y="250" width="204" height="40" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-width="1.4"/>
+  <text x="170" y="267" font-size="10.5" fill="#3730a3" text-anchor="middle">RiskProcess</text>
+  <text x="170" y="283" font-size="9" fill="#64748b" text-anchor="middle">exclusive → isms-ref</text>
+
+  <rect x="68" y="300" width="204" height="40" rx="8" fill="#ffffff" stroke="#4f46e5" stroke-width="1.4"/>
+  <text x="170" y="317" font-size="10.5" fill="#3730a3" text-anchor="middle">AccessAndIncidents</text>
+  <text x="170" y="333" font-size="9" fill="#64748b" text-anchor="middle">exclusive → isms-ref</text>
+
+  <rect x="68" y="350" width="204" height="40" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="170" y="367" font-size="10.5" fill="#64748b" text-anchor="middle">LogisticsOutsourcing</text>
+  <text x="170" y="383" font-size="9" fill="#94a3b8" text-anchor="middle">uncovered — serves no standard</text>
+
+  <!-- arrows -->
+  <line x1="272" y1="166" x2="560" y2="150" stroke="#9333ea" stroke-width="1.6" marker-end="url(#arrc)"/>
+  <line x1="272" y1="210" x2="560" y2="180" stroke="#9333ea" stroke-width="1.6" marker-end="url(#arrc)"/>
+  <line x1="272" y1="226" x2="560" y2="330" stroke="#9333ea" stroke-width="1.6" marker-end="url(#arrc)"/>
+  <line x1="272" y1="270" x2="560" y2="356" stroke="#9333ea" stroke-width="1.6" marker-end="url(#arrc)"/>
+  <line x1="272" y1="320" x2="560" y2="382" stroke="#9333ea" stroke-width="1.6" marker-end="url(#arrc)"/>
+  <line x1="170" y1="390" x2="170" y2="452" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arrg)"/>
+
+  <!-- qms-ref lens -->
+  <rect x="560" y="86" width="290" height="180" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="1.6"/>
+  <text x="705" y="112" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">the qms-ref lens</text>
+  <text x="705" y="128" font-size="10" fill="#64748b" text-anchor="middle">validates independently — its own report</text>
+
+  <rect x="578" y="142" width="46" height="16" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="601" y="154" font-size="9" font-weight="600" fill="#166534" text-anchor="middle">full 4</text>
+  <rect x="630" y="142" width="62" height="16" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="661" y="154" font-size="9" font-weight="600" fill="#1e40af" text-anchor="middle">minimal 1</text>
+  <rect x="698" y="142" width="52" height="16" rx="4" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="724" y="154" font-size="9" font-weight="600" fill="#b91c1c" text-anchor="middle">none 1</text>
+  <text x="758" y="154" font-size="9" fill="#64748b">+1 closure proposal</text>
+
+  <text x="578" y="180" font-size="9.5" fill="#475569">PlanQms full (aggregated) · ImproveQms minimal (gateway)</text>
+  <text x="578" y="196" font-size="9.5" fill="#475569">mappedBy: PolicyAndObjectives, InternalAudit</text>
+  <rect x="578" y="208" width="256" height="22" rx="4" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="706" y="223" font-size="9.5" fill="#b91c1c" text-anchor="middle">open gap: ContinualImprovement (none)</text>
+  <text x="578" y="252" font-size="9.5" fill="#94a3b8">a fictional toy reference — no ISO 9001 content</text>
+
+  <!-- isms-ref lens -->
+  <rect x="560" y="286" width="290" height="180" rx="12" fill="#f8fafc" stroke="#64748b" stroke-width="1.6"/>
+  <text x="705" y="312" font-size="12.5" font-weight="700" fill="#334155" text-anchor="middle">the isms-ref lens</text>
+  <text x="705" y="328" font-size="10" fill="#64748b" text-anchor="middle">validates independently — its own report</text>
+
+  <rect x="578" y="342" width="46" height="16" rx="4" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.2"/>
+  <text x="601" y="354" font-size="9" font-weight="600" fill="#166534" text-anchor="middle">full 4</text>
+  <rect x="630" y="342" width="62" height="16" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
+  <text x="661" y="354" font-size="9" font-weight="600" fill="#1e40af" text-anchor="middle">minimal 1</text>
+  <rect x="698" y="342" width="52" height="16" rx="4" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="724" y="354" font-size="9" font-weight="600" fill="#b91c1c" text-anchor="middle">none 1</text>
+  <text x="758" y="354" font-size="9" fill="#64748b">+2 inherited proposals</text>
+
+  <text x="578" y="380" font-size="9.5" fill="#475569">RiskManagement full (parent map; inheritance down)</text>
+  <text x="578" y="396" font-size="9.5" fill="#475569">mappedBy: RiskProcess, InternalAudit, AccessAndIncidents</text>
+  <rect x="578" y="408" width="256" height="22" rx="4" fill="#fef2f2" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="706" y="423" font-size="9.5" fill="#b91c1c" text-anchor="middle">open gap: IncidentResponse (none)</text>
+  <text x="578" y="452" font-size="9.5" fill="#94a3b8">a fictional toy reference — no ISO/IEC 27001 content</text>
+
+  <!-- the fold -->
+  <rect x="50" y="452" width="490" height="76" rx="12" fill="#faf5ff" stroke="#9333ea" stroke-width="1.4"/>
+  <text x="70" y="476" font-size="11" font-weight="700" fill="#7e22ce">the composed fold</text>
+  <text x="70" y="494" font-size="10" fill="#475569">shared: InternalAudit → both lenses · exclusive: PolicyAndObjectives → qms-ref,</text>
+  <text x="70" y="510" font-size="10" fill="#475569">RiskProcess + AccessAndIncidents → isms-ref · uncovered ∩: LogisticsOutsourcing</text>
+</svg>
