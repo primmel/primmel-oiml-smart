@@ -317,23 +317,44 @@ Shipped and gate-proven ●:
   (`twin-fidelity-chain.test.ts`), the certificate issuance and the
   full suspension state-walk (`twin-certificate.test.ts`).
 
-**TBD — landing in parallel (TCD-4, TCD-5); this section is the marked
-placeholder for the final pass:**
+**Landed ● (2026-07-28):**
 
-- **TCD-4 — the surveillance monitor binding ○.** The program's fleet
-  monitor declaration over the certified-twin set (the declaration the
-  certificate's claim and `validity.yaml` already name), the
-  deployment-binding pattern for certified units, and the tightened-δ
-  fleet re-judgment SOP on stored snapshots. §17.6's machine and
-  policy are shipped; the *declaration* of the fleet monitor is the
-  missing piece.
-- **TCD-5 — the four-scenario acceptance ○.** The teeth, service-level
-  against the live sim: faithful twin ⇒ certificate issued; lying twin
-  (the 0.25 kg served-boundary offset) ⇒ caught with evidence,
-  admission blocked / certificate flagged; stale twin (30 s served
-  lag) ⇒ indeterminate, no issuance — never a fail, never a silent
-  pass; post-certification fault + lie ⇒ the service-case leg versus
-  the suspension walk, with reinstatement and withdrawal.
+- **TCD-4 — the surveillance monitor binding ●.** The fleet monitor
+  declaration (`primmel-packages/oiml-twin-cert/model/monitors.prl` —
+  triggers `every 1h` + `on signal certificate_registered` +
+  `on change sample.test_context.op_state`, the `applicable` fidelity
+  selector, the emit sinks, the escalation set) with the codec loop into
+  `data/oiml-twin-cert/model/monitors.yaml`; the register-driven
+  deployment binding (`browser/src/monitor/twin-cert-deployment.ts`) —
+  the certified-twins register drives the watch set (ACTIVE ∪
+  UNDER_INVESTIGATION; SUSPENDED/WITHDRAWN drop); the tightened-δ fleet
+  re-judgment SOP (`rejudgeFleetWindow`) on stored snapshots with ZERO
+  gateway calls, and the stale-original pin (null-valued facts rejudge
+  indeterminate, never flip). The fault-state rule rides the binding
+  (the grammar admits verdict outcomes only — `on: 'always', when
+  op_state = fault ⇒ open_service_case`, no flag), with the pin at the
+  declaration site, the deployment header, `layer.yaml`, and
+  AGENTS.d/12. `monitor_id` is bound: parsed from `validity.yaml` and
+  cross-checked at issuance. (`twin-cert-surveillance.test.ts`,
+  8 legs.)
+- **TCD-5 — the four-scenario acceptance ●.** The teeth, service-level
+  against the live sim (`twin-cert-acceptance.test.ts`, 5 legs,
+  skip-guarded without it): faithful ⇒ the full chain — admission,
+  probes (deviation ≤ δ with pair-skew evidence), aggregation,
+  issuance, register entry, passport `IN TOLERANCE`; lying (the 0.25 kg
+  knob, 2.5× δ) ⇒ per-probe fail with the deviation evidence on record
+  (admission correctly passes — a value-lie is not a contract
+  violation; the probe is the teeth) ⇒ decision refuse, no certificate;
+  stale (30 s served lag vs the 5 s window, via `timestamp_fields` —
+  served time, never receipt) ⇒ indeterminate at every point,
+  inconclusive decision, no issuance — never a fail, never a silent
+  pass; post-certification ⇒ the fault leg opens service cases with
+  ZERO certificate flags (the twin truthfully reported the fault) while
+  the lie leg drives flag ⇒ investigate ⇒ three consecutive fails ⇒
+  suspend ⇒ cure via same-δ rejudge (zero gateway calls) ⇒ reinstate,
+  and recurrence ⇒ cure-window suspend ⇒ withdraw, register empty.
+  The sizing pin checks δ = 0.1 kg against the knob (2.5×) and the
+  window (6×) against the sim's own declarations.
 
 ## 17.8 Summary
 
