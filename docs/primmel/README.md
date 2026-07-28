@@ -67,6 +67,10 @@ layer the compliance use-case always needed: **the subject**.
     implementation through a reference: the reference-shaped projection,
     the CoverageReport as lens, and the multi-reference composition
     fold.
+17. [Twin certification](17-twin-certification.md) — certifying the
+    governed projection's fidelity: the three-layer stack (device, full
+    twin, Primmel twin), the probe channel, the verdict chain, and the
+    twin certificate with its surveillance regime.
 
 ## The one-sentence summary
 
