@@ -63,6 +63,10 @@ layer the compliance use-case always needed: **the subject**.
 15. [The model supply chain](15-model-supply-chain.md) — manufacturer
     product reference models, mapped to the standard, consumed as
     abstract imports or live twins.
+16. [Views and lenses](16-views-and-lenses.md) — reading an
+    implementation through a reference: the reference-shaped projection,
+    the CoverageReport as lens, and the multi-reference composition
+    fold.
 
 ## The one-sentence summary
 
