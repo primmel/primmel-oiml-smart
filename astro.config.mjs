@@ -74,6 +74,7 @@ export default defineConfig({
             { label: 'Live Twins', slug: 'primmel/14-live-twins' },
             { label: 'The Model Supply Chain', slug: 'primmel/15-model-supply-chain' },
             { label: 'Views and Lenses', slug: 'primmel/16-views-and-lenses' },
+            { label: 'Twin Certification', slug: 'primmel/17-twin-certification' },
           ],
         },
         {
