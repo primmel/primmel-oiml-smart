@@ -155,7 +155,9 @@ content is re-authored:
 - **the mapping primitive + coverage calculus** — A ⇒ B with
   description + justification; full / minimal / partial / no cover;
   inheritance down, aggregation up, transitivity at process level
-  (v2 serialization ●: `map_profile` / `.prm`; the calculus is ○);
+  (v2 serialization ●: `map_profile` / `.prm`; the calculus ● since
+  TODO.roadmap/04 — computed coverage + C23 assertions + the view/lens
+  projections of TODO.v2/02–03);
 - **`uses` composition** — multi-package, topologically merged, no
   redefinition of upstream ids (v2's single `extends` is insufficient).
 
@@ -332,9 +334,11 @@ added four more. Proposal → response → shipped, in one day:
 - **item 3 (mappings)** — folded into task 35: the R 60 → DPP mapping
   rides the existing `.prm` primitive (`r60-to-dpp.prm` + the coverage
   gate, §14.6);
-- **item 4 (curated model-diff records)** — adopted shape recorded
-  (machine-verified summary counts + authored rationale on the existing
-  `primmel diff` primitive); ○ not yet landed;
+- **item 4 (curated model-diff records)** — ● landed (TODO.roadmap/31):
+  `docs/releases/v3-changelog.md` is regenerated per release by
+  `scripts/v3-changelog.ts` — machine-verified summary counts +
+  authored rationale (the curated NARRATIVE one-liners) on the existing
+  `primmel diff` primitive;
 - **item 7 (capability decomposition)** — answered: already decomposed
   upstream with `requires`/`satisfies` obligations; the viewer deleted
   its overlay (Volume III, §2.8).
@@ -385,6 +389,7 @@ test-side, never process-side):
 | Phase-8 executable-semantics program | ● | tasks 48–55 merged at review-SHIP — driver `BUG.R60-SSOT.md` |
 | Phase-9/9.5 SSOT-correspondence program | ● | tasks 56–61 + 9.5-a/b/c (2026-07-26) — electronic behaviors + R37, INV registry + R38, test sequences + R39, lifecycle machines + R42, capability parameters, R40/R41 — driver `PROPOSAL.R60-SSOT-Phase9(.5)` → Response 3/4 |
 | The gap-close program (architecture-gaps-2026-07) | ● | 2026-07-27/28 — the construct quartet both legs (invariant C90/C91, test_sequence C92/C93, formulas_used C94, via cascades C95 + R44), D8 EvaluationReport honest close, G18 practice flows → real forms, B1/B2 twin freshness + fault leg, E13 nested text addressing, E14 PD-05 Ed-6 recodes, E15 INV-8 TestReport pin, C4 R 91 honest coverage (65.0%) — smart `v3.1.0` (`3170207`), kernel `bb1e13b` (C1–C96) |
+| The digital-twin stack + the instrument library (TODO.v2) | ● | 2026-07-28/29 — the explicit full-twin → projection mapping (the served surface ≡ the governed set; the derivation generator + drift guard), the view/lens runtime (VL-1..6), the four-instrument sim library + product packages (LC-500, CGM-200, RS-180, MD-350), the analogue-passive pairing, /world auth, R 144 complete (98.6%/100% gated), R 91-3/-4 complete (79.1%, curation mode retired), R 129 first landing (30.9%), the kernel hygiene batch (model-diff texts, program-tree validate, escalation closure, unmappedAliases), the tooling pair (worktree-e2e, the structural flake quarantine with the fourth member captured) — smart `v3.2.0`, kernel pins 26 |
 
 ## 6. Summary
 
