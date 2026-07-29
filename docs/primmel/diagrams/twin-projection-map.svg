@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 620" font-family="ui-sans-serif, system-ui, sans-serif">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <marker id="arrP" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9333ea"/>
+    </marker>
+    <marker id="arrD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4f46e5"/>
+    </marker>
+    <marker id="arrG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <text x="48" y="36" font-size="18" font-weight="700" fill="#0f172a">The full twin → projection mapping</text>
+  <text x="48" y="56" font-size="12.5" fill="#475569">The manufacturer's anatomy is arbitrarily rich; the Recommendation governs a projection of it — declared, mapped, derived.</text>
+
+  <!-- column 1: the FULL TWIN (the product subject anatomy) -->
+  <rect x="40" y="86" width="280" height="380" rx="10" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+  <text x="180" y="112" font-size="13" font-weight="700" fill="#334155" text-anchor="middle">FULL DIGITAL TWIN</text>
+  <text x="180" y="130" font-size="10" fill="#475569" text-anchor="middle">the product subject's complete anatomy</text>
+  <text x="180" y="144" font-size="10" fill="#475569" text-anchor="middle">(ACME LC-500, ch. 15)</text>
+
+  <text x="56" y="170" font-size="10.5" font-weight="700" fill="#334155">on the projection surface</text>
+  <text x="56" y="190" font-size="10" fill="#475569">endpoint lc500_api</text>
+  <text x="56" y="207" font-size="10" fill="#475569">indication · d_min (attributes)</text>
+  <text x="56" y="224" font-size="10" fill="#475569">lc_operational (state machine)</text>
+  <text x="56" y="241" font-size="10" fill="#475569">self_test (behavior)</text>
+
+  <line x1="56" y1="258" x2="304" y2="258" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="56" y="278" font-size="10.5" font-weight="700" fill="#92400e">the filtered richness</text>
+  <text x="56" y="298" font-size="10" fill="#78716c">internal_temperature (telemetry)</text>
+  <text x="56" y="315" font-size="10" fill="#78716c">overload_event_count (history)</text>
+  <text x="56" y="332" font-size="10" fill="#78716c">serial_number · firmware_version</text>
+  <text x="56" y="349" font-size="10" fill="#78716c">ref_load (test context)</text>
+
+  <rect x="56" y="368" width="248" height="84" rx="8" fill="#fefce8" stroke="#d97706" stroke-width="1" stroke-dasharray="5 4"/>
+  <text x="180" y="390" font-size="10" font-weight="600" fill="#92400e" text-anchor="middle">deliberately unmapped</text>
+  <text x="180" y="407" font-size="9.5" fill="#92400e" text-anchor="middle">the projection FILTERS these out —</text>
+  <text x="180" y="421" font-size="9.5" fill="#92400e" text-anchor="middle">the full twin's richness, never gaps</text>
+  <text x="180" y="440" font-size="9.5" fill="#a16207" text-anchor="middle">(reported by the twin-projection gate)</text>
+
+  <!-- column 2: the PROJECTION (the Recommendation's governed interface) -->
+  <rect x="370" y="86" width="280" height="240" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="2"/>
+  <text x="510" y="112" font-size="13" font-weight="700" fill="#7e22ce" text-anchor="middle">THE PROJECTION</text>
+  <text x="510" y="130" font-size="10" fill="#7e22ce" text-anchor="middle">R 60's governed twin interface (model/twin.prl)</text>
+  <text x="386" y="158" font-size="10.5" font-weight="700" fill="#6b21a8">endpoint loadcell_api · rest_json</text>
+  <text x="386" y="176" font-size="10" fill="#6b21a8">get_indication · watch_state · run_self_test</text>
+  <text x="386" y="202" font-size="10" fill="#6b21a8">register sample.test_context.d_min</text>
+  <text x="386" y="218" font-size="9.5" fill="#7e22ce">via get_indication · fresh_within 5s</text>
+  <text x="386" y="240" font-size="10" fill="#6b21a8">register sample.state</text>
+  <text x="386" y="256" font-size="9.5" fill="#7e22ce">via watch_state · fresh_within 1s</text>
+  <text x="510" y="288" font-size="9.5" font-weight="600" fill="#7e22ce" text-anchor="middle">the Recommendation owns the governed semantics —</text>
+  <text x="510" y="303" font-size="9.5" font-weight="600" fill="#7e22ce" text-anchor="middle">every governed register backed (coverage: full)</text>
+
+  <!-- column 3: the PRIMMEL TWIN (the derived served section) -->
+  <rect x="700" y="86" width="220" height="240" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="810" y="112" font-size="13" font-weight="700" fill="#3730a3" text-anchor="middle">PRIMMEL TWIN</text>
+  <text x="810" y="130" font-size="10" fill="#4f46e5" text-anchor="middle">the served projection (LC-500)</text>
+  <text x="714" y="158" font-size="10" fill="#4338ca">endpoint lc500_api</text>
+  <text x="714" y="176" font-size="9.5" fill="#4f46e5">≡ the governed operations,</text>
+  <text x="714" y="190" font-size="9.5" fill="#4f46e5">access scopes, profile</text>
+  <text x="714" y="214" font-size="10" fill="#4338ca">serve sample.test_context.d_min</text>
+  <text x="714" y="230" font-size="10" fill="#4338ca">serve sample.state</text>
+  <text x="810" y="262" font-size="9.5" fill="#4f46e5" text-anchor="middle">governed STATE surface —</text>
+  <text x="810" y="277" font-size="9.5" fill="#4f46e5" text-anchor="middle">never a verb shell</text>
+  <text x="810" y="306" font-size="9.5" font-weight="600" fill="#4338ca" text-anchor="middle">DERIVED — byte-clean drift guard</text>
+
+  <!-- mapping arrows: full twin → projection -->
+  <line x1="320" y1="184" x2="366" y2="162" stroke="#9333ea" stroke-width="1.6" marker-end="url(#arrP)"/>
+  <text x="326" y="158" font-size="9" font-weight="600" fill="#7e22ce">map</text>
+  <line x1="320" y1="204" x2="366" y2="206" stroke="#9333ea" stroke-width="1.6" marker-end="url(#arrP)"/>
+  <line x1="320" y1="224" x2="366" y2="244" stroke="#9333ea" stroke-width="1.6" marker-end="url(#arrP)"/>
+
+  <!-- derivation arrow: projection → primmel twin -->
+  <line x1="650" y1="200" x2="696" y2="200" stroke="#4f46e5" stroke-width="1.8" marker-end="url(#arrD)"/>
+  <text x="654" y="188" font-size="9" font-weight="600" fill="#4338ca">derive</text>
+
+  <!-- filtered arrow: richness ⇏ projection -->
+  <line x1="320" y1="320" x2="360" y2="320" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrG)"/>
+  <line x1="356" y1="312" x2="366" y2="328" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="366" y1="312" x2="356" y2="328" stroke="#94a3b8" stroke-width="2"/>
+  <text x="322" y="308" font-size="9" fill="#78716c">filtered</text>
+
+  <!-- the Recommendation's declaration feeds the derivation (loop under) -->
+  <path d="M 510 330 L 510 486 L 810 486 L 810 330" fill="none" stroke="#4f46e5" stroke-width="1.4" stroke-dasharray="6 4" marker-end="url(#arrD)"/>
+  <text x="660" y="466" font-size="9" fill="#4338ca" text-anchor="middle">the served section is GENERATED from the rec's twin.prl +</text>
+  <text x="660" y="479" font-size="9" fill="#4338ca" text-anchor="middle">the projection mapping — a rec-side change surfaces as a diff</text>
+
+  <!-- bottom left: twin certification -->
+  <rect x="40" y="508" width="280" height="88" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text x="180" y="534" font-size="12" font-weight="700" fill="#166534" text-anchor="middle">TWIN CERTIFICATION</text>
+  <text x="180" y="553" font-size="10" fill="#166534" text-anchor="middle">proves FIDELITY of the projection —</text>
+  <text x="180" y="567" font-size="10" fill="#166534" text-anchor="middle">served ≡ physical within δ + freshness (ch. 17)</text>
+  <text x="180" y="584" font-size="10" fill="#166534" text-anchor="middle">never the full twin's completeness</text>
+
+  <!-- bottom right: legend -->
+  <rect x="370" y="508" width="550" height="88" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="386" y="530" font-size="10.5" font-weight="700" fill="#334155">reading the map</text>
+  <line x1="386" y1="550" x2="414" y2="550" stroke="#9333ea" stroke-width="1.6" marker-end="url(#arrP)"/>
+  <text x="422" y="554" font-size="9.5" fill="#475569">the projection mapping — a product component backs each governed element</text>
+  <line x1="386" y1="570" x2="414" y2="570" stroke="#4f46e5" stroke-width="1.6" marker-end="url(#arrD)"/>
+  <text x="422" y="574" font-size="9.5" fill="#475569">the derivation — the served section emitted from the governed set + the mapping</text>
+  <line x1="386" y1="588" x2="414" y2="588" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <text x="422" y="592" font-size="9.5" fill="#475569">the filtered richness — deliberately outside the projection</text>
+</svg>

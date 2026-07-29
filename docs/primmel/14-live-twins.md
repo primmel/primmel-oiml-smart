@@ -84,6 +84,40 @@ develops the full supply chain; the one-line version is that the
 manufacturer's product model — the twin's type — is itself mapped to
 the Recommendation, so conformance composes.
 
+**The full twin and the governed projection.** A manufacturer's digital
+twin of their own product can be arbitrarily rich — physics simulation,
+diagnostics telemetry, event history, production data. That is the
+*full twin*, and nothing a Recommendation says constrains it. But what
+the Recommendation *governs* is a projection of it — and the projection
+is itself declared, mapped, and derived:
+
+![The full twin → projection mapping: the full twin's anatomy filtered by the Recommendation's governed aspect set into the Primmel twin, and certification proving the projection's fidelity](diagrams/twin-projection-map.svg)
+
+- **What the device IS** — the full twin: the manufacturer's complete
+  representation, any shape. The LC-500's subject anatomy (chapter 15)
+  carries internal-temperature telemetry, an overload event history,
+  and production data alongside the metrological attributes.
+- **What the standard GOVERNS** — the projection: the Recommendation
+  declares the governed twin interface (the endpoint, the served
+  registers, the freshness windows — R 60 does, `model/twin.prl`), and
+  the product's projection mapping proves every governed register is
+  backed by a product component (the coverage calculus, chapter 5).
+  The richer anatomy is *deliberately unmapped* — the filtered richness
+  the projection leaves behind, never a gap.
+- **What certification PROVES** — fidelity of the projection: the
+  served values are true within the declared tolerance and freshness
+  (chapter 17), *never* the full twin's completeness. Completeness
+  against what?
+
+So the Primmel twin is a governed **state projection**, not a command
+interface — you read what the standard governs from it. And because the
+governed semantics belong to the Recommendation, the product's served
+twin section is *derived* from the Recommendation's declaration plus
+the projection mapping — never hand-mirrored: a change to the governed
+set surfaces as a diff in the product package, where a mirrored copy
+would have drifted silently (the twin-projection drift guard,
+TODO.v2/16).
+
 ## 14.4 The integration language: endpoint, serve, connectors
 
 A twin that can't be queried is a photo. The integration language is
@@ -94,7 +128,7 @@ three small primitives:
 ```prl
 endpoint lc500_api {
   operation get_indication   { kind query     serves indication }
-  operation watch_state      { kind subscribe serves state, environmental_context }
+  operation watch_state      { kind subscribe serves state }
   operation run_self_test    { kind invoke    does self_test }
   access { public: [get_indication]  registered: [watch_state]  authority: [run_self_test] }
   profile rest_json
@@ -359,6 +393,11 @@ monitor fleet_watch over LoadCellModel {
 - A live twin is a subject instance whose anatomy is served: IS (the
   passport), HAS (live values with timestamps), DOES (invocable
   processes).
+- The twin is a projection: the full twin is the manufacturer's and
+  arbitrarily rich; the Recommendation governs the projection —
+  declared, mapped (every governed register backed), and derived, never
+  hand-mirrored. Certification proves the projection's fidelity, never
+  the full twin's completeness.
 - Three small primitives integrate it: `endpoint`, `serve`, connector
   profiles. One process consumes it: the `monitor`.
 - The passport is a projection of the model — abstract
