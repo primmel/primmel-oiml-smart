@@ -109,6 +109,7 @@ export default defineConfig({
             { label: 'Modelling Your Lab', slug: 'oiml-rec/10-modelling-your-lab' },
             { label: 'Migrating from the YAML Era', slug: 'oiml-rec/11-migrating-from-yaml' },
             { label: 'Modelling Your Product', slug: 'oiml-rec/12-modelling-your-product' },
+            { label: 'Running the Demo', slug: 'oiml-rec/13-running-the-demo' },
           ],
         },
         {
