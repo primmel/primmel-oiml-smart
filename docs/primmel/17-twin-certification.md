@@ -46,19 +46,20 @@ more precisely, until the claim is small enough to be falsifiable —
 and a falsifiable claim is the only kind a certificate can honestly
 carry (Volume 0, claims and falsifiability).
 
-**Where the projection comes from.** Today the governed aspect set is
+**Where the projection comes from.** The governed aspect set is
 declared in the Recommendation packages (the serve/twin-interface
-vocabulary of §14.4) and the product's twin interface is authored
-against it. The recorded future direction — ○, planned under
-TODO.v2/16 — makes the projection layer explicit: the manufacturer's
-full twin related to the governed register set by a *declared* mapping
-(the `map_profile` machinery of chapters 5 and 16), the coverage
-report proving the projection covers everything governed, and the
-endpoint schema *derived* from the governed aspect set instead of
-hand-authored. The certification program of this chapter already
-evaluates the projection's fidelity; TODO.v2/16 will prove the
-projection's *coverage*. That is the only aspirational statement in
-this chapter.
+vocabulary of §14.4), and the projection layer is explicit
+(TODO.v2/16): the manufacturer's full twin is related to the governed
+register set by a *declared* mapping (the `map_profile` machinery of
+chapters 5 and 16), the coverage report proves the projection covers
+everything governed (C23 — computed, never authored), and the
+product's served twin section is *derived* from the governed aspect
+set plus the mapping — never hand-authored, with a byte-clean drift
+guard where a mirrored copy would drift silently. The full twin's
+richer anatomy shows as deliberately unmapped: the filtered richness,
+never gaps. Chapter 14 §14.3 carries the worked framing on the LC-500;
+the certification program of this chapter then evaluates the
+projection's *fidelity* — coverage first, fidelity second.
 
 ## 17.2 The program package: a fourth publisher
 
