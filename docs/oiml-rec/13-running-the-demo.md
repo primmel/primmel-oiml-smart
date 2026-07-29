@@ -42,7 +42,7 @@ npm run reset-db
 
 Expected output (verbatim):
 
-```
+```text
 Deleted /Users/…/smart/data/oiml-smart.db
 Seeded 7 demo accounts
   admin@oiml.org — OIML Admin (admin)
