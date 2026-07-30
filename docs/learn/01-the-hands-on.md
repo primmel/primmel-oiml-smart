@@ -19,11 +19,21 @@ instrument narrates this same path for you.
 ## Part 1 — the two channels (30 minutes)
 
 1. **Read the twin.** Query the served indication:
-   `curl -s -X POST localhost:5290/twin -H 'content-type: application/json' -d '{"query":"{ indication { value unit kind servedAt } }"}'`
+
+   ```bash
+   curl -s -X POST localhost:5290/twin -H 'content-type: application/json' \
+     -d '{"query":"{ indication { value unit kind servedAt } }"}'
+   ```
+
    — this is what a certification engine is allowed to see: the governed
    projection, with its own timestamp.
 2. **Read the world.** `POST localhost:5290/world` with
-   `{"query":"{ groundTruth { appliedLoadKg clockS environment { temperatureDegC humidityPercentRh } } }"}`
+
+   ```json
+   {"query":"{ groundTruth { appliedLoadKg clockS environment {
+     temperatureDegC humidityPercentRh } } }"}
+   ```
+
    — reality: the operator's view. `/world` is omnipotent by design
    (guard it for any non-local boot with `SIM_WORLD_TOKEN`).
 3. **Place a load.** `{"query":"mutation { placeLoad(massKg: 40) { clock } }"}`

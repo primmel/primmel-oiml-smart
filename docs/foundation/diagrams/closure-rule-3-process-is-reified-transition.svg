@@ -58,7 +58,7 @@
 
   <!-- Why this matters -->
   <rect x="60" y="430" width="780" height="120" rx="10" fill="#eef2ff" stroke="#4f46e5" stroke-width="1.6"/>
-  <text x="80" y="454" font-size="11.5" font-weight="700" fill="#3730a3">Consequence — the onion closes on itself</text>
+  <text x="80" y="454" font-size="11.5" font-weight="700" fill="#3730a3">Consequence — the model closes on itself</text>
   <text x="80" y="476" font-size="10.5" fill="#4338ca">A process inherits all the object machinery: IS (which run is this?), HAS (started-at,</text>
   <text x="80" y="490" font-size="10.5" fill="#4338ca">current-position, registers), reference (other objects can point at it as a value).</text>
   <text x="80" y="514" font-size="10.5" fill="#4338ca">Process is a <tspan font-weight="700">role</tspan> played by an object ("has a non-trivial transition"), not a separate</text>

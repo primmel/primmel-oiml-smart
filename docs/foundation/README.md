@@ -49,7 +49,7 @@ Goal: understand what IS/HAS/DOES is, why it's three buckets and not
 seven, what it claims, and what would refute it.
 
 - [Chapter 1 — Intuition](01-intuition.md) — the three natural
-  questions, the onion at a glance, the dialectic that killed off
+  questions, the layers at a glance, the dialectic that killed off
   candidate primitives (STATE, CAN, RECEIVES, RELATES-TO, BECOMES).
 - [Chapter 2 — Claims and Falsifiability](02-claims-and-falsifiability.md)
   — the Claim-Form Axiom stated upfront; what we claim; what would
@@ -103,7 +103,7 @@ to its extension, locate the seams where it could break.
 
 ## The one-sentence summary
 
-> Peel the onion outward: IS individuates; objects bear; properties
+> Read the layers outward: IS individuates; objects bear; properties
 > and values describe; transitions transform; processes fold
 > transformation back into objecthood. Three closure rules seal the
 > seams. Eight terms — not because eight is a lucky count, but

@@ -2,7 +2,7 @@
 
 > *In this chapter:* the formal algebra 𝓜 that defines the IS–HAS–DOES
 > modelling system. Eight terms (three relations, five sorts), arranged
-> in five onion-layers, sealed by three closure rules. Read this
+> in five layers, sealed by three closure rules. Read this
 > before [Chapter 4 (Proofs)](04-proofs.md) — the theorems reference
 > every definition here. Math is in Unicode (no LaTeX rendering in
 > Phase 1); [Chapter 4](04-proofs.md) is where the notation earns its
@@ -191,7 +191,7 @@ process has an identity (which run is this?), has properties
 *transition-as-object* and nothing more; any use of "process" that a
 transition doesn't already cover signals redundancy.
 
-This layer closes the onion back on itself: the dynamic axis folds
+This layer closes the model back on itself: the dynamic axis folds
 into the static one, so one set of machinery serves both.
 
 ---

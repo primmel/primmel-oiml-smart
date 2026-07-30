@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="ui-sans-serif, system-ui, sans-serif">
   <rect width="100%" height="100%" fill="#ffffff"/>
-  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The onion at a glance</text>
+  <text x="60" y="34" font-size="18" font-weight="700" fill="#0f172a">The layers at a glance</text>
   <text x="60" y="54" font-size="12.5" fill="#475569">Five concentric layers. Each depends only on the layers inside it.</text>
 
   <!-- Layer 4 (outermost): PROCESS -->
@@ -34,7 +34,7 @@
   <g font-size="10.5" fill="#475569">
     <text x="710" y="170">Layer 4 — a transition</text>
     <text x="710" y="184">reified as an object</text>
-    <text x="710" y="206" font-style="italic" fill="#166534">closes the onion</text>
+    <text x="710" y="206" font-style="italic" fill="#166534">closes the model</text>
 
     <text x="710" y="250">Layer 3 — dynamic axis</text>
     <text x="710" y="264">input → transform → output</text>

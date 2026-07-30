@@ -1,6 +1,6 @@
-# Learn OIML SMART — the onion curriculum
+# Learn OIML SMART — the layered curriculum
 
-The curriculum for the whole system, in the system's own shape: each
+The curriculum for the whole system, in the system's own layered shape: each
 tier is learnable on its own and opens into the next. Every tier has a
 real **assessment gate** — a gate of the system you reproduce, never a
 quiz.
@@ -20,10 +20,10 @@ quiz.
   machinery, monitors, twin certification, hierarchical twins. The
   capstone: model a new subject domain in Primmel.
 - **Tier 4 — the reference shelf**: the published volumes
-  ([primmel](/primmel-oiml-smart/primmel/01-why-primmel/),
-  [oiml-core](/primmel-oiml-smart/oiml-core/01-the-grammar/),
-  [oiml-rec](/primmel-oiml-smart/oiml-rec/01-methodology/)) — the
-  post-course companions.
+  ([primmel](../primmel/01-philosophy-and-tiers.md),
+  [oiml-core](../oiml-core/01-measurement-vocabulary.md),
+  [oiml-rec](../oiml-rec/01-methodology.md)) — the post-course
+  companions.
 
 **Before you start:** run the [demo manual's bootstrap](../oiml-rec/13-running-the-demo.md)
 (2 minutes) and, if you want the machine to prove the chain for you

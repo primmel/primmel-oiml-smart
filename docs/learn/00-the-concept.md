@@ -47,7 +47,7 @@ derived from it.
 
 ## The three layers of the digital twin
 
-```
+```text
 Physical device
    ⇕  representation (any shape)
 FULL DIGITAL TWIN   — the manufacturer's complete representation

@@ -44,13 +44,13 @@ running program.
 
 ---
 
-## 1.2 The onion at a glance
+## 1.2 The layers at a glance
 
 The three questions are the surface. Below them, the system has five
-layers, nested like an onion. Each layer depends only on the layers
+layers, nested like shells. Each layer depends only on the layers
 inside it.
 
-![The onion at a glance](diagrams/onion-at-a-glance.svg)
+![The layers at a glance](diagrams/layers-at-a-glance.svg)
 
 ```text
 IS  ⊂  OBJECT  ⊂  {HAS, PROPERTY, VALUE}  ⊂  {DOES, TRANSITION}  ⊂  PROCESS
@@ -69,7 +69,7 @@ IS  ⊂  OBJECT  ⊂  {HAS, PROPERTY, VALUE}  ⊂  {DOES, TRANSITION}  ⊂  PROC
   into the static side: a transition *reified as an object*, so it can
   bear IS and HAS facts like anything else.
 
-The onion is not an accidental shape — its symmetry (three relations,
+The layered shape is not accidental — its symmetry (three relations,
 each with its nouns) is what lets us prove the system is closed and
 complete. We will get to those proofs in [Chapter 4](04-proofs.md).
 
