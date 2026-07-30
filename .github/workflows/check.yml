@@ -13,7 +13,7 @@ name: Check (astro check, lint, svg, build, links)
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [v1]
 
 permissions:
   contents: read
