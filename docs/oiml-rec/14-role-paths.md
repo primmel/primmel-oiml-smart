@@ -97,7 +97,7 @@ site's twin-certification page.
    drifts while the world's load stays constant. Catch it: the dial
    says what the API won't.
 3. Then read the three-layer story in the architecture site's
-   [00 — the mental model](../architecture/00-the-mental-model.md) and
+   [00 — the mental model](https://github.com/oimlsmart/smart/blob/rt-instrument-model/docs/architecture/00-the-mental-model.md) and
    play the lying-twin exercise in the sim (tier-1 hands-on — see the
    [demo manual §8](13-running-the-demo.md)).
 
