@@ -5,7 +5,7 @@ language kernel) and **OIML SMART** (the legal-metrology system built on
 it): five volumes plus annexes, rendered as an Astro + Starlight site
 with search, status badges, and hand-authored SVG diagrams.
 
-> **Where am I?** This repo is the published documentation of the **OIML SMART platform** (`oimlsmart/smart`). The full system map — every component, what it owns, and its proof command — is one hop away: [`docs/architecture/for-agents.md`](https://github.com/oimlsmart/smart/blob/rt-instrument-model/docs/architecture/for-agents.md).
+> **Where am I?** This repo is the published documentation of the **OIML SMART platform** (`oimlsmart/smart`). The full system map — every component, what it owns, and its proof command — is one hop away: [`docs/architecture/for-agents.md`](https://github.com/oimlsmart/smart/blob/v2/docs/architecture/for-agents.md).
 
 ## Quickstart
 

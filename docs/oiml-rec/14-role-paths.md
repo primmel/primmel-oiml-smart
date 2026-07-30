@@ -105,4 +105,4 @@ site's twin-certification page.
 served value is a claim, not a fact. Depth: the sim's README, the
 `tour` console command, and the [demo manual §8](13-running-the-demo.md).
 
-[arch-00]: https://github.com/oimlsmart/smart/blob/rt-instrument-model/docs/architecture/00-the-mental-model.md
+[arch-00]: https://github.com/oimlsmart/smart/blob/v2/docs/architecture/00-the-mental-model.md
