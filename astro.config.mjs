@@ -110,6 +110,7 @@ export default defineConfig({
             { label: 'Migrating from the YAML Era', slug: 'oiml-rec/11-migrating-from-yaml' },
             { label: 'Modelling Your Product', slug: 'oiml-rec/12-modelling-your-product' },
             { label: 'Running the Demo', slug: 'oiml-rec/13-running-the-demo' },
+            { label: 'Role Paths', slug: 'oiml-rec/14-role-paths' },
           ],
         },
         {
