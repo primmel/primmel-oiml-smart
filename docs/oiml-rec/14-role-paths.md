@@ -32,9 +32,15 @@ Depth: [demo manual §4](13-running-the-demo.md).
    MPEs, per-row verdicts) evaluate live.
 3. Complete it and read the compiled **test report** — the 18-element
    checklist (PD-05) is enforced at compilation.
+4. Then the **Twin Lab's guided run** (`/app/twin-lab`, after a bind):
+   the test as a script — environment legs click-when-done, measurement
+   rows attest the physical display while the twin auto-records (the
+   practice drive's `practice-` marker keeps rehearsals out of
+   certification evidence).
 
 *What it proves:* forms are evidence with teeth — computed, checked,
-never decorative. Depth: [demo manual §4](13-running-the-demo.md).
+never decorative. Depth: [demo manual §4 + §6½](13-running-the-demo.md)
+and [the operator guides §B](15-operator-guides.md).
 
 ## Issuing Authority officer (DE1)
 
@@ -65,9 +71,15 @@ coverage, not by convention. Depth: [demo manual §4](13-running-the-demo.md).
 3. Provision the **twin-certification demo**: the ACTIVE certificate
    `TC/2027/DE-0042` and the D2 probe evidence — a range point and the
    behavioral creep dwell.
+4. Read the **surveillance posture**: the fleet watch fires hourly AND
+   on change (a changed serve fires a cycle immediately); a truthful
+   `fault` opens a service case, never a certificate flag; consecutive
+   failed cycles walk the certificate machine (suspend ⇒ reinstate ⇒
+   withdraw).
 
 *What it proves:* the scheme runs as data — registry, monitor, and
-certificate machine alike. Depth: [demo manual §5–§7](13-running-the-demo.md).
+certificate machine alike. Depth: [demo manual §5–§7](13-running-the-demo.md)
+and [the operator guides §C](15-operator-guides.md).
 
 ## NMI / legal-metrology evaluator
 
@@ -97,12 +109,11 @@ site's twin-certification page.
    drifts while the world's load stays constant. Catch it: the dial
    says what the API won't.
 3. Then read the three-layer story in the architecture site's
-   [00 — the mental model][arch-00] and play the lying-twin exercise
-   in the sim (tier-1 hands-on — see the
-   [demo manual §8](13-running-the-demo.md)).
+   `docs/architecture/00-the-mental-model.md` (the `oimlsmart/smart`
+   repository — member access today; the public mirror lands with the
+   website wave) and play the lying-twin exercise in the sim
+   (tier-1 hands-on — see the [demo manual §8](13-running-the-demo.md)).
 
 *What it proves:* the epistemic wall is physical, not rhetorical — a
 served value is a claim, not a fact. Depth: the sim's README, the
 `tour` console command, and the [demo manual §8](13-running-the-demo.md).
-
-[arch-00]: `docs/architecture/00-the-mental-model.md` in the `oimlsmart/smart` repository (member access today; the public mirror lands with the website wave)

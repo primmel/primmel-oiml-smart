@@ -129,6 +129,7 @@ export default defineConfig({
             { label: 'Modelling Your Product', slug: 'oiml-rec/12-modelling-your-product' },
             { label: 'Running the Demo', slug: 'oiml-rec/13-running-the-demo' },
             { label: 'Role Paths', slug: 'oiml-rec/14-role-paths' },
+            { label: 'Operator Guides (twin flows)', slug: 'oiml-rec/15-operator-guides' },
           ],
         },
         {
