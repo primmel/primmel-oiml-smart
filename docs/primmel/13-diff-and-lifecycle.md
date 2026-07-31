@@ -164,6 +164,66 @@ it to packages. The reasons are the tier law's:
   primitive machinery on Foundations (chapter 6), applied at the
   manifest.
 
+## 13.4½ The edition transition, worked (TODO.integration/16)
+
+The doctrine end to end, small enough to review in one sitting. A new
+edition is an **ENTIRELY NEW model** with node relationships back to
+its predecessor; an implementation model **ADDS references** to the
+new edition to declare compliance — evidence accrues, the old claim
+never mutates. The worked pair lives in the kernel's fixtures
+(`primmel-ts/test/fixtures/edition-transition/`, gated by
+`edition-transition.test.ts`):
+
+```text
+r60-demo-2021/    the fictional 2021 baseline — a full small model
+                  (one subject, five attributes, one behavior,
+                  four requirements), honestly labeled fictional
+r60-demo-2027/    the 2027 successor — the SAME model shape with
+                  three honest changes, and supersedes { urn:…:2021 }
+acme-dlc/         the demo product — map_profile to EACH edition
+                  (compliance-as-references)
+```
+
+The three changes, exactly what the diff prints
+(`primmel diff r60-demo-2021 r60-demo-2027`, pinned in the test):
+
+```text
+elements: +2 -0 ~4 >0 (8 unchanged)
+  + attributeDefinitions warm_up_recorded         (ADDED)
+  + requirements /req/technical/warm-up-record    (ADDED clause)
+  ~ requirements zero-return   — statement        (0.5 → 0.25 intervals)
+  ~ requirements warm-up-time  — statement        (30 → 15 min + record)
+  ~ attributeDefinitions warm_up_time / subjects DemoLoadCell
+```
+
+**Compliance-as-references.** The product carries one `map_profile`
+per edition — `r60-demo-2021-map.prl` is never edited when the
+successor lands; `r60-demo-2027-map.prl` is ADDED beside it (with the
+added clause's new reference). The auditor reads each edition lens
+independently — never a merged claim (the multi-standard projection's
+own rule, §16). The pair lints clean: the successor's `supersedes`
+resolves and is acyclic (C79), its register carries both editions and
+its version is the newest (C77), and the product's maps resolve
+(C81/C21/C24 — mapping only, never an import edge).
+
+### The checklist for a real edition
+
+1. **Author the new edition as a new package** — a full model, never
+   a mutation of the old one; the old package stays untouched on
+   record.
+2. **Link it** — `supersedes { <the predecessor's URN> }`, the
+   `editions` register carrying both, `version` the newest
+   (C77/C79 keep you honest).
+3. **Mark every change with provenance** — the changed/added clauses
+   carry the edition's own `source` cites; the diff must print exactly
+   them and nothing you did not mean to change.
+4. **Pin the drift** — `primmel diff` of the pair in a test (the
+   unexpected-change tripwire).
+5. **Add, never edit, the implementations' references** — each
+   implementation that complies ADDS a map profile to the new edition
+   (the old profile stands); a requirement whose tolerance tightened
+   is exactly what the re-judgment window (INV-5/INV-8) exists for.
+
 ## 13.5 INV-8 — version pinning at execution
 
 Lifecycle would be archaeology without the execution-side pin. **INV-8:
