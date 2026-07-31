@@ -1,12 +1,21 @@
-# Annex B — The SMART Platform Runtime
+# The SMART Platform Runtime
 
-> *In this annex:* the platform as the engine that executes the models —
+> *In this volume:* the platform as the engine that executes the models —
 > the Primmel packages as the single source of truth with the YAML trees
 > and generated code derived from them, the build pipeline, the IndexedDB
 > stores compiled from the store manifest, the engines (applicability,
 > verdict, form-context, state-walk, dispatch), the role consoles and
 > public register, the hybrid server-rendered shell, and the command
 > gates that keep every claim in this tree honest.
+>
+> *The runtime chapters that postdate this overview:*
+> [Simulated Instruments](02-simulated-instruments.md) (the SST wind
+> tunnel) · [The Twin Lab](03-the-twin-lab.md) (the generic twin
+> workbench) · [Multi-standard projection](04-multi-standard-projection.md)
+> (the auditor lenses) · [The composite twin](05-the-composite-twin.md)
+> (the weakest declared link) · [The CNML bridge](06-the-cnml-bridge.md)
+> (sign + verify) · [The program config seam](07-the-program-config.md)
+> (OIML SMART as instance #1).
 
 Status markers: ● exists in the running system · ◐ partial · ○ planned
 for v3. Paths are relative to the `oimlsmart/smart` repository.
@@ -376,5 +385,6 @@ R 129 package is the first, task 22).
 *Next: [Simulated Instruments](02-simulated-instruments.md) — the
 wind tunnel: a physics-core load cell whose `/twin` channel lets the
 certification loop run against behavioral truth; then
+[The Twin Lab](03-the-twin-lab.md) — the generic twin workbench; then
 [Shared — Glossary](../shared/glossary.md): every term of
 the frame, one definition each.*
