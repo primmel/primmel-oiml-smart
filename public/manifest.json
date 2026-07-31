@@ -1,0 +1,18 @@
+{
+  "name": "Primmel + OIML SMART",
+  "short_name": "Primmel",
+  "description": "The formal foundation and metamodel for executable measuring-instrument standards.",
+  "start_url": "/primmel-oiml-smart/",
+  "scope": "/primmel-oiml-smart/",
+  "display": "standalone",
+  "background_color": "#faf6ee",
+  "theme_color": "#004996",
+  "icons": [
+    {
+      "src": "/primmel-oiml-smart/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
