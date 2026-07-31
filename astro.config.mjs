@@ -163,6 +163,13 @@ export default defineConfig({
           ],
         },
         {
+          label: 'For NMIs — legal metrology',
+          items: [
+            { label: 'The position pack', slug: 'nmi' },
+            { label: 'The authority quickstart', slug: 'nmi/01-authority-quickstart' },
+          ],
+        },
+        {
           label: 'Annexes',
           items: [
             { label: 'Use Cases', slug: 'shared/use-cases' },
