@@ -14,10 +14,20 @@
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* -----------------------------------------------------------------------------
- * Font imports — Fraunces (display), Hanken Grotesk (body), JetBrains Mono
+ * Font imports — self-hosted via @fontsource (no Google CDN dependency)
+ * Fraunces variable (display), Hanken Grotesk (body), JetBrains Mono (code)
  * -------------------------------------------------------------------------- */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Hanken+Grotesk:ital,wght@0,300..700;1,300..600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import '@fontsource-variable/fraunces';
+@import '@fontsource/hanken-grotesk/400.css';
+@import '@fontsource/hanken-grotesk/500.css';
+@import '@fontsource/hanken-grotesk/600.css';
+@import '@fontsource/hanken-grotesk/700.css';
+@import '@fontsource/hanken-grotesk/400-italic.css';
+@import '@fontsource/hanken-grotesk/600-italic.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+@import '@fontsource/jetbrains-mono/600.css';
 
 /* -----------------------------------------------------------------------------
  * Design tokens (Tailwind 4 @theme — exposes these as both CSS variables and

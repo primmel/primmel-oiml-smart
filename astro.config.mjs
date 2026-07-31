@@ -139,6 +139,7 @@ export default defineConfig({
           items: [
             { label: 'Platform', slug: 'platform' },
             { label: 'Simulated Instruments', slug: 'platform/02-simulated-instruments' },
+            { label: 'Use Cases', slug: 'shared/use-cases' },
             { label: 'Glossary', slug: 'shared/glossary' },
             { label: 'Alternatives Audit', slug: 'shared/alternatives-audit' },
             { label: 'Roadmap', slug: 'shared/roadmap' },
