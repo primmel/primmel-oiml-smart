@@ -56,10 +56,10 @@ to one standard's governed set.
 
 ## 4. Where the depth lives
 
-The gated architecture page:
-[Multi-standard projection](https://github.com/oimlsmart/smart/blob/v2/docs/architecture/13-multi-standard-projection.md)
-— the full doctrine with the collision calculus and the worked
-LC-500 example.
+The gated architecture page: `docs/architecture/13-multi-standard-projection.md`
+(the `oimlsmart/smart` repository — member access today; the public
+mirror lands with the website wave) — the full doctrine with the
+collision calculus and the worked LC-500 example.
 
 *Next: [The composite twin](05-the-composite-twin.md) — a system of
 twins whose certificate reads the weakest declared link.*

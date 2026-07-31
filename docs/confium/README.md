@@ -2,8 +2,8 @@
 
 > *In this section:* Confium, the Ribose threshold-cryptography PKI
 > product, as the platform's certificate-cryptography reference — the
-> three modes, and why Mode 3 (TC Certificate PKI) is the one the
-> OIML CNML format rides on.
+> three modes, and why Mode 3 (the sovereign certificate PKI) is the
+> one the OIML CNML format rides on.
 
 ---
 
@@ -12,26 +12,27 @@
 Confium is the Ribose PKI product built on **threshold cryptography**:
 signing keys are split into shares, and a signature is produced by a
 threshold of share-holders cooperating — no single point of key
-compromise, no HSM vendor lock-in. The full specifications live in the
-[Confium specs repository](https://github.com/riboseinc/confium/tree/main/specs)
-(`~/src/confium/specs/` locally); this section is the platform's
-reading guide, not a restatement.
+compromise, no HSM vendor lock-in. The public home is
+[confium.org](https://www.confium.org) /
+[confium.github.io](https://confium.github.io); the specifications
+publish at [confium.github.io/specs](https://confium.github.io/specs/).
+This section is the platform's reading guide, not a restatement.
 
 ## 2. The three modes (the load-bearing structure)
 
 | Mode | What it is | Who it serves |
 |---|---|---|
 | **Mode 1 — Peer TC** | Threshold signing among peers: each party holds a share, the group signs without a CA | small closed groups |
-| **Mode 2 — PKI replacement** | The threshold group IS the CA: certificates issued by threshold, no single CA key | organizations replacing a CA |
-| **Mode 3 — TC Certificate PKI** | A Certificate PKI where CA signing happens by threshold — compatible with X.509 consumers | **the OIML SMART program's CNML** |
+| **Mode 2 — PKI drop-in** | The threshold group IS the CA: certificates issued by threshold, no single CA key | organizations replacing a CA |
+| **Mode 3 — Sovereign PKI** | A Certificate PKI where CA signing happens by threshold — compatible with X.509 consumers | **the OIML SMART program's CNML** |
 
-The spec's own deep pages:
-[00 — Framework overview](https://github.com/riboseinc/confium/blob/main/specs/specs/00-framework-overview.adoc),
-[01 — The three modes](https://github.com/riboseinc/confium/blob/main/specs/specs/01-three-modes.adoc),
-[12 — Mode 3: Certificate PKI](https://github.com/riboseinc/confium/blob/main/specs/specs/12-mode3-certificate-pki.adoc),
-and the session mechanics in
-[22 — Threshold session](https://github.com/riboseinc/confium/blob/main/specs/specs/22-threshold-session.adoc)
-and [23 — Async coordinator](https://github.com/riboseinc/confium/blob/main/specs/specs/23-async-coordinator.adoc).
+The spec's own pages:
+[the framework overview](https://confium.github.io/docs/architecture/),
+[Mode 1 — Peer TC](https://confium.github.io/docs/mode1-peer-tc/),
+[Mode 2 — PKI drop-in](https://confium.github.io/docs/mode2-pki-drop-in/),
+[Mode 3 — Sovereign PKI](https://confium.github.io/docs/mode3-sovereign-pki/),
+and the full specifications at
+[confium.github.io/specs](https://confium.github.io/specs/).
 
 ## 3. Mode 3 and the CNML format
 
@@ -48,10 +49,11 @@ scope/CRL legs then judge for real.
 
 ## 4. Where the pieces live
 
-- Specs: `~/src/confium/specs/` (linked, never vendored).
-- The PKI CA server: `~/src/oimlsmart/digital-certificates/oiml-pki-server/`
-  (the Mode 3 flagship implementation — its own repo, its own specs,
-  untouched by the bridge).
+- Public site + specs: [confium.org](https://www.confium.org) ·
+  [confium.github.io/specs](https://confium.github.io/specs/).
+- The PKI CA server: the `digital-certificates/oiml-pki-server`
+  project (the Mode 3 flagship implementation — its own specs,
+  untouched by the bridge; the repo is member-access today).
 - The bridge's leg-1 custody: [the CNML bridge](../platform/06-the-cnml-bridge.md).
 
 *On to [the CNML section](../cnml/README.md) — the OIML SMART

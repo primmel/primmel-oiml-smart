@@ -78,11 +78,11 @@ channel (only the world-drive module knows the channel).
 
 ## 5. Where the depth lives
 
-The architecture site carries the gated detail:
-[the SST interaction contract](https://github.com/oimlsmart/smart/blob/v2/docs/architecture/12-the-sst-interaction-contract.md)
-(two endpoints, four verbs — no iframe) and
-[the twin stream](https://github.com/oimlsmart/smart/blob/v2/docs/architecture/14-the-twin-stream.md)
-(the real-time channel the watch arm binds when the endpoint streams).
+The architecture site carries the gated detail: `docs/architecture/12-the-sst-interaction-contract.md`
+(two endpoints, four verbs — no iframe) and `docs/architecture/14-the-twin-stream.md`
+(the real-time channel the watch arm binds when the endpoint streams) in the
+`oimlsmart/smart` repository (member access today; the public mirror
+lands with the website wave).
 
 *Next: [Multi-standard projection](04-multi-standard-projection.md) —
 one implementation model, several auditor lenses, no merged claims.*

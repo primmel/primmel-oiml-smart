@@ -67,11 +67,12 @@ fails the signature check with its reason (both proven by test).
 
 ## 6. Where the depth lives
 
-The gated spec:
-[The CNML bridge](https://github.com/oimlsmart/smart/blob/v2/docs/architecture/16-the-cnml-bridge.md)
-— the field map table, the failure-semantics card catalogue, and the
-upstream fixes the bridge surfaced (the core schemas' registration,
-the parse-shape normalization, the trusted-key path).
+The gated spec: `docs/architecture/16-the-cnml-bridge.md`
+(the `oimlsmart/smart` repository — member access today; the public
+mirror lands with the website wave) — the field map table, the
+failure-semantics card catalogue, and the upstream fixes the bridge
+surfaced (the core schemas' registration, the parse-shape
+normalization, the trusted-key path).
 
 *Next: [The program config seam](07-the-program-config.md) — OIML
 SMART as instance #1 of the app framework.*

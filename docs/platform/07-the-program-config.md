@@ -50,9 +50,10 @@ a hardcoded program.
 
 ## 5. Where the depth lives
 
-The gated spec:
-[The program config](https://github.com/oimlsmart/smart/blob/v2/docs/architecture/17-the-program-config.md)
-— the manifest schema and the consumer table.
+The gated spec: `docs/architecture/17-the-program-config.md`
+(the `oimlsmart/smart` repository — member access today; the public
+mirror lands with the website wave) — the manifest schema and the
+consumer table.
 
 *Back to [the Platform volume](README.md); on to
 [Confium](../confium/README.md) — the threshold-cryptography PKI the
