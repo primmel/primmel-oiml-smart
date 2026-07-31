@@ -373,6 +373,71 @@ monitor fleet_watch over LoadCellModel {
 }
 ```
 
+```prl
+subject LoadCellModel {
+  is {
+    endpoint lc500_api { … }          # §14.4
+    promises { mpe_within(class, rated) }
+  }
+  has {
+    serve sample.indication   via get_indication { fresh_within 5s }
+    serve sample.state        via watch_state
+    characteristics { creep c_c = ΔOUT/Δt under constant load }
+  }
+  does { behavior self_test { in () -> out diagnostic_report } }
+}
+
+monitor fleet_watch over LoadCellModel {
+  triggers { every 1h ; on signal artifact_arrived ; on change state }
+  evaluate { requirements applicable_to(this.classification) ; promises all }
+  emit     { evidence -> workspace ; verdicts -> verdict_log }
+  escalate { on fail: flag_certificate ; on invalid: open_service_case }
+}
+```
+
+A COMPOSITE subject declares its composition as a first-class anatomy
+facet (TODO.integration/14 — the YAML sidecar it replaces proved the
+shape first, TODO.v3/03):
+
+```prl
+subject CGMSystem {
+  is {
+    endpoint cgm_system_api { … }
+    composed_of {
+      component analyzer {
+        product acme-cgm-200@2026      # the pinned import (C83)
+        endpoint cgm_api               # its projection serves on
+        serial "CGM200-DEMO-0001"
+        certificate null               # uncertified ⇒ DECLARED partial
+      }
+      component sample_line {
+        product acme-cgm-system/sample-line@2026
+        endpoint sample_line_api
+        serial "CGM200-SL-0001"
+        certificate null
+      }
+      decomposition {
+        sample.indication_co -> analyzer.indication_co
+        sample.test_context.flow -> sample_line.flow
+        sample.state -> rule any_fault_else_analyzer
+      }
+      revision 1
+    }
+  }
+}
+```
+
+The lint rules (C100–C102): every component's product reference
+resolves (an inline `pkg/subject` names a subject of the package; a
+bare package id is registered for the supply-chain gate's C81-class
+resolution) and names its endpoint; every serve of the composite
+subject is covered by the decomposition exactly once; the composite
+state rule's vocabulary is CLOSED (`any_fault_else_analyzer` first —
+a new rule is a grammar extension, never a free string). The runtime
+calculus (the weakest declared link, the printed component basis) is
+the smart platform's §B chapter and the Platform volume's
+[composite twin chapter](../platform/05-the-composite-twin.md).
+
 ## 14.12 Validation rules
 
 - every `serve` names a declared aspect and a declared operation; unit
