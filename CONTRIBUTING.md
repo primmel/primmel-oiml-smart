@@ -18,13 +18,13 @@ pipeline syncs it into the Astro site.
 ### Local development
 
 ```bash
-git clone https://github.com/primmel/primmel-oiml-smart.git
-cd primmel-oiml-smart
+git clone https://github.com/primmel/primmel-smart-docs.git
+cd primmel-smart-docs
 npm install
 npm run dev
 ```
 
-The dev server runs at `http://localhost:4321/primmel-oiml-smart/`.
+The dev server runs at `http://localhost:4321/primmel-smart-docs/`.
 
 ### Chapter conventions
 
@@ -90,5 +90,5 @@ To add a new enhancement script:
 
 ## Questions?
 
-Open a [GitHub Discussion](https://github.com/primmel/primmel-oiml-smart/discussions)
+Open a [GitHub Discussion](https://github.com/primmel/primmel-smart-docs/discussions)
 or an issue. We respond.

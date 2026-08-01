@@ -1,4 +1,4 @@
-# primmel-oiml-smart — documentation site
+# primmel-smart-docs — the Primmel SMART documentation federation
 
 The published documentation for **Primmel** (the executable modelling
 language kernel) and **OIML SMART** (the legal-metrology system built on
@@ -58,5 +58,5 @@ GitHub Pages, via `.github/workflows/deploy.yml` (build artifact →
 Build and deployment → Source: "GitHub Actions"**.
 
 The site builds base-relative links throughout and deploys as a project
-page at `https://primmel.github.io/primmel-oiml-smart/` — `site` and
+page at `https://primmel.github.io/primmel-smart-docs/` — `site` and
 `base` in `astro.config.mjs` already match (no custom domain).

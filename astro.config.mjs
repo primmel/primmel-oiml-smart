@@ -7,11 +7,11 @@ import tailwindcss from '@tailwindcss/vite';
 import remarkStatusBadges from './src/plugins/remark-status-badges.mjs';
 
 // Canonical deployment URL: GitHub Pages project page for the
-// `primmel/primmel-oiml-smart` remote (no custom domain configured).
+// `primmel/primmel-smart-docs` remote (no custom domain configured).
 // Sitemap generation requires an absolute URL; `base` matches the path.
 export default defineConfig({
-  site: 'https://primmel.github.io/primmel-oiml-smart/',
-  base: '/primmel-oiml-smart/',
+  site: 'https://primmel.github.io/primmel-smart-docs/',
+  base: '/primmel-smart-docs/',
   markdown: {
     remarkPlugins: [remarkMath, remarkStatusBadges],
     rehypePlugins: [rehypeKatex],
