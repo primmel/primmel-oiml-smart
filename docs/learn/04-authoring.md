@@ -111,7 +111,7 @@ is exactly such a log).
   (`npm run test:ssot` on the program side).
 
 Depth: [the authoring volume](../oiml-rec/01-methodology.md) and the
-[classroom's own pattern](https://github.com/oimlsmart/smart-r60).
+the classroom's own pattern (the `smart-classroom-r60` repo — private during the pilot).
 
 *You have finished the curriculum: concept → hands-on → duality →
 chain → authoring. The volumes beside this section go deeper on every
