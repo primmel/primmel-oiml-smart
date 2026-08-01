@@ -130,6 +130,7 @@ export default defineConfig({
             { label: 'Running the Demo', slug: 'oiml-rec/13-running-the-demo' },
             { label: 'Role Paths', slug: 'oiml-rec/14-role-paths' },
             { label: 'Operator Guides (twin flows)', slug: 'oiml-rec/15-operator-guides' },
+            { label: 'The Real-Instrument Pilot', slug: 'oiml-rec/16-real-instrument-pilot' },
           ],
         },
         {
