@@ -34,16 +34,16 @@ schema before signing; the check pipeline verifies: **xml-well-formed
 
 ## 3. The operator manuals (the repo's own docs)
 
-- [The verifier's manual](https://github.com/oimlsmart/cnml/blob/main/docs/manual-verifier.md)
+- [The verifier's manual](https://github.com/oimlsmart/cnml/blob/HEAD/docs/manual-verifier.md)
   — verifying a CNML document: the checks, their statuses, what to
   trust.
-- [The signer's manual](https://github.com/oimlsmart/cnml/blob/main/docs/manual-signer.md)
+- [The signer's manual](https://github.com/oimlsmart/cnml/blob/HEAD/docs/manual-signer.md)
   — key custody and signing.
-- [The issuing authority's manual](https://github.com/oimlsmart/cnml/blob/main/docs/manual-ia.md)
+- [The issuing authority's manual](https://github.com/oimlsmart/cnml/blob/HEAD/docs/manual-ia.md)
   — issuing under a scheme.
-- [The BIML register manual](https://github.com/oimlsmart/cnml/blob/main/docs/manual-biml.md)
+- [The BIML register manual](https://github.com/oimlsmart/cnml/blob/HEAD/docs/manual-biml.md)
   — the public register side.
-- [The PKI architecture](https://github.com/oimlsmart/cnml/blob/main/docs/pki-architecture.md)
+- [The PKI architecture](https://github.com/oimlsmart/cnml/blob/HEAD/docs/pki-architecture.md)
   — how the CA, the apps and the checks fit.
 
 ## 4. CNML inside the OIML SMART app
