@@ -155,6 +155,36 @@ closed with the reason printed.
    is never re-queried), and the re-judged records append marked as
    re-judgments.
 
+## 6½. The Twin Lab (the generic twin workbench) — `/app/twin-lab`
+
+The twin console (§6) watches the demo deployment; the **Twin Lab** is
+where you bind ANY live twin endpoint to ANY Recommendation that
+declares a twin interface (today: R 60, R 91, R 129, R 144).
+
+1. Open `/app/twin-lab`. Pick the Recommendation and enter the sim's
+   `/twin` URL (§8 boots one), then **Discover** — the page introspects
+   the endpoint; the schema is the contract.
+2. Read the **proposed binding**: serves with their freshness windows,
+   the poll + watch integrations, the command face (the model's invoke
+   operations — R 91's `run_self_test`, R 144's calibrations). Anything
+   the endpoint can't answer is *missing* with its reason — the honest
+   state, never an error to dismiss.
+3. **Bind**, then **Run cycle**: the verdict stream fills from the
+   same verdict engine as the workflow.
+4. **The guided run**: pick a test and walk it — environment legs
+   click-when-done, measurement rows attest the physical display while
+   the twin auto-records (with the pair skew), commands issue from the
+   leg. The run compiles into the Recommendation's OWN evidence form
+   and the verdict chain judges the targets.
+
+**The practice drive (G18) — the honesty banner.** The world-channel
+buttons (drive the SST's physics: load, temperature, time) run a
+*practice* session. Everything produced through them is segregated by
+the **`practice-` id marker — never certification evidence**; the
+banner says so whenever practice is on, and the compiled report marks
+the same boolean. Practice is for learning the flow and rehearsing the
+test program — the certification posture never touches it.
+
 ## 7. The twin-certification program (the newest link)
 
 Still on `/app/twin`, scroll to **Twin certification**:
@@ -225,9 +255,13 @@ npx vitest run src/__tests__/sim-twin-acceptance.test.ts     # monitor verdicts 
 | CS chain | an application opens with its instrument + test requests |
 | Registry | a Declaration shows its competence evidence + signing gate |
 | Monitor | provision → run cycle ⇒ verdicts in the stream; drift ⇒ fail + flag |
+| Twin Lab | `/app/twin-lab` renders the connect surface; Discover → bind ⇒ a cycle judges |
 | Twin-cert | provision ⇒ certificate `TC/2027/DE-0042` ACTIVE + 2 probe records |
 | Sims | each `npm start -w …` boots; `/twin` answers; `/world` actuates |
 | Pilot | `npm run pilot` — 6/6 steps asserted |
+
+The whole table also runs as one command: `npm run orient` (eight
+printed steps — step 8 is the Twin Lab's connect surface).
 
 ## 11. Troubleshooting
 

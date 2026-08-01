@@ -78,6 +78,24 @@ export default defineConfig({
           ],
         },
         {
+          label: 'The Platform — runtime + twins',
+          items: [
+            { label: 'Volume overview', slug: 'platform' },
+            { label: 'Simulated Instruments (SST)', slug: 'platform/02-simulated-instruments' },
+            { label: 'The Twin Lab', slug: 'platform/03-the-twin-lab' },
+            { label: 'Multi-standard Projection', slug: 'platform/04-multi-standard-projection' },
+            { label: 'The Composite Twin', slug: 'platform/05-the-composite-twin' },
+            { label: 'The CNML Bridge', slug: 'platform/06-the-cnml-bridge' },
+            { label: 'The Program Config Seam', slug: 'platform/07-the-program-config' },
+          ],
+        },
+        {
+          label: 'Confium — threshold-crypto PKI',
+          items: [
+            { label: 'The three modes + Mode 3', slug: 'confium' },
+          ],
+        },
+        {
           label: 'Volume II — OIML Core',
           items: [
             { label: 'Volume overview', slug: 'oiml-core' },
@@ -111,6 +129,7 @@ export default defineConfig({
             { label: 'Modelling Your Product', slug: 'oiml-rec/12-modelling-your-product' },
             { label: 'Running the Demo', slug: 'oiml-rec/13-running-the-demo' },
             { label: 'Role Paths', slug: 'oiml-rec/14-role-paths' },
+            { label: 'Operator Guides (twin flows)', slug: 'oiml-rec/15-operator-guides' },
           ],
         },
         {
@@ -119,6 +138,9 @@ export default defineConfig({
             { label: 'The curriculum', slug: 'learn' },
             { label: 'Tier 0 — the concept', slug: 'learn/00-the-concept' },
             { label: 'Tier 1 — the hands-on', slug: 'learn/01-the-hands-on' },
+            { label: 'Tier 2 — the duality', slug: 'learn/02-the-duality' },
+            { label: 'Tier 3 — the chain', slug: 'learn/03-the-chain' },
+            { label: 'Tier 4 — authoring', slug: 'learn/04-authoring' },
           ],
         },
         {
@@ -135,10 +157,21 @@ export default defineConfig({
           ],
         },
         {
+          label: 'CNML — the certificate format',
+          items: [
+            { label: 'The format + the manuals', slug: 'cnml' },
+          ],
+        },
+        {
+          label: 'For NMIs — legal metrology',
+          items: [
+            { label: 'The position pack', slug: 'nmi' },
+            { label: 'The authority quickstart', slug: 'nmi/01-authority-quickstart' },
+          ],
+        },
+        {
           label: 'Annexes',
           items: [
-            { label: 'Platform', slug: 'platform' },
-            { label: 'Simulated Instruments', slug: 'platform/02-simulated-instruments' },
             { label: 'Use Cases', slug: 'shared/use-cases' },
             { label: 'Glossary', slug: 'shared/glossary' },
             { label: 'Alternatives Audit', slug: 'shared/alternatives-audit' },

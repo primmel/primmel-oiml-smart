@@ -11,15 +11,19 @@ quiz.
 - **Tier 1 — the half-day hands-on**: [01 — the hands-on](01-the-hands-on.md).
   Boot a sim, read `/twin`, place a load, watch a verdict flip — then
   the lying-twin exercise.
-- **Tier 2 — the week-long authoring course** *(planned, TODO.v3/06)*:
-  write a product reference package and get its twin certified. The
-  gate: your own package passes `primmel check --strict --audit` + the
-  coverage gate + the twin-cert flow.
-- **Tier 3 — the semester** *(planned, TODO.v3/06)*: the formal system
-  (the IS–HAS–DOES proofs), the coverage calculus, the conformance
-  machinery, monitors, twin certification, hierarchical twins. The
-  capstone: model a new subject domain in Primmel.
-- **Tier 4 — the reference shelf**: the published volumes
+- **Tier 2 — the duality** (half a day): [02 — the duality](02-the-duality.md).
+  Reference vs implementation models, the conformance claim as a
+  map_profile, the auditor lenses — the artifact: the chain-rule gate
+  run green over the real product packages.
+- **Tier 3 — the chain** (a day): [03 — the chain](03-the-chain.md).
+  Requirements → tests → forms → evidence → verdicts → certificates,
+  driven end to end in the Twin Lab — the artifact: your compiled
+  evidence form and the target verdicts.
+- **Tier 4 — authoring** (a day): [04 — authoring](04-authoring.md).
+  Write a small standard as a Primmel package, graded by the linker
+  and the coverage gates — the artifact: your own package,
+  lint-clean, with your author's log.
+- **The reference shelf**: the published volumes
   ([primmel](../primmel/01-philosophy-and-tiers.md),
   [oiml-core](../oiml-core/01-measurement-vocabulary.md),
   [oiml-rec](../oiml-rec/01-methodology.md)) — the post-course
