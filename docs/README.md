@@ -27,8 +27,9 @@
 
 ## The volumes
 
-Five courses in dependency order. Each is designed to carry a
-semester's worth of teaching.
+The courses in dependency order — the ladder made of books: the
+language, the platform that runs it, then the programs built on it.
+Each is designed to carry a semester's worth of teaching.
 
 <div class="volume-grid">
 
@@ -52,8 +53,18 @@ semester's worth of teaching.
     </div>
   </a>
 
-  <a class="volume-card reveal reveal-3" href="oiml-core/" data-section="oiml">
+  <a class="volume-card reveal reveal-3" href="platform/" data-section="primmel">
     <div class="volume-card__number">II</div>
+    <div class="volume-card__body">
+      <h3 class="volume-card__title">The Platform</h3>
+      <p class="volume-card__desc">The runtime: the twin lab, the simulated SMART twins (SST),
+        multi-standard projection, the composite twin, the CNML bridge, the program config.</p>
+      <div class="volume-card__meta">7 chapters</div>
+    </div>
+  </a>
+
+  <a class="volume-card reveal reveal-3" href="oiml-core/" data-section="oiml">
+    <div class="volume-card__number">III</div>
     <div class="volume-card__body">
       <h3 class="volume-card__title">OIML Core</h3>
       <p class="volume-card__desc">The OIML metamodel: measurement vocabulary, the subject chain,
@@ -63,7 +74,7 @@ semester's worth of teaching.
   </a>
 
   <a class="volume-card reveal reveal-3" href="oiml-rec/" data-section="oiml">
-    <div class="volume-card__number">III</div>
+    <div class="volume-card__number">IV</div>
     <div class="volume-card__body">
       <h3 class="volume-card__title">Authoring Recommendations</h3>
       <p class="volume-card__desc">The methodology: from Recommendation text to a validated package.
@@ -73,7 +84,7 @@ semester's worth of teaching.
   </a>
 
   <a class="volume-card reveal reveal-4" href="oiml-cs/" data-section="oiml">
-    <div class="volume-card__number">IV</div>
+    <div class="volume-card__number">V</div>
     <div class="volume-card__body">
       <h3 class="volume-card__title">The OIML-CS Scheme</h3>
       <p class="volume-card__desc">The certification system: the B 18 constitution, the CASCO foundation,
@@ -82,11 +93,51 @@ semester's worth of teaching.
     </div>
   </a>
 
-  <a class="volume-card reveal reveal-4" href="shared/glossary/" data-section="oiml">
+  <a class="volume-card reveal reveal-4" href="cnml/" data-section="oiml">
+    <div class="volume-card__number">VI</div>
+    <div class="volume-card__body">
+      <h3 class="volume-card__title">CNML Certificates</h3>
+      <p class="volume-card__desc">The certificate format the verdict chain issues: the schemas,
+        the sign/verify machinery, the four role manuals.</p>
+      <div class="volume-card__meta">Format + manuals</div>
+    </div>
+  </a>
+
+  <a class="volume-card reveal reveal-5" href="confium/" data-section="primmel">
+    <div class="volume-card__number">VII</div>
+    <div class="volume-card__body">
+      <h3 class="volume-card__title">Confium</h3>
+      <p class="volume-card__desc">The threshold-cryptography PKI the certificates ride:
+        the modes, the binding matrix, the version contract.</p>
+      <div class="volume-card__meta">The PKI section</div>
+    </div>
+  </a>
+
+  <a class="volume-card reveal reveal-5" href="nmi/" data-section="oiml">
+    <div class="volume-card__number">VIII</div>
+    <div class="volume-card__body">
+      <h3 class="volume-card__title">The NMI Program</h3>
+      <p class="volume-card__desc">For legal-metrology authorities: the position pack
+        (traceability mechanized), the adoption tiers, the authority quickstart.</p>
+      <div class="volume-card__meta">The adoption volume</div>
+    </div>
+  </a>
+
+  <a class="volume-card reveal reveal-5" href="learn/" data-section="primmel">
+    <div class="volume-card__number">◆</div>
+    <div class="volume-card__body">
+      <h3 class="volume-card__title">The Classroom</h3>
+      <p class="volume-card__desc">The layered curriculum, tiers 0–4: the tour, the hands-on,
+        the operator's chain, authoring, the platform internals — stop at your depth.</p>
+      <div class="volume-card__meta">The path through it all</div>
+    </div>
+  </a>
+
+  <a class="volume-card reveal reveal-6" href="shared/glossary/" data-section="oiml">
     <div class="volume-card__number">—</div>
     <div class="volume-card__body">
       <h3 class="volume-card__title">Annexes</h3>
-      <p class="volume-card__desc">Platform runtime · simulated instruments · glossary ·
+      <p class="volume-card__desc">Glossary ·
         alternatives audit · roadmap · keeping current · releases.</p>
       <div class="volume-card__meta">Reference material</div>
     </div>
