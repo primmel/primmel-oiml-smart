@@ -131,6 +131,7 @@ export default defineConfig({
             { label: 'Role Paths', slug: 'oiml-rec/14-role-paths' },
             { label: 'Operator Guides (twin flows)', slug: 'oiml-rec/15-operator-guides' },
             { label: 'The Real-Instrument Pilot', slug: 'oiml-rec/16-real-instrument-pilot' },
+            { label: 'The Pilot Report', slug: 'oiml-rec/17-the-pilot-report' },
           ],
         },
         {
