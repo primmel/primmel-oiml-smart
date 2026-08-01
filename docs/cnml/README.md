@@ -3,7 +3,7 @@
 > *In this section:* CNML (Certificat Numérique de Métrologie Légale),
 > the program's machine-readable certificate format — the format, the
 > apps, and the operator manuals. The sources live in the
-> digital-certificates repo; this section is the reading guide.
+> cnml repo (renamed from digital-certificates); this section is the reading guide.
 
 ---
 
@@ -18,7 +18,7 @@ fixed check pipeline. It is a [Primmel](README.md)-adjacent OIML
 initiative: it applies to OIML SMART today, and the pattern applies to
 any SMART program.
 
-## 2. The pieces (the digital-certificates repo)
+## 2. The pieces (the cnml repo)
 
 | Piece | What it owns |
 |---|---|
@@ -34,16 +34,16 @@ schema before signing; the check pipeline verifies: **xml-well-formed
 
 ## 3. The operator manuals (the repo's own docs)
 
-- [The verifier's manual](https://github.com/oimlsmart/digital-certificates/blob/main/docs/manual-verifier.md)
+- [The verifier's manual](https://github.com/oimlsmart/cnml/blob/main/docs/manual-verifier.md)
   — verifying a CNML document: the checks, their statuses, what to
   trust.
-- [The signer's manual](https://github.com/oimlsmart/digital-certificates/blob/main/docs/manual-signer.md)
+- [The signer's manual](https://github.com/oimlsmart/cnml/blob/main/docs/manual-signer.md)
   — key custody and signing.
-- [The issuing authority's manual](https://github.com/oimlsmart/digital-certificates/blob/main/docs/manual-ia.md)
+- [The issuing authority's manual](https://github.com/oimlsmart/cnml/blob/main/docs/manual-ia.md)
   — issuing under a scheme.
-- [The BIML register manual](https://github.com/oimlsmart/digital-certificates/blob/main/docs/manual-biml.md)
+- [The BIML register manual](https://github.com/oimlsmart/cnml/blob/main/docs/manual-biml.md)
   — the public register side.
-- [The PKI architecture](https://github.com/oimlsmart/digital-certificates/blob/main/docs/pki-architecture.md)
+- [The PKI architecture](https://github.com/oimlsmart/cnml/blob/main/docs/pki-architecture.md)
   — how the CA, the apps and the checks fit.
 
 ## 4. CNML inside the OIML SMART app

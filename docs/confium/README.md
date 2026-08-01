@@ -51,7 +51,7 @@ scope/CRL legs then judge for real.
 
 - Public site + specs: [confium.org](https://www.confium.org) ·
   [confium.github.io/specs](https://confium.github.io/specs/).
-- The PKI CA server: the `digital-certificates/oiml-pki-server`
+- The PKI CA server: the `cnml/oiml-pki-server`
   project (the Mode 3 flagship implementation — its own specs,
   untouched by the bridge; the repo is member-access today).
 - The bridge's leg-1 custody: [the CNML bridge](../platform/06-the-cnml-bridge.md).

@@ -13,7 +13,7 @@ CNML (Certificat Numérique de Métrologie Légale) is the OIML SMART
 program's machine-readable certificate format: an XML document per
 Recommendation, signed with XMLDSig (ECDSA P-256) and verifiable
 through a fixed check pipeline. It is implemented by the sibling
-**digital-certificates** repo and consumed as a dependency — never
+**cnml** repo (renamed from digital-certificates) and consumed as a dependency — never
 copied (the bridge resolves the `@cnml/*` packages to their TypeScript
 sources; when they change, the bridge re-resolves).
 
