@@ -5,16 +5,19 @@ you will boot a simulated instrument, act on its physical world, watch
 a compliance engine judge it — and then catch it lying. Every step
 tells you the command and what to expect.
 
-**Setup** (2 minutes): from a clone of `oimlsmart/sim-instruments`:
+**Setup** (2 minutes): from clones of
+[`primmel/sst`](https://github.com/primmel/sst) and
+[`oimlsmart/sst-instruments`](https://github.com/oimlsmart/sst-instruments),
+side by side:
 
 ```bash
-npm ci
-npm start -w @sim/lc500      # boots the load cell (bench at http://localhost:5290)
+cd sst && npm ci
+npx tsx packages/runtime/sst-runtime/src/bin.ts run   ../sst-instruments/packages/instances/acme-lc500 5290
 ```
 
-Optional, the scripted version of this walk: in the instrument's
-console (`npm start -w @sim/lc500 -- --console`), type `tour` — the
-instrument narrates this same path for you.
+(the bench is at http://localhost:5290). Optional, the scripted version
+of this walk: add `--console` to the boot command and type `tour` —
+the instrument narrates this same path for you.
 
 ## Part 1 — the two channels (30 minutes)
 
@@ -53,15 +56,17 @@ the instrument legally says; /world is reality.**
 This is the tier's gate: you will catch a twin lying — and learn why a
 served value is a claim, not a fact.
 
-1. **Swap the scenario** to the creeping cell:
-   `{"query":"mutation { scenario(name: \"creep-cell\") { clock } }"}`.
+1. **Reboot as the creeping cell.** Physics variants are boot-time
+   samples (one boot, one chain of custody): stop the sim, then
+   `... run ../sst-instruments/packages/instances/acme-lc500 5290 creep-fail`.
 2. Place 450 kg and advance **900 s** of virtual time
    (`advanceTime(seconds: 900)` — simulated, so no waiting).
 3. **Read reality**: ground truth still says the applied load is
    exactly 450 kg — nothing physical changed.
-4. **Read the twin**: the served indication has *drifted* (the scenario
-   creeps toward ≈1.8 kg of asymptote). A certification engine reading
-   only `/twin` would see a calm, fresh, *wrong* value.
+4. **Read the twin**: the served indication has *drifted* (the
+   creep-fail sample creeps toward ≈1.8 kg of asymptote). A
+   certification engine reading only `/twin` would see a calm, fresh,
+   *wrong* value.
 5. **Catch it the human way**: open the bench
    (`http://localhost:5290/`) and look at the **analogue dial** — a
    rendering of *ground truth*, never a served value. The needle says
@@ -77,8 +82,10 @@ served value is a claim, not a fact.
 
 ## Part 3 — the verdict machinery (45 minutes)
 
-1. **Restore the honest cell** (`scenario(name: "good-cell")`) and
-   notice: the good cell now sits *inside* the class allowance — it was
+1. **Restore the honest cell** (reboot on the default `fresh` sample;
+   if you only made the twin *lie*, `fidelityReset` suffices — no
+   reboot needed for fidelity knobs) and notice: the good cell sits
+   *inside* the class allowance — its creep coefficient was
    recalibrated when the behavioral probe caught that it wasn't (the
    probe's first real finding; the point of having one).
 2. **Watch a verdict flip**: with the SMART app up (`npm run orient`

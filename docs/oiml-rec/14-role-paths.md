@@ -101,13 +101,16 @@ site's twin-certification page.
 
 ## Learner (the curious engineer)
 
-1. Boot a sim instrument standalone: `npm start -w @sim/lc500` → the
-   bench at `http://localhost:5290/` — place a load, watch the
-   indication settle, read the paired analogue **dial** (a rendering of
-   ground truth, never a served value).
-2. Swap `scenario creep-cell`: the twin now lies — its served value
-   drifts while the world's load stays constant. Catch it: the dial
-   says what the API won't.
+1. Boot a sim instrument standalone (`cd sst && npx tsx
+   packages/runtime/sst-runtime/src/bin.ts run
+   ../sst-instruments/packages/instances/acme-lc500 5290`) → the bench
+   at `http://localhost:5290/` — place a load, watch the indication
+   settle, read the paired analogue **dial** (a rendering of ground
+   truth, never a served value).
+2. Reboot on the `creep-fail` sample (append it to the run command):
+   the twin now lies — its served value drifts while the world's load
+   stays constant. Catch it: the dial says what the API won't. (A pure
+   *lying* twin needs no reboot: `setFidelity(servedOffsetKg: 1)`.)
 3. Then read the three-layer story in the architecture site's
    `docs/architecture/00-the-mental-model.md` (the `oimlsmart/smart`
    repository — member access today; the public mirror lands with the

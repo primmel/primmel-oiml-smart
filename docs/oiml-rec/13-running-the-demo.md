@@ -21,7 +21,7 @@ standalone sim instruments, and the asserted pilot.
 |---|---|
 | Node.js 22 or 24 | `node --version` |
 | The smart repo cloned | `cd smart` |
-| (Optional, for the live-twin legs) the sim-instruments repo beside it | `ls ../sim-instruments` |
+| (Optional, for the live-twin legs) the SST repos beside it | `ls ../sst-instruments ../../primmel/sst` |
 | Ports free: **5190** (app), **3190** (auth server), **5290** (sim, optional) | `lsof -i :5190` → nothing |
 
 Install dependencies once:
@@ -207,14 +207,18 @@ acceptance runtime — see §9 — never on this page.
 
 ## 8. The simulated instruments (standalone)
 
-Four families, each bootable alone with **zero SMART checkout** — the
-way external users try the concept:
+The SST simulators boot alone with **zero SMART checkout** — the way
+external users try the concept. The repos are
+[`primmel/sst`](https://github.com/primmel/sst) (the framework) and
+[`oimlsmart/sst-instruments`](https://github.com/oimlsmart/sst-instruments)
+(the instrument library); check them out side by side:
 
 ```bash
-npm start -w @sim/lc500          # load cell:    bench at http://localhost:5290
-npm start -w @sim/gas-analyzer   # gas analyzer:  R 144, two channels (CO, NOx)
-npm start -w @sim/r91            # radar speed:   R 91 Doppler, 20–180 km/h
-npm start -w @sim/md             # dimensioner:   R 129 optical conveyor
+cd sst
+npx tsx packages/runtime/sst-runtime/src/bin.ts run   ../sst-instruments/packages/instances/acme-lc500 5290   # the load cell (R 60)
+npx tsx packages/runtime/sst-runtime/src/bin.ts run   ../sst-instruments/packages/instances/acme-cgm-200 5291 # the gas analyzer (R 144)
+npx tsx packages/runtime/sst-runtime/src/bin.ts run   ../sst-instruments/packages/instances/acme-rs180 5292   # the radar (R 91)
+npx tsx packages/runtime/sst-runtime/src/bin.ts run   ../sst-instruments/packages/instances/acme-md3xx 5293   # the dimensioner (R 129)
 ```
 
 Each instrument serves:
@@ -222,18 +226,30 @@ Each instrument serves:
 - **`/twin`** — the governed projection (query the indication, watch
   the state), generated from its product reference package;
 - **`/world`** — the physical world: `placeLoad`, environment sweeps,
-  `injectFault`, scenario swap, `advanceTime`, `reset`;
+  `injectFault`/`clearFault`, `advanceTime`, `reset`, the fidelity
+  knobs (`setFidelity`, `fidelityReset`);
 - a **console** (`--console`) and, for the load cell, the **bench** web
   app at `http://localhost:5290/` (the physical scene + the paired
   analogue dial — read the needle; that is how a human catches a lying
   twin).
 
-Try the deliberate fail case: `mutation { scenario(name: "creep-cell")
-{ clock } }` — the cell creeps far beyond its class allowance (the
-behavioral probe of §7 fails it). Swap back with `"good-cell"`.
+Physics variants are **boot-time samples** (one boot, one sample, one
+chain of custody). The deliberate fail case is the `creep-fail`
+sample — boot with it appended to the run command:
+
+```bash
+npx tsx packages/runtime/sst-runtime/src/bin.ts run   ../sst-instruments/packages/instances/acme-lc500 5290 creep-fail
+```
+
+…then the dwell: `mutation { placeLoad(massKg: 450) { clock } }`,
+`mutation { advanceTime(seconds: 900) { clock } }`, and the indication
+creeps past the class allowance (450 → ≈ 451.8 kg — the behavioral
+probe of §7 fails it). A *lying* twin (served values off, ground truth
+honest) needs no reboot: `mutation { setFidelity(servedOffsetKg: 1)
+{ clock } }` — and `fidelityReset` restores honesty.
 
 For any **non-local** boot, guard the actuation channel:
-`SIM_WORLD_TOKEN=<long-random> npm start -w @sim/lc500` (mutations then
+`SIM_WORLD_TOKEN=<long-random> npx tsx packages/runtime/sst-runtime/src/bin.ts run …` (mutations then
 need `Authorization: Bearer …`; queries and `/twin` stay open).
 
 ## 9. The asserted proofs (optional, for developers)
@@ -257,7 +273,7 @@ npx vitest run src/__tests__/sim-twin-acceptance.test.ts     # monitor verdicts 
 | Monitor | provision → run cycle ⇒ verdicts in the stream; drift ⇒ fail + flag |
 | Twin Lab | `/app/twin-lab` renders the connect surface; Discover → bind ⇒ a cycle judges |
 | Twin-cert | provision ⇒ certificate `TC/2027/DE-0042` ACTIVE + 2 probe records |
-| Sims | each `npm start -w …` boots; `/twin` answers; `/world` actuates |
+| Sims | each `npx tsx …/bin.ts run …` boots; `/twin` answers; `/world` actuates |
 | Pilot | `npm run pilot` — 6/6 steps asserted |
 
 The whole table also runs as one command: `npm run orient` (eight

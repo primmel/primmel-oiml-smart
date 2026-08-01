@@ -51,7 +51,8 @@ a fresh timestamp judges nothing).
 ## Hands-on — drive the whole chain in the Twin Lab (half a day)
 
 Setup: the app (`cd browser && npm run dev`) and a sim
-(`npm start -w @sim/lc500`).
+(`cd sst && npx tsx packages/runtime/sst-runtime/src/bin.ts run
+../sst-instruments/packages/instances/acme-lc500 5290`).
 
 1. **Bind** (`/app/twin-lab`): pick R 60, enter the sim's `/twin` URL,
    Discover — read the proposed binding (the serves, the freshness

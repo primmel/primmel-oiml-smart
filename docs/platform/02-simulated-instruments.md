@@ -11,13 +11,16 @@
 > SMART `/app/sim` practice flows, and the Digital Twin certification
 > program the rig enables.
 >
-> The framework lives in the sibling `sim-instruments` repository
-> (● shipped 2026-07-26, C1–C5a; CI green — the `ci` workflow's six
-> jobs across the Node matrix: typecheck, test ×2, bench-build,
-> standalone-boot, console-session, bake-freshness; 78 unit/integration
-> tests). Paths below are relative to that repository; the authoritative
-> design record is `docs/2026-07-26-simulated-instruments-design.md`
-> there.
+> The framework lives in TWO repositories (the split,
+> TODO.integration/24 — the pre-split `sim-instruments` is archived):
+> **[primmel/sst](https://github.com/primmel/sst)** — the kind-agnostic
+> runtime, the shell, the bench, the specs; and
+> **[oimlsmart/sst-instruments](https://github.com/oimlsmart/sst-instruments)**
+> — the D 11 base, the per-Recommendation kinds, the ACME instances
+> (incl. the `acme-cgm-system` composite). The runtime finds the library
+> through one resolution (`SST_LIBRARY_PATH` → the sibling checkout →
+> in-repo). The physics core paths below are the framework's; the
+> package paths are the library's.
 
 ---
 
@@ -34,11 +37,15 @@ quantization — so a test protocol run against it succeeds or fails for
 physical reasons, and a certification pipeline is exercised the way it
 will be in the field.
 
-The framework ships one complete instrument: the **ACME LC-500** load
-cell (digital × compression, class C6, 500 kg capacity, 0.05 kg scale
-interval, n_lc 6000, rated −10…+40 °C) — the same fictional product
-whose reference package anchors chapter 15's supply chain and the
-live-twin pilot.
+The library ships five instrument kinds today — load cells (R 60),
+radar speed meters (R 91), dimensioners (R 129), gas analyzers (R 144),
+and the sampling line — with the **ACME LC-500** load cell (digital ×
+compression, class C6, 500 kg capacity, 0.05 kg scale interval, n_lc
+6000, rated −10…+40 °C) as the reference instance, the same fictional
+product whose reference package anchors chapter 15's supply chain and
+the live-twin pilot. Physics variants are **boot-time samples** (one
+boot, one sample, one chain of custody) — a creeping cell is the
+`creep-fail` sample; a lying one is a `setFidelity` knob.
 
 ## 2. The two laws
 
@@ -65,7 +72,8 @@ its declared contract.
 ## 3. The physics core — the signal chain
 
 The instrument model is a **signal chain of stages**, each a lumped
-constitutive law with parameters (`packages/core/src/physics/stages/`):
+constitutive law with parameters (the framework's
+`packages/runtime/sst-runtime/src/physics/stages/`):
 
 ![The signal chain](diagrams/sim-signal-chain.svg)
 
