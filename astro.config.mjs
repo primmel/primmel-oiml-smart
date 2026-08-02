@@ -144,6 +144,7 @@ export default defineConfig({
             { label: 'Tier 2 — the duality', slug: 'learn/02-the-duality' },
             { label: 'Tier 3 — the chain', slug: 'learn/03-the-chain' },
             { label: 'Tier 4 — authoring', slug: 'learn/04-authoring' },
+            { label: 'Tier 5 — the dual demo', slug: 'learn/05-the-dual-demo' },
           ],
         },
         {

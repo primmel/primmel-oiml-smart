@@ -23,6 +23,9 @@ quiz.
   Write a small standard as a Primmel package, graded by the linker
   and the coverage gates — the artifact: your own package,
   lint-clean, with your author's log.
+- **Tier 5 — the dual demo**: [05 — the dual demo](05-the-dual-demo.md).
+  Model OIML R 7 (clinical thermometers) with Primmel Studio — the
+  methodology applied to a second instrument, proving it transfers.
 - **The reference shelf**: the published volumes
   ([primmel](../primmel/01-philosophy-and-tiers.md),
   [oiml-core](../oiml-core/01-measurement-vocabulary.md),
