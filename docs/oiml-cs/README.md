@@ -124,6 +124,10 @@ machine-checked form of that honesty.
 7. [The coverage machinery](07-coverage-machinery.md) — the `.prm` maps,
    the unified per-document report, the named-gap doctrine, and the
    mutation proofs that keep the gate a gate.
+8. [The flow, executable](08-the-flow-executable.md) — the certification
+   workflow running end to end: the four role consoles, the sample
+   custody chain, the per-run marks, the CNML-signed issuance, the BIML
+   registration, and the two deployment modes.
 
 ## The one-sentence summary
 

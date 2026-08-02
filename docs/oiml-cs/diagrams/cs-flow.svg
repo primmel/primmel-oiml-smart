@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 560" font-family="ui-sans-serif, system-ui, sans-serif">
+  <rect width="980" height="560" fill="#ffffff"/>
+  <text x="490" y="32" text-anchor="middle" font-size="20" font-weight="600" fill="#1e293b">The OIML-CS flow — four roles, one executable chain</text>
+
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- Swimlanes -->
+  <rect x="20" y="60" width="220" height="480" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="130" y="86" text-anchor="middle" font-size="14" font-weight="600" fill="#334155">Applicant</text>
+  <rect x="260" y="60" width="220" height="480" rx="12" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="370" y="86" text-anchor="middle" font-size="14" font-weight="600" fill="#1d4ed8">Issuing Authority</text>
+  <rect x="500" y="60" width="220" height="480" rx="12" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="610" y="86" text-anchor="middle" font-size="14" font-weight="600" fill="#15803d">Test Laboratory</text>
+  <rect x="740" y="60" width="220" height="480" rx="12" fill="#faf5ff" stroke="#e9d5ff"/>
+  <text x="850" y="86" text-anchor="middle" font-size="14" font-weight="600" fill="#7e22ce">BIML</text>
+
+  <!-- Applicant steps -->
+  <rect x="40" y="110" width="180" height="52" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="130" y="132" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">1. Application</text>
+  <text x="130" y="150" text-anchor="middle" font-size="10.5" fill="#64748b">wizard → SUBMITTED</text>
+  <rect x="40" y="210" width="180" height="52" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="130" y="232" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">3. Record shipment</text>
+  <text x="130" y="250" text-anchor="middle" font-size="10.5" fill="#64748b">manufacturer_ships → IN_TRANSIT</text>
+  <rect x="40" y="460" width="180" height="52" rx="8" fill="#ffffff" stroke="#94a3b8"/>
+  <text x="130" y="482" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">10. Certificate</text>
+  <text x="130" y="500" text-anchor="middle" font-size="10.5" fill="#64748b">portal: download signed CNML</text>
+
+  <!-- IA steps -->
+  <rect x="280" y="110" width="180" height="52" rx="8" fill="#ffffff" stroke="#3b82f6"/>
+  <text x="370" y="132" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">2. Sample request</text>
+  <text x="370" y="150" text-anchor="middle" font-size="10.5" fill="#64748b">models × count, routing → SAMPLES_REQUESTED</text>
+  <rect x="280" y="210" width="180" height="52" rx="8" fill="#ffffff" stroke="#3b82f6"/>
+  <text x="370" y="232" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">4. Register + accept</text>
+  <text x="370" y="250" text-anchor="middle" font-size="10.5" fill="#64748b">register receipts → SAMPLES_RECEIVED → accept</text>
+  <rect x="280" y="310" width="180" height="52" rx="8" fill="#ffffff" stroke="#3b82f6"/>
+  <text x="370" y="332" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">5. Dispatch</text>
+  <text x="370" y="350" text-anchor="middle" font-size="10.5" fill="#64748b">form × sample tuples per lab</text>
+  <rect x="280" y="410" width="180" height="52" rx="8" fill="#ffffff" stroke="#3b82f6"/>
+  <text x="370" y="432" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">8. Evaluate + issue</text>
+  <text x="370" y="450" text-anchor="middle" font-size="10.5" fill="#64748b">per-run marks → finalize → CNML-signed issue</text>
+
+  <!-- TL steps -->
+  <rect x="520" y="310" width="180" height="52" rx="8" fill="#ffffff" stroke="#22c55e"/>
+  <text x="610" y="332" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">6. Test runs</text>
+  <text x="610" y="350" text-anchor="middle" font-size="10.5" fill="#64748b">SST-guided, team-operated, + lab-added</text>
+  <rect x="520" y="410" width="180" height="52" rx="8" fill="#ffffff" stroke="#22c55e"/>
+  <text x="610" y="432" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">7. Test report</text>
+  <text x="610" y="450" text-anchor="middle" font-size="10.5" fill="#64748b">evidence or justified omission → SUBMITTED</text>
+
+  <!-- BIML steps -->
+  <rect x="760" y="460" width="180" height="52" rx="8" fill="#ffffff" stroke="#a855f7"/>
+  <text x="850" y="482" text-anchor="middle" font-size="12" font-weight="600" fill="#1e293b">9. Register</text>
+  <text x="850" y="500" text-anchor="middle" font-size="10.5" fill="#64748b">§5.6.3 letter gate → ACTIVE + number</text>
+
+  <!-- Arrows -->
+  <line x1="130" y1="162" x2="130" y2="210" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="220" y1="136" x2="280" y2="136" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="370" y1="162" x2="370" y2="186" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="370" y1="186" x2="130" y2="186" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="130" y1="186" x2="130" y2="210" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="130" y1="262" x2="130" y2="290" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="130" y1="290" x2="280" y2="290" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="280" y1="290" x2="280" y2="236" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="370" y1="262" x2="370" y2="310" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="460" y1="336" x2="520" y2="336" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="610" y1="362" x2="610" y2="410" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="520" y1="436" x2="460" y2="436" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="460" y1="436" x2="700" y2="436" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="700" y1="436" x2="700" y2="486" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="700" y1="486" x2="760" y2="486" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="760" y1="486" x2="220" y2="486" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Mode-B seam -->
+  <rect x="640" y="110" width="300" height="60" rx="8" fill="#fefce8" stroke="#ca8a04" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="790" y="134" text-anchor="middle" font-size="12" font-weight="600" fill="#854d0e">Mode B — the IA-operated instance</text>
+  <text x="790" y="154" text-anchor="middle" font-size="10.5" fill="#64748b">submit to the BIML: download package, or POST /api/submissions (idempotent)</text>
+</svg>

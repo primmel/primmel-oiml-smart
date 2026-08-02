@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 620" font-family="ui-sans-serif, system-ui, sans-serif">
+  <rect width="980" height="620" fill="#ffffff"/>
+  <text x="490" y="32" text-anchor="middle" font-size="20" font-weight="600" fill="#1e293b">The OIML-CS entity graph — the chain and its state machines</text>
+
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- Application -->
+  <rect x="30" y="70" width="190" height="100" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="125" y="96" text-anchor="middle" font-size="14" font-weight="600" fill="#1d4ed8">Application</text>
+  <text x="125" y="118" text-anchor="middle" font-size="10.5" fill="#475569">sample_request · sample_ids</text>
+  <text x="125" y="138" text-anchor="middle" font-size="10" fill="#64748b">DRAFT→SUBMITTED→SAMPLES_REQUESTED</text>
+  <text x="125" y="156" text-anchor="middle" font-size="10" fill="#64748b">→SAMPLES_RECEIVED→UNDER_REVIEW→ACCEPTED</text>
+
+  <!-- Sample -->
+  <rect x="270" y="70" width="190" height="100" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="365" y="96" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">MeasuringInstrumentSample</text>
+  <text x="365" y="118" text-anchor="middle" font-size="10.5" fill="#475569">custody_events (chain of custody)</text>
+  <text x="365" y="138" text-anchor="middle" font-size="10" fill="#64748b">REQUESTED→IN_TRANSIT→RECEIVED</text>
+  <text x="365" y="156" text-anchor="middle" font-size="10" fill="#64748b">→IN_TESTING→TESTING_COMPLETE</text>
+
+  <!-- TestRequest -->
+  <rect x="510" y="70" width="190" height="100" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="605" y="96" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">TestRequest</text>
+  <text x="605" y="118" text-anchor="middle" font-size="10.5" fill="#475569">assignments[] · sample_ids · required_forms</text>
+  <text x="605" y="138" text-anchor="middle" font-size="10" fill="#64748b">DRAFT→ISSUED→ACCEPTED_BY_LAB</text>
+  <text x="605" y="156" text-anchor="middle" font-size="10" fill="#64748b">→IN_PROGRESS→COMPLETED</text>
+
+  <!-- TestAssignment -->
+  <rect x="750" y="70" width="200" height="100" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="850" y="96" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">TestAssignment</text>
+  <text x="850" y="118" text-anchor="middle" font-size="10.5" fill="#475569">form × sample · origin: ia_assigned | lab_added</text>
+  <text x="850" y="138" text-anchor="middle" font-size="10" fill="#64748b">PENDING→ACCEPTED→IN_PROGRESS</text>
+  <text x="850" y="156" text-anchor="middle" font-size="10" fill="#64748b">→COMPLETED | OMITTED | FAILED</text>
+
+  <!-- TestRun -->
+  <rect x="510" y="230" width="190" height="110" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="605" y="256" text-anchor="middle" font-size="14" font-weight="600" fill="#15803d">TestRun</text>
+  <text x="605" y="278" text-anchor="middle" font-size="10.5" fill="#475569">operators[] · evidence[] (signed_by_account)</text>
+  <text x="605" y="298" text-anchor="middle" font-size="10.5" fill="#475569">constraint_checks · admissibility</text>
+  <text x="605" y="320" text-anchor="middle" font-size="10" fill="#64748b">PLANNED→IN_PROGRESS→COMPLETED | INVALIDATED</text>
+
+  <!-- FormInstance -->
+  <rect x="750" y="230" width="200" height="110" rx="10" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="850" y="256" text-anchor="middle" font-size="14" font-weight="600" fill="#15803d">FormInstance</text>
+  <text x="850" y="278" text-anchor="middle" font-size="10.5" fill="#475569">the evidence form (1:1 with the run)</text>
+  <text x="850" y="298" text-anchor="middle" font-size="10.5" fill="#475569">values · computed_values · result</text>
+  <text x="850" y="320" text-anchor="middle" font-size="10" fill="#64748b">DRAFT→SUBMITTED | LOCKED</text>
+
+  <!-- TestReport -->
+  <rect x="510" y="400" width="190" height="100" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="605" y="426" text-anchor="middle" font-size="14" font-weight="600" fill="#1e293b">TestReport</text>
+  <text x="605" y="448" text-anchor="middle" font-size="10.5" fill="#475569">form_instances · form_omissions</text>
+  <text x="605" y="468" text-anchor="middle" font-size="10.5" fill="#475569">sample_ids · laboratory_id</text>
+  <text x="605" y="488" text-anchor="middle" font-size="10" fill="#64748b">DRAFT→SUBMITTED</text>
+
+  <!-- EvaluationReport -->
+  <rect x="270" y="400" width="200" height="120" rx="10" fill="#fefce8" stroke="#ca8a04" stroke-width="2"/>
+  <text x="370" y="426" text-anchor="middle" font-size="14" font-weight="600" fill="#854d0e">EvaluationReport</text>
+  <text x="370" y="448" text-anchor="middle" font-size="10.5" fill="#475569">run_evaluations (per-run marks)</text>
+  <text x="370" y="466" text-anchor="middle" font-size="10.5" fill="#475569">form_determinations · model_evaluations</text>
+  <text x="370" y="486" text-anchor="middle" font-size="10.5" fill="#475569">test_report_determinations</text>
+  <text x="370" y="506" text-anchor="middle" font-size="10" fill="#64748b">DRAFT→IN_REVIEW→ALL_TR_REVIEWED→APPROVED|REJECTED</text>
+
+  <!-- Certificate -->
+  <rect x="30" y="230" width="190" height="110" rx="10" fill="#faf5ff" stroke="#a855f7" stroke-width="2"/>
+  <text x="125" y="256" text-anchor="middle" font-size="14" font-weight="600" fill="#7e22ce">Certificate</text>
+  <text x="125" y="278" text-anchor="middle" font-size="10.5" fill="#475569">json_data.cnml (signed XMLDSig)</text>
+  <text x="125" y="298" text-anchor="middle" font-size="10.5" fill="#475569">biml_registration (number, date)</text>
+  <text x="125" y="320" text-anchor="middle" font-size="10" fill="#64748b">DRAFT→PENDING_REGISTRATION→ACTIVE</text>
+
+  <!-- Arrows -->
+  <line x1="220" y1="120" x2="270" y2="120" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="460" y1="120" x2="510" y2="120" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="700" y1="120" x2="750" y2="120" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="850" y1="170" x2="850" y2="230" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="750" y1="285" x2="700" y2="285" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="605" y1="340" x2="605" y2="400" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="510" y1="450" x2="470" y2="450" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="370" y1="400" x2="125" y2="340" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="125" y1="230" x2="125" y2="170" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Legend -->
+  <rect x="30" y="540" width="920" height="60" rx="8" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="50" y="566" font-size="11" fill="#475569">State machines: every arrow between states is a declared transition in evaluation/state-machines — the walker fires its cascades; services never assign a status imperatively.</text>
+  <text x="50" y="586" font-size="11" fill="#475569">The dotted seam: the export package (v2) carries the whole chain — download, or POST /api/submissions (idempotent reference), for deployment mode B.</text>
+</svg>

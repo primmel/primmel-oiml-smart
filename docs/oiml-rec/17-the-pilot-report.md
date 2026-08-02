@@ -105,3 +105,12 @@ remain fieldwork. This campaign proved every leg of the program
 except the physics of an actual transducer; the SST's own realism
 (creep residuals after thermal cycles, configurable per sample) is
 what made the dry run meaningful.
+
+## 6. Where the flow runs next
+
+The certification chain this pilot's twins plug into now runs end to
+end in the app: [the OIML-CS flow, executable](../oiml-cs/08-the-flow-executable.md)
+(the oiml-cs volume, chapter 8) — application → sample request →
+custody → runs → evaluation marks → CNML-signed issuance → BIML
+registration, with the SST-guided run (chapter 8.1, the laboratory's
+leg) consuming exactly the simulated instruments this report covers.
