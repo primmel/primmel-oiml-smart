@@ -15,7 +15,8 @@
 > (the auditor lenses) · [The composite twin](05-the-composite-twin.md)
 > (the weakest declared link) · [The CNML bridge](06-the-cnml-bridge.md)
 > (sign + verify) · [The program config seam](07-the-program-config.md)
-> (OIML SMART as instance #1).
+> (OIML SMART as instance #1) · [Primmel Studio](08-primmel-studio.md)
+> (the authoring tool — canvas, mapper, diff, simulation).
 
 Status markers: ● exists in the running system · ◐ partial · ○ planned
 for v3. Paths are relative to the `oimlsmart/smart` repository.

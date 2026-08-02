@@ -87,6 +87,7 @@ export default defineConfig({
             { label: 'The Composite Twin', slug: 'platform/05-the-composite-twin' },
             { label: 'The CNML Bridge', slug: 'platform/06-the-cnml-bridge' },
             { label: 'The Program Config Seam', slug: 'platform/07-the-program-config' },
+            { label: 'Primmel Studio', slug: 'platform/08-primmel-studio' },
           ],
         },
         {
