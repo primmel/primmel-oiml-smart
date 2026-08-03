@@ -15,7 +15,9 @@ constraints on its aspects, specify the conformance tests as
 processes, and the evaluation as verdicts — all in a single package
 that a computer can validate, query, execute, and reason about.
 
-**Start with:** [Volume III — Authoring Recommendations](../oiml-rec/README.md)
+**Start with:** [Authoring
+Recommendations](https://www.oimlsmart.org/docs/oiml-rec/) (on the OIML
+SMART site)
 
 ### Migrate a text-based standard to executable form
 
@@ -23,7 +25,9 @@ Take an existing Recommendation (R 60, R 91, R 144, etc.) and
 re-express it as a Primmel package with clause provenance anchoring
 every element back to the source document.
 
-**Start with:** [Volume III chapter 9 — Walkthrough: OIML R 60](../oiml-rec/09-walkthrough-r91-r144.md)
+**Start with:** [Walkthrough: R 91 and R
+144](https://www.oimlsmart.org/docs/oiml-rec/09-walkthrough-r91-r144)
+(on the OIML SMART site)
 
 ---
 
@@ -57,14 +61,16 @@ Model the entire B 18 certification workflow — application, dispatch,
 testing, evaluation, decision, certificate issuance, register entry —
 as a Primmel process with typed evidence and machine-checked verdicts.
 
-**Start with:** [Volume IV — The OIML-CS Scheme](../oiml-cs/README.md)
+**Start with:** [The OIML-CS Scheme](https://www.oimlsmart.org/docs/oiml-cs/) (on the OIML SMART site)
 
 ### Validate a test report for admissibility
 
 Check that evidence meets preconditions before it enters judgment —
 void runs that violate preconditions are `invalid`, never `fail`.
 
-**Start with:** [Volume II chapter 6 — Test Execution](../oiml-core/06-test-execution.md)
+**Start with:** [OIML Core chapter 6 — Test
+Execution](https://www.oimlsmart.org/docs/oiml-core/06-test-execution)
+(on the OIML SMART site)
 
 ---
 

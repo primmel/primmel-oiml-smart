@@ -11,8 +11,18 @@
 #
 # One-time repo setup: Settings → Pages → Build and deployment → Source:
 # "GitHub Actions". The site deploys as a project page
-# (https://primmel.github.io/primmel-oiml-smart/) — `site` and `base` in
+# (https://primmel.github.io/primmel-smart-docs/) — `site` and `base` in
 # astro.config.mjs already match.
+#
+# Root cause of the 2026-08 unstyled-pages incident: the repo was renamed
+# (primmel-oiml-smart → primmel-smart-docs) and the base changed with it,
+# but the deployed build was never re-run — the live site kept serving a
+# stale build whose asset URLs pointed at the OLD base
+# (/primmel-oiml-smart/_astro/*.css), so every page loaded unstyled. The
+# config was right all along; the deploy was old. This comment cited the
+# old URL too, and public/manifest.json + the PageFrame manifest/favicon
+# refs carried the stale base as well (fixed in the same change). Any
+# future base change must ship with a fresh deploy of the current tree.
 
 name: Deploy documentation to GitHub Pages
 

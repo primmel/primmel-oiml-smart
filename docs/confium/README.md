@@ -37,7 +37,8 @@ and the full specifications at
 ## 3. Mode 3 and the CNML format
 
 The OIML SMART program's certificate format (CNML — see the
-[CNML section](../cnml/README.md)) signs with X.509-compatible
+[CNML section](https://www.oimlsmart.org/docs/cnml/), on the OIML SMART
+site) signs with X.509-compatible
 certificates. Leg 1 of the CNML bridge signs with browser-held
 self-signed keys (a person at a browser, the scope/CRL checks honestly
 cautious). The target leg is the **CA-issued chain through a Confium
@@ -56,5 +57,5 @@ scope/CRL legs then judge for real.
   untouched by the bridge; the repo is member-access today).
 - The bridge's leg-1 custody: [the CNML bridge](../platform/06-the-cnml-bridge.md).
 
-*On to [the CNML section](../cnml/README.md) — the OIML SMART
-certificate format itself.*
+*On to [the CNML section](https://www.oimlsmart.org/docs/cnml/) — the OIML SMART
+certificate format itself, on the program's own site.*

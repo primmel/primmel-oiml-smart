@@ -15,7 +15,7 @@ cd sst && npm ci
 npx tsx packages/runtime/sst-runtime/src/bin.ts run   ../sst-instruments/packages/instances/acme-lc500 5290
 ```
 
-(the bench is at http://localhost:5290). Optional, the scripted version
+(the bench is at `http://localhost:5290`). Optional, the scripted version
 of this walk: add `--console` to the boot command and type `tour` —
 the instrument narrates this same path for you.
 

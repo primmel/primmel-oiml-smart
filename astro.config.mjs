@@ -91,48 +91,15 @@ export default defineConfig({
           ],
         },
         {
+          label: 'Primmel SST — simulated twins',
+          items: [
+            { label: 'The framework + the repos', slug: 'sst' },
+          ],
+        },
+        {
           label: 'Confium — threshold-crypto PKI',
           items: [
             { label: 'The three modes + Mode 3', slug: 'confium' },
-          ],
-        },
-        {
-          label: 'Volume II — OIML Core',
-          items: [
-            { label: 'Volume overview', slug: 'oiml-core' },
-            { label: 'Measurement Vocabulary', slug: 'oiml-core/01-measurement-vocabulary' },
-            { label: 'The Subject Chain', slug: 'oiml-core/02-subject-chain' },
-            { label: 'Instrument Aspects', slug: 'oiml-core/03-instrument-aspects' },
-            { label: 'Identity and Provenance', slug: 'oiml-core/04-identity-and-provenance' },
-            { label: 'Specification', slug: 'oiml-core/05-specification' },
-            { label: 'Test Execution', slug: 'oiml-core/06-test-execution' },
-            { label: 'Evaluation', slug: 'oiml-core/07-evaluation' },
-            { label: 'Parties and Workflow', slug: 'oiml-core/08-parties-and-workflow' },
-            { label: 'Invariants', slug: 'oiml-core/09-invariants' },
-            { label: 'Shared Modules', slug: 'oiml-core/10-shared-modules' },
-          ],
-        },
-        {
-          label: 'Volume III — Authoring Recommendations',
-          items: [
-            { label: 'Volume overview', slug: 'oiml-rec' },
-            { label: 'The Authoring Method', slug: 'oiml-rec/01-methodology' },
-            { label: 'Modelling the Subject', slug: 'oiml-rec/02-modelling-the-subject' },
-            { label: 'Requirements', slug: 'oiml-rec/03-requirements' },
-            { label: 'Conformance Tests', slug: 'oiml-rec/04-conformance-tests' },
-            { label: 'Forms and Reports', slug: 'oiml-rec/05-forms-and-reports' },
-            { label: 'Evaluation', slug: 'oiml-rec/06-evaluation' },
-            { label: 'Packaging', slug: 'oiml-rec/07-packaging' },
-            { label: 'Walkthrough: OIML R 60', slug: 'oiml-rec/08-walkthrough-r60' },
-            { label: 'Walkthrough: R 91 and R 144', slug: 'oiml-rec/09-walkthrough-r91-r144' },
-            { label: 'Modelling Your Lab', slug: 'oiml-rec/10-modelling-your-lab' },
-            { label: 'Migrating from the YAML Era', slug: 'oiml-rec/11-migrating-from-yaml' },
-            { label: 'Modelling Your Product', slug: 'oiml-rec/12-modelling-your-product' },
-            { label: 'Running the Demo', slug: 'oiml-rec/13-running-the-demo' },
-            { label: 'Role Paths', slug: 'oiml-rec/14-role-paths' },
-            { label: 'Operator Guides (twin flows)', slug: 'oiml-rec/15-operator-guides' },
-            { label: 'The Real-Instrument Pilot', slug: 'oiml-rec/16-real-instrument-pilot' },
-            { label: 'The Pilot Report', slug: 'oiml-rec/17-the-pilot-report' },
           ],
         },
         {
@@ -148,29 +115,13 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Volume IV — The OIML-CS Scheme',
+          label: 'OIML SMART — the program (moved)',
           items: [
-            { label: 'Volume overview', slug: 'oiml-cs' },
-            { label: 'The Scheme Architecture', slug: 'oiml-cs/01-scheme-architecture' },
-            { label: 'The CASCO Foundation', slug: 'oiml-cs/02-casco-foundation' },
-            { label: 'The Documents Corpus', slug: 'oiml-cs/03-documents-corpus' },
-            { label: 'The Certification Workflow', slug: 'oiml-cs/04-certification-workflow' },
-            { label: 'The Participant Runtime', slug: 'oiml-cs/05-participant-runtime' },
-            { label: 'The Operations Runtime', slug: 'oiml-cs/06-operations-runtime' },
-            { label: 'The Coverage Machinery', slug: 'oiml-cs/07-coverage-machinery' },
-          ],
-        },
-        {
-          label: 'CNML — the certificate format',
-          items: [
-            { label: 'The format + the manuals', slug: 'cnml' },
-          ],
-        },
-        {
-          label: 'For NMIs — legal metrology',
-          items: [
-            { label: 'The position pack', slug: 'nmi' },
-            { label: 'The authority quickstart', slug: 'nmi/01-authority-quickstart' },
+            { label: 'OIML Core → oimlsmart.org', slug: 'oiml-core' },
+            { label: 'Authoring Recommendations → oimlsmart.org', slug: 'oiml-rec' },
+            { label: 'The OIML-CS Scheme → oimlsmart.org', slug: 'oiml-cs' },
+            { label: 'CNML Certificates → oimlsmart.org', slug: 'cnml' },
+            { label: 'For NMIs → oimlsmart.org', slug: 'nmi' },
           ],
         },
         {

@@ -97,7 +97,7 @@ snapshots (INV-5) — evidence accrues, never rewrites.
 
 Depth:
 [the twin lab chapter](../platform/03-the-twin-lab.md) and
-[the operator guides](../oiml-rec/15-operator-guides.md) (the lab
-tester's walkthrough).
+[the operator guides](https://www.oimlsmart.org/docs/oiml-rec/15-operator-guides)
+on the OIML SMART site (the lab tester's walkthrough).
 
 *Next: [Tier 4 — authoring](04-authoring.md).*

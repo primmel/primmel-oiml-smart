@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://oimlsmart.github.io/primmel-oiml-smart/sitemap-index.xml
+Sitemap: https://primmel.github.io/primmel-smart-docs/sitemap-index.xml

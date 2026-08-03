@@ -27,11 +27,12 @@ quiz.
   Model OIML R 7 (clinical thermometers) with Primmel Studio — the
   methodology applied to a second instrument, proving it transfers.
 - **The reference shelf**: the published volumes
-  ([primmel](../primmel/01-philosophy-and-tiers.md),
-  [oiml-core](../oiml-core/01-measurement-vocabulary.md),
-  [oiml-rec](../oiml-rec/01-methodology.md)) — the post-course
-  companions.
+  ([primmel](../primmel/01-philosophy-and-tiers.md) here;
+  [oiml-core](https://www.oimlsmart.org/docs/oiml-core/01-measurement-vocabulary)
+  and [oiml-rec](https://www.oimlsmart.org/docs/oiml-rec/01-methodology)
+  on the OIML SMART site) — the post-course companions.
 
-**Before you start:** run the [demo manual's bootstrap](../oiml-rec/13-running-the-demo.md)
+**Before you start:** run the
+[demo manual's bootstrap](https://www.oimlsmart.org/docs/oiml-rec/13-running-the-demo)
 (2 minutes) and, if you want the machine to prove the chain for you
 first, `npm run orient` from the app's `browser/` directory.

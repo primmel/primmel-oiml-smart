@@ -271,5 +271,5 @@ them:
 - The platform computes it all build-side and renders it read-only at
   `/app/lenses`.
 
-*Next: [Volume II — OIML Core](../oiml-core/README.md): the measurement
-vocabulary and the subject chain the OIML models are built from.*
+*Next: [OIML Core](https://www.oimlsmart.org/docs/oiml-core/) — on the OIML SMART site:
+the measurement vocabulary and the subject chain the OIML models are built from.*

@@ -59,7 +59,7 @@ Two laws govern the markers:
   (README.md → index.md, `.md` links rewritten to routes) and is never
   edited by hand.
 - **Links between pages are relative file links** —
-  `[text](../oiml-core/07-evaluation.md)` with the `.md` suffix and
+  `[text](../primmel/07-expressions.md)` with the `.md` suffix and
   optional `#anchor`. They work on GitHub as-is; the sync rewrites them
   for the site. Do not hand-write `/…/` route paths.
 - **Status markers** are written as the plain Unicode glyphs ● ◐ ○;

@@ -36,9 +36,6 @@ const VOLUME_TITLES = {
   '': 'Overview',
   foundation: 'Volume 0 — Foundation',
   primmel: 'Volume I — Primmel Kernel',
-  'oiml-core': 'Volume II — OIML Core',
-  'oiml-rec': 'Volume III — Authoring Recommendations',
-  'oiml-cs': 'Annex — OIML-CS',
   platform: 'Annex — Platform',
   shared: 'Annex — Shared',
 };
