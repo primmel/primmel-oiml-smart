@@ -319,6 +319,6 @@ edition oiml-r60@2021 of oiml-r60 {
   re-testing, no archaeology; the monitor era's window re-judgment
   rides the same pins (● task 34).
 
-*Next: [Volume II — The OIML Metamodel](../oiml-core/README.md): the
-kernel specialized for legal metrology — the measurement vocabulary, the
-subject chain, the six modules.*
+*Next: [The OIML Core Metamodel](https://www.oimlsmart.org/docs/oiml-core/) — on the
+OIML SMART site: the kernel specialized for legal metrology — the
+measurement vocabulary, the subject chain, the six modules.*

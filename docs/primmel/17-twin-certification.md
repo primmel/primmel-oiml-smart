@@ -378,5 +378,5 @@ Shipped and gate-proven ●:
   relation; post-certification infidelity walks the core certificate
   machine on declared policy.
 
-*Next: [Volume II — OIML Core](../oiml-core/README.md): the measurement
-vocabulary and the subject chain the OIML models are built from.*
+*Next: [OIML Core](https://www.oimlsmart.org/docs/oiml-core/) — on the OIML SMART site:
+the measurement vocabulary and the subject chain the OIML models are built from.*

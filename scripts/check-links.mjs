@@ -11,7 +11,7 @@
  * External links (http:, https:, mailto:, …) are skipped — CI stays offline.
  *
  * Usage: node scripts/check-links.mjs [base]
- *   base — optional deploy base path (e.g. /primmel-oiml-smart/); stripped
+ *   base — optional deploy base path (e.g. /primmel-smart-docs/); stripped
  *   from root-absolute URLs before resolving, so a project-page build
  *   (`astro build --base …`) checks clean too.
  *

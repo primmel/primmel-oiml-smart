@@ -185,8 +185,9 @@ quarter of verdict history, the batch gate tripping on the pushed
 → `mpe_within` → the quarter's `batch_watch` verdicts → the morning's
 three batch records, referenced from the fact stream). One command:
 `cd browser && npm run pilot`; the passport resolves at
-`/passport/upi:acme:lc500.json`. The authoring path is Volume II,
-[chapter 12](../oiml-rec/12-modelling-your-product.md).
+`/passport/upi:acme:lc500.json`. The authoring path is the Authoring
+volume's [chapter 12](https://www.oimlsmart.org/docs/oiml-rec/12-modelling-your-product),
+on the OIML SMART site.
 
 ## 15.8 Grammar sketch *(illustrative v3 syntax)*
 

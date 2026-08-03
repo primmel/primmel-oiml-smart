@@ -1,16 +1,16 @@
-# Primmel + OIML SMART
+# Primmel SMART — the platform documentation
 
 <div class="cover-hero reveal reveal-1">
-  <div class="cover-hero__eyebrow">The complete documentation</div>
+  <div class="cover-hero__eyebrow">The Primmel SMART platform documentation</div>
   <h1 class="cover-hero__title">
     Standards are <em>programs</em>,<br>not PDFs.
   </h1>
   <p class="cover-hero__lede">
-    A formal foundation for executable modelling, in two voices:
-    <strong>Primmel</strong>, the language kernel, and
-    <strong>OIML SMART</strong>, the legal-metrology system built on top.
-    From a one-primitive categorical kernel to a complete certification
-    pipeline — read at the level that fits.
+    The documentation of the <strong>Primmel SMART platform</strong>:
+    <strong>Primmel</strong>, the typed, executable modelling language;
+    the platform machinery that runs it; <strong>Primmel SST</strong>,
+    the simulated-twin framework; and <strong>Confium</strong>, the
+    certificate PKI — the basis every 〈scope〉 SMART program is built on.
   </p>
   <div class="cover-hero__actions">
     <a class="cover-cta cover-cta--primary" href="foundation/01-intuition/">
@@ -27,9 +27,12 @@
 
 ## The volumes
 
-The courses in dependency order — the ladder made of books: the
-language, the platform that runs it, then the programs built on it.
-Each is designed to carry a semester's worth of teaching.
+The platform's documentation, component by component: the proved
+foundation, the language, the runtime machinery, the simulated-twin
+framework, the certificate PKI, and the classroom. A language, the
+machinery, a framework, a PKI — these are the parts of one platform,
+not rungs of a ladder. Programs built on the platform document
+themselves on their own sites.
 
 <div class="volume-grid">
 
@@ -46,100 +49,62 @@ Each is designed to carry a semester's worth of teaching.
   <a class="volume-card reveal reveal-2" href="primmel/" data-section="primmel">
     <div class="volume-card__number">I</div>
     <div class="volume-card__body">
-      <h3 class="volume-card__title">Primmel Kernel</h3>
-      <p class="volume-card__desc">The language: tier system, subject anatomy (IS/HAS/DOES), processes,
-        mappings, data and values, packages, provenance, interop.</p>
-      <div class="volume-card__meta">13 chapters</div>
+      <h3 class="volume-card__title">The Primmel Language</h3>
+      <p class="volume-card__desc">The kernel and the surface: tier system, subject anatomy
+        (IS/HAS/DOES), processes, mappings, data and values, packages, provenance, interop.</p>
+      <div class="volume-card__meta">17 chapters</div>
     </div>
   </a>
 
   <a class="volume-card reveal reveal-3" href="platform/" data-section="primmel">
-    <div class="volume-card__number">II</div>
+    <div class="volume-card__number">◆</div>
     <div class="volume-card__body">
       <h3 class="volume-card__title">The Platform</h3>
-      <p class="volume-card__desc">The runtime: the twin lab, the simulated SMART twins (SST),
-        multi-standard projection, the composite twin, the CNML bridge, the program config.</p>
+      <p class="volume-card__desc">The runtime machinery: the twin lab, multi-standard projection,
+        the composite twin, the CNML bridge, the program config seam, Primmel Studio.</p>
       <div class="volume-card__meta">7 chapters</div>
     </div>
   </a>
 
-  <a class="volume-card reveal reveal-3" href="oiml-core/" data-section="oiml">
-    <div class="volume-card__number">III</div>
+  <a class="volume-card reveal reveal-3" href="sst/" data-section="primmel">
+    <div class="volume-card__number">◆</div>
     <div class="volume-card__body">
-      <h3 class="volume-card__title">OIML Core</h3>
-      <p class="volume-card__desc">The OIML metamodel: measurement vocabulary, the subject chain,
-        the six modules, the shared modules, the invariants.</p>
-      <div class="volume-card__meta">10 chapters</div>
+      <h3 class="volume-card__title">Primmel SST</h3>
+      <p class="volume-card__desc">The simulated-SMART-twin framework: simulated instruments,
+        servers and clients of a twin endpoint — the twin machinery with no hardware.</p>
+      <div class="volume-card__meta">The framework repos</div>
     </div>
   </a>
 
-  <a class="volume-card reveal reveal-3" href="oiml-rec/" data-section="oiml">
-    <div class="volume-card__number">IV</div>
-    <div class="volume-card__body">
-      <h3 class="volume-card__title">Authoring Recommendations</h3>
-      <p class="volume-card__desc">The methodology: from Recommendation text to a validated package.
-        Includes the R 60 and R 91/R 144 walkthroughs.</p>
-      <div class="volume-card__meta">9 chapters</div>
-    </div>
-  </a>
-
-  <a class="volume-card reveal reveal-4" href="oiml-cs/" data-section="oiml">
-    <div class="volume-card__number">V</div>
-    <div class="volume-card__body">
-      <h3 class="volume-card__title">The OIML-CS Scheme</h3>
-      <p class="volume-card__desc">The certification system: the B 18 constitution, the CASCO foundation,
-        the documents corpus, the runtimes, the coverage machinery.</p>
-      <div class="volume-card__meta">7 chapters</div>
-    </div>
-  </a>
-
-  <a class="volume-card reveal reveal-4" href="cnml/" data-section="oiml">
-    <div class="volume-card__number">VI</div>
-    <div class="volume-card__body">
-      <h3 class="volume-card__title">CNML Certificates</h3>
-      <p class="volume-card__desc">The certificate format the verdict chain issues: the schemas,
-        the sign/verify machinery, the four role manuals.</p>
-      <div class="volume-card__meta">Format + manuals</div>
-    </div>
-  </a>
-
-  <a class="volume-card reveal reveal-5" href="confium/" data-section="primmel">
-    <div class="volume-card__number">VII</div>
+  <a class="volume-card reveal reveal-4" href="confium/" data-section="primmel">
+    <div class="volume-card__number">◆</div>
     <div class="volume-card__body">
       <h3 class="volume-card__title">Confium</h3>
-      <p class="volume-card__desc">The threshold-cryptography PKI the certificates ride:
-        the modes, the binding matrix, the version contract.</p>
+      <p class="volume-card__desc">The threshold-cryptography PKI adopted for the platform's
+        certificate operations — a component of the certificate machinery: the modes, the
+        binding matrix, the version contract.</p>
       <div class="volume-card__meta">The PKI section</div>
     </div>
   </a>
 
-  <a class="volume-card reveal reveal-5" href="nmi/" data-section="oiml">
-    <div class="volume-card__number">VIII</div>
-    <div class="volume-card__body">
-      <h3 class="volume-card__title">The NMI Program</h3>
-      <p class="volume-card__desc">For legal-metrology authorities: the position pack
-        (traceability mechanized), the adoption tiers, the authority quickstart.</p>
-      <div class="volume-card__meta">The adoption volume</div>
-    </div>
-  </a>
-
-  <a class="volume-card reveal reveal-5" href="learn/" data-section="primmel">
+  <a class="volume-card reveal reveal-4" href="learn/" data-section="primmel">
     <div class="volume-card__number">◆</div>
     <div class="volume-card__body">
       <h3 class="volume-card__title">The Classroom</h3>
-      <p class="volume-card__desc">The layered curriculum, tiers 0–4: the tour, the hands-on,
-        the operator's chain, authoring, the platform internals — stop at your depth.</p>
+      <p class="volume-card__desc">The layered curriculum, tiers 0–5: the tour, the hands-on,
+        the duality, the operator's chain, authoring, the dual demo — stop at your depth.</p>
       <div class="volume-card__meta">The path through it all</div>
     </div>
   </a>
 
-  <a class="volume-card reveal reveal-6" href="shared/glossary/" data-section="oiml">
-    <div class="volume-card__number">—</div>
+  <a class="volume-card reveal reveal-5" href="https://www.oimlsmart.org/" data-section="oiml">
+    <div class="volume-card__number">→</div>
     <div class="volume-card__body">
-      <h3 class="volume-card__title">Annexes</h3>
-      <p class="volume-card__desc">Glossary ·
-        alternatives audit · roadmap · keeping current · releases.</p>
-      <div class="volume-card__meta">Reference material</div>
+      <h3 class="volume-card__title">Programs built on the platform</h3>
+      <p class="volume-card__desc">〈scope〉 SMART programs are built on Primmel SMART. OIML
+        SMART — the Recommendations, the OIML-CS platform, the instrument twins, CNML — is
+        the first. Its volumes live on its own site.</p>
+      <div class="volume-card__meta">oimlsmart.org</div>
     </div>
   </a>
 
@@ -179,24 +144,26 @@ Each is designed to carry a semester's worth of teaching.
       <img src="oiml-logo-dark.svg" alt="OIML SMART" class="brand-split__logo-dark"
         style="display:none" />
     </div>
-    <div class="brand-split__tag">The system</div>
+    <div class="brand-split__tag">The first program</div>
     <h3 class="brand-split__name">OIML SMART</h3>
     <p class="brand-split__desc">
-      The International Organization of Legal Metrology's metamodel for
-      measuring instruments: subjects, requirements, conformance tests,
-      verdicts, certificates — encoded in Primmel, executed by the
-      platform runtime.
+      The International Organization of Legal Metrology's SMART
+      program: executable Recommendations, the OIML-CS certification
+      platform, measuring-instrument twins, CNML certificates — built
+      on the Primmel SMART platform, documented on its own site.
     </p>
     <div class="brand-split__volumes">
-      <a href="oiml-core/">Volume II — Core</a>
-      <a href="oiml-rec/">Volume III — Authoring</a>
-      <a href="oiml-cs/">Volume IV — Certification</a>
+      <a href="https://www.oimlsmart.org/">oimlsmart.org — the program site</a>
+      <a href="https://www.oimlsmart.org/docs/">The program volumes</a>
     </div>
   </div>
 
 </div>
 
 ## Reading tracks
+
+Tracks B–D leave this site: the OIML program volumes they read live
+at [oimlsmart.org](https://www.oimlsmart.org/docs/).
 
 <div class="reading-tracks reveal reveal-4">
 
@@ -223,7 +190,7 @@ Each is designed to carry a semester's worth of teaching.
     <div class="reading-track__body">
       <div class="reading-track__name">Metamodel maintainer</div>
       <p class="reading-track__desc"><code>foundation/</code>, then <code>primmel/</code> ch 1–7,
-        then <code>oiml-core/</code> cover to cover.</p>
+        then <code>oiml-core/</code> cover to cover (oimlsmart.org).</p>
     </div>
   </div>
 
@@ -232,7 +199,7 @@ Each is designed to carry a semester's worth of teaching.
     <div class="reading-track__body">
       <div class="reading-track__name">Recommendation author</div>
       <p class="reading-track__desc"><code>foundation/</code> skim, <code>primmel/</code> ch 1–5,
-        <code>oiml-core/</code> ch 1–5, then <code>oiml-rec/</code>.</p>
+        then <code>oiml-core/</code> ch 1–5 and <code>oiml-rec/</code> (oimlsmart.org).</p>
     </div>
   </div>
 
@@ -241,7 +208,7 @@ Each is designed to carry a semester's worth of teaching.
     <div class="reading-track__body">
       <div class="reading-track__name">Scheme operator</div>
       <p class="reading-track__desc"><code>primmel/</code> ch 4–5, <code>oiml-core/</code> ch 8,
-        then <code>oiml-cs/</code> cover to cover.</p>
+        then <code>oiml-cs/</code> cover to cover (oimlsmart.org).</p>
     </div>
   </div>
 
@@ -253,9 +220,9 @@ Each is designed to carry a semester's worth of teaching.
 
 Volume 0 assumes nothing but literacy about formal systems. Volume I
 assumes Volume 0 (chapter 2 of Volume I operationalizes the formal
-system). Volume II assumes Volumes 0–I. Volume III assumes Volumes
-0–II. Volume IV assumes Volumes I–II. The Annexes are reference
-material, readable out of order.
+system). The platform, SST and Confium sections assume Volumes 0–I.
+The classroom reads across all of them — stop at your depth. The
+Annexes are reference material, readable out of order.
 
 ### Conventions
 
