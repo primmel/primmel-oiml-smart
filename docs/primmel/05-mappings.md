@@ -164,7 +164,7 @@ components. (Chapter 15's supply chain is this property's home turf.)
 **b · Import ≠ mapping.** Implementation models may *import* each other
 (`uses` composition): an integrated management system includes its QMS
 operations and its ISMS operations as components. Import is structural
-inclusion, "my model contains yours". Mapping is a fulfilment claim , 
+inclusion, "my model contains yours". Mapping is a fulfilment claim ,
 "my process fulfils your requirement". An integrated system does both:
 it imports its components *and* maps to its standards. Confusing the
 two is how compliance gets double-counted.
@@ -223,7 +223,7 @@ gives the ecosystem a plan:
 
 - Reference speaks for the standard; implementation speaks for the
   organization; workspace speaks for the evidence.
-- Mapping is implication (A ⇒ B), with description and justification , 
+- Mapping is implication (A ⇒ B), with description and justification ,
   never equivalence, never refinement.
 - Coverage is a calculus: inherit down, aggregate up, transitive at
   process level, closure by discovery.

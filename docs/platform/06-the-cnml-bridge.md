@@ -39,7 +39,7 @@ extension, the check's own legacy doctrine).
 ## 3. The signing custody
 
 The signing key is an ECDSA P-256 WebCrypto pair, generated and held
-**in the browser** (IndexedDB, the private key passphrase-wrapped , 
+**in the browser** (IndexedDB, the private key passphrase-wrapped ,
 the CNML pattern: the signer is a person at a browser, not a server).
 The signature ALWAYS carries an X.509 certificate in KeyInfo, the
 embedded chain is what any verifier resolves without a trust store;

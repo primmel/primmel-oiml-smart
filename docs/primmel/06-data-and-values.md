@@ -39,7 +39,7 @@ The running system encodes this directly. The entity classes of
 
 At build time each such class compiles to one IndexedDB store with the
 declared indexes (`browser/build/data-types-codegen.ts` → the store
-manifest). Classes may *share* a store behind a discriminator , 
+manifest). Classes may *share* a store behind a discriminator ,
 `IssuingAuthority` and `TestLaboratory` extend `Organization` and live
 together in the `organizations` store, indexed by `kind`. Records link
 by typed references: a `reference(X)` field carries an `on_delete`
@@ -67,7 +67,7 @@ The discipline that falls out of the distinction:
 ## 6.2 Measurement variables and their sources
 
 Every quantity that flows through testing and evaluation is a declared
-**variable**, and every variable states *how its value is obtained* , 
+**variable**, and every variable states *how its value is obtained* ,
 its **source**. The taxonomy is closed; five values cover every case:
 
 | Source | The value comes from… | R 60 example |
@@ -115,7 +115,7 @@ QuantityValue = value + unit [ + uncertainty ] [ + tolerance ]
   `{ value: 20, unit: degC, tolerance: 2 }` of
   `data/r60/model/conditions.yaml`. Tolerance belongs to conditions
   and ratings, not to measurement results.
-- **uncertainty** marks the dispersion of a *measured* value (§6.4) , 
+- **uncertainty** marks the dispersion of a *measured* value (§6.4) ,
   the observed side. The two never merge: a tolerance states what the
   design promises, an uncertainty what the measurement supports.
 

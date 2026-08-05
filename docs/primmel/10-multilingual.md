@@ -79,7 +79,7 @@ never identifiers, never `snake_case` attribute ids (those are machine
 keys, chapter 11's naming discipline, and stay single-spelling by
 design).
 
-A model carries **one logical string** with **per-spelling values** , 
+A model carries **one logical string** with **per-spelling values** ,
 a *content set*. In the data trees the set is the long-standing
 localized pair-list, now with full codes (the 18 AJV schemas of
 §10.5 union every prose field as `oneOf [string, localizedString]`, the
@@ -195,7 +195,7 @@ Three layers make the content set real, each with its own gate:
   and resolves each code **compositionally** against the snapshot:
   **unknown codes fail** (a bogus `qqq-Latn`, `eng-Qqqq` or
   `eng-Latn-QQ` is an error, not a warning); two values for one code in
-  one set are a **duplicate-per-set error** (keyed `setPath + code` , 
+  one set are a **duplicate-per-set error** (keyed `setPath + code` ,
   the same code across *different* sets is fine); a `via` must resolve
   register-exact (case-insensitive, punctuation-strict, `alalc:…`
   fails against `ala-lc:…`); `zz-` codes **warn** (user-assigned, not
@@ -221,7 +221,7 @@ content → `eng-Latn` sets:
   only manifest diff: one line each);
 - **978 legacy bare-`eng` sites recoded** to `eng-Latn`, values
   byte-preserved: 548 in `data/oiml-r129.legacy/` (28 files) + 401 in
-  `data/oiml-r144/` (26 files) + 29 in the module skeletons (6 files) , 
+  `data/oiml-r144/` (26 files) + 29 in the module skeletons (6 files) ,
   60 files exactly;
 - **certificate text and identity slots** tagged: R 60's 14 promise
   statements + 14 certificate labels, the certificate-template labels

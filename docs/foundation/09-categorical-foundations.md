@@ -7,7 +7,7 @@
 > composition. The Curry–Howard–Lambek correspondence positions the
 > kernel inside a sixty-year-old family of structures for which
 > sound operational semantics are already a solved problem. SysML
-> v2's KerML arrives at the same architecture independently , 
+> v2's KerML arrives at the same architecture independently ,
 > powerful external validation.
 
 This is the most formal chapter in the volume. KaTeX renders the
@@ -60,7 +60,7 @@ existing results:
 - **Natural transformations** (maps between functors), the
   foundation's projections (different views of one model) are
   natural transformations.
-- **Adjunctions** (pairs of functors with a universal property) , 
+- **Adjunctions** (pairs of functors with a universal property) ,
   reification $\rho$ and its inverse form an adjunction between
   $T$ and $O$.
 - **Limits and colimits** (universal constructions), products

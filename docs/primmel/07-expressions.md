@@ -12,7 +12,7 @@ their *logic*. A modelled standard is dense with computable statements:
 requirement limits, conformance-test pass criteria, derived
 characteristics, applicability guards, gateway conditions, form
 derivations. Primmel's seventh design principle settles how they are
-written: **one rule language**. All computable statements are OCL , 
+written: **one rule language**. All computable statements are OCL ,
 no JavaScript snippets, no spreadsheet formulas, no prose arithmetic.
 
 ## 7.1 One rule language (INV-9)
@@ -60,7 +60,7 @@ says what kind of statement it is:
 
 The running system realizes the first two as first-class metamodel
 classes. A **Formula** (Module C) is a `derive` statement: it computes
-a derived attribute or characteristic from bound inputs , 
+a derived attribute or characteristic from bound inputs ,
 `MR = D_max − D_min`, `E_L = (I − I_ref) / f`; its output is a *value*,
 never a judgment (INV-7). A **Constraint** is an `inv` statement: an
 intrinsic validity rule over attribute values, formula outputs, or
@@ -69,7 +69,7 @@ regulatory *limit* on the secondary tier. `def` and `init` are
 reserved slots, shared sub-expressions, instance-time defaults; the
 current packages need neither (○).
 
-Every statement, whatever its stereotype, has the same declared shape , 
+Every statement, whatever its stereotype, has the same declared shape ,
 visible in the ontology's Formula/Constraint field lists:
 
 ```text
@@ -140,7 +140,7 @@ audit and re-judge last year's report, no re-testing, no divergence
 between lab computation and evaluator judgment (INV-5).
 
 Chapter 14 adds a third execution to the same parse: the Compliance
-Engine's monitors evaluate these statements over *served* values (○ , 
+Engine's monitors evaluate these statements over *served* values (○ ,
 §14.5). There is no "online dialect", a monitor runs the lab's OCL
 verbatim, which is precisely what makes continuous compliance a judgment
 by the standard and not by a second semantics.

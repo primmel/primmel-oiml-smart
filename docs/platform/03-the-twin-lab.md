@@ -55,7 +55,7 @@ The honesty rules that make it certification-grade:
   match (multi-word registers like `indication_length` →
   `indicationLength`).
 - **The attested physical reading is the evidence of record**; the
-  twin's served reading is auto-captured with its serve timestamp , 
+  twin's served reading is auto-captured with its serve timestamp ,
   the same pairing discipline as the twin-fidelity probe.
 - **A twin that does not answer degrades honestly**, the record
   carries the error, never an invented value.
@@ -84,5 +84,5 @@ The architecture site carries the gated detail: `docs/architecture/12-the-sst-in
 `oimlsmart/smart` repository (member access today; the public mirror
 lands with the website wave).
 
-*Next: [Multi-standard projection](04-multi-standard-projection.md) , 
+*Next: [Multi-standard projection](04-multi-standard-projection.md) ,
 one implementation model, several auditor lenses, no merged claims.*

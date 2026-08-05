@@ -137,7 +137,7 @@ the debt cannot accumulate. See
 
 ## Q9. How is this different from OPM?
 
-OPM (ISO/PAS 19450:2015) is the closest intellectual relative , 
+OPM (ISO/PAS 19450:2015) is the closest intellectual relative ,
 unified object/process ontology, one diagram kind. But OPM
 postulates two irreducible sorts where the foundation derives one
 sort with object/process as roles. OPM has ~12 hard-coded link

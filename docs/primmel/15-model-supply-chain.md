@@ -20,7 +20,7 @@ for?*, and the answer is three roles:
 | **Manufacturer** | **product reference model** (their instrument model) | the product |
 | **Instrument user** | implementation model (their operations) | the operations |
 
-The manufacturer's model is the new citizen. It is a *reference* model , 
+The manufacturer's model is the new citizen. It is a *reference* model ,
 it states what the product is and claims, and it is *not* derived from
 the Recommendation: ACME's LC-500 exists as a product whether or not
 R 60 exists. What links the two is the mapping discipline of chapter 5.
@@ -173,7 +173,7 @@ projection, and it too serves both modes:
    records. No emails.
 
 **Made real (TODO.roadmap/37).** Every step of this example runs in the
-smart repo: the packages are `primmel-packages/acme-lc500` (steps 1–2 , 
+smart repo: the packages are `primmel-packages/acme-lc500` (steps 1–2 ,
 the pilot EXECUTES the type evaluation against the real R 60 program:
 three samples, verdicts computed, the certificate issued through the
 signing gate with promises-as-verified derived from the executed

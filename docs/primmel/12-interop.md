@@ -111,14 +111,14 @@ recording:
 
 **Shipped** (task 27c, ● primmel-ts f1a82d5). `primmel export rdf`
 projects the R 60 package onto the smartSDU share's IEC-ISO Core
-Ontology vocabulary (`core-ontology.ttl` v2.0.0) as **4,252 triples** , 
+Ontology vocabulary (`core-ontology.ttl` v2.0.0) as **4,252 triples** ,
 the provision hierarchy typed by modality (`shall → smart:Requirement`,
 with `primmel:obligation` riding as data), the clause tree, terms with
 SKOS-XL labels, provenance and cross-references
 (`dcterms:source/requires/references`, `primmel:verifies`). The export
 gate is real SHACL, twice over: the toolchain's own evaluator and
 **pyshacl 0.31.0 both report `Conforms: True`** (rdflib 7.6.0 parses
-the artifact to the exact count, zero warnings) against six shapes , 
+the artifact to the exact count, zero warnings) against six shapes ,
 including the clause-tree acyclicity constraint as standard SHACL-SPARQL,
 which *fires* on a seeded cycle under both evaluators. The five
 **competency questions** execute on the projected graph with pinned
@@ -160,7 +160,7 @@ The R 60 attribute register carries **8 genuine annotations**
 only on a genuine match; the register's other attributes are documented
 honest absences, and honest absence is a correct outcome. The sweep also
 *removed* a pre-existing citation (`0112/2///61987#ABA000#000`): invalid
-IRDI syntax, and ABA000 is the IEC 61987 root *class*, not a property , 
+IRDI syntax, and ABA000 is the IEC 61987 root *class*, not a property ,
 no genuine rated-output entry exists, so the honest annotation is none.
 
 Linker rule **R36 `irdi-resolve`** validates every annotation against
@@ -222,7 +222,7 @@ The shipped surface, each piece linted:
   product model), **C87 passport-access-leak** (nothing restricted
   leaks into a less-privileged class), **C88 passport-upi-scheme** (the
   UPI pattern and level are well-formed).
-- **The projection engine** (`browser/src/data/passport.ts`) , 
+- **The projection engine** (`browser/src/data/passport.ts`) ,
   `buildPassportDocument` (abstract mode pins a version; live mode
   requires the computed verdict-stream read, never fabricated) and
   `projectPassportDocument` (the access-class enforcement point: public
@@ -310,7 +310,7 @@ attribute output_impedance {
 - OpenCDD runs the other way, ● shipped: attribute definitions carry
   IEC CDD IRDIs validated by linker rule R36 against the pinned
   `data/opencdd/` snapshot (8 genuine annotations, 5 allowlisted
-  symbol-spelling divergences, the invalid ABA000 citation removed) , 
+  symbol-spelling divergences, the invalid ABA000 citation removed) ,
   defined once, citable everywhere.
 
 *Next: [Chapter 13, Model diff and lifecycle](13-diff-and-lifecycle.md):

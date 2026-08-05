@@ -1,7 +1,7 @@
 # Multi-standard projection, the auditor lenses
 
 > *In this chapter:* an implementation model (a product, an
-> organization) projects onto SEVERAL reference standards at once , 
+> organization) projects onto SEVERAL reference standards at once ,
 > and an auditor ever sees it through ONE lens (or an approved set),
 > never through a merged claim. Status: ● shipped (TODO.v3/01).
 

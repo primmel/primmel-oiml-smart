@@ -1,7 +1,7 @@
 # The composite twin, the weakest declared link
 
 > *In this chapter:* a SYSTEM of twins (the CGM-200 gas analytical
-> system: analyzer + sample line) binds, runs and certifies as one , 
+> system: analyzer + sample line) binds, runs and certifies as one ,
 > and its certificate always prints its component basis. Status:
 > ● shipped (TODO.v3/03 + TODO.integration/06–07).
 

@@ -227,7 +227,7 @@ to interoperate with.
 The foundation's conforming-runtime trusted base is small enough that
 independent implementations are a weekend project rather than a
 consortium effort. A conformance test suite can be genuinely
-exhaustive. That is how the second and third implementations arise , 
+exhaustive. That is how the second and third implementations arise ,
 and their existence is what a standard is *for*.
 
 The adoption strategy: ship the kernel, ship a reference runtime,

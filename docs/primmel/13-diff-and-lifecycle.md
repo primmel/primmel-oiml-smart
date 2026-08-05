@@ -62,13 +62,13 @@ limits, moved provisions, with their citing elements.
 Two properties make the diff trustworthy:
 
 - **id-keyed, not position-keyed.** Renaming a file or reordering a
-  YAML list is not a model change; the diff sees elements, not lines , 
+  YAML list is not a model change; the diff sees elements, not lines ,
   the same model in a different file layout diffs empty, and a no-op
   diff of the real package is test-pinned empty. (The cost of this
   property is the snake_case naming discipline of chapter 11, ids are
   the diff's primary key.)
 - **tier-annotated.** Every change reports its tier
-  (`TIER_BY_FIELD`: foundations, primary, secondary, tertiary , 
+  (`TIER_BY_FIELD`: foundations, primary, secondary, tertiary ,
   processes, entities, registries, state machines, approvals, monitors
   *and passports*, cross-cutting), so an edition review reads
   "secondary: 3 requirements changed limits; tertiary: 1 state machine
@@ -156,7 +156,7 @@ it to packages. The reasons are the tier law's:
 - a subject model that knew its edition would make every `uses`
   composition edition-coupled, importing a subject would import a
   lifecycle;
-- a verdict that cites "R 60" means "R 60 as packaged at version X" , 
+- a verdict that cites "R 60" means "R 60 as packaged at version X" ,
   the pin belongs to the *evidence record*, which is where INV-8 puts it
   (§13.5), not to the Model;
 - a validity window is a fact about the *package's force* (a
@@ -300,7 +300,7 @@ edition oiml-r60@2021 of oiml-r60 {
 
 ## 13.8 Summary
 
-- Editions are arbitrary packagings for provenance and lifecycle , 
+- Editions are arbitrary packagings for provenance and lifecycle ,
   orthogonal to the core; subject models stay timeless.
 - Model diff is structural: id-keyed, tier-annotated, classified
   (added/removed/changed/moved), including the mapping diff with its

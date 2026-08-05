@@ -1,6 +1,6 @@
 # The SMART Platform Runtime
 
-> *In this volume:* the platform as the engine that executes the models , 
+> *In this volume:* the platform as the engine that executes the models ,
 > the Primmel packages as the single source of truth with the YAML trees
 > and generated code derived from them, the build pipeline, the IndexedDB
 > stores compiled from the store manifest, the engines (applicability,
@@ -108,16 +108,16 @@ the same entity declarations.
 
 Five engines evaluate the models; all are data-driven.
 
-- **The applicability engine** (`browser/src/data/applicability.ts`) , 
+- **The applicability engine** (`browser/src/data/applicability.ts`) ,
   the ONE applicability engine, built per standard from its dimension
   registry (`model/instrument.yaml`). Every consumer, program.service
-  form programs, the dimensions page, verdict filtering, report rows , 
+  form programs, the dimensions page, verdict filtering, report rows ,
   evaluates through it. It handles dimension conditions (`any`/`all`,
   missing-value policy), category subsumption (`implies:` on dimension
   values, R 91 average-speed ⇒ fixed-distance), and runtime
   class-driven instantiation (`instances:` on conformance tests, R 60's
   `n_runs`: A/B = 5, C/D = 3). ●
-- **The verdict service** (`browser/src/services/verdict.service.ts`) , 
+- **The verdict service** (`browser/src/services/verdict.service.ts`) ,
   re-executes each applicable requirement's limit against bound
   evidence: pass / fail / indeterminate per requirement × sample, with
   evaluator override. Acceptance quantities are declared once as
@@ -126,7 +126,7 @@ Five engines evaluate the models; all are data-driven.
   each derivation once at standard load and caches the ASTs. Input
   resolution follows one chain: entity attribute → observable form
   evidence (series-aware) → profile-bound symbol → formula symbol.
-  Preconditions fire before limits (a violation voids the run , 
+  Preconditions fire before limits (a violation voids the run ,
   `invalid`, never `fail`); modality shades the outcome (a failed
   `should` is an observation, never a blocker). ●
 - **The form-context binding engine** (`browser/src/data/form-context.ts`)
@@ -251,7 +251,7 @@ gone. The load-bearing facts (`docs/architecture.md` §14):
   live in `browser/src/vue-pages/`.
 - **Two generic page shells**, `src/astro/AppPage.vue` (Gate →
   AppShell → page) and `src/astro/PublicPage.vue` (PublicShell →
-  page), lazy-loading the page from an `import.meta.glob` registry , 
+  page), lazy-loading the page from an `import.meta.glob` registry ,
   one chunk per page.
 - **The guard**, `src/astro/Gate.vue` runs `bootstrap()` + the
   session check per page: unauthenticated →
@@ -343,7 +343,7 @@ R 129 package is the first, task 22).
 
 ## B.10 Validation rules
 
-- **Never edit generated files** (`browser/src/data/generated/**`) , 
+- **Never edit generated files** (`browser/src/data/generated/**`) ,
   change the YAML and regenerate; a hand edit is overwritten by the next
   build and desynchronizes types from stores.
 - **Encapsulation**, pages never touch Repository directly; services

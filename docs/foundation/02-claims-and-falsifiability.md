@@ -66,7 +66,7 @@ without losing information:
   Possible, but at the cost of inventing a kind ("at-100°C-things")
   for every value, which is not what we mean.
 - "The door swings open" → "The door has a swings-open property"?
-  Possible, but you lose the input-output structure of the behavior , 
+  Possible, but you lose the input-output structure of the behavior ,
   the wind pushes, the hinges rotate, the door moves. HAS doesn't
   carry that structure; DOES does.
 

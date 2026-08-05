@@ -7,7 +7,7 @@
 > projection), the fidelity requirement model, the probe channel that
 > closes the two-channel relation, the verdict chain and the twin
 > certificate's scoped claim, and the surveillance regime that keeps
-> the certificate honest. This chapter teaches the shipped program , 
+> the certificate honest. This chapter teaches the shipped program ,
 > the `oiml-twin-cert` package, its services and its gates.
 
 ---
@@ -42,7 +42,7 @@ Start from the device and stack upward:
   completeness.
 
 The stack reads as a narrowing of claims. Each layer up says *less*,
-more precisely, until the claim is small enough to be falsifiable , 
+more precisely, until the claim is small enough to be falsifiable ,
 and a falsifiable claim is the only kind a certificate can honestly
 carry (Volume 0, claims and falsifiability).
 
@@ -69,15 +69,15 @@ it: `kind certification_program` ●. The shape follows the
 product-reference precedent of chapter 15, a publisher related to
 everything by mapping and pinned imports, composed into nothing:
 
-- **related to the Recommendations by mapping only** , 
+- **related to the Recommendations by mapping only** ,
   `maps_to { oiml-r60 }`: the metrological definitions of the served
   aspects live in the Recommendation; the program never restates them
   (kernel rule C97 checks the mapping resolves);
-- **related to the product it certifies by a pinned abstract import** , 
+- **related to the product it certifies by a pinned abstract import** ,
   `uses { acme-lc500@2021 }`, C83's edition-pin discipline: the
   program certifies *this* product package's twin declarations at a
   pinned edition;
-- **built on the CASCO foundations by ordinary composition** , 
+- **built on the CASCO foundations by ordinary composition** ,
   `requires { iso-iec-17000, iso-iec-17065, iso-iec-17025,
   iso-iec-17067 }`: the conformity-assessment vocabulary, the
   certification-body and laboratory competence requirements, and the
@@ -190,7 +190,7 @@ evidence with its register citation (the variable `provenance` facet
    limitation**: attestation-only evidence proves *twin ≡ display*,
    not *twin ≡ mass*, the reference IS the EUT's own indication,
    never an independent physical standard. The limitation is declared
-   data, carried on the evidence and printed on the certificate , 
+   data, carried on the evidence and printed on the certificate ,
    never silently upgraded. And the officer is not self-certifying:
    attestation evidence from an officer without the citing lab's
    ISO/IEC 17025 6.2.6 `verification_attestation` authorization is
@@ -200,7 +200,7 @@ evidence with its register citation (the variable `provenance` facet
    never a production channel.
 
 **The pairing window.** Each pair is timestamped on both sides, the
-twin's *own* served timestamp and the reference observation timestamp , 
+twin's *own* served timestamp and the reference observation timestamp ,
 and the pairing skew is derived once at evidence capture. A pair whose
 skew exceeds the declared window (at most the register's
 `fresh_within`, declared per register, never a platform constant) is
@@ -218,7 +218,7 @@ the fidelity judgment is the verdict chain's, never the form's.
 > lying-twin offset is unmistakable), pairing windows 5 s (indication)
 > and 1 s (state) from the certified product's serves, the `mtl_f_001`
 > deadweight force standard and officer `p_weber` as declared register
-> citations. These are the scheme's *declarations*, pinned in test , 
+> citations. These are the scheme's *declarations*, pinned in test ,
 > not measured fact about any real device.
 
 ## 17.5 The verdict chain and the twin certificate
@@ -249,7 +249,7 @@ Re-judgment follows INV-5 ●: a stored probe verdict is re-judged
 against a tightened δ from its *own* snapshot, zero re-probing,
 evidence appends, never rewrites.
 
-**The certificate's claim** is scoped tight enough to be falsifiable , 
+**The certificate's claim** is scoped tight enough to be falsifiable ,
 each clause citing its evidence ● (`twin-certificate.service.ts`
 renders it from the declared template):
 
@@ -284,7 +284,7 @@ surveillance watches the served channel between probes, the same
 fidelity requirements re-judged by the compliance-engine monitor of
 chapter 14 §14.5, the type-5 scheme's non-dischargeable half.
 
-Post-certification infidelity walks the **core certificate machine** , 
+Post-certification infidelity walks the **core certificate machine** ,
 one machine, no second dialect ●, and the wiring reads the declared
 policy (`evaluation/validity.yaml`), never code constants:
 
@@ -298,7 +298,7 @@ policy (`evaluation/validity.yaml`), never code constants:
 The fault leg is the degraded-mode special case, wired by escalation
 *action*, never by verdict alone: a served `fault` state opens a
 service case **without flagging the certificate**, the twin
-truthfully reported the instrument's fault (§17.3's normative line) , 
+truthfully reported the instrument's fault (§17.3's normative line) ,
 while a lie about a healthy instrument flags it. The declared policy
 records exactly that (`fault_service_case_only: true`).
 
@@ -321,12 +321,12 @@ Shipped and gate-proven ●:
 **Landed ● (2026-07-28):**
 
 - **TCD-4, the surveillance monitor binding ●.** The fleet monitor
-  declaration (`primmel-packages/oiml-twin-cert/model/monitors.prl` , 
+  declaration (`primmel-packages/oiml-twin-cert/model/monitors.prl` ,
   triggers `every 1h` + `on signal certificate_registered` +
   `on change sample.test_context.op_state`, the `applicable` fidelity
   selector, the emit sinks, the escalation set) with the codec loop into
   `data/oiml-twin-cert/model/monitors.yaml`; the register-driven
-  deployment binding (`browser/src/monitor/twin-cert-deployment.ts`) , 
+  deployment binding (`browser/src/monitor/twin-cert-deployment.ts`) ,
   the certified-twins register drives the watch set (ACTIVE ∪
   UNDER_INVESTIGATION; SUSPENDED/WITHDRAWN drop); the tightened-δ fleet
   re-judgment SOP (`rejudgeFleetWindow`) on stored snapshots with ZERO
@@ -346,7 +346,7 @@ Shipped and gate-proven ●:
   knob, 2.5× δ) ⇒ per-probe fail with the deviation evidence on record
   (admission correctly passes, a value-lie is not a contract
   violation; the probe is the teeth) ⇒ decision refuse, no certificate;
-  stale (30 s served lag vs the 5 s window, via `timestamp_fields` , 
+  stale (30 s served lag vs the 5 s window, via `timestamp_fields` ,
   served time, never receipt) ⇒ indeterminate at every point,
   inconclusive decision, no issuance, never a fail, never a silent
   pass; post-certification ⇒ the fault leg opens service cases with

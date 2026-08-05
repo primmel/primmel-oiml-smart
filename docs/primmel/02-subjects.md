@@ -18,7 +18,7 @@ subject is modelled with a complete, disciplined anatomy.
 The subject is **primary**: requirements constrain it, tests operate on
 it, forms record its exhibition, verdicts judge it. Get the subject
 right and the secondary models write themselves as derivations of it;
-get it wrong and every downstream model compensates with duplication , 
+get it wrong and every downstream model compensates with duplication ,
 which is exactly how untyped requirement databases rot.
 
 ## 2.2 The three questions
@@ -105,7 +105,7 @@ And the third classic confusion:
 
 In the twin direction (○, chapter 14) this catalog doubles as the
 serving catalog: a live instance exposes its HAS aspects through `serve`
-bindings, each bound to an endpoint operation with a freshness window , 
+bindings, each bound to an endpoint operation with a freshness window ,
 a stale value degrading the verdict to `indeterminate`, never a silent
 pass.
 
