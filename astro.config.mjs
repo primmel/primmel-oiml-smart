@@ -103,15 +103,9 @@ export default defineConfig({
           ],
         },
         {
-          label: 'Learn — the layered curriculum',
+          label: 'Learn — the layered curriculum (moved)',
           items: [
-            { label: 'The curriculum', slug: 'learn' },
-            { label: 'Tier 0 — the concept', slug: 'learn/00-the-concept' },
-            { label: 'Tier 1 — the hands-on', slug: 'learn/01-the-hands-on' },
-            { label: 'Tier 2 — the duality', slug: 'learn/02-the-duality' },
-            { label: 'Tier 3 — the chain', slug: 'learn/03-the-chain' },
-            { label: 'Tier 4 — authoring', slug: 'learn/04-authoring' },
-            { label: 'Tier 5 — the dual demo', slug: 'learn/05-the-dual-demo' },
+            { label: 'The curriculum → oimlsmart.org/learn', slug: 'learn' },
           ],
         },
         {
