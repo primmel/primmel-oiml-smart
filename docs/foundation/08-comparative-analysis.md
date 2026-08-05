@@ -72,7 +72,7 @@ Three failure points, each instructive:
    the foundation's eight surface primitives *with no kernel
    underneath to elaborate into*.
 
-2. **OPM is not executable.** OPCAT offers "animated simulation" , 
+2. **OPM is not executable.** OPCAT offers "animated simulation" ,
    qualitative token-flashing over the diagram, not computation.
    There is no evaluation relation, no composition algebra. OPL looks
    formal but is actually a paraphrase generator. Both modalities are
@@ -132,7 +132,7 @@ the field arrived at the same architecture independently, as a
 ### Where SysML v2 / KerML stops (or differs)
 
 - KerML's semantics is **declarative/logical**, specifications to be
-  checked, model-theoretic. The foundation's is **operational** , 
+  checked, model-theoretic. The foundation's is **operational** ,
   processes to be run, evaluation-based. KerML models are checked
   for consistency; foundation models are executed.
 - KerML's kernel is **far larger than eight terms**. It carries more

@@ -78,7 +78,7 @@ is being passed off as a new primitive that is actually a composite.
 Goal: defend the system against methodological comparison, contribute
 to its extension, locate the seams where it could break.
 
-- [Chapter 8, Comparative Analysis](08-comparative-analysis.md) , 
+- [Chapter 8, Comparative Analysis](08-comparative-analysis.md) ,
   vs OPM, OOP, UML/fUML, SysML v2/KerML, BPMN, EXPRESS, RDF/OWL,
   Petri nets; the positioning matrix; the adoption-via-executability
   thesis.

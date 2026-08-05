@@ -169,7 +169,7 @@ encoding; the algebra accepts any number of others.
 
 For honesty (see [Chapter 2](02-claims-and-falsifiability.md)):
 
-- **Closure** is unconditional, but it is closure *of the algebra* , 
+- **Closure** is unconditional, but it is closure *of the algebra* ,
   it says nothing about whether a runtime that implements the algebra
   is itself closed under those operations. A buggy runtime can
   violate closure in practice while the algebra stands.

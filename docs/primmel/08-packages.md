@@ -1,6 +1,6 @@
 # Chapter 8, Packages
 
-> *In this chapter:* how models are published, composed, and versioned , 
+> *In this chapter:* how models are published, composed, and versioned ,
 > the package manifest, the directory convention, `uses` composition
 > across packages, the layering rules that keep overlays honest,
 > modules, editions, and the native ⇔ YAML round-trip.
@@ -8,7 +8,7 @@
 ---
 
 Chapters 1–7 modelled content. This chapter models *containment*: how
-a body of content becomes a distributable, composable, versioned unit , 
+a body of content becomes a distributable, composable, versioned unit ,
 where a model begins and ends, how one model builds on another without
 copying it, how two editions coexist. The running system's answer is
 on disk: `primmel-packages/oiml-r60/` is the full R 60 Recommendation
@@ -155,7 +155,7 @@ specimen-governance module. The semantics:
   chapter 4) run over the composed package, so a module's skeleton is
   checked *as consumed*, not as authored.
 - **An overlay may reference, never redefine.** Any id defined
-  upstream is *used* downstream, and redefining it is an error , 
+  upstream is *used* downstream, and redefining it is an error ,
   enforced twice over: the standards registry's uses-no-redefine leg
   fails the build when a rec overlay restates a layer's identity
   scalar or unions an owned multilingual array, and the layer-owned
@@ -284,7 +284,7 @@ smart cb5eab6, task 28):
 - **Model diff** is the kernel capability editions owe: structural
   diff between two package versions (elements added/removed/changed/
   moved, including mapping diff and the clause-drift table), powering
-  edition comparison, change audit, and clause-drift detection , 
+  edition comparison, change audit, and clause-drift detection ,
   shipped, with the R 60 2017→2021 renumbering corpus as its
   acceptance fixture. Chapter 13 develops this in full (●).
 

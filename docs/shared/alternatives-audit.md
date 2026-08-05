@@ -89,7 +89,7 @@ The IEC-ISO Core Ontology (derived from the IEC SG12 SIM work;
 `information_model/ontologies/core-ontology.ttl`, CC BY-SA 4.0) is a
 *representation* ontology for linked data. Its README states the scope
 plainly: concepts from the ISO/IEC Directives Part 2 (sections 3, 6, 7),
-facts extractable automatically as RDF, and, deliberately , 
+facts extractable automatically as RDF, and, deliberately ,
 **"Narrative (text-based) content and not other forms (figures,
 equations, tables)"**.
 
@@ -107,7 +107,7 @@ The class structure (verified in the `.ttl`):
   taxonomies.
 - **`smart:ProvisionSupplement`** + the supplement taxonomy
   (`taxonomies/provision-supplement-type.ttl`: `note`, `example`,
-  `footnote`), plus `BindingnessType` (`normative` / `informative`) , 
+  `footnote`), plus `BindingnessType` (`normative` / `informative`) ,
   typed supplements with normativity, done right.
 - **Terminology**, `smart:TermEntry` / `smart:Term` mapped to TBX;
   language tags per BCP 47 (as RDF prescribes).
@@ -159,7 +159,7 @@ Six mechanisms were taken, each re-homed onto the executable frame:
    authoritative source. Clause-level and fragment-level provenance both
    shipped (●, task 24, smart 83be1e6; the gate's census in Volume I,
    chapter 9).
-2. **Multilinguality via ISO 24229 spelling codes, not BCP 47** , 
+2. **Multilinguality via ISO 24229 spelling codes, not BCP 47** ,
    adopted against both: DIN's tri-lingual `bib.*` is document-metadata
    only, and the ontology inherits BCP 47 from RDF. The frame extends
    the vocabulary registers' existing `spelling:` practice to *all*

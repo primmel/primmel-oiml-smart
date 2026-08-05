@@ -47,7 +47,7 @@ and audited end to end, Volume IV is the full treatment:
   `activity_kind` (the 17000 activity-archetype register),
   `segregation:` (machine-checkable non-involvement), `scheme_type:`
   (the oiml-cs layer's `type_1a` self-classification);
-- **the B 18:2025 framework model** (`data/oiml-cs/framework/`) , 
+- **the B 18:2025 framework model** (`data/oiml-cs/framework/`) ,
   participants, schemes (the per-category B→A two-year lifecycle),
   declarations (the PD-08 signing gate), documents, governance;
 - **the documents corpus** (`data/oiml-cs/documents/<doc>/`), eleven
@@ -117,14 +117,14 @@ them, task 10, C48–C50), **the designed/exhibited value duality** (the
 `dual` kernel construct, task 06), **the quantity vocabulary**
 (first-class `quantity_register` with unit kinds, SI factor/offset and
 dimension vectors, task 06, C32–C34), **fragment provenance** (`.prd`
-fragment-address bindings + the reconstruction congruence gate , 
+fragment-address bindings + the reconstruction congruence gate ,
 task 24).
 
 ## 4. The v3 program, in phases
 
 Dependency order is load-bearing: **kernel → core → recs → interop →
 platform/release**, with the twin program (phase 6) free to run in
-parallel once task 32 lands. Each item names its Appendix B driver , 
+parallel once task 32 lands. Each item names its Appendix B driver ,
 phase 6's drivers are Volume I, chapters 14–15.
 
 ### Phase 1, the language kernel
@@ -326,7 +326,7 @@ added four more. Proposal → response → shipped, in one day:
   data (`mdlo-creep-dr`, `temperature-cycling`), runtime enforcement
   through the admissibility path: out-of-order ⇒ INVALIDATED, never a
   fail (Volume III, §4.10);
-- **the 7 workflow lifecycle machines + R42** (task 61, ● 6a9484b) , 
+- **the 7 workflow lifecycle machines + R42** (task 61, ● 6a9484b) ,
   declarative, machine-routed: every service mutation delegates to the
   walker, behavior preserved (zero assertion changes); R42
   `state-machine-integrity` checks the declarations against their
@@ -347,7 +347,7 @@ Phase 9.5 (the viewer's four contributions, accepted with one
 duplicate declined and one semantic correction, formulas are
 test-side, never process-side):
 
-- **capability construction parameters** (9.5-a, ● 4a9b5db) , 
+- **capability construction parameters** (9.5-a, ● 4a9b5db) ,
   `gauge_type`/`bridge_type` on `strain-gauge`, `signal_bandwidth` on
   the two concrete electronics capabilities; engineering vocabulary
   honestly marked, `excitation_voltage` declined as a duplicate of

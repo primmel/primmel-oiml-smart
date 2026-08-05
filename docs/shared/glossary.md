@@ -24,7 +24,7 @@ property. ●
 model*: the product model enters the user's *implementation model* as
 static reference content, designation, design parameters, designed
 conditions, *promises* as point-in-time (as-certified) claims at a
-pinned version; design-time integration, nothing live. ● (task 36 , 
+pinned version; design-time integration, nothing live. ● (task 36 ,
 C83 `abstract-import-pinned`; the quarry imports the ACME LC-500 at a
 pinned edition)
 
@@ -199,7 +199,7 @@ slots); the FormInstance is the *evidence*. ●
 
 **freshness**, the validity window declared on a *serve binding*
 (`fresh_within`): how old a served value may be before it stops meaning
-anything; a stale value degrades the *verdict* to `indeterminate` , 
+anything; a stale value degrades the *verdict* to `indeterminate` ,
 stale ⇒ indeterminate, never a silent pass. ● (task 32, C63; the
 gateway's freshness gate owns the judging)
 
@@ -238,7 +238,7 @@ covering several management domains at once (quality, security,
 environment…): it *imports* its component operations (QMS, ISMS) and
 *maps* to several *reference models* (ISO 9001, ISO 27001), the
 canonical case of import ≠ mapping and *multi-target mapping* (Volume I,
-Chapter 5 §5.6). ○ (no IMS model ships; the machinery it would use , 
+Chapter 5 §5.6). ○ (no IMS model ships; the machinery it would use ,
 `uses` imports, per-target map sets, the coverage calculus, is ●)
 
 **intermediate model**, a model sitting between the ends of a mapping
@@ -267,7 +267,7 @@ Canonical definition: [Volume 0 ch 3 §3.2](../foundation/03-eight-terms-and-clo
 **issuance gate**, the OIML-CS signing gate (PD-08 cl. 5): an Issuing
 Authority issues nothing before its *Declaration* covering the
 (instrument category × scheme) is signed. Enforced on both issuance
-paths (the action funnel and the workflow guard) and failing closed , 
+paths (the action funnel and the workflow guard) and failing closed ,
 no composed gate definition, no registered category, or no signed
 in-scope Declaration all block. ●
 
@@ -373,7 +373,7 @@ carries its *promises*-as-verified; consumed by *abstract import* or
 LC-500 package, C81–C83)
 
 **property**, the slot in the *HAS* relation: the dimension along
-which an object can vary. Defined once (an *AttributeDefinition* , 
+which an object can vary. Defined once (an *AttributeDefinition* ,
 symbol, clause, kind) and valued per subject level.
 Canonical definition: [Volume 0 ch 3 §3.4](../foundation/03-eight-terms-and-closure-rules.md). ●
 
@@ -390,7 +390,7 @@ document reconstruction with a congruence check (●, gated per build).
 
 **provision**, a statement of a standard carrying *modality* and a
 normative/informative mark; in Primmel a provision becomes a typed
-element (a *requirement*, an *abstract process*, a registry demand) , 
+element (a *requirement*, an *abstract process*, a registry demand) ,
 never a tagged paragraph. ●
 
 **QuantityValue**, the value type `{ value, unit [+ uncertainty +
@@ -504,7 +504,7 @@ demo provider process, task 37)
 
 **uses composition**, multi-package composition (`uses: [core,
 module-a, …]`): topologically merged, id-space references, no
-redefinition of upstream ids; single-string `extends` is insufficient , 
+redefinition of upstream ids; single-string `extends` is insufficient ,
 an implementation package *maps* to reference packages it does not
 extend. ● (task 05, C27–C31; `extends` retired to v2 history)
 
@@ -537,7 +537,7 @@ OIML V 1:2022, vim-2012 = VIM): layer 0 of the architecture; terms
 anchor via `vocab_ref: { register, clause }`. ●
 
 **workflow**, the orchestration of the certification process: phases,
-actors/roles, state machines with cascades, gateways, approvals , 
+actors/roles, state machines with cascades, gateways, approvals ,
 first-class process content, not annotation. ●
 
 **workspace (.pws)**, the records produced by running implementation

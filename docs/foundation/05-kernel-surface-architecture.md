@@ -170,7 +170,7 @@ Classification becomes data.
 
 **Two meanings of IS, only one survives the reduction.** Chapter 3's
 IS did two jobs: identity (which entity is this?) and kind-membership
-(what kind?). Only the second proxies through a property. The first , 
+(what kind?). Only the second proxies through a property. The first ,
 individuation, must remain in the kernel as entity-reference. You
 cannot derive identity from a property value without presupposing the
 very identity you're trying to derive.

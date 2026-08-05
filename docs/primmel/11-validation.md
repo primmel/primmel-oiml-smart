@@ -192,7 +192,7 @@ aspect ──▶ requirement ──▶ conformance test ──▶ form ──▶
   and never weighed.
 
 Coverage findings are warnings by design: a deliberate exclusion (an
-informative annex, a definitional requirement verified by review , 
+informative annex, a definitional requirement verified by review ,
 R 60's `verification: { method: definitional }`) is a legitimate answer,
 recorded, not a gap. The same calculus covers **mappings** (chapter 5):
 mapping coverage per reference component, full / minimal / partial /
@@ -219,7 +219,7 @@ worse than a gap, because both will compute verdicts.
 addressed *sentences* (`<fragment>/s<N>`, the reserved finer address
 space of the fragment grammar, computed at package build, never stored
 in the extract); a documented modality classifier (shall/should/may/must + negatives;
-definitions normative, informative fragments demoted , 
+definitions normative, informative fragments demoted ,
 pinned precision ≈ 0.91 / recall ≈ 0.79 on a 70-sentence labelled sample
 of R 60, with every false negative proven to sit in a bound fragment)
 decides which sentences gate. The sentence manifests + the package's

@@ -50,7 +50,7 @@ package's canonical example, the requirement quoted in chapter 1:
 ```
 
 (from `data/r60/specification/requirements/metrological.yaml`). The URN
-pattern is `urn:oiml:pub:{doctype}:{number}:{part}:{year}#clause-{n}` , 
+pattern is `urn:oiml:pub:{doctype}:{number}:{part}:{year}#clause-{n}` ,
 one string that names the document, the edition, and the exact clause.
 
 Three supporting constructs make clause provenance first-class rather
@@ -114,7 +114,7 @@ hand-edited). A fragment is:
 - **text-bearing**, it carries the source text verbatim, because text
   identity is what the congruence check compares.
 
-Model elements then bind **fragment addresses**, not just clause URNs , 
+Model elements then bind **fragment addresses**, not just clause URNs ,
 the map form `source: { doc, clause, fragment? }` on provisions,
 attributes and requirements, beside the URN-string forms. The clause
 URN remains as the coarse, human-legible citation; the fragment address
@@ -154,7 +154,7 @@ without touching the model.
 
 Provenance is complete only when it runs in both directions. The forward
 direction is authoring (text → model). The backward direction is
-**reconstruction**: the model emits an **ordered fragment stream** , 
+**reconstruction**: the model emits an **ordered fragment stream** ,
 each element renders its statement in canonical order, carrying its
 fragment address, and a **congruence check** compares that stream
 against the authoritative source on three axes:
@@ -185,7 +185,7 @@ test-pinned (`prd-congruence.test.ts`):
 | R 60-3:2021 | 291 | 275 | 16 |
 
 Every normative fragment is bound by ≥1 model element or carries a
-documented named gap; the unbound-model-text axis is live and empty , 
+documented named gap; the unbound-model-text axis is live and empty ,
 every requirement carries a provenance binding. The gate is
 **mutation-proven**: seeded coverage gaps, order inversions, text
 mismatches, and stale named gaps each fail it in the test kit. The

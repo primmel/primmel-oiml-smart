@@ -63,7 +63,7 @@ component (in tree order):
 | `inheritedFrom` | the nearest mapped ancestor, when the cover is inherited |
 
 ,  plus the implementation-side lists: `unmappedImplementation` (the
-"outside this lens" set), `unresolvedMappings` (dangling pairs , 
+"outside this lens" set), `unresolvedMappings` (dangling pairs ,
 reported, never silently dropped) and `proposals` (discovery
 candidates: transitive, inherited, closure, *flagged for confirmation,
 never asserted*: a human confirms with justification).
@@ -262,7 +262,7 @@ them:
 - One CoverageReport, two renderings: the auditor's tree and the
   operator's inverse index. A `view_profile` filters which voices are
   audible; roles are displayed, never gated.
-- The worked IMS is **fictional**, toy references, no ISO content , 
+- The worked IMS is **fictional**, toy references, no ISO content ,
   and every number it produces is kernel-computed and test-pinned.
 - N `map_profile`s over one implementation validate independently; the
   composition fold (shared / exclusive / uncovered / per-reference

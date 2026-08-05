@@ -189,7 +189,7 @@ Walk the loop once, slowly, every step exists for a reason:
 5. **Verdict.** `pass · fail · indeterminate · invalid`, per
    requirement × twin. Invalid still means "the setup was wrong"
    (preconditions), fail means "the product was wrong".
-6. **Evidence.** Values seen, rule results, verdict, timestamps , 
+6. **Evidence.** Values seen, rule results, verdict, timestamps ,
    appended to the workspace. Facts only; permanent.
 7. **Act.** Pass: nothing happens, history accrues, and *that* is the
    deliverable. Fail/invalid: escalation (notify, flag the certificate,
@@ -251,7 +251,7 @@ is the one-way outward projection, deliberately a stub (no auth, no
 push, §12.5). The ACME LC-500 pilot declares
 `public { identity composition promises_as_verified }` and
 `authority { live_compliance_status }`, `artifacts` and
-`sustainability` deliberately absent, nothing honest behind them yet , 
+`sustainability` deliberately absent, nothing honest behind them yet ,
 and its passport serves at `/passport/upi:acme:lc500` (the pilot,
 §14.9). And the JTC24 alignment above is not prose alone: the
 machine-checkable half is authored data, `data/r60/evaluation/
@@ -307,7 +307,7 @@ runs an hourly monitor:
 - 14:37: the unit reports `fault` state → verdicts `invalid` (not
   fail) and a service case opens; the state trajectory is in the trace.
 - Quarterly: the engine re-runs the creep characteristic derivation
-  over streamed indication series, the same OCL as the type test , 
+  over streamed indication series, the same OCL as the type test ,
   and the drift verdict history is the audit's answer to "show me the
   fleet."
 
@@ -432,7 +432,7 @@ resolves (an inline `pkg/subject` names a subject of the package; a
 bare package id is registered for the supply-chain gate's C81-class
 resolution) and names its endpoint; every serve of the composite
 subject is covered by the decomposition exactly once; the composite
-state rule's vocabulary is CLOSED (`any_fault_else_analyzer` first , 
+state rule's vocabulary is CLOSED (`any_fault_else_analyzer` first ,
 a new rule is a grammar extension, never a free string). The runtime
 calculus (the weakest declared link, the printed component basis) is
 the smart platform's §B chapter and the Platform volume's
@@ -459,7 +459,7 @@ the smart platform's §B chapter and the Platform volume's
   passport), HAS (live values with timestamps), DOES (invocable
   processes).
 - The twin is a projection: the full twin is the manufacturer's and
-  arbitrarily rich; the Recommendation governs the projection , 
+  arbitrarily rich; the Recommendation governs the projection ,
   declared, mapped (every governed register backed), and derived, never
   hand-mirrored. Certification proves the projection's fidelity, never
   the full twin's completeness.

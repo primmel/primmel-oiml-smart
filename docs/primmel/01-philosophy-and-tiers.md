@@ -54,7 +54,7 @@ If a model cannot do all four, it is a document in a costume.
 Every construct in Primmel v3 answers to these principles. When two
 designs compete, the one that better satisfies this list wins.
 
-> **Formal grounding.** Each of these principles is grounded in , 
+> **Formal grounding.** Each of these principles is grounded in ,
 > and partially follows from, the IS–HAS–DOES modelling system
 > proven in [Volume 0](../foundation/README.md). Where a principle
 > is a direct consequence of one of Volume 0's theorems or closure
@@ -125,7 +125,7 @@ Every model element in Primmel lives on exactly one **tier**:
 **The dependency law:** dependencies point only upward. Foundations
 depend on nothing. The primary tier depends only on foundations. The
 secondary tier depends on foundations and the primary tier. The tertiary
-tier depends on all three. A downward reference is a modelling error , 
+tier depends on all three. A downward reference is a modelling error ,
 and the linter catches it.
 
 Why does this matter? Because it is what makes models **recombinable**.
@@ -156,7 +156,7 @@ The tier law has two named consequences you will meet constantly:
 
 ## 1.5 Anchoring and the coverage theorem
 
-Secondary models are not merely *allowed* to reference the primary tier , 
+Secondary models are not merely *allowed* to reference the primary tier ,
 they are **defined by** their references:
 
 - A **requirement** is a constraint *over* aspect paths.

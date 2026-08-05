@@ -44,7 +44,7 @@ Every process is authored in one of two forms:
   dispatch), or state-gated (warm-up enforcement).
 
 The ladder rule: **author abstract; refine to executable only when
-simulation or automation demands it.** Executable steps are additive , 
+simulation or automation demands it.** Executable steps are additive ,
 an abstract process refined later is an extension, not a modification
 (OCP). The two forms live *within one model*; do not confuse this form
 axis with the model-kind axis of chapter 5 (reference vs implementation
@@ -284,7 +284,7 @@ operation triggers a behavior over the wire (chapter 14, §14.4).
 
 The same process concept, three voices:
 
-- in a **reference model**: "a process is required" (abstract form) , 
+- in a **reference model**: "a process is required" (abstract form) ,
   R 60-2's creep test method is a requirement for a process, specified
   to step level but still normative, not actual;
 - in an **implementation model**: "this is how we actually do it"
@@ -353,7 +353,7 @@ process review {
   resolving to abstract-process ids, `period` only where the source
   standard fixes one;
 - an initial value appears only on a register, in the literal contract
-  (one value token + optional unit, or the `{…}` QuantityValue block) , 
+  (one value token + optional unit, or the `{…}` QuantityValue block) ,
   an `=` in a signature parameter or call binding is a parse error;
 - every `source` block names doc + clause; repeated blocks collect into
   `sourceRefs`, the scalar `source` holding the first.

@@ -190,7 +190,7 @@ One process, two GraphQL schemas, each with its playground
 serve declarations of the product reference package: a query serve
 becomes `Query.indication: ServedQuantity!` (`{ value, unit, kind,
 servedAt }`, INV-1 with timestamps); a *watch-kind* serve answers
-**both** a point query (monitors poll) and a subscription (the watch , 
+**both** a point query (monitors poll) and a subscription (the watch ,
 SSE: the current value at subscribe, then on every clock advance,
 deduped); a command operation becomes a mutation (`runSelfTest`). The
 startup conformance check (`checkTwinConformance`) then proves

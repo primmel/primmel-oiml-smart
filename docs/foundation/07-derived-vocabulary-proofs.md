@@ -88,7 +88,7 @@ content.
 
 ### The proposal
 
-> "A transition is a rule. But each individual firing of that rule , 
+> "A transition is a rule. But each individual firing of that rule ,
 > with specific inputs and outputs, at a specific time, is a *step*.
 > Don't we need a STEP primitive?"
 

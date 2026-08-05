@@ -33,7 +33,7 @@ One typed read: `programManifest()` (default the OIML instance; a
 test-only swap proves a second instance renders). Consumers were
 migrated copy-identically, the three layouts' title defaults, the
 header context label, the footer powered-by line, the splash quotes,
-the landing hero, the login demo accounts, and, at generation time , 
+the landing hero, the login demo accounts, and, at generation time ,
 the route generator (the regenerated page shells are byte-identical,
 proven by an empty git diff).
 
