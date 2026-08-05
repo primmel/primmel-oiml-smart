@@ -21,7 +21,7 @@ property of an entity. The word conflates two things:
   from the kernel.
 
 Full derivation in
-[Chapter 7 §7.2 STATE](07-derived-vocabulary-proofs.md#72-state--a-positional-identifier-not-a-property).
+[Chapter 7 §7.2 STATE](07-derived-vocabulary-proofs.md#72-state-a-positional-identifier-not-a-property).
 
 ---
 
