@@ -1,4 +1,4 @@
-# FAQ — Anticipated Objections
+# FAQ, Anticipated Objections
 
 > *A Q&A annex. Each question links to the chapter that answers it
 > in depth. If your question isn't here, consult the
@@ -15,9 +15,9 @@ Because STATE is a positional identifier for an execution, not a
 property of an entity. The word conflates two things:
 
 - **Data state** (the current value of a property, e.g. temperature
-  100°C) — covered by HAS, no new primitive.
+  100°C), covered by HAS, no new primitive.
 - **Control state** (which node in the transition graph is active
-  for a particular run) — a pointer pair `(ρ(t), t_i)`, derivable
+  for a particular run), a pointer pair `(ρ(t), t_i)`, derivable
   from the kernel.
 
 Full derivation in
@@ -27,7 +27,7 @@ Full derivation in
 
 ## Q2. Why not CAN as a fourth primitive?
 
-CAN is a modal operator on DOES — it strips the actualization
+CAN is a modal operator on DOES, it strips the actualization
 commitment. "A bird can fly" is "a bird flies" minus the tense. As
 a quantifier over reifications:
 
@@ -43,7 +43,7 @@ derivation in [Chapter 7 §7.4 CAN](07-derived-vocabulary-proofs.md).
 
 ## Q3. Why not BECOMES? Things change over time
 
-BECOMES is not a fact about an entity — it is a *comparison* across
+BECOMES is not a fact about an entity, it is a *comparison* across
 two facts. "The door becomes closed" is the diff of two timestamped
 value-readings:
 
@@ -67,7 +67,7 @@ $$
 \mathrm{RELATES\text{-}TO}(x, y) \;\equiv\; \mathrm{HAS}(x, p, \iota(y))
 $$
 
-"owns," "adjacent-to," "depends-on," "part-of," "employed-by" — all
+"owns," "adjacent-to," "depends-on," "part-of," "employed-by", all
 reduce the same way. When the relation itself needs properties (e.g.
 start-date), reify it as its own object (the ER junction-entity
 move). Full derivation in
@@ -111,9 +111,9 @@ and behavior under one recursive operator. Each diagram type has
 its own metaclass and its own semantics; alignment across diagrams
 is maintained by hand.
 
-The foundation's claim — composition of transitions is itself a
+The foundation's claim, composition of transitions is itself a
 transition, so "step," "process," and "system" are the same
-primitive at different scale — is precisely the unification UML
+primitive at different scale, is precisely the unification UML
 never attempts. See
 [Chapter 8 §8.4 UML/fUML](08-comparative-analysis.md).
 
@@ -137,7 +137,7 @@ the debt cannot accumulate. See
 
 ## Q9. How is this different from OPM?
 
-OPM (ISO/PAS 19450:2015) is the closest intellectual relative —
+OPM (ISO/PAS 19450:2015) is the closest intellectual relative , 
 unified object/process ontology, one diagram kind. But OPM
 postulates two irreducible sorts where the foundation derives one
 sort with object/process as roles. OPM has ~12 hard-coded link
@@ -161,12 +161,12 @@ The axiom (stated in
 
 It matters because the completeness theorem (Theorem 2,
 [Chapter 4](04-proofs.md)) is *relative to* this axiom. We cannot
-prove the axiom — that would be a Gödel-style impossibility. What
+prove the axiom, that would be a Gödel-style impossibility. What
 we can do is state it explicitly so it can be examined.
 
-If you can exhibit a fourth claim-form — an atomic claim that is
+If you can exhibit a fourth claim-form, an atomic claim that is
 neither identity, nor attribution, nor transformation, and cannot
-be reduced to any of them — the system breaks there.
+be reduced to any of them, the system breaks there.
 
 ---
 
@@ -183,7 +183,7 @@ Yes, with four attack points
 4. Show the trichotomy isn't actually MECE (attacks the system's
    structural argument).
 
-Anything else — "I prefer UML," "the syntax is ugly" — is
+Anything else, "I prefer UML," "the syntax is ugly", is
 preference, not refutation.
 
 ---
@@ -207,11 +207,11 @@ consequence of cutting the type/instance joint correctly. See
 
 ## Q13. Can I extend the system with my own primitives?
 
-No — by design. Theorem 3 (extensibility,
+No, by design. Theorem 3 (extensibility,
 [Chapter 4](04-proofs.md)) says:
 
 - Adding content (new kinds, properties, values, transitions) is
-  always fine — the algebra grows monotonically.
+  always fine, the algebra grows monotonically.
 - Adding *primitives* is not. A proposed ninth primitive is either
   reducible to the eight (in which case it's a composite, not a
   primitive) or it violates the Claim-Form Axiom (in which case it
@@ -226,7 +226,7 @@ materialized view (see Chapter 7 for six examples) instead.
 
 Because the eight primitives are useful for authoring but not
 irreducible. Pushing the reductions through (Chapter 5) yields a
-kernel with one sort and one operation — a category. The
+kernel with one sort and one operation, a category. The
 eight-term surface remains as syntactic sugar that elaborates into
 the kernel.
 
@@ -248,12 +248,12 @@ and [Chapter 9 §9.6 KerML](09-categorical-foundations.md).
 A conforming runtime implements five algorithms
 ([Chapter 6](06-algorithms.md)):
 
-- **Elaboration** — desugar Tier 1 statements to kernel triples.
-- **Resugaring** — project kernel triples back to Tier 1 for
+- **Elaboration**, desugar Tier 1 statements to kernel triples.
+- **Resugaring**, project kernel triples back to Tier 1 for
   display.
-- **Reification** ($\rho$) — turn a transition into an object.
-- **Evaluation** — apply a transition to its input.
-- **State-location** ($\sigma$) — locate where an execution is.
+- **Reification** ($\rho$), turn a transition into an object.
+- **Evaluation**, apply a transition to its input.
+- **State-location** ($\sigma$), locate where an execution is.
 
 Anything beyond these five is definition, not implementation. See
 [Chapter 10 §10.5 Specification=implementation](10-executable-ground.md).
@@ -277,9 +277,9 @@ See [Chapter 11](11-open-questions.md) for the full honest list.
 
 ## Q17. Where do I start reading?
 
-- **Novice** — [Chapter 1](01-intuition.md) alone.
-- **Professional** — [Chapters 1–7](README.md#reading-tracks).
-- **Expert** — the whole volume.
+- **Novice**, [Chapter 1](01-intuition.md) alone.
+- **Professional**, [Chapters 1–7](README.md#reading-tracks).
+- **Expert**, the whole volume.
 
 If you only have ten minutes, read
 [Chapter 1 §1.1 The three natural questions](01-intuition.md).
@@ -291,11 +291,11 @@ If you only have ten minutes, read
 - **Primmel** operationalizes the eight primitives as a subject
   anatomy (Volume I, chapter 2).
 - **Processes** in Primmel are reified transitions (Volume I,
-  chapter 4 — see Closure Rule 3).
+  chapter 4, see Closure Rule 3).
 - **Mapping** between reference and implementation models is
-  HAS-with-reference (Volume I, chapter 5 — Closure Rule 2).
+  HAS-with-reference (Volume I, chapter 5, Closure Rule 2).
 - **The OIML subject chain** (Family → Group → Model → Sample) is
-  the IS relation at four grains (Volume II, chapter 2 — Closure
+  the IS relation at four grains (Volume II, chapter 2, Closure
   Rule 1).
 
 If a chapter in Volumes I–III ever seems to introduce a ninth

@@ -1,9 +1,9 @@
-# Chapter 3 — The Eight Terms and Their Closure Rules
+# Chapter 3, The Eight Terms and Their Closure Rules
 
 > *In this chapter:* the formal algebra 𝓜 that defines the IS–HAS–DOES
 > modelling system. Eight terms (three relations, five sorts), arranged
 > in five layers, sealed by three closure rules. Read this
-> before [Chapter 4 (Proofs)](04-proofs.md) — the theorems reference
+> before [Chapter 4 (Proofs)](04-proofs.md), the theorems reference
 > every definition here. Math is in Unicode (no LaTeX rendering in
 > Phase 1); [Chapter 4](04-proofs.md) is where the notation earns its
 > keep.
@@ -22,11 +22,11 @@ Five **sorts** of thing:
 
 | Sort | Meaning |
 |---|---|
-| `O` | objects — the bearers of all claims |
-| `P` | properties — the slots along which objects can vary |
-| `V` | values — what fills a property slot |
-| `T` | transitions — input→transform→output rules |
-| `PROCESS = ρ(T) ⊆ O` | reified transitions — transitions treated as objects |
+| `O` | objects, the bearers of all claims |
+| `P` | properties, the slots along which objects can vary |
+| `V` | values, what fills a property slot |
+| `T` | transitions, input→transform→output rules |
+| `PROCESS = ρ(T) ⊆ O` | reified transitions, transitions treated as objects |
 
 Three **relations**:
 
@@ -53,7 +53,7 @@ layer, then states the three closure rules that seal the system.
 
 ---
 
-## 3.2 Layer 0 — IS: the ground of individuation
+## 3.2 Layer 0, IS: the ground of individuation
 
 Before you can say anything about a thing, you must be able to say
 **which thing** you are talking about, and what counts as *the same
@@ -69,31 +69,31 @@ Formally:
 IS  ⊆  O × O
 ```
 
-![Layer 0 — IS](diagrams/layer-0-IS.svg)
+![Layer 0, IS](diagrams/layer-0-IS.svg)
 
 IS does two jobs:
 
-- **Identity**: "this is the same entity as before" — the individuation
+- **Identity**: "this is the same entity as before", the individuation
   criterion that lets us track a persisting subject through change.
-- **Kind-membership**: "this entity falls under that kind" — *Rex is a
+- **Kind-membership**: "this entity falls under that kind", *Rex is a
   mammal* relates the object Rex to the object *mammal*. (Closure
   Rule 1, §3.7, guarantees kinds live in `O`.)
 
 Crucially, IS-facts are not zero-variance HAS-facts. A value that
 happens never to change is *contingent constancy*; an IS-fact is
-*individuating necessity* — losing it doesn't change the entity, it
+*individuating necessity*, losing it doesn't change the entity, it
 dissolves what counted as the entity at all. IS is therefore logically
 prior to everything outward of it.
 
 ---
 
-## 3.3 Layer 1 — OBJECT: what gets individuated
+## 3.3 Layer 1, OBJECT: what gets individuated
 
 An **object** is anything IS can individuate: a dog, a door, a number,
-a kind, a specific run of a program. Objects are the bearers — the
+a kind, a specific run of a program. Objects are the bearers, the
 things all other claims attach to.
 
-![Layer 1 — OBJECT](diagrams/layer-1-OBJECT.svg)
+![Layer 1, OBJECT](diagrams/layer-1-OBJECT.svg)
 
 There is deliberately no restriction to physical things; abstractness
 is not a disqualification. IS doesn't care what a thing is made of,
@@ -105,12 +105,12 @@ is either a claim *about* members of `O`, or something *foldable into*
 
 ---
 
-## 3.4 Layer 2 — HAS, PROPERTY, VALUE: the static axis
+## 3.4 Layer 2, HAS, PROPERTY, VALUE: the static axis
 
 Objects hold things. HAS is the attribution relation, and it comes
 with a type/instance split that must never be blurred:
 
-- a **property** is the *slot* — the dimension along which an object
+- a **property** is the *slot*, the dimension along which an object
   can vary (color, mass, owner);
 - a **value** is what currently *fills* the slot (red, 4 kg, Alice).
 
@@ -131,11 +131,11 @@ Two consequences:
 2. Values may contain references to objects (Closure Rule 2, §3.8):
    `O ↪ V`. A value can be a pointer, not just raw data.
 
-![Layer 2 — HAS, PROPERTY, VALUE](diagrams/layer-2-HAS-PROPERTY-VALUE.svg)
+![Layer 2, HAS, PROPERTY, VALUE](diagrams/layer-2-HAS-PROPERTY-VALUE.svg)
 
 ---
 
-## 3.5 Layer 3 — DOES, TRANSITION: the dynamic axis
+## 3.5 Layer 3, DOES, TRANSITION: the dynamic axis
 
 Objects act. DOES is the dynamic relation, and its noun is the
 **transition**: a rule of the form
@@ -144,13 +144,13 @@ Objects act. DOES is the dynamic relation, and its noun is the
 t  :  V_in  →  V_out
 ```
 
-**input, transform, output** — nothing more. Input and output are the
+**input, transform, output**, nothing more. Input and output are the
 transition's boundary interface: they are what makes it a *function*
 rather than a label, and they are where one entity's doing touches
 another entity's holdings. The input need not be the same object as
 the output; only the interface must be declared.
 
-![Layer 3 — DOES, TRANSITION](diagrams/layer-3-DOES-TRANSITION.svg)
+![Layer 3, DOES, TRANSITION](diagrams/layer-3-DOES-TRANSITION.svg)
 
 Transitions compose. If `t₁ : A → B` and `t₂ : B → C`, then
 
@@ -158,7 +158,7 @@ Transitions compose. If `t₁ : A → B` and `t₂ : B → C`, then
 t₂ ∘ t₁  :  A  →  C
 ```
 
-and the composite is *itself a transition* — same shape, larger grain.
+and the composite is *itself a transition*, same shape, larger grain.
 This is the recursion result: a step is a small process, a process is
 a large step, and "transition between steps" and "transition between
 processes" are one operation applied at different scales. Composition
@@ -171,10 +171,10 @@ under composition is definitional.
 
 ---
 
-## 3.6 Layer 4 — PROCESS: the reification bridge
+## 3.6 Layer 4, PROCESS: the reification bridge
 
 A transition is a rule; but rules need to be named, instantiated,
-paused, retried, and tracked — that is, they need to bear IS-facts
+paused, retried, and tracked, that is, they need to bear IS-facts
 and HAS-facts. A **process** is exactly that move: a transition
 reified as an object.
 
@@ -182,7 +182,7 @@ reified as an object.
 ρ  :  T  →  O
 ```
 
-![Layer 4 — PROCESS](diagrams/layer-4-PROCESS.svg)
+![Layer 4, PROCESS](diagrams/layer-4-PROCESS.svg)
 
 The reification map `ρ` takes a transition and returns an object that
 *represents* it, so the whole Layer 0–2 machinery applies to it: a
@@ -196,10 +196,10 @@ into the static one, so one set of machinery serves both.
 
 ---
 
-## 3.7 Closure Rule 1 — kinds are objects
+## 3.7 Closure Rule 1, kinds are objects
 
 The first seal. IS needs a codomain: "is a mammal" has to point at
-something — a kind — and "kind" appears nowhere in the eight-term
+something, a kind, and "kind" appears nowhere in the eight-term
 list. We had two choices: add TYPE as a ninth primitive, or declare
 that kinds are themselves objects (abstract ones). We chose the
 latter.
@@ -210,7 +210,7 @@ IS  ⊆  O × O       (codomain is O, not a separate TYPE sort)
 
 ![Closure Rule 1](diagrams/closure-rule-1-kinds-are-objects.svg)
 
-This is how every serious knowledge representation already works — a
+This is how every serious knowledge representation already works, a
 class is itself a resource you can make claims about (RDF made this
 move with `rdf:type rdfs:Class`). Kinds have properties (mammals *have*
 warm blood as a defining property), which means they were already
@@ -222,7 +222,7 @@ at different grains. No ninth primitive is needed.
 
 ---
 
-## 3.8 Closure Rule 2 — values hold references
+## 3.8 Closure Rule 2, values hold references
 
 The second seal. A value does not have to be raw data; it can be a
 reference to another object.
@@ -243,12 +243,12 @@ value refers to the team object.
 relation between objects is expressible as a property whose value
 happens to be an object-reference. We do not need to reify the
 relation as its own sort unless the relation itself needs to bear
-further properties — at which point we reify it as an object, which
+further properties, at which point we reify it as an object, which
 is the same move ER diagrams make with junction entities.
 
 ---
 
-## 3.9 Closure Rule 3 — process is reified transition
+## 3.9 Closure Rule 3, process is reified transition
 
 The third seal. "Process" must not mean anything a transition doesn't
 already cover, or it is a redundant ninth sort.
@@ -264,8 +264,8 @@ reification map `ρ`. It inherits all the object machinery (IS, HAS)
 without adding any new sort.
 
 **Consequence.** The dynamic axis (Layer 3) folds cleanly into the
-static axis (Layers 0–2). One set of machinery — IS, HAS, OBJECT,
-PROPERTY, VALUE — serves both. Process is a role played by an object,
+static axis (Layers 0–2). One set of machinery, IS, HAS, OBJECT,
+PROPERTY, VALUE, serves both. Process is a role played by an object,
 not a separate ontological category.
 
 ---
@@ -321,5 +321,5 @@ shorthand for.
 
 ---
 
-*Next: [Chapter 4 — Proofs](04-proofs.md): the three theorems
+*Next: [Chapter 4, Proofs](04-proofs.md): the three theorems
 (closure, completeness, extensibility) in full rigor.*

@@ -1,4 +1,4 @@
-# Primmel SMART — the platform documentation
+# Primmel SMART, the platform documentation
 
 <div class="cover-hero reveal reveal-1">
   <div class="cover-hero__eyebrow">The Primmel SMART platform documentation</div>
@@ -10,7 +10,7 @@
     <strong>Primmel</strong>, the typed, executable modelling language;
     the platform machinery that runs it; <strong>Primmel SST</strong>,
     the simulated-twin framework; and <strong>Confium</strong>, the
-    certificate PKI — the basis every 〈scope〉 SMART program is built on.
+    certificate PKI, the basis every 〈scope〉 SMART program is built on.
   </p>
   <div class="cover-hero__actions">
     <a class="cover-cta cover-cta--primary" href="foundation/01-intuition/">
@@ -30,7 +30,7 @@
 The platform's documentation, component by component: the proved
 foundation, the language, the runtime machinery, the simulated-twin
 framework, the certificate PKI, and the classroom. A language, the
-machinery, a framework, a PKI — these are the parts of one platform,
+machinery, a framework, a PKI, these are the parts of one platform,
 not rungs of a ladder. Programs built on the platform document
 themselves on their own sites.
 
@@ -71,7 +71,7 @@ themselves on their own sites.
     <div class="volume-card__body">
       <h3 class="volume-card__title">Primmel SST</h3>
       <p class="volume-card__desc">The simulated-SMART-twin framework: simulated instruments,
-        servers and clients of a twin endpoint — the twin machinery with no hardware.</p>
+        servers and clients of a twin endpoint, the twin machinery with no hardware.</p>
       <div class="volume-card__meta">The framework repos</div>
     </div>
   </a>
@@ -81,7 +81,7 @@ themselves on their own sites.
     <div class="volume-card__body">
       <h3 class="volume-card__title">Confium</h3>
       <p class="volume-card__desc">The threshold-cryptography PKI adopted for the platform's
-        certificate operations — a component of the certificate machinery: the modes, the
+        certificate operations, a component of the certificate machinery: the modes, the
         binding matrix, the version contract.</p>
       <div class="volume-card__meta">The PKI section</div>
     </div>
@@ -92,7 +92,7 @@ themselves on their own sites.
     <div class="volume-card__body">
       <h3 class="volume-card__title">The Classroom</h3>
       <p class="volume-card__desc">The layered curriculum, tiers 0–5: the tour, the hands-on,
-        the duality, the operator's chain, authoring, the dual demo — stop at your depth.</p>
+        the duality, the operator's chain, authoring, the dual demo, stop at your depth.</p>
       <div class="volume-card__meta">The path through it all</div>
     </div>
   </a>
@@ -102,7 +102,7 @@ themselves on their own sites.
     <div class="volume-card__body">
       <h3 class="volume-card__title">Programs built on the platform</h3>
       <p class="volume-card__desc">〈scope〉 SMART programs are built on Primmel SMART. OIML
-        SMART — the Recommendations, the OIML-CS platform, the instrument twins, CNML — is
+        SMART, the Recommendations, the OIML-CS platform, the instrument twins, CNML, is
         the first. Its volumes live on its own site.</p>
       <div class="volume-card__meta">oimlsmart.org</div>
     </div>
@@ -130,8 +130,8 @@ themselves on their own sites.
       desugars into composition and application.
     </p>
     <div class="brand-split__volumes">
-      <a href="foundation/">Volume 0 — Foundation</a>
-      <a href="primmel/">Volume I — Kernel</a>
+      <a href="foundation/">Volume 0, Foundation</a>
+      <a href="primmel/">Volume I, Kernel</a>
     </div>
   </div>
 
@@ -149,11 +149,11 @@ themselves on their own sites.
     <p class="brand-split__desc">
       The International Organization of Legal Metrology's SMART
       program: executable Recommendations, the OIML-CS certification
-      platform, measuring-instrument twins, CNML certificates — built
+      platform, measuring-instrument twins, CNML certificates, built
       on the Primmel SMART platform, documented on its own site.
     </p>
     <div class="brand-split__volumes">
-      <a href="https://www.oimlsmart.org/">oimlsmart.org — the program site</a>
+      <a href="https://www.oimlsmart.org/">oimlsmart.org, the program site</a>
       <a href="https://www.oimlsmart.org/docs/">The program volumes</a>
     </div>
   </div>
@@ -221,12 +221,12 @@ at [oimlsmart.org](https://www.oimlsmart.org/docs/).
 Volume 0 assumes nothing but literacy about formal systems. Volume I
 assumes Volume 0 (chapter 2 of Volume I operationalizes the formal
 system). The platform, SST and Confium sections assume Volumes 0–I.
-The classroom reads across all of them — stop at your depth. The
+The classroom reads across all of them, stop at your depth. The
 Annexes are reference material, readable out of order.
 
 ### Conventions
 
-- **Status markers** — ● exists in the running system · ◐ partial ·
+- **Status markers**, ● exists in the running system · ◐ partial ·
   ○ planned in v3.
 - **Syntax blocks** tagged `prl` are Primmel v3 syntax.
 - **Diagrams** are hand-authored SVG in each volume's `diagrams/`

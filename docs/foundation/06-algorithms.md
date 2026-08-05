@@ -1,4 +1,4 @@
-# Chapter 6 — Algorithms
+# Chapter 6, Algorithms
 
 > *In this chapter:* the five algorithms that bridge the Tier 0 kernel
 > and the Tier 1 surface of
@@ -32,7 +32,7 @@ surface language and the kernel runtime.
 
 ---
 
-## 6.2 Elaboration — Tier 1 to Tier 0
+## 6.2 Elaboration, Tier 1 to Tier 0
 
 The lowering pass. Takes a surface statement in the eight-primitive
 vocabulary and produces the equivalent kernel triple.
@@ -51,7 +51,7 @@ Rex IS Mammal
 
 **Steps:**
 
-1. Parse — recognize `IS` as the classification relation.
+1. Parse, recognize `IS` as the classification relation.
 2. Recognize the reserved property `κ` (kind).
 3. Lower to a HAS-fact in the kernel.
 
@@ -63,8 +63,8 @@ HAS(Rex, κ, Mammal)
 
 **Properties:**
 
-- *Total* — every well-formed Tier 1 statement elaborates.
-- *Meaning-preserving* — the kernel triple is logically equivalent to
+- *Total*, every well-formed Tier 1 statement elaborates.
+- *Meaning-preserving*, the kernel triple is logically equivalent to
   the surface statement.
 - *Linear time* in the size of the surface statement.
 
@@ -74,7 +74,7 @@ local rewrite; no global analysis is required.
 
 ---
 
-## 6.3 Resugaring — Tier 0 to Tier 1
+## 6.3 Resugaring, Tier 0 to Tier 1
 
 The inverse projection for display. Takes a kernel triple and, if it
 matches a known desugaring pattern, projects it back to surface
@@ -114,14 +114,14 @@ Rex IS Mammal
 - Round-tripping (serialize → deserialize → display) requires the
   projection to be invertible.
 
-**Constraint:** resugaring is *partial* — not every kernel triple has
+**Constraint:** resugaring is *partial*, not every kernel triple has
 a surface form. The kernel is strictly more expressive than the
-surface (by design — the kernel is the trusted base; the surface is
+surface (by design, the kernel is the trusted base; the surface is
 sugar). Triples with no surface form are displayed as themselves.
 
 ---
 
-## 6.4 Reification — the ρ map
+## 6.4 Reification, the ρ map
 
 The move that turns a transition (a rule) into an object (a thing
 that can bear facts).
@@ -148,12 +148,12 @@ can be queried, paused, retried, serialized like any other object.
 be an ephemeral stack frame that only the runtime can observe. With
 reification, *the running process is an object in the model*, and the
 trace is the model at instance grain. This is what enables provenance,
-replay, and live introspection — see
+replay, and live introspection, see
 [Chapter 10 §10.3](10-executable-ground.md).
 
 ---
 
-## 6.5 Evaluation — the runtime protocol
+## 6.5 Evaluation, the runtime protocol
 
 How a transition fires. Takes a transition and a bound input,
 produces a new state and an output.
@@ -188,7 +188,7 @@ process" versus "one step." This is the scale-invariance result
 
 ---
 
-## 6.6 State-location — the σ function
+## 6.6 State-location, the σ function
 
 Identifies where a particular execution currently stands in a composed
 process.
@@ -211,18 +211,18 @@ runtime context).
 **Steps:**
 
 1. Read the process definition `p` from `e`'s IS-facts.
-2. Read the `current-position` HAS-fact — this is `t_i`, the currently
+2. Read the `current-position` HAS-fact, this is `t_i`, the currently
    active (or next) transition.
 3. Read the bound input values `I_i` for the current transition.
 4. Read the bound output values `O_i` produced so far.
 
-**Output:** `(p, t_i, I_i, O_i)` — a full positional snapshot.
+**Output:** `(p, t_i, I_i, O_i)`, a full positional snapshot.
 
 **Why this matters:** this is what "state" means in this system. It
 is *not* a separate primitive; it is a tuple of values, two of which
 are object-references (the process `p` and the current transition
 `t_i`), and two of which are value-bags (`I_i`, `O_i`). The whole
-"state" is bookkeeping over the kernel's existing sorts — see
+"state" is bookkeeping over the kernel's existing sorts, see
 [Chapter 7 §STATE](07-derived-vocabulary-proofs.md) for the full
 derivation.
 
@@ -243,7 +243,7 @@ annex). For the foundation's claims to hold in practice:
    statement.
 
 3. **Reification must produce objects that bear IS and HAS like any
-   other.** No special-casing — a process instance is an object,
+   other.** No special-casing, a process instance is an object,
    subject to the same machinery.
 
 4. **Evaluation must respect composition.** The same protocol handles
@@ -251,12 +251,12 @@ annex). For the foundation's claims to hold in practice:
    for "the whole."
 
 5. **State-location must be a tuple of values.** No special "state"
-   primitive — the location is `(p, t_i, I_i, O_i)`, all of which are
+   primitive, the location is `(p, t_i, I_i, O_i)`, all of which are
    existing sorts.
 
 A conforming runtime implements these five algorithms correctly and
 nothing more. Everything else is definition rather than
-implementation. This is the *small trusted base* property — see
+implementation. This is the *small trusted base* property, see
 [Chapter 10 §10.6](10-executable-ground.md).
 
 ---
@@ -264,13 +264,13 @@ implementation. This is the *small trusted base* property — see
 ## 6.8 Where these algorithms live downstream
 
 - **Elaboration** is the Primmel compiler's lowering pass (Volume I,
-  chapter 11 — validation).
+  chapter 11, validation).
 - **Resugaring** is the platform's query layer (platform annex).
 - **Reification** is the process-instance factory (Volume I, chapter
-  4 — processes).
+  4, processes).
 - **Evaluation** is the runtime executor (platform annex).
 - **State-location** is the live-twin introspection API (Volume I,
-  chapter 14 — live twins).
+  chapter 14, live twins).
 
 Each of these is one concrete implementation of an algorithm defined
 here. The definitions in this chapter are the contract; the
@@ -278,6 +278,6 @@ implementations are downstream.
 
 ---
 
-*Next: [Chapter 7 — Derived Vocabulary Proofs](07-derived-vocabulary-proofs.md):
+*Next: [Chapter 7, Derived Vocabulary Proofs](07-derived-vocabulary-proofs.md):
 the six retired terms (STATE, STEP, CAN, RECEIVES, RELATES-TO,
 BECOMES) reconstructed as materialized views.*

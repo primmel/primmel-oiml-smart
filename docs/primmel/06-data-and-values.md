@@ -1,6 +1,6 @@
-# Chapter 6 — Data and values
+# Chapter 6, Data and values
 
-> *In this chapter:* the value layer beneath every tier — where records
+> *In this chapter:* the value layer beneath every tier, where records
 > live (registries) versus how values are shaped (data classes), the
 > five ways a variable obtains its value, the QuantityValue contract
 > that makes INV-1 enforceable, tables and dimension-keyed profiles,
@@ -9,17 +9,17 @@
 ---
 
 The previous chapters modelled *things*: subjects, processes, mappings.
-This chapter models *what they carry* — values: the 500 kg of `e_max`,
+This chapter models *what they carry*, values: the 500 kg of `e_max`,
 the 20 ± 2 °C of a reference condition, the 0.5 × p_LC of an MPE tier.
 If values are untyped, un-homed, or baked into prose, everything built
-on them — constraints, derivations, verdicts — inherits the rot. Every
+on them, constraints, derivations, verdicts, inherits the rot. Every
 value concept has one canonical definition point; every use references it.
 
 ## 6.1 Registries and data classes
 
 Primmel separates two data constructs that untyped modellers conflate:
 
-- A **data class** is a *pure structure* — a record shape with typed
+- A **data class** is a *pure structure*, a record shape with typed
   fields, nested value objects, no independent existence. An `Address`,
   a `ConditionsLogEntry`, a `QuantityValue`: embedded where used,
   meaningless apart from their container.
@@ -39,16 +39,16 @@ The running system encodes this directly. The entity classes of
 
 At build time each such class compiles to one IndexedDB store with the
 declared indexes (`browser/build/data-types-codegen.ts` → the store
-manifest). Classes may *share* a store behind a discriminator —
+manifest). Classes may *share* a store behind a discriminator , 
 `IssuingAuthority` and `TestLaboratory` extend `Organization` and live
 together in the `organizations` store, indexed by `kind`. Records link
 by typed references: a `reference(X)` field carries an `on_delete`
-edge — the FK graph is declared on the class, not reconstructed.
+edge, the FK graph is declared on the class, not reconstructed.
 
 The workspace is where registry records live on disk. A **`.pws/`
 directory** (Primmel Workspace) holds one subdirectory per registry,
 one YAML file per record, and a `manifest.yaml` pinning the model
-version (○ — the running system keeps records in IndexedDB; `.pws/`
+version (○, the running system keeps records in IndexedDB; `.pws/`
 is the v3 on-disk packaging). It is the third model kind of chapter 1:
 it *speaks for the evidence*.
 
@@ -67,20 +67,20 @@ The discipline that falls out of the distinction:
 ## 6.2 Measurement variables and their sources
 
 Every quantity that flows through testing and evaluation is a declared
-**variable**, and every variable states *how its value is obtained* —
+**variable**, and every variable states *how its value is obtained* , 
 its **source**. The taxonomy is closed; five values cover every case:
 
 | Source | The value comes from… | R 60 example |
 |---|---|---|
-| `declared` | a statement by the manufacturer or applicant — a rating, not an observation | `e_max`, `n_lc`, `p_lc` |
+| `declared` | a statement by the manufacturer or applicant, a rating, not an observation | `e_max`, `n_lc`, `p_lc` |
 | `measured` | direct observation by the test operator during a run | `t_1`, `t_2` (test temperatures), creep-test `t` |
 | `derived` | a formula over other variables, evaluated bottom-up | `e_l` = (avg indication − reference) / `conversion_factor_f` |
 | `computed` | evaluated by the engine in the run's calculation context | `v_min` = (`e_max` − `e_min`) / (`n_lc` × `f`); `mpc` = `lookupMPE(d_max, accuracy_class, p_lc)` |
 | `lookup` | a table or profile keyed by classification dimensions | `mpe` from the R 60-1 Table 4 tiers |
 
 ● The source taxonomy is live in both places variables are declared:
-the symbol registry (`data/r60/specification/symbols.yaml` — four of
-the five) and conformance-test variables (`data/schemas/cc.yaml` — all
+the symbol registry (`data/r60/specification/symbols.yaml`, four of
+the five) and conformance-test variables (`data/schemas/cc.yaml`, all
 five, with `derivation:` declared for `derived`/`computed`).
 
 Source typing is not documentation; it drives the machinery:
@@ -94,7 +94,7 @@ Source typing is not documentation; it drives the machinery:
   (`model.parameters.e_max`, `sample.test_context.d_max`); a `lookup`
   one its table and key dimensions.
 - **Re-execution.** Verdict re-evaluation (INV-5) replays derivations
-  over stored leaves only — a source that cannot be replayed or
+  over stored leaves only, a source that cannot be replayed or
   re-read is a modelling error.
 
 ## 6.3 QuantityValue: the INV-1 contract
@@ -108,30 +108,30 @@ QuantityValue = value + unit [ + uncertainty ] [ + tolerance ]
 
 - **value + unit** are inseparable. `500 kg` is a value; `500` is a
   defect. The attribute registry values parameters exclusively through
-  QuantityValue maps — `model.parameters.e_max` is `{ value: 500,
+  QuantityValue maps, `model.parameters.e_max` is `{ value: 500,
   unit: kg }`, never a raw number.
-- **tolerance** marks the symmetric band of a *specified* value — the
+- **tolerance** marks the symmetric band of a *specified* value, the
   designed side of the duality: the reference-condition entry
   `{ value: 20, unit: degC, tolerance: 2 }` of
   `data/r60/model/conditions.yaml`. Tolerance belongs to conditions
   and ratings, not to measurement results.
-- **uncertainty** marks the dispersion of a *measured* value (§6.4) —
+- **uncertainty** marks the dispersion of a *measured* value (§6.4) , 
   the observed side. The two never merge: a tolerance states what the
   design promises, an uncertainty what the measurement supports.
 
 The **unit register** (● `data/r60/value-types.yaml`) is layered:
 SI base (`kg`, `m`, `s`, `K`, `A`), SI derived (`N` = kg⋅m/s²),
 non-SI accepted (`degC`, `min`, `g`, `t`, `kPa`, `%RH`), and **domain
-units** — R 60's `v` (verification interval), `counts`,
+units**, R 60's `v` (verification interval), `counts`,
 `dimensionless`. A rec package extends the register by *adding*
 domain units; it never redefines SI entries.
 
 Above units sit **quantity kinds** (●
 `data/schemas/quantity-kinds.yaml`): the closed registry mapping every
-unit to its kind — `mass` (kg, g, t), `verification_interval` (v),
+unit to its kind, `mass` (kg, g, t), `verification_interval` (v),
 `temperature` (degC), `dimensionless`, `ratio` (%), and committed
 domain kinds (`voltage-ratio` for mV/V, `volume-fraction` for ppm).
-The kind — not the unit string — is what coherence checking compares:
+The kind, not the unit string, is what coherence checking compares:
 `quantity-coherence` rejects a `verification_interval` observable
 against a `mass` limit outright (the R 60 "F2" defect class), while a
 dimensionless literal adopts the other side's kind. Units tell you how
@@ -141,16 +141,16 @@ to print; kinds tell you what may be compared.
 
 A measured QuantityValue may carry a **MeasurementUncertainty** budget,
 GUM-shaped: Type A components (statistical analysis of repeated
-observations), Type B components (other means — certificates,
+observations), Type B components (other means, certificates,
 specifications), combined into a standard uncertainty with its
-coverage factor (◐ — the form layer declares uncertainty budgets on
+coverage factor (◐, the form layer declares uncertainty budgets on
 equipment and measurement fields, e.g. the weights form at `k = 2`).
 
 Uncertainty is data, not prose, because it participates in validity:
 
 - **Reference-equipment budgets** are ceilings a run must respect.
   R 91-2 (4.5, 5.2) caps the reference speedometer's expanded
-  uncertainty at 0.6 km/h below 100 km/h and 0.6 % above — piecewise
+  uncertainty at 0.6 km/h below 100 km/h and 0.6 % above, piecewise
   tiers with exactly the MPE-tier shape, encoded as tier-mode profiles
   (`{ min, max?, factor, mode: absolute|relative }`) and evaluated
   through the same lookup machinery (`engine-context.ts`
@@ -162,17 +162,17 @@ Uncertainty is data, not prose, because it participates in validity:
 
 Uncertainty links every measured value to its **traceability chain**:
 the unbroken sequence of calibrations from the working instrument up
-to a reference standard — the weights' OIML R 111 class, the CGM's
+to a reference standard, the weights' OIML R 111 class, the CGM's
 certificate. The chain is modelled as records, each carrying its
 validity window (§6.6), so "traceable" is a queryable graph property
-(◐ — equipment and calibration records are modelled; the chain as a
+(◐, equipment and calibration records are modelled; the chain as a
 first-class vocabulary class lands with the core measurement module,
 Volume II).
 
 ## 6.5 Tables and profiles
 
-Normative lookup data — R 60-1 Table 4's MPE tiers, the per-class run
-counts, the IEC 61000-4 EMC severities — is **modelled as data, never
+Normative lookup data, R 60-1 Table 4's MPE tiers, the per-class run
+counts, the IEC 61000-4 EMC severities, is **modelled as data, never
 baked into OCL**. Two complementary shapes live in
 `data/r60/specification/tables.yaml`:
 
@@ -182,18 +182,18 @@ baked into OCL**. Two complementary shapes live in
   twelve rows; `test_runs` four. A table answers "the row where …".
 - A **profile** is a dimension-keyed binding: `profiles.mpe_tiers` has
   `dimension: accuracy_class`, `unit: v`, and a `binding:` mapping
-  each dimension value to its tier list — `C: [{min: 0, max: 500,
+  each dimension value to its tier list, `C: [{min: 0, max: 500,
   factor: 0.5}, …, {min: 2000, factor: 1.5}]`. A profile answers "for
   this classification, the bound value is …".
 
 Lookup semantics are defined, not conventional: the first tier with
 `min ≤ load < max` wins (missing `max` unbounded), and the MPE value
 is `factor × p_lc`. The same mechanism instantiates per-class
-repetition — R 60's `test_runs` profile is why class A/B cells get 5
+repetition, R 60's `test_runs` profile is why class A/B cells get 5
 load applications and C/D 3.
 
 The anchoring rule applies to numbers inside expressions (§1.4):
-typing `0.5 * p_lc` into a requirement limit is the tell — the 0.5 is
+typing `0.5 * p_lc` into a requirement limit is the tell, the 0.5 is
 a table cell, and the requirement must *reference* the lookup
 (`lookupMPE(load, accuracy_class, p_lc)`), so a corrected row
 re-judges every dependent verdict without an expression edit.
@@ -206,22 +206,22 @@ everything references it. Three primitive value types (●
 `value-types.yaml`: `date`, `datetime`, `duration`) plus the
 structures built on them:
 
-- **Periods** — an interval with start and end; the process
+- **Periods**, an interval with start and end; the process
   vocabulary's timer events (chapter 4) fire on durations and
-  deadlines (◐ — recurrence for re-verification cycles is planned).
-- **Validity windows** — the period for which a record holds:
+  deadlines (◐, recurrence for re-verification cycles is planned).
+- **Validity windows**, the period for which a record holds:
   certificates, calibration records, accreditations. "Currently valid"
   is a computed predicate, not a status flag that drifts (◐).
-- **Edition pinning** — every definition executed in a run is
+- **Edition pinning**, every definition executed in a run is
   version-pinned in the test report (● INV-8), so a later edition
   re-judges history explicitly instead of silently. Chapter 8 treats
   editions as lifecycle; chapter 13 the diff machinery.
-- **Served values and freshness windows** — a live twin serves its HAS
+- **Served values and freshness windows**, a live twin serves its HAS
   values *with timestamps*: a value without a time is not evidence, and
-  every `serve` binding declares its `fresh_within` window — how old a
+  every `serve` binding declares its `fresh_within` window, how old a
   value may be before it stops meaning anything. Past the window the
   value is stale, and stale degrades the verdict to `indeterminate`,
-  never a silent pass (○ — the monitor's freshness step, chapter 14,
+  never a silent pass (○, the monitor's freshness step, chapter 14,
   §14.5).
 
 ![The value layer](diagrams/data-and-values.svg)
@@ -277,12 +277,12 @@ profile mpe_tiers {
 - every stored class declares its `store`; shared stores declare the
   discriminator; `reference(X)` targets a registered class (●);
 - every QuantityValue carries `value` + `unit`; the unit resolves in
-  the unit register — a bare number is an INV-1 error, not a coercion;
+  the unit register, a bare number is an INV-1 error, not a coercion;
 - every unit maps to exactly one quantity kind; comparisons are
-  kind-coherent (`quantity-coherence` — ●); unmapped units are
+  kind-coherent (`quantity-coherence`, ●); unmapped units are
   warnings; extending the kind registry is a metamodel decision;
 - a `derived`/`computed` variable declares its derivation; a `lookup`
-  variable declares its table and key dimensions (◐ — links resolved);
+  variable declares its table and key dimensions (◐, links resolved);
 - profile bindings key only on declared dimension values; a binding
   key outside its `dimension`'s values is an error (●);
 - time values match their ISO 8601 patterns; a validity window's end
@@ -293,8 +293,8 @@ profile mpe_tiers {
 - A registry is a place where records are kept (store + indexes,
   referenceable); a data class is pure structure, identified by its
   container. The workspace `.pws/` is registries on disk.
-- Every variable declares its source — declared, measured, derived,
-  computed, lookup — and the source drives evaluation order, evidence
+- Every variable declares its source, declared, measured, derived,
+  computed, lookup, and the source drives evaluation order, evidence
   requirements, and re-execution.
 - INV-1: no bare numbers. QuantityValue = value + unit, plus tolerance
   on the designed side and GUM uncertainty on the measured side.
@@ -303,5 +303,5 @@ profile mpe_tiers {
 - Time is first-class: date/datetime/duration, periods, validity
   windows, and edition pinning (INV-8).
 
-*Next: [Chapter 7 — Expressions](07-expressions.md): OCL as the one
-rule language — stereotypes, binding, and the table functions.*
+*Next: [Chapter 7, Expressions](07-expressions.md): OCL as the one
+rule language, stereotypes, binding, and the table functions.*

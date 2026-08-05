@@ -1,6 +1,6 @@
-# Chapter 7 — Expressions
+# Chapter 7, Expressions
 
-> *In this chapter:* the one rule language — why every computable
+> *In this chapter:* the one rule language, why every computable
 > statement in Primmel is OCL, the stereotype anatomy of a statement,
 > how inputs are bound, and the table functions that keep normative
 > numbers out of expressions.
@@ -12,7 +12,7 @@ their *logic*. A modelled standard is dense with computable statements:
 requirement limits, conformance-test pass criteria, derived
 characteristics, applicability guards, gateway conditions, form
 derivations. Primmel's seventh design principle settles how they are
-written: **one rule language**. All computable statements are OCL —
+written: **one rule language**. All computable statements are OCL , 
 no JavaScript snippets, no spreadsheet formulas, no prose arithmetic.
 
 ## 7.1 One rule language (INV-9)
@@ -30,16 +30,16 @@ Three commitments are packed into that.
 
 - **Side-effect-free.** An expression reads values; it never writes
   them. Evaluation order between independent statements is free, and
-  re-evaluation is idempotent — the property verdict re-execution
+  re-evaluation is idempotent, the property verdict re-execution
   (INV-5) stands on.
 - **Closed under reference.** Every identifier resolves to a declared
-  element — a Symbol, an attribute on an aspect path, a context field,
+  element, a Symbol, an attribute on an aspect path, a context field,
   a table, or a built-in function. An unresolvable identifier is a
   load-time validation error, not a runtime `null` that silently
   falsifies a limit (● `browser/src/engine/ocl/validator.ts`).
 - **One execution.** The same statement runs in the test laboratory
   (a form's pass/fail as evidence is recorded) and in evaluation (the
-  verdict service judging the requirement) — one engine, one parse
+  verdict service judging the requirement), one engine, one parse
   (§7.4).
 
 The 2021 lineage's mini expression language is superseded. A bespoke
@@ -53,23 +53,23 @@ says what kind of statement it is:
 
 | Stereotype | Kind of statement | Output | Status |
 |---|---|---|---|
-| `inv` | **constraint** — a Boolean that must hold | Boolean | ● |
-| `derive` | **derivation** — a typed value computed from inputs | QuantityValue / typed value | ● |
-| `def` | **definition** — a named helper (derived property or query) reused by other statements | typed | ○ |
-| `init` | **initialization** — the initial value of a variable at instance creation | typed | ○ |
+| `inv` | **constraint**, a Boolean that must hold | Boolean | ● |
+| `derive` | **derivation**, a typed value computed from inputs | QuantityValue / typed value | ● |
+| `def` | **definition**, a named helper (derived property or query) reused by other statements | typed | ○ |
+| `init` | **initialization**, the initial value of a variable at instance creation | typed | ○ |
 
 The running system realizes the first two as first-class metamodel
 classes. A **Formula** (Module C) is a `derive` statement: it computes
-a derived attribute or characteristic from bound inputs —
+a derived attribute or characteristic from bound inputs , 
 `MR = D_max − D_min`, `E_L = (I − I_ref) / f`; its output is a *value*,
 never a judgment (INV-7). A **Constraint** is an `inv` statement: an
 intrinsic validity rule over attribute values, formula outputs, or
-measurements — coherence, distinct from a Requirement, which is a
+measurements, coherence, distinct from a Requirement, which is a
 regulatory *limit* on the secondary tier. `def` and `init` are
-reserved slots — shared sub-expressions, instance-time defaults; the
+reserved slots, shared sub-expressions, instance-time defaults; the
 current packages need neither (○).
 
-Every statement, whatever its stereotype, has the same declared shape —
+Every statement, whatever its stereotype, has the same declared shape , 
 visible in the ontology's Formula/Constraint field lists:
 
 ```text
@@ -98,7 +98,7 @@ limit:
 ```
 
 The `uses` list is the statement's *import declaration*: it makes the
-anchor set (§1.5) machine-readable — one HAS path, one IS path here;
+anchor set (§1.5) machine-readable, one HAS path, one IS path here;
 it lets the linker verify statically that every free identifier is
 accounted for (`verdict-inputs-resolve`); and it lets evaluation build
 the input scope without scanning the model at runtime. A Formula's
@@ -108,7 +108,7 @@ inputs bind the same way: `{ name: e_max, binding:
 Binding is where closed-under-reference stops being a slogan. An
 identifier not in `uses` fails at load; a `uses` entry the expression
 never mentions is dead weight and is flagged. The two directions keep
-expression and anchor set in lockstep — the property the coverage
+expression and anchor set in lockstep, the property the coverage
 theorem of chapter 1 audits over.
 
 ## 7.4 One statement, two executions
@@ -125,9 +125,9 @@ rule (requirement limit, during evaluation):
 
 The first statement executes **in testing**: the form engine evaluates
 it over recorded measurements and stores the computed value in the
-FormInstance — a fact (INV-7). The second executes **in evaluation**:
+FormInstance, a fact (INV-7). The second executes **in evaluation**:
 the verdict service evaluates the requirement's limit against the
-stored fact — a judgment. Both go through the same engine
+stored fact, a judgment. Both go through the same engine
 (`browser/src/engine/ocl/`); each canonical derivation is parsed **once
 per standard load** into a cached AST every consumer evaluates
 (`verdict-registry.ts`; `services/verdict.service.ts` at requirement
@@ -136,12 +136,12 @@ to drift.
 
 This is re-execution concretely: given definitions + facts, every
 judgment is reproducible. Change the class limits for a surveillance
-audit and re-judge last year's report — no re-testing, no divergence
+audit and re-judge last year's report, no re-testing, no divergence
 between lab computation and evaluator judgment (INV-5).
 
 Chapter 14 adds a third execution to the same parse: the Compliance
-Engine's monitors evaluate these statements over *served* values (○ —
-§14.5). There is no "online dialect" — a monitor runs the lab's OCL
+Engine's monitors evaluate these statements over *served* values (○ , 
+§14.5). There is no "online dialect", a monitor runs the lab's OCL
 verbatim, which is precisely what makes continuous compliance a judgment
 by the standard and not by a second semantics.
 
@@ -169,7 +169,7 @@ reference (`docs/ocl-dialect.md`). What an author actually writes:
 - **Series and statistics** (evidence-shaped functions):
   `reading_at(series, 'elapsed_min', 30, 'change_v')`, `window`,
   `drift_over`, `group_by`, `pairwise_max_difference`, `stddev`,
-  `m_sigma_coverage` — all fail loudly on empty windows or missing
+  `m_sigma_coverage`, all fail loudly on empty windows or missing
   axes, never a coerced zero.
 - **Quantity coherence.** Comparisons are checked by quantity kind
   (§6.3): a `verification_interval` observable against a `mass` limit
@@ -178,26 +178,26 @@ reference (`docs/ocl-dialect.md`). What an author actually writes:
 
 ## 7.6 Table functions
 
-Chapter 6's rule — *model the table, never bake numbers into OCL* — is
+Chapter 6's rule, *model the table, never bake numbers into OCL*, is
 enforced by giving expressions first-class lookup functions (●):
 
-- **`lookupMPE(load, accuracy_class, p_lc)`** — R 60-1 Table 4 as a
+- **`lookupMPE(load, accuracy_class, p_lc)`**, R 60-1 Table 4 as a
   function: resolve the `mpe_tiers` binding for the class, take the
   first tier with `min ≤ load < max` (missing `max` unbounded), return
   `factor × p_lc`. `mode: relative` tiers (`factor × load`) carry
   %-of-value limits (R 91).
-- **`lookupProfile('<profile>', <dimension_value>)`** — the generic
+- **`lookupProfile('<profile>', <dimension_value>)`**, the generic
   dimension-keyed accessor: `lookupProfile('n_LC_range', 'C')` →
   `{ min: 500, max: 10000 }`, `lookupProfile('test_runs', 'A')` → `5`
   (● `data/r60/specification/formulas.yaml`).
-- **`lookup('<table>', '<column>', { key: value, … })`** — row lookup
+- **`lookup('<table>', '<column>', { key: value, … })`**, row lookup
   into a column-indexed table; `column: '*'` returns the row.
 
 The linker enforces the discipline statically: `verdict-no-shadow`
 (no re-deriving a canonical quantity under another name),
 `verdict-restatement` (no restating a table's constants inline), and
 lookup-arity/key checks against the declared table schema. A correct
-MPE tier propagates by editing one cell — and every verdict derived
+MPE tier propagates by editing one cell, and every verdict derived
 from it is re-computable (§7.4).
 
 ## 7.7 The symbol DAG
@@ -210,7 +210,7 @@ a **kind** that says what sort of thing it names:
 |---|---|---|
 | `attribute` | an AttributeDefinition of the subject model (INV-2) | `e_max`, `d_max`, `n_lc`, `p_lc` |
 | `formula` | a derived quantity with `formula { display, expression, inputs }` | `mr`, `y`, `z`, `n` |
-| `observable` | a test-execution output — measured or derived during a run | `c_c`, `e_l`, `e_r`, `t_1`, `fault` |
+| `observable` | a test-execution output, measured or derived during a run | `c_c`, `e_l`, `e_r`, `t_1`, `fault` |
 
 `formula.inputs` lists the symbol's dependencies, and the edges form a
 **directed acyclic graph**: declared parameters are the leaves,
@@ -273,7 +273,7 @@ derive mpe on LoadCell {
 - closed under reference: every identifier resolves to a Symbol,
   attribute path, context field, table, or built-in (●);
 - every free identifier of a `limit.expression` appears in its `uses`
-  list, and every `uses` entry is used — both directions checked
+  list, and every `uses` entry is used, both directions checked
   (`verdict-inputs-resolve`);
 - stereotype/output coherence: an `inv` body is Boolean; a `derive`
   body declares a typed output; `def`/`init` stay empty for now (○);
@@ -298,9 +298,9 @@ derive mpe on LoadCell {
   evaluation (judgments), parsed once and cached for every consumer.
 - Table functions (`lookupMPE`, `lookupProfile`, `lookup`) keep
   normative numbers in tables, out of expressions.
-- The symbol registry — attribute, formula, observable kinds — is the
+- The symbol registry, attribute, formula, observable kinds, is the
   closed identifier space; `formula.inputs` form the DAG that orders
   evaluation.
 
-*Next: [Chapter 8 — Packages](08-packages.md): manifests, `uses`
+*Next: [Chapter 8, Packages](08-packages.md): manifests, `uses`
 composition, layering rules, modules, and versioning.*

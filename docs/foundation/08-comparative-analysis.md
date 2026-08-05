@@ -1,7 +1,7 @@
-# Chapter 8 — Comparative Analysis
+# Chapter 8, Comparative Analysis
 
 > *In this chapter:* how the IS–HAS–DOES foundation compares to the
-> major modelling methodologies — OPM, OOP, UML/fUML, SysML v2/KerML,
+> major modelling methodologies, OPM, OOP, UML/fUML, SysML v2/KerML,
 > BPMN, EXPRESS, RDF/OWL, and Petri nets/process calculi. Each is
 > examined for what it gets right, where it stops or fragments, and
 > what the foundation repairs. The chapter ends with a positioning
@@ -24,12 +24,12 @@ replaces execution.
 
 Call this the **escape hatch**: the place where every existing
 methodology stops modelling and starts trusting prose or code. The
-consequence is universal and expensive — the model and the
+consequence is universal and expensive, the model and the
 implementation become two artifacts, they drift, and the model
 becomes documentation rather than truth.
 
 The foundation has no escape hatch. A transition is $t : V_{in} \to V_{out}$,
-and the transform is not an opaque body — it decomposes
+and the transform is not an opaque body, it decomposes
 into smaller transitions, by the same composition operator, all the
 way down. Behavior is inside the model all the way down.
 
@@ -37,11 +37,11 @@ We will examine eight methodologies through this lens.
 
 ---
 
-## 8.2 OPM (ISO/PAS 19450:2015) — the near miss
+## 8.2 OPM (ISO/PAS 19450:2015), the near miss
 
 **OPM** (Object-Process Methodology, Dori's framework) is the closest
 intellectual relative. Its core thesis: the universe of a model
-contains exactly two things — objects and processes — where objects
+contains exactly two things, objects and processes, where objects
 exist and processes transform objects. Dori's polemic against UML was
 the same polemic implicit here: nine diagram types and hundreds of
 metaclasses are a symptom of missing foundations.
@@ -53,7 +53,7 @@ metaclasses are a symptom of missing foundations.
 - A unified object/process ontology (most methodologies split these).
 - A single diagram kind (OPD) instead of UML's dozen.
 - A controlled-natural-language rendering (OPL) paired with the
-  graphical view — superficially resembles the kernel/surface split
+  graphical view, superficially resembles the kernel/surface split
   of [Chapter 5](05-kernel-surface-architecture.md).
 
 ### Where OPM stops
@@ -65,15 +65,15 @@ Three failure points, each instructive:
    other. The foundation proves the unification (object = identity
    transition, [Chapter 5 §5.4](05-kernel-surface-architecture.md)).
    Because OPM has two irreducible sorts, every cross-sort
-   relationship requires dedicated link machinery — about a dozen
+   relationship requires dedicated link machinery, about a dozen
    hard-coded link types: consumption, result, effect, agent,
    instrument on the procedural side; aggregation, exhibition,
    generalization, instantiation on the structural side. These are
    the foundation's eight surface primitives *with no kernel
    underneath to elaborate into*.
 
-2. **OPM is not executable.** OPCAT offers "animated simulation" —
-   qualitative token-flashing over the diagram — not computation.
+2. **OPM is not executable.** OPCAT offers "animated simulation" , 
+   qualitative token-flashing over the diagram, not computation.
    There is no evaluation relation, no composition algebra. OPL looks
    formal but is actually a paraphrase generator. Both modalities are
    surface; there is no kernel.
@@ -94,7 +94,7 @@ a positional identifier, not a structural sub-shape
 
 ### Document status (for precision)
 
-ISO/PAS 19450:2015 is a *Publicly Available Specification* — not a
+ISO/PAS 19450:2015 is a *Publicly Available Specification*, not a
 full International Standard, not a Technical Report. A PAS is a
 fast-track deliverable approved by simple technical-committee vote;
 it skips the DIS/FDIS enquiry and formal ballot stages. Adoption
@@ -105,7 +105,7 @@ of a modelling standard.
 
 ---
 
-## 8.3 SysML v2 / KerML — the strongest precedent
+## 8.3 SysML v2 / KerML, the strongest precedent
 
 The SysML v2 effort concluded, after two decades of living with UML's
 foundationless metamodel, exactly what the foundation concludes: it
@@ -121,7 +121,7 @@ that elaborates into it.
   [Chapter 5](05-kernel-surface-architecture.md)'s structure.
 - The kernel is small and has declarative formal semantics (a
   mapping to formal logic).
-- Surface SysML is defined by elaboration into the kernel — exactly
+- Surface SysML is defined by elaboration into the kernel, exactly
   the elaboration algorithm of
   [Chapter 6 §6.2](06-algorithms.md).
 
@@ -131,8 +131,8 @@ the field arrived at the same architecture independently, as a
 
 ### Where SysML v2 / KerML stops (or differs)
 
-- KerML's semantics is **declarative/logical** — specifications to be
-  checked, model-theoretic. The foundation's is **operational** —
+- KerML's semantics is **declarative/logical**, specifications to be
+  checked, model-theoretic. The foundation's is **operational** , 
   processes to be run, evaluation-based. KerML models are checked
   for consistency; foundation models are executed.
 - KerML's kernel is **far larger than eight terms**. It carries more
@@ -142,16 +142,16 @@ the field arrived at the same architecture independently, as a
 ### What the foundation repairs (or does differently)
 
 The foundation's kernel is strictly smaller (one sort, one operation
-— [Chapter 5 §5.2](05-kernel-surface-architecture.md)). The cost is
+,  [Chapter 5 §5.2](05-kernel-surface-architecture.md)). The cost is
 that more of the work is in elaboration; the benefit is a smaller
 trusted base (see adoption thesis, §8.12).
 
 ---
 
-## 8.4 UML / fUML — the cost of retrofitting
+## 8.4 UML / fUML, the cost of retrofitting
 
-UML includes behavioral notations — activities, state machines,
-interactions — but UML as a general modelling language does not make
+UML includes behavioral notations, activities, state machines,
+interactions, but UML as a general modelling language does not make
 every ordinary UML model directly executable. The existence of the
 separate Foundational UML (fUML) specification is the evidence: OMG
 created a defined executable subset and supplied it with a separate
@@ -182,12 +182,12 @@ execution semantics.
 ### What the foundation repairs
 
 When the surface comes first, the kernel you can extract is whatever
-happens to be consistent — not what you would have designed. The
+happens to be consistent, not what you would have designed. The
 foundation's kernel came first, by construction.
 
 ---
 
-## 8.5 OOP (classes/methods) — the original escape hatch
+## 8.5 OOP (classes/methods), the original escape hatch
 
 Object-oriented modelling gives us class, object, attribute,
 operation, inheritance, association, composition. These are
@@ -204,27 +204,27 @@ predominantly structural concepts.
 ### Where OOP stops
 
 A method signature in a class diagram is a name, a parameter list,
-and a return type. That's it. The behavior — what actually happens
-between input and output — lives in a separate artifact (Java,
+and a return type. That's it. The behavior, what actually happens
+between input and output, lives in a separate artifact (Java,
 Python, C++) governed by a separate grammar, compiler, and
 semantics that OOP-as-modelling-notation never specifies.
 
 The diagram is a label for a black box; the box's contents are
 defined by a different language entirely. That's the translation
 gap: the model documents intent, the code implements it, and nothing
-formal ties the two together — which is why diagrams and codebases
+formal ties the two together, which is why diagrams and codebases
 drift out of sync in practice.
 
 ### What the foundation repairs
 
-The foundation has no escape hatch — a transition decomposes into
+The foundation has no escape hatch, a transition decomposes into
 smaller transitions by the same composition operator, terminating in
 whatever atomic transitions the runtime provides. Behavior is inside
 the model all the way down.
 
 ---
 
-## 8.6 BPMN — the inverse failure mode from OPM
+## 8.6 BPMN, the inverse failure mode from OPM
 
 BPMN is much closer to process modelling than OOP or ordinary UML. It
 defines tasks, events, gateways, flows, participants, messages, and
@@ -235,13 +235,13 @@ process execution concepts.
 ### What BPMN gets right
 
 - Execution semantics and interchange machinery in the spec.
-- Widely adopted — Camunda, Flowable, jBPM, and others.
+- Widely adopted, Camunda, Flowable, jBPM, and others.
 
 ### Where BPMN stops
 
 - Its semantics is defined by prose plus vendor behavior. Token flow
   through inclusive gateways was famously ambiguous for years.
-- Conformance means "roughly what the major engines do" — not a
+- Conformance means "roughly what the major engines do", not a
   mathematical invariant.
 - BPMN's task is a rounded rectangle with a name. What an action does
   is a string a human interprets.
@@ -256,7 +256,7 @@ the debt cannot accumulate.
 
 ---
 
-## 8.7 EXPRESS (ISO 10303 / STEP) — only the static half
+## 8.7 EXPRESS (ISO 10303 / STEP), only the static half
 
 EXPRESS is explicitly a data-specification language. ISO identifies
 data types and constraints as within its scope, while process
@@ -277,7 +277,7 @@ language.
 
 ### Where EXPRESS stops
 
-EXPRESS has no native behavior/transition layer — it's a pure
+EXPRESS has no native behavior/transition layer, it's a pure
 data-schema language. Behavior is always handled by a separate
 application protocol layered on top.
 
@@ -288,7 +288,7 @@ closed system. EXPRESS only ever formalized the structure half.
 
 ---
 
-## 8.8 RDF / OWL — closest formal relative, missing dynamic half
+## 8.8 RDF / OWL, closest formal relative, missing dynamic half
 
 ER's entities/attributes and RDF's subject-predicate-object triples
 both map directly onto OBJECT/PROPERTY/VALUE. OWL's class/subclass
@@ -298,12 +298,12 @@ hierarchy is IS. The foundation's IS-as-property move
 
 ### What RDF / OWL gets right
 
-- Decidable reasoning — OWL's description-logics reasoners give you
+- Decidable reasoning, OWL's description-logics reasoners give you
   decidability results, provably terminating inference over
   class/property assertions.
 - Mature serializations (Turtle, JSON-LD, RDF/XML) and a global
   identifier scheme (IRIs).
-- Kinds-as-objects: `rdf:type rdfs:Class` — the same move as
+- Kinds-as-objects: `rdf:type rdfs:Class`, the same move as
   Closure Rule 1.
 
 ### Where RDF / OWL stops
@@ -312,19 +312,19 @@ RDF's kernel operation is **entailment**, not evaluation. Description
 logics infer; they do not transition. RDF can say what is true of a
 process; it cannot run one. Like EXPRESS, standard OWL has weak
 native support for behavior/process (hence separate efforts like
-OWL-S or SHACL rules bolted on for dynamics) — again, only the
+OWL-S or SHACL rules bolted on for dynamics), again, only the
 static half.
 
 ### What the foundation repairs
 
 The foundation is RDF's structural minimalism married to an
-operational semantics — a cell in the design space that is genuinely
+operational semantics, a cell in the design space that is genuinely
 unoccupied. The cost: the foundation lacks OWL's decidability
 results (see [Chapter 11](11-open-questions.md)).
 
 ---
 
-## 8.9 Petri nets / π-calculus / process calculi — the opposite corner
+## 8.9 Petri nets / π-calculus / process calculi, the opposite corner
 
 Plain Petri nets, finite-state machines, the π-calculus, CCS, and the
 process calculi occupy the corner opposite from OPM.
@@ -343,14 +343,14 @@ process calculi occupy the corner opposite from OPM.
 - No object model, no properties, no notion of a thing that persists
   and bears attributes. Data must be encoded (colored tokens in
   Petri nets; channel-passing tricks in π-calculus).
-- The static half is missing — there is no HAS.
+- The static half is missing, there is no HAS.
 
 ### What they prove (and where the foundation differs)
 
 They confirm that the foundation's kernel ambitions are formally
 realizable while showing why a kernel alone, without the surface's
 ontological vocabulary, never became a general modelling language.
-The foundation's contribution is *not* the kernel — it is the
+The foundation's contribution is *not* the kernel, it is the
 two-tier architecture with the elaboration seam.
 
 ---
@@ -361,15 +361,15 @@ two-tier architecture with the elaboration seam.
 
 | Approach | Kernel with formal semantics | Executable | Derived (not axiomatic) ontology | Authoring surface | Adoption |
 |---|---|---|---|---|---|
-| OPM (ISO/PAS 19450) | No | No (animation only) | No — two sorts, ~12 link atoms | Yes (OPD/OPL) | Negligible; PAS, single toolchain |
+| OPM (ISO/PAS 19450) | No | No (animation only) | No, two sorts, ~12 link atoms | Yes (OPD/OPL) | Negligible; PAS, single toolchain |
 | OOP (classes/methods) | No | Partial (via host language) | No | Yes | High |
 | UML/SysML v1 | No (MOF is structural only) | Partially (fUML retrofit) | No | Yes, sprawling | High, declining |
 | SysML v2/KerML | Yes (declarative) | Specification-checking, not running | Partially | Yes | Emerging |
 | BPMN | No (prose semantics) | Yes | No | Yes | High |
 | EXPRESS (ISO 10303) | Yes (data-spec only) | No (out of scope) | Partially | Yes | High in niche |
 | RDF/OWL | Yes (model-theoretic) | Inference, not execution | Yes (`rdf:type` as data) | Layered vocabularies | High in its niche |
-| Petri nets / π-calculus | Yes (operational) | Yes | N/A — no object ontology | No | Academic + niches |
-| **Primmel foundation** | **Yes (operational)** | **Yes** | **Yes — objects, values, IS all derived** | **Yes (eight primitives via elaboration)** | **To be earned** |
+| Petri nets / π-calculus | Yes (operational) | Yes | N/A, no object ontology | No | Academic + niches |
+| **Primmel foundation** | **Yes (operational)** | **Yes** | **Yes, objects, values, IS all derived** | **Yes (eight primitives via elaboration)** | **To be earned** |
 
 The foundation is the only entry that satisfies all four columns
 simultaneously. Each prior approach satisfies one or two and pays
@@ -394,7 +394,7 @@ Three lessons from the comparative record:
    standards efforts converge.** Independent arrival at the same
    structure, after decades of attempting the alternative.
 
-The foundation is the intersection — and the OPM comparison is the
+The foundation is the intersection, and the OPM comparison is the
 cleanest way to articulate why the intersection was empty until now:
 everyone before either had the ontology or had the algebra, and the
 elaboration seam between them is the thing nobody built.
@@ -408,12 +408,12 @@ elaboration seam between them is the thing nobody built.
 Standardization does not drive adoption. Executability drives
 adoption, and standardization follows it.
 
-- **SQL** was adopted because engines existed — IBM System R, Oracle,
-  Ingres — and the standard codified interoperability among them.
-- **RDF** was adopted because triplestores existed — Jena, Sesame,
-  Stardog — and the standard codified interchange.
-- **BPMN** was adopted because engines existed — Camunda, Flowable,
-  jBPM — and the standard codified execution semantics (loosely).
+- **SQL** was adopted because engines existed, IBM System R, Oracle,
+  Ingres, and the standard codified interoperability among them.
+- **RDF** was adopted because triplestores existed, Jena, Sesame,
+  Stardog, and the standard codified interchange.
+- **BPMN** was adopted because engines existed, Camunda, Flowable,
+  jBPM, and the standard codified execution semantics (loosely).
 
 In every case, the engines came first. The standard followed.
 
@@ -425,11 +425,11 @@ implementation to interoperate with.
 ### What this means for the foundation
 
 The foundation's conforming-runtime trusted base (composition +
-application — [Chapter 6](06-algorithms.md)) is small enough that
+application, [Chapter 6](06-algorithms.md)) is small enough that
 independent implementations are a weekend project rather than a
 consortium effort, and small enough that a conformance test suite
 can be genuinely exhaustive. That is how the second and third
-implementations arise — and their existence is what a standard is
+implementations arise, and their existence is what a standard is
 *for*.
 
 This is the adoption strategy: ship the kernel, ship a reference
@@ -440,9 +440,9 @@ runtime, ship a conformance suite. Standardization follows.
 ## 8.13 What this chapter does not claim
 
 - **We do not claim the foundation is adopted.** Its adoption record
-  is "to be earned" — the matrix above says so explicitly.
+  is "to be earned", the matrix above says so explicitly.
 - **We do not claim individual primitives are novel.** Object,
-  property, value, transition, process — each has precedents. The
+  property, value, transition, process, each has precedents. The
   novelty is the conjunction under one closed algebra with the
   type/instance split applied symmetrically.
 - **We do not claim the foundation is the only possible foundation.**
@@ -460,6 +460,6 @@ the executable ground.
 
 ---
 
-*Next: [Chapter 9 — Categorical Foundations](09-categorical-foundations.md):
+*Next: [Chapter 9, Categorical Foundations](09-categorical-foundations.md):
 the kernel as a category; Curry–Howard–Lambek; objects as identity
 morphisms.*
