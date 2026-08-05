@@ -1,14 +1,14 @@
-# Chapter 2 — Claims and Falsifiability
+# Chapter 2, Claims and Falsifiability
 
 > *In this chapter:* what the IS–HAS–DOES modelling system commits to,
 > what it explicitly does not claim, and what would refute it. The
-> honest on-ramp to the formal material — read this before
+> honest on-ramp to the formal material, read this before
 > [Chapter 4 (Proofs)](04-proofs.md), because the proofs are relative
 > to one philosophical axiom that you should know you are accepting.
 
 ---
 
-## 2.1 What kind of claim is this?
+## 2.1 The kinds of claim
 
 A modelling system can be sold as many things: a notation, a
 convention, a philosophy, an aesthetic. The system in this volume is
@@ -37,9 +37,9 @@ commitment. We name it upfront so it cannot hide inside a proof.
 > **Claim-Form Axiom.** Every atomic descriptive claim about an
 > entity is one of three forms:
 >
-> 1. an **identity claim** — what it is;
-> 2. an **attribution claim** — what it has;
-> 3. a **transformation claim** — what it does.
+> 1. an **identity claim**, what it is;
+> 2. an **attribution claim**, what it has;
+> 3. a **transformation claim**, what it does.
 
 ![The Claim-Form Trichotomy](diagrams/claim-form-trichotomy.svg)
 
@@ -60,13 +60,13 @@ points at. If you doubt this, try restating each as one of the others
 without losing information:
 
 - "Rex is a mammal" → "Rex has mammal-hood"? You can rephrase, but you
-  lose the kind-membership assertion and gain a property — the
+  lose the kind-membership assertion and gain a property, the
   individuating work that IS was doing has to be re-encoded somewhere.
 - "The kettle has temperature 100°C" → "The kettle is at-100°C"?
   Possible, but at the cost of inventing a kind ("at-100°C-things")
-  for every value, which is obviously not what we mean.
+  for every value, which is not what we mean.
 - "The door swings open" → "The door has a swings-open property"?
-  Possible, but you lose the input-output structure of the behavior —
+  Possible, but you lose the input-output structure of the behavior , 
   the wind pushes, the hinges rotate, the door moves. HAS doesn't
   carry that structure; DOES does.
 
@@ -84,7 +84,7 @@ we *can* do is:
   dialogue (STATE, CAN, RECEIVES, RELATES-TO, BECOMES, STEP) reduces
   to one of the three forms (Chapter 7);
 - show that any proposed fourth form would have to do descriptive work
-  that IS/HAS/DOES cannot do — and watch for one to appear.
+  that IS/HAS/DOES cannot do, and watch for one to appear.
 
 The empirical record so far: no fourth form has appeared. Every
 candidate collapsed on inspection. A vocabulary that stops needing
@@ -93,13 +93,13 @@ available.
 
 ---
 
-## 2.3 What the theorems prove — and what they don't
+## 2.3 What the theorems prove, and what they don't
 
 The three theorems (Chapter 4) prove:
 
 | Theorem | Claim | Caveat |
 |---|---|---|
-| **Closure** | The three operations (composition, reification, embedding) never produce a ninth sort. | Unconditional — this is a property of the algebra itself. |
+| **Closure** | The three operations (composition, reification, embedding) never produce a ninth sort. | Unconditional, this is a property of the algebra itself. |
 | **Completeness** | Every atomic claim expressible under the Claim-Form Axiom has a primitive that catches it. | *Relative to the axiom.* If the axiom fails, the proof fails. |
 | **Extensibility** | Adding content (new kinds, properties, values, transitions) never requires new primitives; any proposed ninth primitive is either redundant or violates the axiom. | *Relative to the axiom.* Same dependency. |
 
@@ -119,7 +119,7 @@ surface:
 
 1. **Find a genuine fourth claim-form.** An atomic descriptive claim
    about an entity that is neither identity, nor attribution, nor
-   transformation — and that cannot be reduced to any of them
+   transformation, and that cannot be reduced to any of them
    without loss of information. This refutes Theorem 2's completeness
    and forces a ninth primitive.
 
@@ -132,18 +132,18 @@ surface:
    algebra.** The system's claims about executability, scale
    invariance, and reification (Chapter 10) are conditional on a
    conforming runtime. If the actual implementation contradicts the
-   algebra — e.g., a transition that the runtime cannot execute, or
-   a process instance the runtime cannot reify — the *practical*
+   algebra, e.g., a transition that the runtime cannot execute, or
+   a process instance the runtime cannot reify, the *practical*
    claims fall. (The algebra itself stands.)
 
 4. **Show that the Claim-Form Axiom is not just unproven but
-   incoherent.** If the trichotomy cannot be stated cleanly — e.g.,
+   incoherent.** If the trichotomy cannot be stated cleanly, e.g.,
    "transformation" turns out to depend on "attribution" in a way
-   that makes the three forms not actually mutually exclusive — then
+   that makes the three forms not actually mutually exclusive, then
    the system's structural argument fails.
 
-Anything else — "I don't find it useful," "I prefer UML," "the syntax
-is ugly" — is a preference, not a refutation.
+Anything else, "I don't find it useful," "I prefer UML," "the syntax
+is ugly", is a preference, not a refutation.
 
 ---
 
@@ -160,7 +160,7 @@ For honesty, the things we are *not* claiming:
   [Chapter 8](08-comparative-analysis.md); the foundation's adoption
   record is "to be earned."
 - **We do not claim novelty for any individual primitive.** Object,
-  property, value, transition, process — each has precedents in prior
+  property, value, transition, process, each has precedents in prior
   literature (Bunge–Wand–Weber ontology, RDF, π-calculus, OOP). The
   novelty is the *conjunction* under one closed algebra, with the
   type/instance split applied symmetrically across both axes.
@@ -191,12 +191,12 @@ Now that the stakes are clear:
   falsifiability, with the specific places the system could break.
 
 If at any point you find yourself thinking "but what about X?", note
-it — that is exactly the kind of pressure the system is designed to
+it, that is exactly the kind of pressure the system is designed to
 be tested by. Either X collapses into a composite (and you will see
 how), or X is a genuine fourth claim-form (and the system needs to
 know).
 
 ---
 
-*Next: [Chapter 3 — The Eight Terms and Their Closure Rules](03-eight-terms-and-closure-rules.md):
+*Next: [Chapter 3, The Eight Terms and Their Closure Rules](03-eight-terms-and-closure-rules.md):
 the formal algebra 𝓜.*

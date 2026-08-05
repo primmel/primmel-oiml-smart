@@ -1,8 +1,8 @@
-# Chapter 11 — Open Questions
+# Chapter 11, Open Questions
 
 > *In this chapter:* what the foundation does *not* claim, where it
 > could be falsified, and what future work remains. The honest close
-> of the volume — falsifiability is a feature, not a vulnerability.
+> of the volume, falsifiability is a feature, not a vulnerability.
 
 This chapter returns to the stakes set in
 [Chapter 2 (Claims and Falsifiability)](02-claims-and-falsifiability.md)
@@ -84,7 +84,7 @@ inconsistent with the rest of the algebra.
 
 ### 3. The runtime implementation
 
-Show that the implementation diverges from the algebra — e.g., a
+Show that the implementation diverges from the algebra, e.g., a
 transition that the runtime cannot execute, or a process instance
 the runtime cannot reify.
 
@@ -96,15 +96,15 @@ the runtime cannot reify.
 
 ### 4. The Claim-Form Axiom's coherence
 
-Show that the trichotomy cannot be stated cleanly — e.g., that
+Show that the trichotomy cannot be stated cleanly, e.g., that
 "transformation" depends on "attribution" in a way that makes the
 three forms not actually mutually exclusive.
 
 - **If found**: the system's structural argument fails.
 - **Status**: no such dependence has been demonstrated.
 
-Anything else — "I don't find it useful," "I prefer UML," "the
-syntax is ugly" — is preference, not refutation.
+Anything else, "I don't find it useful," "I prefer UML," "the
+syntax is ugly", is preference, not refutation.
 
 ---
 
@@ -135,11 +135,11 @@ The volume establishes the foundation. Much remains to build on it.
 ### Near-term
 
 - **Implement the runtime contract** ([Chapter 6](06-algorithms.md))
-  as an independent reference — separate from the Primmel compiler.
+  as an independent reference, separate from the Primmel compiler.
 - **Write the Cartesian-closed proof** for the kernel category.
 - **Build a conformance test suite** that any kernel implementation
   must pass.
-- **Specify the interchange format** — what a serialized model
+- **Specify the interchange format**, what a serialized model
   looks like, and how elaboration/resugaring round-trip.
 
 ### Medium-term
@@ -147,18 +147,18 @@ The volume establishes the foundation. Much remains to build on it.
 - **Apply the foundation to a second domain** outside legal
   metrology (e.g., software build pipelines, business workflows,
   scientific data provenance). Tests the extensibility claim.
-- **Develop tooling** — compilers, debuggers, profilers, IDE
-  integration — comparable to what OOP built over thirty years.
+- **Develop tooling**, compilers, debuggers, profilers, IDE
+  integration, comparable to what OOP built over thirty years.
 - **Engage with OMG / ISO** on standardization. The KerML
   convergence suggests the time is right.
 
 ### Long-term
 
 - **Pursue decidability results** for restricted fragments of the
-  algebra — the analogue of OWL's description-logics stratification.
-- **Explore the meta-theory** — what can be proven about models in
+  algebra, the analogue of OWL's description-logics stratification.
+- **Explore the meta-theory**, what can be proven about models in
   the foundation? What kind of model-checking is possible?
-- **Build the adoption case** — second and third implementations,
+- **Build the adoption case**, second and third implementations,
   real-world deployments, the test that any standard is for.
 
 ---
@@ -178,7 +178,7 @@ descriptive algebra, with:
   surveyed;
 - practical properties (no escape hatch, reification, scale
   invariance, model = program) that follow from the algebra;
-- and explicit honest limits — no decidability, no tooling, no
+- and explicit honest limits, no decidability, no tooling, no
   adoption yet.
 
 It is a candidate, not a final answer. The strongest claim
@@ -195,7 +195,7 @@ caught a real problem and we have not done our work. The four attack
 points in §11.2 are the falsifiability surface. Any one of them,
 demonstrated, would change the foundation.
 
-If you finish thinking "I want to use this" — good. The foundation
+If you finish thinking "I want to use this", good. The foundation
 is for building with. Primmel (Volume I) is one language that
 targets it; the platform annex describes one runtime. The OIML
 metamodel (Volume II) is one domain encoding. Pick a domain of your

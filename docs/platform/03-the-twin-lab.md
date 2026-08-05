@@ -1,8 +1,8 @@
-# The Twin Lab — the generic twin workbench
+# The Twin Lab, the generic twin workbench
 
 > *In this chapter:* how the operator binds a live twin endpoint to a
 > Recommendation, watches compliance compute, and walks a guided test
-> run — for any Recommendation that declares a twin interface, never a
+> run, for any Recommendation that declares a twin interface, never a
 > per-instrument page. Status: ● shipped (`/app/twin-lab`).
 
 ---
@@ -11,16 +11,16 @@
 
 The Twin Lab is the platform's **generic** twin workbench. Its
 contract: pick a Recommendation, point at a live twin endpoint (a
-Primmel SMART Twin — a real instrument or a simulated one), and the
+Primmel SMART Twin, a real instrument or a simulated one), and the
 page derives everything else from the Recommendation's OWN declared
 twin interface (`model/twin.yaml`, generated from the package's
-`twin.prl` — the single source of truth). Nothing about a specific
+`twin.prl`, the single source of truth). Nothing about a specific
 instrument is hard-coded: a new Recommendation ships a `twin.prl` and
 the page works.
 
-Today four Recommendations declare the interface — R 60 (load cells),
+Today four Recommendations declare the interface, R 60 (load cells),
 R 91 (speed meters), R 129 (dimensioners), R 144 (gas analytical
-systems) — and all four bind through the same page (the
+systems), and all four bind through the same page (the
 `twin-lab-families` integration contract proves it continuously).
 
 ## 2. The three legs
@@ -51,27 +51,27 @@ The honesty rules that make it certification-grade:
   dropped (the R 144 family's NO/NO₂ registers report exactly this
   when a product doesn't measure them).
 - **The wire field names follow the generated schema's camelCase
-  rule** — the SST schema camelizes every field; the lab's documents
+  rule**, the SST schema camelizes every field; the lab's documents
   match (multi-word registers like `indication_length` →
   `indicationLength`).
 - **The attested physical reading is the evidence of record**; the
-  twin's served reading is auto-captured with its serve timestamp —
+  twin's served reading is auto-captured with its serve timestamp , 
   the same pairing discipline as the twin-fidelity probe.
-- **A twin that does not answer degrades honestly** — the record
+- **A twin that does not answer degrades honestly**, the record
   carries the error, never an invented value.
 
 ## 3. The command face
 
 The model's DOES → mutations: an operation of kind `invoke` (R 91's
 `run_self_test`, R 144's `zero_calibration`/`span_calibration`) is a
-first-class command on the page — issued through the binding,
+first-class command on the page, issued through the binding,
 recorded with the instrument's resulting state, and compiled into the
 run's command log as evidence.
 
 ## 4. The practice drive (G18)
 
 The world channel's scenario buttons (drive the SST's physics:
-temperature, load, time) run a *practice* session — segregated by the
+temperature, load, time) run a *practice* session, segregated by the
 `practice-` id marker, never certification evidence. The banner says
 so, always; the report compiler marks the same boolean, never the
 channel (only the world-drive module knows the channel).
@@ -79,10 +79,10 @@ channel (only the world-drive module knows the channel).
 ## 5. Where the depth lives
 
 The architecture site carries the gated detail: `docs/architecture/12-the-sst-interaction-contract.md`
-(two endpoints, four verbs — no iframe) and `docs/architecture/14-the-twin-stream.md`
+(two endpoints, four verbs, no iframe) and `docs/architecture/14-the-twin-stream.md`
 (the real-time channel the watch arm binds when the endpoint streams) in the
 `oimlsmart/smart` repository (member access today; the public mirror
 lands with the website wave).
 
-*Next: [Multi-standard projection](04-multi-standard-projection.md) —
+*Next: [Multi-standard projection](04-multi-standard-projection.md) , 
 one implementation model, several auditor lenses, no merged claims.*

@@ -1,4 +1,4 @@
-# Chapter 4 — Proofs
+# Chapter 4, Proofs
 
 > *In this chapter:* the three theorems that make the IS–HAS–DOES
 > modelling system a candidate universal descriptive algebra:
@@ -7,7 +7,7 @@
 > primitive that catches it), **extensibility** (new content never
 > requires new primitives). Each is stated as a theorem and proved.
 > Read [Chapter 2 (Claims and Falsifiability)](02-claims-and-falsifiability.md)
-> first — the completeness and extensibility proofs depend on the
+> first, the completeness and extensibility proofs depend on the
 > Claim-Form Axiom stated there.
 
 ---
@@ -22,7 +22,7 @@ Three properties, each stated precisely:
 | **Completeness** | Under the Claim-Form Axiom, every atomic claim is expressible in 𝓜. |
 | **Extensibility** | 𝓜 extends conservatively: new content is absorbed without new primitives; any proposed new primitive is either redundant or violates the axiom. |
 
-Closure is unconditional — it is a property of the algebra itself.
+Closure is unconditional, it is a property of the algebra itself.
 Completeness and extensibility are *relative to the Claim-Form Axiom*.
 That relativization is not a weakness; it is the strongest honest
 claim available (see §4.5 below and
@@ -30,12 +30,12 @@ claim available (see §4.5 below and
 
 ---
 
-## 4.2 Theorem 1 — Closure
+## 4.2 Theorem 1, Closure
 
 > **Claim.** Every operation of 𝓜 applied to elements of 𝓜 yields an
 > element of 𝓜.
 
-![Theorem 1 — Closure](diagrams/theorem-1-closure.svg)
+![Theorem 1, Closure](diagrams/theorem-1-closure.svg)
 
 > **Proof.** There are exactly three operations; check each.
 >
@@ -64,36 +64,36 @@ escape hatches in the signature.
 
 ---
 
-## 4.3 Theorem 2 — Completeness
+## 4.3 Theorem 2, Completeness
 
 > **Claim-Form Axiom** (restated from Chapter 2 §2.2). Every atomic
 > descriptive claim about an entity is one of three forms: an identity
 > claim (what it is), an attribution claim (what it holds), or a
 > transformation claim (what it does).
 
-![Theorem 2 — Completeness case analysis](diagrams/theorem-2-completeness.svg)
+![Theorem 2, Completeness case analysis](diagrams/theorem-2-completeness.svg)
 
 > **Claim.** Under the axiom, every atomic claim is expressible in 𝓜.
 >
 > **Proof.** By cases on the axiom's trichotomy, at both type and
 > instance grain.
 >
-> **Case 1 — Identity claims.** "x is the same as before" and "x is a
+> **Case 1, Identity claims.** "x is the same as before" and "x is a
 > K" are both `IS(x, y)` with `y ∈ O`. Closure Rule 1 (§3.7)
 > guarantees that kinds live in `O`, so type-level identity is caught
 > by the same relation that catches instance-level identity.
 >
-> **Case 2 — Attribution claims.** "x holds value v along property p"
+> **Case 2, Attribution claims.** "x holds value v along property p"
 > is `HAS(x)(p) = v`. Relational attributions ("x is owned by y") are
-> the case `v = ι(y)` by Closure Rule 2 (§3.8) — the value carries an
+> the case `v = ι(y)` by Closure Rule 2 (§3.8), the value carries an
 > object-reference rather than raw data. Either way, HAS catches the
 > claim.
 >
-> **Case 3 — Transformation claims.**
+> **Case 3, Transformation claims.**
 >
 > - *At type grain:* "x can do t" is `DOES(x, t)` with `t ∈ T`.
 > - *At instance grain:* "this particular run of t" is `ρ(t) ∈ O` by
->   Closure Rule 3 (§3.9) — the run is a reified transition, which is
+>   Closure Rule 3 (§3.9), the run is a reified transition, which is
 >   an object, individuated by IS and described by HAS like any
 >   object.
 >
@@ -105,34 +105,34 @@ escape hatches in the signature.
 The proof is structural, but it is backed by an empirical record.
 Across the entire design dialogue (reconstructed in
 [Chapter 7](07-derived-vocabulary-proofs.md)), every candidate
-primitive proposed and examined — STATE, STEP, CAN, RECEIVES,
-RELATES-TO, BECOMES, TYPE, TIME — reconstructed as a composite of the
+primitive proposed and examined, STATE, STEP, CAN, RECEIVES,
+RELATES-TO, BECOMES, TYPE, TIME, reconstructed as a composite of the
 eight. A vocabulary that stops needing patches has probably closed;
 "probably" is the strongest claim available, given the Gödel-style
 limit on self-certification.
 
 ---
 
-## 4.4 Theorem 3 — Extensibility
+## 4.4 Theorem 3, Extensibility
 
 > **Claim.** 𝓜 extends conservatively: any new domain content is
 > absorbed without new primitives, and any proposed new primitive is
 > either redundant or violates the Claim-Form Axiom.
 
-![Theorem 3 — Extensibility](diagrams/theorem-3-extensibility.svg)
+![Theorem 3, Extensibility](diagrams/theorem-3-extensibility.svg)
 
 > **Proof.**
 >
-> ***Part A — Conservative growth.*** Extension means enlarging the
+> ***Part A, Conservative growth.*** Extension means enlarging the
 > sorts: new kinds and instances enter `O`, new dimensions enter `P`,
 > new data enter `V`, new rules enter `T`. The operations `∘, ρ, ι`
 > and the relations `IS, HAS, DOES` are defined *schematically* over
-> the sorts — they don't enumerate members, they prescribe shape. So
+> the sorts, they don't enumerate members, they prescribe shape. So
 > enlarging a sort changes no definition and invalidates no prior
 > claim. Extension is monotone: every theorem that held before the
 > extension still holds after.
 >
-> ***Part B — No new primitives.*** Suppose a ninth primitive `X` is
+> ***Part B, No new primitives.*** Suppose a ninth primitive `X` is
 > proposed. Either:
 >
 > - **(a)** Every claim made with `X` falls under the Claim-Form
@@ -143,7 +143,7 @@ limit on self-certification.
 >
 > - **(b)** Some claim made with `X` falls outside the trichotomy.
 >   Then `X` is making a descriptive claim of a kind the Claim-Form
->   Axiom says does not exist — which contradicts the axiom that
+>   Axiom says does not exist, which contradicts the axiom that
 >   bounds the modeling domain. `X` is inadmissible as a primitive
 >   because admitting it would change what "modeling" means.
 >
@@ -153,7 +153,7 @@ limit on self-certification.
 
 Because the algebra is schematic over its sorts, a new domain (legal
 metrology, business process, software build pipelines) enters the
-system by populating `O`, `P`, `V`, `T` with domain content — not by
+system by populating `O`, `P`, `V`, `T` with domain content, not by
 adding to the algebra. Primmel (Volume I) is one such population; the
 OIML metamodel (Volume II) is a further specialization of that
 population; an OIML Recommendation (Volume III) is an instance-level
@@ -169,7 +169,7 @@ encoding; the algebra accepts any number of others.
 
 For honesty (see [Chapter 2](02-claims-and-falsifiability.md)):
 
-- **Closure** is unconditional, but it is closure *of the algebra* —
+- **Closure** is unconditional, but it is closure *of the algebra* , 
   it says nothing about whether a runtime that implements the algebra
   is itself closed under those operations. A buggy runtime can
   violate closure in practice while the algebra stands.
@@ -190,10 +190,10 @@ stated axiom), and extensible. It is not decidability-complete, not
 shipped, and not the only possible foundation. The next chapter that
 matters is [Chapter 7 (Derived Vocabulary)](07-derived-vocabulary-proofs.md),
 which shows the dialectical record of rival primitives being reduced
-to composites — the empirical backing for Theorem 2.
+to composites, the empirical backing for Theorem 2.
 
 ---
 
-*Next: [Chapter 5 — Kernel/Surface Architecture](05-kernel-surface-architecture.md):
+*Next: [Chapter 5, Kernel/Surface Architecture](05-kernel-surface-architecture.md):
 the deeper result that all eight primitives desugar to a kernel with
 only entities, transitions, and composition.*

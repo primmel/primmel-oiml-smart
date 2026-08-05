@@ -1,4 +1,4 @@
-# Chapter 9 — Categorical Foundations
+# Chapter 9, Categorical Foundations
 
 > *In this chapter:* the kernel of
 > [Chapter 5](05-kernel-surface-architecture.md) recognized as a
@@ -7,7 +7,7 @@
 > composition. The Curry–Howard–Lambek correspondence positions the
 > kernel inside a sixty-year-old family of structures for which
 > sound operational semantics are already a solved problem. SysML
-> v2's KerML arrives at the same architecture independently —
+> v2's KerML arrives at the same architecture independently , 
 > powerful external validation.
 
 This is the most formal chapter in the volume. KaTeX renders the
@@ -43,27 +43,27 @@ sense (Mac Lane, 1971):
 | **Associativity** $(h \circ g) \circ f = h \circ (g \circ f)$ | Required by the kernel |
 | **Unit laws** $f \circ \mathrm{id} = f = \mathrm{id} \circ f$ | Required by the kernel |
 
-The kernel is not *like* a category — it *is* one. Every categorical
+The kernel is not *like* a category, it *is* one. Every categorical
 theorem applies.
 
 ---
 
-## 9.2 Why this matters — sixty years of metatheory for free
+## 9.2 Why this matters, sixty years of metatheory for free
 
 A category with the structure above inherits a vast body of
 existing results:
 
-- **Functors** (maps between categories preserving structure) — the
+- **Functors** (maps between categories preserving structure), the
   foundation's elaboration and resugaring algorithms
   ([Chapter 6](06-algorithms.md)) are functors between the surface
   category and the kernel category.
-- **Natural transformations** (maps between functors) — the
+- **Natural transformations** (maps between functors), the
   foundation's projections (different views of one model) are
   natural transformations.
-- **Adjunctions** (pairs of functors with a universal property) —
+- **Adjunctions** (pairs of functors with a universal property) , 
   reification $\rho$ and its inverse form an adjunction between
   $T$ and $O$.
-- **Limits and colimits** (universal constructions) — products
+- **Limits and colimits** (universal constructions), products
   model conjunction of facts; coproducts model alternative branches
   in a process.
 
@@ -97,8 +97,8 @@ $\lambda$-calculus *is* a model of constructive logic.
 ### What this means for the foundation
 
 The foundation's kernel is a category. If it has finite products
-(it does — products of value-interfaces are well-defined) and
-exponentials (it does — transitions between interfaces form an
+(it does, products of value-interfaces are well-defined) and
+exponentials (it does, transitions between interfaces form an
 exponential), then it is a Cartesian closed category. By
 Curry–Howard–Lambek:
 
@@ -150,7 +150,7 @@ $$
 
 Categorically, $\rho$ is the action of a functor from the category
 of transitions to the category of objects. The right adjoint
-$\rho^{\dagger} : O \to T$ goes the other way — given an object, it
+$\rho^{\dagger} : O \to T$ goes the other way, given an object, it
 returns the identity transition.
 
 The adjunction $\rho \dashv \rho^{\dagger}$ satisfies:
@@ -166,11 +166,11 @@ composition."
 
 ---
 
-## 9.6 KerML — independent convergence
+## 9.6 KerML, independent convergence
 
 The SysML v2 effort concluded, after two decades of UML's
 foundationless metamodel, exactly what the foundation concludes. It
-built KerML — Kernel Modeling Language — a small kernel language
+built KerML, Kernel Modeling Language, a small kernel language
 with declarative formal semantics, with SysML v2 as a surface that
 elaborates into it.
 
@@ -191,7 +191,7 @@ independently by the largest standards body in the field.
 - KerML's kernel is **declarative/logical** (model-theoretic,
   specifications to be checked). The foundation's kernel is
   **operational** (evaluation-based, processes to be run).
-- KerML's kernel is larger — it carries more of the surface ontology
+- KerML's kernel is larger, it carries more of the surface ontology
   into the kernel, trading minimality for expressiveness in the
   base layer.
 
@@ -227,7 +227,7 @@ formalism into practical claims about executability and adoption.
 
 ## 9.8 Where this chapter leaves us
 
-- The kernel is a category — Mac Lane's textbook applies.
+- The kernel is a category, Mac Lane's textbook applies.
 - The Curry–Howard–Lambek correspondence gives the kernel
   operational semantics "for free" (relative to being a Cartesian
   closed category, which we believe it is).
@@ -254,6 +254,6 @@ program.
 
 ---
 
-*Next: [Chapter 10 — The Executable Ground](10-executable-ground.md):
-the practical case — no escape hatch, reification, scale invariance,
+*Next: [Chapter 10, The Executable Ground](10-executable-ground.md):
+the practical case, no escape hatch, reification, scale invariance,
 model = program.*
