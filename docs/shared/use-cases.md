@@ -58,14 +58,14 @@ contract, not a snapshot.
 ### Run the OIML-CS certification scheme
 
 Model the entire B 18 certification workflow, application, dispatch,
-testing, evaluation, decision, certificate issuance, register entry , 
+testing, evaluation, decision, certificate issuance, register entry ,
 as a Primmel process with typed evidence and machine-checked verdicts.
 
 **Start with:** [The OIML-CS Scheme](https://www.oimlsmart.org/docs/oiml-cs/) (on the OIML SMART site)
 
 ### Validate a test report for admissibility
 
-Check that evidence meets preconditions before it enters judgment , 
+Check that evidence meets preconditions before it enters judgment ,
 void runs that violate preconditions are `invalid`, never `fail`.
 
 **Start with:** [OIML Core chapter 6, Test
