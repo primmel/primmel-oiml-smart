@@ -48,3 +48,6 @@ jobs:
 
       - name: Link check (zero broken internal refs over dist/)
         run: npm run check:links
+
+      - name: Prose em-dash guard (TODO.FULL/09)
+        run: node scripts/emdash-guard.mjs
