@@ -34,10 +34,10 @@ const OUT = path.join(ROOT, 'src', 'content', 'docs');
 /** Volume landing-page titles, keyed by first path segment ('' = tree root). */
 const VOLUME_TITLES = {
   '': 'Overview',
-  foundation: 'Volume 0 — Foundation',
-  primmel: 'Volume I — Primmel Kernel',
-  platform: 'Annex — Platform',
-  shared: 'Annex — Shared',
+  foundation: 'Volume 0: Foundation',
+  primmel: 'Volume I: Primmel Kernel',
+  platform: 'Annex: Platform',
+  shared: 'Annex: Shared',
 };
 
 const toPosix = (p) => p.split(path.sep).join('/');
